@@ -232,7 +232,7 @@ var regionlist = [
         "location": regionlocation.japaneast,
         "crrregions": ["japanwest"],
         "snf": true,
-        "snfedit": TBD,
+        "snfedit": false,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
