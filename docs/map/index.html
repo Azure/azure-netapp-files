@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+     <title>Azure NetApp Files - Region Map</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+     <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+
+     <script src="map.js"></script>
+
+     <style>
+        html,
+        body {
+             width: 100%;
+             height: 100%;
+             padding: 0;
+             margin: 0;
+        }
+
+        #myMap {
+             width: 100%;
+             height: 100%;
+        }
+
+        #eventPanel {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            margin: 0px;
+            background-color: white;
+            border-style: solid;
+            border-width: 1px 1px 0 0;
+            border-color: black;
+            border-radius: 0 0 0 0;
+            -webkit-column-count: 1;
+            -moz-column-count: 1;
+            column-count: 1;
+            font-size: 1.0rem;
+            font-family: SegoeUI, Arial, Helvetica, sans-serif;
+            background-image: url(https://anftechteam.github.io/calc/anficon.png);
+            background-size: 10%;
+            background-repeat: no-repeat;
+            background-position-y: 100%;
+            background-position-x: 100%;
+        }
+        #eventPanel ul {
+            padding-left: 20px;
+            padding-top: 0;
+            list-style: circle;
+            margin-top: 0;
+        }
+        #eventPanel h4,h3 {
+            padding: 0;
+            margin-bottom: 2px;
+            margin-top: 5px;
+        }
+        #miniImg {
+            float: right;
+            width: 20px;
+            padding-top: 5px;
+            padding-right: 5px;
+            margin: 0;
+        }
+        #miniPanel {
+            padding: 0;
+            margin: 0;
+        }
+        #mainPanel {
+            padding: 25px;
+            padding-bottom: 10px;
+        }
+        #mainPanel a {
+            color: rgb(33, 82, 138);
+            text-decoration: none;
+        }
+        #mainPanel a:visited {
+            color: rgb(33, 82, 138);
+            text-decoration: none;
+        }
+        .hidden {
+            visibility: false;
+        }
+        #minimizedPanel {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            background-color: white;
+            padding: 5px;
+        }
+        #minimizedPanel img {
+            float: right;
+            width: 20px;
+            margin: 0;
+        }
+        small {
+            color: gray;
+        }
+     </style>
+ </head>
+ <body onload="initMap()">
+    <div id="myMap"></div>
+    <div id="eventPanel">
+        <div id="miniPanel">
+            <img id="miniImg" src="./minimize.png" onclick=minimizePanel()>
+        </div>
+        <div id="mainPanel">
+            <h3>Azure NetApp Files</h3>
+            <h4>Region and Feature Map</h4>
+            <ul>
+            <li>Hover to see details about a region.</li>
+            <li>Click to see cross-region replication region pairs.</li>
+            </ul>
+            <h4>Total number of regions: <span id="totalRegionCount"></span></h4>
+            <br>
+            <h4>Apply filter(s)...</h4>
+            <input onclick="updateMap()" type="checkbox" id="snf" name="snf" value="snf">
+            <label for="snf">standard network features </label>(<span id="snfRegionCount"></span>)<br>
+
+            <input onclick="updateMap()" type="checkbox" id="snfedit" name="snfedit" value="snfedit">
+            <label for="snfedit">edit standard network features </label>(<span id="snfEditRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="crr" name="crr" value="crr">
+            <label for="crr">cross-region replication </label>(<span id="crrRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="avs" name="avs" value="avs">
+            <label for="avs">datastore for Azure VMware Solution </label>(<span id="avsRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="backup" name="backup" value="backup">
+            <label for="backup">backup </label>(<span id="backupRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="largevolumes" name="largevolumes" value="largevolumes">
+            <label for="largevolumes">large volumes </label>(<span id="largevolumesRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="cmk" name="cmk" value="cmk">
+            <label for="cmk">customer-managed keys </label>(<span id="cmkRegionCount"></span>)<br>
+        
+            <input onclick="updateMap()" type="checkbox" id="usgov" name="usgov" value="usgov">
+            <label for="usgov">US Gov </label>(<span id="USGovRegionCount"></span>)<br>
+            <br>
+            <h4>Total filtered regions: <span id="totalFilteredCount"></span></h4><br>
+            <button onclick="window.location.href=window.location.href">Reset</button>
+            <br><br>
+            <small>Created by <a target="_blank" href="https://github.com/seanluce">@seanluce</a> | <a target="_blank" href="https://netapp.com">NetApp</a></small>
+        </div>
+    </div>
+    <div class="hidden" id="minimizedPanel">
+        <img src="./restore.png" onclick="restorePanel()">
+    </div>
+ </body>
+ </html>

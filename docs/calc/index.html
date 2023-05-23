@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Azure NetApp Files Performance Calculator</title>
+    <script src="calc.js"></script>
+</head>
+
+<body onload="getResults()">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <div class="container">
+        <div class="languageSelector float-right"><small class="text-muted">language:&nbsp;  <a onclick="english()" href="#">en</a>&nbsp;&nbsp;<a onclick="japanese()" href="#">ja</a></small></div>
+<br>
+        <div class="card w-100">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-md-auto"><img src="anficon.png" class="float-left" height="50">
+                    </div>
+                    <div class="col"><span id="headerTitle" class="h6">&nbsp&nbspAzure NetApp Files Performance Calculator <small>(<a href="https://anftechteam.github.io/calc/advanced/">advanced</a>)</small></span>
+                    </div>
+                    <div class="col-md-auto" class="input-group mb-3">
+                        <select input oninput="getResults()" class="custom-select float-right" id="regionselector">
+                            <option value="Central US">Central US</option>
+                            <option value="East US" selected>East US</option>
+                            <option value="East US 2">East US 2</option>
+                            <option value="North Central US">North Central US</option>
+                            <option value="South Central US">South Central US</option>
+                            <option value="West US">West US</option>
+                            <option value="West US 2">West US 2</option>
+                            <option value="West US 3">West US 3</option>
+                            <option value="US Gov Arizona">US Gov Arizona</option>
+                            <option value="US Gov Virginia">US Gov Virginia</option>
+                            <option value="US Gov Texas">US Gov Texas</option>
+                            <option value="UK South">UK South</option>
+                            <option value="UK West">UK West</option>
+
+                            <option value="UAE Central">UAE Central</option>
+                            <option value="UAE North">UAE North</option>
+
+                            <option value="Switzerland North">Switzerland North</option>
+                            <option value="Switzerland West">Switzerland West</option>
+
+                            <option value="Sweden Central">Sweden Central</option>
+
+                            <option value="Qatar Central">Qatar Central</option>
+
+                            <option value="Norway East">Norway East</option>
+                            <option value="Norway West">Norway West</option>
+
+                            <option value="Korea Central">Korea Central</option>
+
+                            <option value="Japan East">Japan East</option>
+                            <option value="Japan West">Japan West</option>
+
+                            <option value="Central India">Central India</option>
+                            <option value="South India">South India</option>
+
+                            <option value="Germany North">Germany North</option>
+                            <option value="Germany West Central">Germany West Central</option>
+
+                            <option value="France Central">France Central</option>
+
+                            <option value="North Europe">North Europe</option>
+                            <option value="West Europe">West Europe</option>
+
+                            <option value="Canada Central">Canada Central</option>
+                            <option value="Canada East">Canada East</option>
+
+                            <option value="Brazil South">Brazil South</option>
+
+                            <option value="Australia Central">Australia Central</option>
+                            <option value="Australia Central 2">Australia Central 2</option>
+                            <option value="Australia East">Australia East</option>
+                            <option value="Australia Southeast">Australia Southeast</option>
+                            
+                            <option value="East Asia">East Asia</option>
+                            <option value="Southeast Asia">Southeast Asia</option>
+                            <option value="South Africa North">South Africa North</option>
+                        </select>
+                    </div> 
+                </div>                
+            </div>
+            <div class="card-body">
+                
+                <small id="volumewarning" class="form-text text-muted">Minimum volume size is 100 GiB. Maximum volume size is 500 TiB.</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="volumeSizeLabel" class="my-1 input-group-text">Volume Size</span>
+                    </div>
+                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="10" aria-label="Volume Size" aria-describedby="Volume Size" id="capinput"></input>
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary my-1">
+                            <input onchange="getResults(1)" name="units" type="radio" value="1024" id="GiB">GiB</input>
+                        </label>
+                        <label class="btn btn-outline-primary my-1">
+                          <input onchange="getResults(2)" name="units" type="radio" value="1" id="TiB" checked>TiB</input>
+                        </label>
+                    </div>
+                </div>
+                <small id="tputwarning" class="form-text text-muted">Enter 0 to size for capacity only. Maximum throughput is 10,240 MiB/s.</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="throughputLabel" class="my-1 input-group-text">Throughput</span>
+                    </div>
+                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="Throughput" aria-describedby="Throughput" id="tputinput"></input>
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary my-1">
+                            <input onclick="getResults()" name="tputunits" type="radio" value="MiB/s" id="sean" checked>MiB/s</input>
+                        </label>
+                    </div>
+                </div>
+                <small id="crrwarning" class="form-text text-muted">Specify percent daily change rate (.1 - 100) to calculate replication and/or backup costs.</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="changeRateLabel" class="my-1 input-group-text">Change Rate</span>
+                    </div>
+                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="Change Rate" aria-describedby="Change Rate" id="changerate"></input>
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary my-1">
+                            <input onclick="getResults()" name="ratefreq" type="radio" value="daily" id="" checked>% Daily</input>
+                        </label>
+                    
+                    </div>
+                </div>
+                
+                <div id="tableout">
+                    <table class='table-bordered table table-sm table-hover'>
+                        <thead class='thead-light'>
+                            <tr>
+                                <th id="sourceVolumeLabel" class="align-top">Source Volume</th>
+                                <th>Standard<br><small class="text-muted">(16MiB/s per TiB)</small></th>
+                                <th>Premium<br><small class="text-muted">(64MiB/s per TiB)</small></th>
+                                <th>Ultra<br><small class="text-muted">(128MiB/s per TiB)</small></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="throughputCellLabel">Throughput <small>(MiB/s)</small></td>
+                            <td id="tput_standard_cell"></td>
+                            <td id="tput_premium_cell"></td>
+                            <td id="tput_ultra_cell"></td>
+                        </tr>
+                        <tr style="background-color: #e9ecef;">
+                            <td class="volumeSizeCellLabel">Volume Size <small class="table_unit">(GiB)</small></td>
+                            <td id="size_standard_cell"></td>
+                            <td id="size_premium_cell"></td>
+                            <td id="size_ultra_cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="volumeShowBackCellLabel">Volume Show Back <small>(USD/month)</small></td>
+                            <td id="cost_standard_cell"></td>
+                            <td id="cost_premium_cell"></td>
+                            <td id="cost_ultra_cell"></td>
+                        </tr>
+                        <tr style="background-color: #e9ecef;">
+                            <td class="capacityPoolSizeCellLabel">Capacity Pool Size <small class="table_unit">(TiB)</small></td>
+                            <td id="poolsize_standard_cell"></td>
+                            <td id="poolsize_premium_cell"></td>
+                            <td id="poolsize_ultra_cell"></td>
+                        </tr>
+                        <tr style="border-style: solid; border-color: #007bff;">
+                            <td class="capacityPoolCostCellLabel">Capacity Pool Cost <small>(USD/month)</small></td>
+                            <td id="poolcost_standard_cell"></td>
+                            <td id="poolcost_premium_cell"></td>
+                            <td id="poolcost_ultra_cell"></td>
+                        </tr>
+                    </table>
+                    <table class='table-bordered table table-sm table-hover' id="destinationvolume">
+                        <thead class='thead-light'>
+                            <tr>
+                                <th id="destinationVolumeLabel" class="align-top">Destination Volume</th>
+                                <th>Standard<br><small class="text-muted">(16MiB/s per TiB)</small></th>
+                                <th>Premium<br><small class="text-muted">(64MiB/s per TiB)</small></th>
+                                <th>Ultra<br><small class="text-muted">(128MiB/s per TiB)</small></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="throughputCellLabel">Throughput <small>(MiB/s)</small></td>
+                            <td id="dest_tput_standard_cell"></td>
+                            <td id="dest_tput_premium_cell"></td>
+                            <td id="dest_tput_ultra_cell"></td>
+                        </tr>
+                        <tr style="background-color: #e9ecef;">
+                            <td class="volumeSizeCellLabel">Volume Size <small class="table_unit">(GiB)</small></td>
+                            <td id="dest_size_standard_cell"></td>
+                            <td id="dest_size_premium_cell"></td>
+                            <td id="dest_size_ultra_cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="volumeShowBackCellLabel">Volume Show Back <small>(USD/month)</small></td>
+                            <td id="dest_cost_standard_cell"></td>
+                            <td id="dest_cost_premium_cell"></td>
+                            <td id="dest_cost_ultra_cell"></td>
+                        </tr>
+                        <tr style="background-color: #e9ecef;">
+                            <td class="capacityPoolSizeCellLabel">Capacity Pool Size <small>(TiB)</small></td>
+                            <td id="dest_poolsize_standard_cell"></td>
+                            <td id="dest_poolsize_premium_cell"></td>
+                            <td id="dest_poolsize_ultra_cell"></td>
+                        </tr>
+                        <tr style="border-style: solid; border-color: #007bff;">
+                            <td class="capacityPoolCostCellLabel">Capacity Pool Cost <small>(USD/month)</small></td>
+                            <td id="dest_poolcost_standard_cell"></td>
+                            <td id="dest_poolcost_premium_cell"></td>
+                            <td id="dest_poolcost_ultra_cell"></td>
+                        </tr>
+                    </table>
+                    <table class='table-bordered table table-sm table-hover' id='replicationcost'>
+                        <thead class='thead-light'>
+                            <tr>
+                                <th class="align-top">Replication Cost</th>
+                                <th>10 minutes<br><small class="text-muted"></small></th>
+                                <th>hourly<br><small class="text-muted"></small></th>
+                                <th>daily+<br><small class="text-muted"></small></th>
+                            </tr>
+                        </thead>
+                            <tr>
+                                <td>Initial Transfer Cost <small>(USD)</small></td>
+                                <td id="init_10min_cell"></td>
+                                <td id="init_hourly_cell"></td>
+                                <td id="init_daily_cell"></td>
+                            </tr>
+                            <tr style="background-color: #e9ecef;">
+                                <td>Incremental Cost <small>(USD/month)</small></td>
+                                <td id="inc_10min_cell"></td>
+                                <td id="inc_hourly_cell"></td>
+                                <td id="inc_daily_cell"></td>
+                            </tr>
+                            <tr style="border-style: solid; border-color: #007bff;">
+                                <td>Replication Cost First Month <small>(USD/month)</small></td>
+                                <td id="month1_10min_cell"></td>
+                                <td id="month1_hourly_cell"></td>
+                                <td id="month1_daily_cell"></td>
+                            </tr>
+                      
+                        
+                    </table>
+
+                    <table class='table-bordered table table-sm table-hover' id='backupcost'>
+                        <thead class='thead-light'>
+                            <tr>
+                                <th class="align-top">Backup Cost</th>
+                                <th>daily (30x)<br><small class="text-muted"></small></th>
+                                <th>weekly (4x)<br><small class="text-muted"></small></th>
+                            </tr>
+                        </thead>
+                            <tr>
+                                <td>Initial Backup Cost <small>(USD)</small></td>
+                                <td id="init_bkup_daily_cell"></td>
+                                <td id="init_bkup_weekly_cell"></td>
+                            </tr>
+                            <tr style="background-color: #e9ecef;">
+                                <td>Incremental Cost <small>(USD/month)</small></td>
+                                <td id="inc_bkup_daily_cell"></td>
+                                <td id="inc_bkup_weekly_cell"></td>
+                            </tr>
+                            <tr style="border-style: solid; border-color: #007bff;">
+                                <td>Backup Cost First Month <small>(USD/month)</small></td>
+                                <td id="month1_bkup_daily_cell"></td>
+                                <td id="month1_bkup_weekly_cell"></td>
+                            </tr>
+                      
+                        
+                    </table>
+
+
+
+                    <div class="input-group mb-3">
+
+     
+                        <div class="input-group-prepend">
+                            <span id="discountLabel" style="background-color: #ffa99f;" class="my-1 input-group-text">Discount</span>
+                        </div>
+                        <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="Percent Discount" aria-describedby="Percent Discount" id="discountinput"></input>
+                        <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-primary my-1">
+                                <input onclick="getResults()" name="" type="radio" value="%" id="" checked>%</input>
+                            </label>
+                            
+                        </div>
+                        
+                        
+                    
+                    </div>
+                    <small id="blueTextExplain" class="text-primary">Blue text indicates volume is sized for throughput.</small></br>
+                    <small id="largeVolumeNote" class="text-success">Volumes with a throughput greater than 4500 MiB/s or a size greater than 100 TiB require <a href="https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations">large volumes</a>.</small></br>
+                    <small id="costWarningNote">The 'Capacity Pool Cost' is the amount you will be charged. The 'Volume Show Back' amount is for show back purposes only.</small></br>
+                    <small id="replicateWarningNote">You can replicate between volumes of different service levels.</small></br>
+                    <small id="replicationCostsWarningNote">Replication transfer costs are based on a 35% storage efficiency rating.</small></br>
+                    <small id="billingMonthWarningNote">Monthly costs are based on a 730 hour billing month.</small></br>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small id="sourceLabel" class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a>
+                </small><br>
+                <small id="estimateOnlyWarningNote" class="text-muted">notes: calculator is for estimation purposes only</small>
+            </div>
+        </div>
+        <div class="text-right">
+            <small class="text-muted">&copy;Copyright 2023, <a href="https://netapp.com">NetApp</a></small>
+        </div>
+    </div>
+
+</body>
+
+</html>
