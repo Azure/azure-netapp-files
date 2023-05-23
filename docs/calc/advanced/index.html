@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.css" integrity="sha512-SZgE3m1he0aEF3tIxxnz/3mXu/u/wlMNxQSnE0Cni9j/O8Gs+TjM9tm1NX34nRQ7GiLwUEzwuE3Wv2FLz2667w==" crossorigin="anonymous" />
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+        //name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+        //ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+        //useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+        //crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+        cfg: { // Application Insights Configuration
+            instrumentationKey: "8f84391c-82e5-4ef1-bf89-3e15ae7d10fc"
+            /* ...Other Configuration Options... */
+        }});
+        </script>
+    <title>Azure NetApp Files Performance Calculator</title>
+    <script type="text/javascript">
+        
+
+        function getResults() {
+
+            month_hours = 730;
+            standard_rate = 0.000202 * month_hours;
+            premium_rate = 0.000403 * month_hours;
+            ultra_rate = 0.000538 * month_hours;
+            standard_tputpertib = 16;
+            premium_tputpertib = 64;
+            ultra_tputpertib = 128;
+            min_vol_capacity = 100;
+            max_vol_capacity = 102400;
+            min_pool_capacity = 2;
+            max_pool_capacity = 500;
+            min_tput = 1.56;
+            discount_percent = 0;
+            
+            var standard_region_rates = {
+                "Central US": 0.14746,
+                "East US": 0.14746,
+                "East US 2": 0.14746,
+                "North Central US": 0.17666,
+                "South Central US": 0.14746,
+                "West US": 0.14746,
+                "West US 2": 0.14746,
+                "West US 3": 0.14746,
+
+                "US Gov Arizona": 0.17739,
+                "US Gov Virginia": 0.18396,
+                "US Gov Texas": 0.18396,
+            
+                "UK South": 0.16206,
+                "UK West": 0.16206,
+
+                "UAE Central": 0.23068,
+                "UAE North": 0.21024,
+
+                "Switzerland North": 0.16206,
+                "Switzerland West": 0.21097,
+
+                "Sweden Central": 0.14746,
+                "Sweden South": 0.19199,
+
+                "Qatar Central": 0.21097,
+
+                "Norway East": 0.16206,
+                "Norway West": 0.16206,
+
+                "Korea Central": 0.19856,
+                "Korea South": 0.18396,
+
+                "Japan East": 0.17666,
+                "Japan West": 0.22922,
+
+                "Central India": 0.16279,
+                "South India": 0.20805,
+
+                "Germany North": 0.23652,
+                "Germany West Central": 0.17739,
+
+                "France Central": 0.18396,
+
+                "North Europe": 0.14746,
+                "West Europe": 0.14746,
+
+                "Canada Central": 0.16279,
+                "Canada East": 0.17739,
+              
+                "Brazil South": 0.29419,
+                
+                "Australia Central": 0.21316,
+                "Australia Central 2": 0.17666,
+                "Australia East": 0.16279,
+                "Australia Southeast": 0.19199,
+
+                "East Asia": 0.22776,
+                "Southeast Asia": 0.14746,
+
+                "South Africa North": 0.21535
+            };
+            var premium_region_rates = {
+                "Central US": 0.29419,
+                "East US": 0.29419,
+                "East US 2": 0.29419,
+                "North Central US": 0.35332,
+                "South Central US": 0.29419,
+                "West US": 0.29419,
+                "West US 2": 0.29419,
+                "West US 3": 0.29419,
+
+                "US Gov Arizona": 0.35332,
+                "US Gov Virginia": 0.36792,
+                "US Gov Texas": 0.36792,
+            
+                "UK South": 0.32339,
+                "UK West": 0.32339,
+
+                "UAE Central": 0.45917,
+                "UAE North": 0.42121,
+
+                "Switzerland North": 0.32339,
+                "Switzerland West": 0.42048,
+
+                "Sweden Central": 0.29419,
+                "Sweden South": 0.38252,
+
+                "Qatar Central": 0.42048,
+
+                "Norway East": 0.32339,
+                "Norway West": 0.32339,
+
+                "Korea Central": 0.39712,
+                "Korea South": 0.36792,
+
+                "Japan East": 0.35259,
+                "Japan West": 0.45625,
+
+                "Central India": 0.32412,
+                "South India": 0.41537,
+
+                "Germany North": 0.47085,
+                "Germany West Central": 0.35332,
+
+                "France Central": 0.36792,
+
+                "North Europe": 0.29419,
+                "West Europe": 0.29419,
+
+                "Canada Central": 0.32412,
+                "Canada East": 0.35332,
+
+                "Brazil South": 0.58838,
+                
+                "Australia Central": 0.42705,
+                "Australia Central 2": 0.35332,
+                "Australia East": 0.32412,
+                "Australia Southeast": 0.38252,
+
+                "East Asia": 0.45625,
+                "Southeast Asia": 0.29419,
+
+                "South Africa North": 0.42924
+            };
+            var ultra_region_rates = {
+                "Central US": 0.39274,
+                "East US": 0.39274,
+                "East US 2": 0.39274,
+                "North Central US": 0.47158,
+                "South Central US": 0.39274,
+                "West US": 0.39274,
+                "West US 2": 0.39274,
+                "West US 3": 0.39274,
+
+                "US Gov Arizona": 0.47158,
+                "US Gov Virginia": 0.49056,
+                "US Gov Texas": 0.49129,
+            
+                "UK South": 0.43143,
+                "UK West": 0.43143,
+
+                "UAE Central": 0.6132,
+                "UAE North": 0.56137,
+
+                "Switzerland North": 0.43216,
+                "Switzerland West": 0.5621,
+
+                "Sweden Central": 0.39274,
+                "Sweden South": 0.51027,
+
+                "Qatar Central": 0.56137,
+
+                "Norway East": 0.43216,
+                "Norway West": 0.43216,
+
+                "Korea Central": 0.52998,
+                "Korea South": 0.49129,
+
+                "Japan East": 0.47085,
+                "Japan West": 0.60882,
+
+                "Central India": 0.43216,
+                "South India": 0.55407,
+
+                "Germany North": 0.62853,
+                "Germany West Central": 0.47158,
+
+                "France Central": 0.49129,
+
+                "North Europe": 0.39274,
+                "West Europe": 0.39274,
+
+                "Canada Central": 0.43216,
+                "Canada East": 0.47158,
+              
+                "Brazil South": 0.7884,
+                
+                "Australia Central": 0.5694,
+                "Australia Central 2": 0.47158,
+                "Australia East": 0.43143,
+                "Australia Southeast": 0.511,
+
+                "East Asia": 0.60882,
+                "Southeast Asia": 0.39274,
+
+                "South Africa North": 0.57305
+            };
+
+            var max_tput64kseq = {
+                0: 1733,
+                10: 1901,
+                20: 2044,
+                30: 2152,
+                40: 2271,
+                50: 2658,
+                60: 2720,
+                70: 2850,
+                80: 3096,
+                90: 3551,
+                100: 4500
+            };
+            
+            var max_tput8kran = {
+                0: 2 *(466504 / 1024).toFixed(0),
+                10: 2 *(497920 / 1024).toFixed(0),
+                20: 2 *(539234 / 1024).toFixed(0),
+                30: 2 *(599058 / 1024).toFixed(0),
+                40: 2 *(644128 / 1024).toFixed(0),
+                50: 2 *(750243 / 1024).toFixed(0),
+                60: 2 *(830508 / 1024).toFixed(0),
+                70: 2 *(1078620 / 1024).toFixed(0),
+                80: 2 *(1147317 / 1024).toFixed(0),
+                90: 2 *(1317762 / 1024).toFixed(0),
+                100: 2 *(1722715 / 1024).toFixed(0) 
+            };
+
+            var max_tput4kran = {
+                0: 1 *(466504 / 1024).toFixed(0),
+                10: 1 *(497920 / 1024).toFixed(0),
+                20: 1 *(539234 / 1024).toFixed(0),
+                30: 1 *(599058 / 1024).toFixed(0),
+                40: 1 *(644128 / 1024).toFixed(0),
+                50: 1 *(750243 / 1024).toFixed(0),
+                60: 1 *(830508 / 1024).toFixed(0),
+                70: 1 *(1078620 / 1024).toFixed(0),
+                80: 1 *(1147317 / 1024).toFixed(0),
+                90: 1 *(1317762 / 1024).toFixed(0),
+                100: 1 *(1722715 / 1024).toFixed(0) 
+            };
+
+            var readpercent = thatslider.slider('getValue');
+            document.getElementById("readtext").innerText="Read " + readpercent + "%";
+            document.getElementById("writetext").innerText=(100 - readpercent) + "% Write";
+            cap_target = document.getElementById("capinput").value;
+            tput_target = document.getElementById("tputinput").value;
+            iops_target = document.getElementById("iopsinput").value;
+            discount_percent = (100 - document.getElementById("discountinput").value) / 100;
+            active_region = document.getElementById("regionselector").value
+
+            standard_rate = standard_region_rates[active_region] * discount_percent;
+            premium_rate = premium_region_rates[active_region] * discount_percent;
+            ultra_rate = ultra_region_rates[active_region] * discount_percent;
+
+
+            if (document.getElementById('TiB').checked) {
+                volume_in_gb = cap_target * 1024; 
+            }
+
+            if (document.getElementById('GiB').checked) {
+                volume_in_gb = cap_target * 1;
+            }
+
+            if (document.getElementById("64k_seq").checked) {
+                document.getElementById("iosizecell").innerHTML = "IOPS <small>(64KiB Sequential)</small>"
+                iosize = 64;
+                max_tput = max_tput64kseq[readpercent];
+                max_iops = (max_tput * 1024) / iosize;
+                document.getElementById("maxtputnote").innerText = max_tput.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("maxiopsnote").innerText = ((max_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                //document.getElementById("iopslabel").innerText = "x64KiB"
+                if (tput_target > 0 && tput_target > max_tput) {
+                    document.getElementById("tputinput").value = max_tput;
+                    tput_target = max_tput;
+                }
+                if (iops_target > 0 && iops_target > max_iops) {
+                    document.getElementById("iopsinput").value = max_iops;
+                    iops_target = max_iops;
+                }
+            } else if (document.getElementById("8k_ran").checked) {
+                document.getElementById("iosizecell").innerHTML = "IOPS <small>(8KiB Random)</small>"
+                iosize = 8;
+                max_tput = max_tput8kran[readpercent];
+                max_iops = (max_tput * 1024) / iosize;
+                document.getElementById("maxtputnote").innerText = max_tput.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("maxiopsnote").innerText = ((max_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                //document.getElementById("iopslabel").innerText = "x8KiB"
+                if (tput_target > 0 && tput_target > max_tput) {
+                    document.getElementById("tputinput").value = max_tput;
+                    tput_target = max_tput;
+                }
+                if (iops_target > 0 && iops_target > max_iops) {
+                    document.getElementById("iopsinput").value = max_iops;
+                    iops_target = max_iops;
+                }
+            } else {
+                document.getElementById("iosizecell").innerHTML = "IOPS <small>(4KiB Random)</small>"
+                iosize = 4;
+                max_tput = max_tput4kran[readpercent];
+                max_iops = (max_tput * 1024) / iosize;
+                document.getElementById("maxtputnote").innerText = max_tput.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("maxiopsnote").innerText = ((max_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                //document.getElementById("iopslabel").innerText = "x4KiB"
+                if (tput_target > 0 && tput_target > max_tput) {
+                    document.getElementById("tputinput").value = max_tput;
+                    tput_target = max_tput;
+                }
+                if (iops_target > 0 && iops_target > max_iops) {
+                    document.getElementById("iopsinput").value = max_iops;
+                    iops_target = max_iops;
+                }
+            }
+
+            document.getElementById("size_standard_cell").classList.remove('text-primary');
+            document.getElementById("size_premium_cell").classList.remove('text-primary');
+            document.getElementById("size_ultra_cell").classList.remove('text-primary');
+            document.getElementById("capinput").classList.remove('text-danger');
+            document.getElementById("capinput").classList.remove('text-primary');
+
+            if (isNaN(cap_target) || volume_in_gb < min_vol_capacity || volume_in_gb > max_vol_capacity) {
+                document.getElementById("capinput").style.borderColor = "red";
+                document.getElementById("volumewarning").classList.remove('text-muted');
+                document.getElementById("volumewarning").classList.add('text-danger');
+
+                document.getElementById("size_standard_cell").innerText = "";
+                document.getElementById("size_premium_cell").innerText = "";
+                document.getElementById("size_ultra_cell").innerText = "";
+
+                document.getElementById("poolsize_standard_cell").innerText = "";
+                document.getElementById("poolsize_premium_cell").innerText = "";
+                document.getElementById("poolsize_ultra_cell").innerText = "";
+
+                document.getElementById("tput_standard_cell").innerText = "";
+                document.getElementById("tput_premium_cell").innerText = "";
+                document.getElementById("tput_ultra_cell").innerText = "";
+
+                document.getElementById("iops_standard_cell").innerText = "";
+                document.getElementById("iops_premium_cell").innerText = "";
+                document.getElementById("iops_ultra_cell").innerText = "";
+
+                document.getElementById("poolcost_standard_cell").innerText = "";
+                document.getElementById("poolcost_premium_cell").innerText = "";
+                document.getElementById("poolcost_ultra_cell").innerText = "";
+
+                document.getElementById("cost_standard_cell").innerText = "";
+                document.getElementById("cost_premium_cell").innerText = "";
+                document.getElementById("cost_ultra_cell").innerText = "";
+                } else {
+                    document.getElementById("capinput").style.borderColor = "lightgray";
+                    document.getElementById("volumewarning").classList.add('text-muted');
+                    document.getElementById("volumewarning").classList.remove('text-danger');
+                    if (isNaN(tput_target) || tput_target < 0 || tput_target > max_tput) {
+                        document.getElementById("tputinput").style.borderColor = "red";
+                        document.getElementById("tputwarning").classList.add('text-danger');
+                        document.getElementById("tputwarning").classList.remove('text-muted');
+
+                        document.getElementById("size_standard_cell").innerText = "";
+                        document.getElementById("size_premium_cell").innerText = "";
+                        document.getElementById("size_ultra_cell").innerText = "";
+
+                        document.getElementById("poolsize_standard_cell").innerText = "";
+                        document.getElementById("poolsize_premium_cell").innerText = "";
+                        document.getElementById("poolsize_ultra_cell").innerText = "";
+
+                        document.getElementById("tput_standard_cell").innerText = "";
+                        document.getElementById("tput_premium_cell").innerText = "";
+                        document.getElementById("tput_ultra_cell").innerText = "";
+
+                        document.getElementById("iops_standard_cell").innerText = "";
+                        document.getElementById("iops_premium_cell").innerText = "";
+                        document.getElementById("iops_ultra_cell").innerText = "";
+
+                        document.getElementById("poolcost_standard_cell").innerText = "";
+                        document.getElementById("poolcost_premium_cell").innerText = "";
+                        document.getElementById("poolcost_ultra_cell").innerText = "";
+
+                        document.getElementById("cost_standard_cell").innerText = "";
+                        document.getElementById("cost_premium_cell").innerText = "";
+                        document.getElementById("cost_ultra_cell").innerText = "";
+                    } else {
+                        document.getElementById("tputinput").style.borderColor = "lightgray";
+                        document.getElementById("tputwarning").classList.remove('text-danger');
+                        document.getElementById("tputwarning").classList.add('text-muted');
+                        if (isNaN(iops_target) || iops_target < 0 || iops_target > max_iops) {
+                            document.getElementById("iopsinput").style.borderColor = "red";
+                            document.getElementById("iopswarning").classList.add('text-danger');
+                            document.getElementById("iopswarning").classList.remove('text-muted');
+
+                            document.getElementById("size_standard_cell").innerText = "";
+                            document.getElementById("size_premium_cell").innerText = "";
+                            document.getElementById("size_ultra_cell").innerText = "";
+
+                            document.getElementById("poolsize_standard_cell").innerText = "";
+                            document.getElementById("poolsize_premium_cell").innerText = "";
+                            document.getElementById("poolsize_ultra_cell").innerText = "";
+
+                            document.getElementById("tput_standard_cell").innerText = "";
+                            document.getElementById("tput_premium_cell").innerText = "";
+                            document.getElementById("tput_ultra_cell").innerText = "";
+
+                            document.getElementById("iops_standard_cell").innerText = "";
+                            document.getElementById("iops_premium_cell").innerText = "";
+                            document.getElementById("iops_ultra_cell").innerText = "";
+
+                            document.getElementById("poolcost_standard_cell").innerText = "";
+                            document.getElementById("poolcost_premium_cell").innerText = "";
+                            document.getElementById("poolcost_ultra_cell").innerText = "";
+
+                            document.getElementById("cost_standard_cell").innerText = "";
+                            document.getElementById("cost_premium_cell").innerText = "";
+                            document.getElementById("cost_ultra_cell").innerText = "";
+                    } else {
+                        document.getElementById("iopsinput").style.borderColor = "lightgray";
+                        document.getElementById("iopswarning").classList.remove('text-danger');
+                        document.getElementById("iopswarning").classList.add('text-muted');  
+                  
+                        if (tput_target == 0 && iops_target > 0) {
+                            tput_target = (iops_target * iosize) / 1024;
+                        }
+
+                        if (tput_target <= min_tput) {
+                            standard_tput = (volume_in_gb / 1024) * 16;
+                            if (standard_tput > max_tput) {
+                                standard_tput = max_tput;
+                            }
+                            premium_tput = (volume_in_gb / 1024) * 64;
+                            if (premium_tput > max_tput) {
+                                premium_tput = max_tput;
+                            }
+                            ultra_tput = (volume_in_gb / 1024) * 128;
+                            if (ultra_tput > max_tput) {
+                              ultra_tput = max_tput;
+                            }
+                            standard_cost = (volume_in_gb * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            premium_cost = (volume_in_gb * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            ultra_cost = (volume_in_gb * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        }
+                        if (document.getElementById('GiB').checked) {
+                            document.getElementById("table_unit").innerHTML = "Volume Size <small>(GiB)</small>";
+                            document.getElementById("size_standard_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("size_premium_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("size_ultra_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        } else {
+                            document.getElementById("table_unit").innerHTML = "Volume Size <small>(TiB)</small>";
+                            document.getElementById("size_standard_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("size_premium_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("size_ultra_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        }
+                        
+                        if (Math.ceil(volume_in_gb / 1024) < min_pool_capacity) {
+                            document.getElementById("poolsize_standard_cell").innerText = min_pool_capacity;
+                            document.getElementById("poolcost_standard_cell").innerText = (min_pool_capacity * 1024 * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("poolsize_premium_cell").innerText = min_pool_capacity;
+                            document.getElementById("poolcost_premium_cell").innerText = (min_pool_capacity * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("poolsize_ultra_cell").innerText = min_pool_capacity;
+                            document.getElementById("poolcost_ultra_cell").innerText = (min_pool_capacity * 1024 * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        } else {
+                            document.getElementById("poolsize_standard_cell").innerText = Math.ceil(volume_in_gb / 1024);
+                            document.getElementById("poolcost_standard_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            
+                            document.getElementById("poolsize_premium_cell").innerText = Math.ceil(volume_in_gb / 1024);
+                            document.getElementById("poolcost_premium_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            
+                            document.getElementById("poolsize_ultra_cell").innerText = Math.ceil(volume_in_gb / 1024);
+                            document.getElementById("poolcost_ultra_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            
+                            document.getElementById("tput_standard_cell").innerText = standard_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("iops_standard_cell").innerText = ((standard_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("tput_premium_cell").innerText = premium_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("iops_premium_cell").innerText = ((premium_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("tput_ultra_cell").innerText = ultra_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("iops_ultra_cell").innerText = ((ultra_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+                            document.getElementById("cost_standard_cell").innerText = standard_cost;
+                            document.getElementById("cost_premium_cell").innerText = premium_cost;
+                            document.getElementById("cost_ultra_cell").innerText = ultra_cost;
+                        } 
+                        standard_size_needed = (tput_target / standard_tputpertib) * 1024;
+                        premium_size_needed = (tput_target / premium_tputpertib) * 1024;
+                        ultra_size_needed = (tput_target / ultra_tputpertib) * 1024;
+                        if (standard_size_needed < volume_in_gb) {
+                            standard_size_needed = volume_in_gb
+                        }
+                        if (premium_size_needed < volume_in_gb) {
+                            premium_size_needed = volume_in_gb
+                        }
+                        if (ultra_size_needed < volume_in_gb) {
+                            ultra_size_needed = volume_in_gb
+                        }
+                        if (document.getElementById('GiB').checked) {
+                            document.getElementById("table_unit").innerHTML = "Volume Size <small>(GiB)</small>";
+                            standard_as_displayed = standard_size_needed;
+                            premium_as_displayed = premium_size_needed;
+                            ultra_as_displayed = ultra_size_needed;
+                            mincap_as_displayed = min_vol_capacity;
+                        } else {
+                            document.getElementById("table_unit").innerHTML = "Volume Size <small>(TiB)</small>";
+                            standard_as_displayed = standard_size_needed / 1024;
+                            premium_as_displayed = premium_size_needed / 1024;
+                            ultra_as_displayed = ultra_size_needed / 1024;
+                            mincap_as_displayed = min_vol_capacity / 1024;
+                        }
+                        if (standard_size_needed > max_vol_capacity) {
+                            document.getElementById("size_standard_cell").innerText = "n/a";
+                            document.getElementById("tput_standard_cell").innerText = "n/a";
+                            document.getElementById("iops_standard_cell").innerText = "n/a";
+                            document.getElementById("cost_standard_cell").innerText = "n/a";
+                            document.getElementById("poolcost_standard_cell").innerText = "n/a";
+                            document.getElementById("poolsize_standard_cell").innerText = "n/a";
+                        } else if (standard_size_needed <= min_vol_capacity) {
+                            document.getElementById("size_standard_cell").innerText = mincap_as_displayed.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("tput_standard_cell").innerText = ((min_vol_capacity / 1024) * standard_tputpertib).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("iops_standard_cell").innerText = ((((min_vol_capacity / 1024) * standard_tputpertib) * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("cost_standard_cell").innerText = (min_vol_capacity * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("poolcost_standard_cell").innerText = (min_pool_capacity * 1024 * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        } else {
+                            document.getElementById("size_standard_cell").innerText = standard_as_displayed.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            if (standard_size_needed > volume_in_gb) {
+                            document.getElementById("size_standard_cell").classList.add('text-primary');
+                            document.getElementById("capinput").classList.add('text-primary');
+                            }
+                            if (Math.ceil(standard_size_needed / 1024) <= min_pool_capacity) {
+                                document.getElementById("poolsize_standard_cell").innerText = min_pool_capacity;
+                                document.getElementById("poolcost_standard_cell").innerText = (min_pool_capacity * 1024 * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            } else {
+                            document.getElementById("poolsize_standard_cell").innerText = Math.ceil(standard_size_needed / 1024);
+                            document.getElementById("poolcost_standard_cell").innerText = (Math.ceil(standard_size_needed / 1024) * 1024 * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            }
+                            if ((standard_size_needed / 1024) * standard_tputpertib <= max_tput) {
+                                document.getElementById("tput_standard_cell").innerText = ((standard_size_needed / 1024) * standard_tputpertib).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                                document.getElementById("iops_standard_cell").innerText = (((standard_size_needed / 1024) * standard_tputpertib) * 1024 / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            } else {
+                                document.getElementById("tput_standard_cell").innerText = max_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                                document.getElementById("iops_standard_cell").innerText = ((max_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            }
+                            document.getElementById("cost_standard_cell").innerText = (standard_size_needed * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            
+                        }
+                        if (premium_size_needed > max_vol_capacity) {
+                            document.getElementById("size_premium_cell").innerText = "n/a";
+                            document.getElementById("tput_premium_cell").innerText = "n/a";
+                            document.getElementById("iops_premium_cell").innerText = "n/a";
+                            document.getElementById("cost_premium_cell").innerText = "n/a";
+                            document.getElementById("poolcost_premium_cell").innerText = "n/a";
+                            document.getElementById("poolsize_premium_cell").innerText = "n/a";
+                        } else if (premium_size_needed <= min_vol_capacity) {
+                            document.getElementById("size_premium_cell").innerText = mincap_as_displayed.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("tput_premium_cell").innerText = ((min_vol_capacity / 1024) * premium_tputpertib).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("iops_premium_cell").innerText = ((((min_vol_capacity / 1024) * premium_tputpertib) * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("cost_premium_cell").innerText = (min_vol_capacity * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("poolcost_premium_cell").innerText = (min_pool_capacity * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        } else {
+                            document.getElementById("size_premium_cell").innerText = premium_as_displayed.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            if (premium_size_needed > volume_in_gb) {
+                            document.getElementById("size_premium_cell").classList.add('text-primary');
+                            document.getElementById("capinput").classList.add('text-primary');
+                            }
+                            if (Math.ceil(premium_size_needed / 1024) < min_pool_capacity) {
+                                document.getElementById("poolsize_premium_cell").innerText = min_pool_capacity;
+                                document.getElementById("poolcost_premium_cell").innerText = (min_pool_capacity * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            } else {
+                            document.getElementById("poolsize_premium_cell").innerText = Math.ceil(premium_size_needed / 1024);
+                            document.getElementById("poolcost_premium_cell").innerText = (Math.ceil(premium_size_needed / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            }
+                            if ((premium_size_needed / 1024) * premium_tputpertib <= max_tput) {
+                                document.getElementById("tput_premium_cell").innerText = ((premium_size_needed / 1024) * premium_tputpertib).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                                document.getElementById("iops_premium_cell").innerText = (((premium_size_needed / 1024) * premium_tputpertib) * 1024 / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            } else {
+                                document.getElementById("tput_premium_cell").innerText = max_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                                document.getElementById("iops_premium_cell").innerText = ((max_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            }
+                            document.getElementById("cost_premium_cell").innerText = (premium_size_needed * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        }
+                        if (ultra_size_needed > max_vol_capacity) {
+                            document.getElementById("size_ultra_cell").innerText = "n/a";
+                            document.getElementById("tput_ultra_cell").innerText = "n/a";
+                            document.getElementById("iops_ultra_cell").innerText = "n/a";
+                            document.getElementById("cost_ultra_cell").innerText = "n/a";
+                            document.getElementById("poolcost_ultra_cell").innerText = "n/a";
+                            document.getElementById("poolsize_ultra_cell").innerText = "n/a";
+                        } else if (ultra_size_needed <= min_vol_capacity) {
+                            document.getElementById("size_ultra_cell").innerText = mincap_as_displayed.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("tput_ultra_cell").innerText = ((min_vol_capacity / 1024) * ultra_tputpertib).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("iops_ultra_cell").innerText = ((((min_vol_capacity / 1024) * ultra_tputpertib) * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("cost_ultra_cell").innerText = (min_vol_capacity * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            document.getElementById("poolcost_ultra_cell").innerText = ((min_pool_capacity * 1024) * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        } else {
+                            document.getElementById("size_ultra_cell").innerText = ultra_as_displayed.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            if (ultra_size_needed > volume_in_gb) {
+                            document.getElementById("size_ultra_cell").classList.add('text-primary');
+                            document.getElementById("capinput").classList.add('text-primary');
+                            }
+                            if (Math.ceil(ultra_size_needed / 1024) < min_pool_capacity) {
+                                document.getElementById("poolsize_ultra_cell").innerText = min_pool_capacity;
+                                document.getElementById("poolcost_ultra_cell").innerText = (min_pool_capacity * 1024 * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            } else {
+                            document.getElementById("poolsize_ultra_cell").innerText = Math.ceil(ultra_size_needed / 1024);
+                            document.getElementById("poolcost_ultra_cell").innerText = (Math.ceil(ultra_size_needed / 1024) * 1024 * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            }
+                            if ((ultra_size_needed / 1024) * ultra_tputpertib <= max_tput) {
+                                document.getElementById("tput_ultra_cell").innerText = ((ultra_size_needed / 1024) * ultra_tputpertib).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                                document.getElementById("iops_ultra_cell").innerText = (((ultra_size_needed / 1024) * ultra_tputpertib) * 1024 / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            } else {
+                                document.getElementById("tput_ultra_cell").innerText = max_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                                document.getElementById("iops_ultra_cell").innerText = ((max_tput * 1024) / iosize).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                            }
+                            document.getElementById("cost_ultra_cell").innerText = (ultra_size_needed * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                        }
+                    }
+                }
+            }
+            if (parseFloat(document.getElementById("poolcost_standard_cell").innerText.replace(",", "")) < parseFloat(document.getElementById("poolcost_premium_cell").innerText.replace(",", "")) && parseFloat(document.getElementById("poolcost_standard_cell").innerText.replace(",", "")) < parseFloat(document.getElementById("poolcost_ultra_cell").innerText.replace(",", ""))) {
+                document.getElementById("poolcost_standard_cell").classList.add('table-success');
+                document.getElementById("poolcost_premium_cell").classList.remove('table-success');
+                document.getElementById("poolcost_ultra_cell").classList.remove('table-success');
+            }
+            if (parseFloat(document.getElementById("poolcost_premium_cell").innerText.replace(",", "")) < parseFloat(document.getElementById("poolcost_standard_cell").innerText.replace(",", "")) && parseFloat(document.getElementById("poolcost_premium_cell").innerText.replace(",", "")) < parseFloat(document.getElementById("poolcost_ultra_cell").innerText.replace(",", ""))) {
+                document.getElementById("poolcost_standard_cell").classList.remove('table-success');
+                document.getElementById("poolcost_premium_cell").classList.add('table-success');
+                document.getElementById("poolcost_ultra_cell").classList.remove('table-success');
+            }
+            if (parseFloat(document.getElementById("poolcost_ultra_cell").innerText.replace(",", "")) < parseFloat(document.getElementById("poolcost_standard_cell").innerText.replace(",", "")) && parseFloat(document.getElementById("poolcost_ultra_cell").innerText.replace(",", "")) < parseFloat(document.getElementById("poolcost_premium_cell").innerText.replace(",", ""))) {
+                document.getElementById("poolcost_standard_cell").classList.remove('table-success');
+                document.getElementById("poolcost_premium_cell").classList.remove('table-success');
+                document.getElementById("poolcost_ultra_cell").classList.add('table-success');
+            }
+        }
+    </script>
+</head>
+
+
+<!-- class="table-success" -->
+
+<body onload="getResults()">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.js" integrity="sha512-tCkLWlSXiiMsUaDl5+8bqwpGXXh0zZsgzX6pB9IQCZH+8iwXRYfcCpdxl/owoM6U4ap7QZDW4kw7djQUiQ4G2A==" crossorigin="anonymous"></script>
+ 
+    <div class="container">
+<br>
+        <div class="card">
+            <div class="card-header">
+                <div class="h5"><img src="anficon.png" class="float-left" height="40"></div>
+                    <div class="float-left"><span class="h6">&nbsp&nbspAzure NetApp Files Performance Calculator <small>(<a href="https://anftechteam.github.io/calc/">basic</a>)</small></span></div>
+                    
+                    <div class="float-right" class="input-group mb-3">
+                      
+                        <select input oninput="getResults()" class="custom-select float-right" id="regionselector">
+                            <option value="Central US">Central US</option>
+                            <option value="East US" selected>East US</option>
+                            <option value="East US 2">East US 2</option>
+                            <option value="North Central US">North Central US</option>
+                            <option value="South Central US">South Central US</option>
+                            <option value="West US">West US</option>
+                            <option value="West US 2">West US 2</option>
+                            <option value="West US 3">West US 3</option>
+                            <option value="US Gov Arizona">US Gov Arizona</option>
+                            <option value="US Gov Virginia">US Gov Virginia</option>
+                            <option value="US Gov Texas">US Gov Texas</option>
+                            <option value="UK South">UK South</option>
+                            <option value="UK West">UK West</option>
+
+                            <option value="UAE Central">UAE Central</option>
+                            <option value="UAE North">UAE North</option>
+
+                            <option value="Switzerland North">Switzerland North</option>
+                            <option value="Switzerland West">Switzerland West</option>
+
+                            <option value="Sweden Central">Sweden Central</option>
+
+                            <option value="Qatar Central">Qatar Central</option>
+
+                            <option value="Norway East">Norway East</option>
+                            <option value="Norway West">Norway West</option>
+
+                            <option value="Korea Central">Korea Central</option>
+
+                            <option value="Japan East">Japan East</option>
+                            <option value="Japan West">Japan West</option>
+
+                            <option value="Central India">Central India</option>
+                            <option value="South India">South India</option>
+
+                            <option value="Germany North">Germany North</option>
+                            <option value="Germany West Central">Germany West Central</option>
+
+                            <option value="France Central">France Central</option>
+
+                            <option value="North Europe">North Europe</option>
+                            <option value="West Europe">West Europe</option>
+
+                            <option value="Canada Central">Canada Central</option>
+                            <option value="Canada East">Canada East</option>
+
+                            <option value="Brazil South">Brazil South</option>
+
+                            <option value="Australia Central">Australia Central</option>
+                            <option value="Australia Central 2">Australia Central 2</option>
+                            <option value="Australia East">Australia East</option>
+                            <option value="Australia Southeast">Australia Southeast</option>
+                            
+                            <option value="East Asia">East Asia</option>
+                            <option value="Southeast Asia">Southeast Asia</option>
+                            <option value="South Africa North">South Africa North</option>
+                        </select>
+                    </div>          
+            </div>
+
+            
+
+
+            <div class="card-body">
+                
+                <small id="volumewarning" class="form-text text-muted">Minimum volume size is 100GiB. Maximum volume size is 100TiB.</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="my-1 input-group-text">Volume Size</span>
+                    </div>
+                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="100" aria-label="Volume Size" aria-describedby="Volume Size" id="capinput"></input>
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary my-1">
+                            <input onclick="getResults()" name="units" type="radio" value="1024" id="GiB" checked>GiB</input>
+                        </label>
+                        <label class="btn btn-outline-primary my-1">
+                          <input onclick="getResults()" name="units" type="radio" value="1" id="TiB">TiB</input>
+                        </label>
+                    </div>
+                </div>
+               
+                <small id="tputwarning" class="form-text text-muted">Enter 0 to size for capacity only. Maximum throughput is <span id="maxtputnote"></span> MiB/s.</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="my-1 input-group-text">Throughput</span>
+                    </div>
+                    <input oninput="document.getElementById('iopsinput').value='0'; getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="Throughput" aria-describedby="Throughput" id="tputinput"></input>
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary my-1">
+                            <input onclick="getResults()" name="" type="radio" value="MiB/s" id="" checked>MiB/s</input>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="clearfix no-gutter">
+                    <div style="padding: 0;" id="readtext" class="float-left no-gutter"></div>
+                    <div style="padding: 0;" id="writetext" class="float-right no-gutter"></div>
+                    <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                        <input style="width: 100%; padding: 20px;" data-slider-id="myslider" id="ms" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="true" data-slider-min="0" data-slider-max="100" data-slider-step="10" data-slider-value="100"/>
+                    </div> 
+                </div>
+
+
+
+                <small id="iopswarning" class="form-text text-muted">Enter 0 to size for capacity only. Maximum throughput is <span id="maxiopsnote"></span> IOPS.</small>
+                
+                
+
+
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="my-1 input-group-text">IOPS</span>
+                    </div>
+                    <input oninput="document.getElementById('tputinput').value='0'; getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="iopsinput" aria-describedby="iopsinput" id="iopsinput"></input>
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <!--
+                        <label class="btn btn-outline-primary my-1">
+                            <input onclick="getResults()" name="" type="radio" value="" id="" checked><span id="iopslabel">x64k</span></input>
+
+                        </label>
+                        -->
+                        <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-primary my-1">
+                                <input onclick="getResults()" name="iosizeradio" type="radio" value="1" id="64k_seq" checked>64KiB Sequential</input>
+                            </label>
+                            <label class="btn btn-outline-primary my-1">
+                              <input onclick="getResults()" name="iosizeradio" type="radio" value="2" id="8k_ran">8KiB Random</input>
+                            </label>
+                            <label class="btn btn-outline-primary my-1">
+                                <input onclick="getResults()" name="iosizeradio" type="radio" value="3" id="4k_ran">4KiB Random</input>
+                              </label>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                
+               
+
+
+
+
+
+                <div id="tableout">
+                    <table class='table-bordered table table-sm table-hover'>
+                        <thead class='thead-light'>
+                            <tr>
+                                <th class="align-top">Service Level</th>
+                                <th>Standard<br><small class="text-muted">(16MiB/s per TiB)</small></th>
+                                <th>Premium<br><small class="text-muted">(64MiB/s per TiB)</small></th>
+                                <th>Ultra<br><small class="text-muted">(128MiB/s per TiB)</small></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Throughput <small>(MiB/s)</small></td>
+                            <td id="tput_standard_cell"></td>
+                            <td id="tput_premium_cell"></td>
+                            <td id="tput_ultra_cell"></td>
+                        </tr>
+                        <tr  style="background-color: #e9ecef;">
+                            <td id="iosizecell">IOPS <small>(64k Sequential)</small></td>
+                            <td id="iops_standard_cell"></td>
+                            <td id="iops_premium_cell"></td>
+                            <td id="iops_ultra_cell"></td>
+                        </tr>
+                        <tr>
+                            <td id="table_unit">Volume Size <small>(GiB)</small></td>
+                            <td id="size_standard_cell"></td>
+                            <td id="size_premium_cell"></td>
+                            <td id="size_ultra_cell"></td>
+                        </tr>
+                        <tr style="background-color: #e9ecef;">
+                            <td>Capacity Pool Size <small>(TiB)</small></td>
+                            <td id="poolsize_standard_cell"></td>
+                            <td id="poolsize_premium_cell"></td>
+                            <td id="poolsize_ultra_cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Capacity Pool Cost <small>(USD/month)</small></td>
+                            <td id="poolcost_standard_cell"></td>
+                            <td id="poolcost_premium_cell"></td>
+                            <td id="poolcost_ultra_cell"></td>
+                        </tr>
+                        <tr style="background-color: #e9ecef;">
+                            <td>Volume Show Back <small>(USD/month)</small></td>
+                            <td id="cost_standard_cell"></td>
+                            <td id="cost_premium_cell"></td>
+                            <td id="cost_ultra_cell"></td>
+                        </tr>
+                    </table>
+                    
+                    
+
+
+                    <div class="input-group mb-3">
+
+     
+                        <div class="input-group-prepend">
+                            <span style="background-color: #ffa99f;" class="my-1 input-group-text">Discount</span>
+                        </div>
+                        <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="Percent Discount" aria-describedby="Percent Discount" id="discountinput"></input>
+                        <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-primary my-1">
+                                <input onclick="getResults()" name="" type="radio" value="%" id="" checked>%</input>
+                            </label>
+                            
+                        </div>
+                        
+                        
+                    
+                    </div>
+                  
+                    <small class="text-primary">Blue text indicates volume is sized for throughput.</small></br>
+                    <small class="text-success">Green cell indicates least expensive tier for the specified requirements.</small></br>
+                    <small>The 'Capacity Pool Cost' is the amount you will be charged. The 'Volume Show Back' amount is for show back purposes only.</small></br>
+                    <small>Monthly costs are based on a 730 hour billing month.</small></br>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a>
+                </small><br>
+                <small class="text-muted">notes: calculator is for estimation purposes only</small>
+            </div>
+        </div>
+        
+        <div class="text-right">
+            <small class="text-muted">&copy;Copyright 2022, <a href="https://github.com/seanluce">@seanluce :D</a></small>
+        </div>
+    </div>
+  
+
+</body>
+<script>
+ var thatslider = $("#ms").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+</script>
+
+
+
+
+</html>
