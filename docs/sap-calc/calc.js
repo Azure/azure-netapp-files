@@ -1432,7 +1432,7 @@ function saveToBlob(){
         if (req.readyState == XMLHttpRequest.DONE) {
             //console.log(req.responseText);
             blobRecordId = req.responseText;
-            document.getElementById("savedUrl").innerHTML = '<i type="button" onclick="copyToClipboard(\'https://anftechteam.github.io/anfsapcalc?configid=' + blobRecordId + '\')" class="bi bi-clipboard-check"></i>&nbsp;<a href="https://anftechteam.github.io/anfsapcalc?configid=' + blobRecordId + '" target="_blank">https://anftechteam.github.io/anfsapcalc?configid=' + blobRecordId + '</a>';
+            document.getElementById("savedUrl").innerHTML = '<i type="button" onclick="copyToClipboard(\'https://azure.github.io/azure-netapp-files/sap-calc?configid=' + blobRecordId + '\')" class="bi bi-clipboard-check"></i>&nbsp;<a href="https://azure.github.io/azure-netapp-files/sap-calc?configid=' + blobRecordId + '" target="_blank">https://azure.github.io/azure-netapp-files/sap-calc?configid=' + blobRecordId + '</a>';
         }else{
             document.getElementById("savedUrl").innerHTML = '<div class="spinner-border spinner-border-sm text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
         }
