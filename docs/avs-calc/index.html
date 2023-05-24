@@ -1,7 +1,7 @@
 <!--
-   NetApp Inc. (c) 2022 Solutions Engineering Team, HCG
-   Author: Niyaz Mohamed (niyaz.mohamed@netapp.com)
+   NetApp Inc. (c) 3 Solutions Engineering Team, HCG
    Developers: Vedant Sethia (vedant.sethia@netapp.com), Dhruv Tyagi (dhruv.tyagi@netapp.com)
+   Author: Niyaz Mohamed (niyaz.mohamed@netapp.com)
 -->
 <!doctype html>
 <html lang="en">
@@ -13,7 +13,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="shortcut icon" href="favicon.ico">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <title>ANF AVS TCO Estimator</title>
+      <title>ANF AVS TCO Calculator</title>
       <style media="screen">
          body {
            z-index: 50;
@@ -22,13 +22,23 @@
            content: "*";
            color: red;
          }
-         .watermark {
+         .watermark1 {
            position: absolute;
            color: lightgray;
            opacity: 0.3;
            font-size: 5em;
            width: 100%;
-           top: 73%;
+           top: 77%;
+           text-align: center;
+           z-index: 0;
+         }
+         .watermark2 {
+           position: absolute;
+           color: lightgray;
+           opacity: 0.3;
+           font-size: 5em;
+           width: 100%;
+           top: 26%;
            text-align: center;
            z-index: 0;
          }
@@ -62,7 +72,7 @@
          <div class="card">
             <div class="card-header">
                <div class="h5"><img src="anficon.png" class="float-left" height="40"></div>
-                 <div class="float-left"><span class="h5">&nbsp&nbspAzure NetApp Files datastore for Azure VMware Solution TCO Estimator</span></div>
+               <div class="float-left"><span class="h5">&nbsp&nbspAzure NetApp Files datastore for Azure VMware Solution TCO Estimator</span></div>
             </div>
             <div class="card-body">
               <div class="row border-bottom mb-2">
@@ -610,13 +620,30 @@
                   </div>
                   <div class="col pr-0 pl-4" id="anf_discount_div">
                      <!-- <small id="tputwarning" class="form-text text-muted">Storage</small> -->
-                     <div class="input-group mb-3">
+                     <div class="input-group">
                         <div class="input-group-prepend">
                            <span class="input-group-text" style="color:#000">ANF Discount</span>
                         </div>
                         <input oninput="getResults()" type="number" class="form-control" placeholder="" value="18" id="anf_discount" min="0" max="100" required></input>
                         <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
                            <label class="btn btn-primary">%</label>
+                        </div>
+                     </div>
+                     <div id="anf_spl_discount_overlay">
+                        <div class="form-check form-check-inline mb-3">
+                           <input class="form-check-input" type="checkbox" id="anf_spl_discount_check" value="anf_spl_discount_check" onclick="radioCheck('anf_spl_discount_check','anf_spl_discount_div', 'block');getResults();" checked>
+                           <label class="form-check-label" for="anf_spl_discount_check">Apply special discount</label>
+                        </div>
+                        <div id="anf_spl_discount_div" class="w-100 mb-3">
+                           <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text" style="color:#000">Special Discount <button type="button" class="m-0 ml-1 btn p-0 bg-transparent" style="line-height:normal" data-toggle="tooltip" data-html="true" title="Special discount is only applicable for ANF Ultra and ANF Premium tier over PAYG for 3 years Reserved Instance"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg></button></span>
+                              </div>
+                              <input oninput="getResults()" type="number" class="form-control" placeholder="" value="30" id="anf_spl_discount" min="0" max="100"></input>
+                              <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                 <label class="btn btn-primary">%</label>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -627,7 +654,8 @@
                </center>
                <div id="tableout" style='overflow-x:auto;'>
                   <table class='table-bordered table table-sm table-hover' style='table-layout:fixed;font-size:14px;'>
-                     <div class="watermark">TCO Estimator is for estimation purposes only</div>
+                     <div class="watermark1">TCO Estimator is for estimation purposes only</div>
+                     <div class="watermark2">TCO Estimator is for estimation purposes only</div>
                      <thead class='thead-light'>
                         <tr>
                            <th class="align-top" width="25%" style="text-align:center">Profile</th>
@@ -685,23 +713,23 @@
                         <td class="bg-light text-dark" colspan="9">
                            <center>
                               <div class="form-check form-check-inline">
-                                 <input class="form-check-input" type="checkbox" id="standardRadio" value="standard" onclick="radioCheck('standardRadio','anf_standard')" checked>
+                                 <input class="form-check-input" type="checkbox" id="standardRadio" value="standard" onclick="radioCheck('standardRadio','anf_standard','table-row')" checked>
                                  <label class="form-check-label" for="standardRadio">ANF standard</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                 <input class="form-check-input" type="checkbox" id="premiumRadio" value="premium" onclick="radioCheck('premiumRadio','anf_premium')" checked>
+                                 <input class="form-check-input" type="checkbox" id="premiumRadio" value="premium" onclick="radioCheck('premiumRadio','anf_premium','table-row')" checked>
                                  <label class="form-check-label" for="premiumRadio">ANF premium</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                 <input class="form-check-input" type="checkbox" id="ultraRadio" value="ultra" onclick="radioCheck('ultraRadio','anf_ultra')" checked>
+                                 <input class="form-check-input" type="checkbox" id="ultraRadio" value="ultra" onclick="radioCheck('ultraRadio','anf_ultra','table-row')" checked>
                                  <label class="form-check-label" for="ultraRadio">ANF ultra</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                 <input class="form-check-input" type="checkbox" id="prestdRadio" value="ultra" onclick="radioCheck('prestdRadio','anf_pre_std')">
+                                 <input class="form-check-input" type="checkbox" id="prestdRadio" value="ultra" onclick="radioCheck('prestdRadio','anf_pre_std','table-row')">
                                  <label class="form-check-label" for="prestdRadio">ANF premium + standard</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                 <input class="form-check-input" type="checkbox" id="preultRadio" value="ultra" onclick="radioCheck('preultRadio','anf_pre_ult')">
+                                 <input class="form-check-input" type="checkbox" id="preultRadio" value="ultra" onclick="radioCheck('preultRadio','anf_pre_ult','table-row')">
                                  <label class="form-check-label" for="preultRadio">ANF ultra + premium</label>
                               </div>
                            </center>
@@ -837,7 +865,7 @@
                <small class="text-muted">NetApp Solutions Engineering Team - <a href="mailto:d3b651c4.netapp.onmicrosoft.com@amer.teams.ms">Send feedback</a></small>
             </div>
             <div class="col text-right mr-5">
-               <small class="text-muted">&copy;Copyright 2022, <a href="">NetApp Inc.(c)</a></small>
+               <small class="text-muted">&copy;Copyright 2023, <a href="">NetApp Inc.(c)</a></small>
             </div>
 
 
