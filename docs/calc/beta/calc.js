@@ -539,7 +539,7 @@ function getResults(convert) {
     if (language == 'ja') {
         currencyPerMonth = '(USD/month)'
         document.title = "ANF パフォーマンス計算ツール";
-        document.getElementById("headerTitle").innerHTML = '&nbsp;&nbsp;Azure NetApp Files パフォーマンス計算ツール <small>(<a href="https://anftechteam.github.io/calc/advanced/">advanced</a>)</small></span>';
+        document.getElementById("headerTitle").innerHTML = '&nbsp;&nbsp;Azure NetApp Files パフォーマンス計算ツール <small>(<a href="https://azure.github.io/azure-netapp-files/calc/advanced/">advanced</a>)</small></span>';
         document.getElementById("volumewarning").innerHTML = '最小サイズは 100 GiB、最大サイズは 500TiB.';
         document.getElementById("tputwarning").innerHTML = '特定サイズボリュームの性能を確認するには「0」を、スループットからボリュームサイズを逆算するにはループットを入力してください。最大スループットは'+ max_tput + ' MiB/sとなります。';
         document.getElementById("crrwarning").innerHTML = 'レプリケーションやバックアップのコストを計算するために、日次データの変化率（.1～100）を指定します';
@@ -586,7 +586,7 @@ function getResults(convert) {
     } else {
         currencyPerMonth = '(USD/month)'
         document.title = "Azure NetApp Files Performance Calculator";
-        document.getElementById("headerTitle").innerHTML = '&nbsp;&nbsp;Azure NetApp Files Performance Calculator <small>(<a href="https://anftechteam.github.io/calc/advanced/">advanced</a>)</small></span>';
+        document.getElementById("headerTitle").innerHTML = '&nbsp;&nbsp;Azure NetApp Files Performance Calculator <small>(<a href="https://azure.github.io/azure-netapp-files/calc/advanced/">advanced</a>)</small></span>';
         document.getElementById("volumewarning").innerHTML = 'Minimum volume size is 100 GiB. Maximum volume size is 500 TiB.';
         document.getElementById("tputwarning").innerHTML = 'Enter 0 to size for capacity only. Maximum throughput is '+ max_tput + ' MiB/s.';
         document.getElementById("crrwarning").innerHTML = 'Specify percent daily change rate (.1 - 100) to calculate replication and/or backup costs.';

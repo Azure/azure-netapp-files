@@ -1,0 +1,9 @@
+th {font-weight: normal;}
+
+a {text-decoration: none;}
+
+a:hover {text-decoration: underline;}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-secondary);
+  }

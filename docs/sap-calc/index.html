@@ -3,193 +3,1214 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SAP ANF TCO</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <title>ANF for SAP Cost Estimator</title>
+        <link rel="icon" href="./favicon.ico">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="./css/custom.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body>
+    <body class="" onload="getConfigId()">
         <script src="./calc.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <div class="container-fluid">
-            <div class="row bg-light py-3">
-                <div class="col align-right">
-                    <h5>Azure NetApp Files for SAP TCO Estimator</h5>
-                    <img src="./anficon.png" alt="Azure NetApp Files" height="75">
-                    <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" alt="SAP Logo" height="75">
+        <script src="./bootstrap/js/bootstrap.js"></script>
+        <script>
+            function highlightText(elementId) {
+                document.getElementById(elementId.id).style.color = "#ff0000";
+            }
+            function resetTextColor(elementId) {
+                document.getElementById(elementId.id).style.color = "";
+            }
+            </script>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                    $('#staticBackdrop').modal('show');
+                });
+            </script>
+        <div class="container-fluid mt-3 pb-5">
+            <div class="card border-0">
+                <div class="card-header pb-3 border border-bottom-0">
+                    <div class="row p-0">
+                        <div class="col">
+                            <h4>Azure NetApp Files for SAP Cost Estimator</h4>
+                            <img src="./anficon.png" alt="Azure NetApp Files" height="75">
+                            <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" alt="SAP Logo" height="75">
+                        </div>
+                        
+                        
+                        <div class="col pt-2">
+                            <div class="d-grid gap-2 d-flex justify-content-md-end">
+                                
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Help / Info&nbsp<i class="bi bi-info-circle"></i>
+                                  </button>
+                                  
+                                  <!-- Modal -->
+                                  <div class="modal modal-lg fade in" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Welcome!</h1>
+                                          <button type="button" class="btn-close btn-sm btn-success" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container" >
+                                                <p><strong>IMPORTANT: </strong>This tool is designed to estimate the infrastructure costs of an SAP HANA on Azure NetApp Files landscape. However, it is not meant to be a comprehensive tool and may not account for all possible factors that may impact the total cost. Especially the backup cost is based on user provided assumed change rates. Therefore, it should only be used as a guide for estimating total costs.</p>
+                                                <hr>
+                                                <h6>Help</h6>
+                                                <p><span class="text-primary" onmouseover="highlightText(addSystemsAndVolumes)" onmouseout="resetTextColor(addSystemsAndVolumes)">Add SAP HANA Systems and Volumes</span> to compute the TCO for Azure NetApp Files capacity pools and Azure NetApp Files backup required for the SAP landscape. Multiple systems and volumes can be entered. The <span class="text-primary" onmouseover="highlightText(poolGroupSummary)" onmouseout="resetTextColor(poolGroupSummary)">Capacity Pool Summary</span> and<span class="text-primary" onmouseover="highlightText(volumeSummary)" onmouseout="resetTextColor(volumeSummary)"> Volume Summary</span> sections can be expanded to view the details of the data entered.</p>
+                                                <p>Use the <span class="text-primary">Capacity Pool Region</span> section to select a region for each capacity pool to estimate costs based on the desired region.</p>
+                                                <p>This calculator provides estimated costs for Azure NetApp Files capacity pools as shown in the <span class="text-primary" onmouseover="highlightText(volumeCosts)" onmouseout="resetTextColor(volumeCosts)">Estimated ANF Storage Costs</span> section as well as Azure NetApp Files backup costs as shown in the <span class="text-primary" onmouseover="highlightText(backupCosts)" onmouseout="resetTextColor(backupCosts)">Estimated ANF Backup Costs</span> section.</p>
+                                                <p>You can modify the settings/parameters to adjust the requirements to fit your particular use case or workload using the <span class="text-primary">Performance Modifiers</span> and <span class="text-primary">Snapshot and Backup</span> sections.</p>
+                                                <p>If you make a mistake, systems or volumes can be removed using the <i class=" button bi bi-x"></i> icon in the <span class="text-primary" onmouseover="highlightText(volumeSummary)" onmouseout="resetTextColor(volumeSummary)"> Volume Summary</span> section.</p>
+                                                <p>Configurations can be exported and imported using the <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Export Config&nbsp<i class="bi bi-filetype-json"></i>
+                                                </button> and <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Import Config&nbsp<i class="bi bi-filetype-json"></i>
+                                                </button> buttons respectively, located in the top right corner of this page.</p>
+                                                <hr>
+                                                <h6>Info / Links</h6>
+                                                
+                                                <a href="https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sap-on-azure-solutions" target="_blank">SAP solution architectures using Azure NetApp Files</a>
+                                                <br><a href="https://learn.microsoft.com/en-us/azure/azure-netapp-files/" target="_blank">Azure NetApp Files documentation</a>
+                                                <br><i class="bi bi-youtube"></i>&nbsp;<a href="https://youtube.com/@azurenetappfiles" target="_blank">Azure NetApp Files on YouTube</a>
+                                                <p><i class="bi bi-bug"></i> Find a bug? Feature request? Suggestion? Please submit an issue on <a href="https://github.com/ANFTechTeam/anftechteam.github.io/issues" target="_blank">GitHub</a>.</p>
+                                                <div class="footer pb-1 text-end">
+                                                    <small>Created by Sean Luce, Azure NetApp Files TME <a href="https://linkedin.com/in/seanluce" target="_blank"><i class="bi bi-linkedin"></i></a>&nbsp;<a href="https://github.com/seanluce" target="_blank"><i class="bi bi-github"></i></a></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Import Config&nbsp<i class="bi bi-filetype-json"></i>
+                                    </button>
+                                    <div class="bg-light dropdown-menu">
+                                        <div class="container" style="width: 500px">
+                                            <h5>Import JSON file or paste in to the text field below</h5>
+                                            <input oninput="loadConfig()" class="pb-2" type="file" id="selectFiles" value="Import"></input>
+                                            <textarea style="width: 100%; height: 300px" id="result"></textarea>
+                                            <button onclick="importConfig()" type="button" id="downloadAnchorElem" class="btn btn-outline-primary btn-sm">Import Config&nbsp<i class="bi bi-filetype-json"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Export Config&nbsp<i class="bi bi-filetype-json"></i>
+                                    </button>
+                                    <div class="bg-light dropdown-menu">
+                                        <div class="container" style="width: 500px">
+                                            <h5>Export config as .json file</h5>
+                                            <div class="input-group input-group-sm mb-1 pb-1">
+                                                <span class="input-group-text col-form-label col-form-label-sm">filename</span>
+                                                <input style="width: 200px" type="text" class="form-control" placeholder="" aria-label="fileName" aria-describedby="fileName" id="fileName">
+                                                <span class="input-group-text">.json</span>
+                                            </div>
+                                            <button onclick="saveToLocal()" type="button" id="downloadAnchorElem" class="btn btn-outline-primary btn-sm">Export Config&nbsp<i class="bi bi-filetype-json"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        Share Config&nbsp<i class="bi bi-cloud"></i>
+                                    </button>
+                                    <div class="bg-light dropdown-menu">
+                                        <div class="container" style="width: 700px">
+                                            <h5>To share this config, click the 'Generate URL' button below.</h5>
+                                            
+                                            <p><span></span>&nbsp;<span id="savedUrl"></span></p>
+                                                
+                                            
+                                            <button onclick="saveToBlob()" type="button" id="" class="btn btn-outline-primary btn-sm">Generate URL</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
                     
-                </div> 
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h5>Add SAP HANA Systems</h5>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">SID</span>
-                        <input type="text" class="form-control" placeholder="P01" aria-label="sys-sid" aria-describedby="sys-sid" id="sys-sid">
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Description</span>
-                        <input type="text" class="form-control" placeholder="S/4 Retail" aria-label="sys-description" aria-describedby="sys-description" id="sys-description">
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">RAM Size</span>
-                        <input type="text" class="form-control" placeholder="11400" aria-label="sys-ram" aria-describedby="sys-ram" id="sys-ram">
-                        <span class="input-group-text" id="sys-ram-unit">GiB</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">System Type</span>
-                        <select class="form-select" aria-label="" id="sys-env">
-                            <option value="PROD" selected>PROD</option>
-                            <option value="PRE-PROD">PRE-PROD</option>
-                            <option value="QAS">QAS</option>
-                            <option value="DEV">DEV</option>
-                            <option value="TST">TST</option>
-                            <option value="SBX">SBX</option>
-                            <option value="DR">DR</option>
-                            <option value="OTHER">OTHER</option>
-                        </select>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">HA (HSR)?</span>
-                        <select class="form-select" aria-label="" id="sys-ha">
-                            <option value="1" selected>Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Multiple hosts?</span>
-                        <select class="form-select" aria-label="" id="sys-multipleHosts">
-                            <option value="1">Yes</option>
-                            <option value="0" selected>No</option>
-                        </select>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Nodes</span>
-                        <input type="text" class="form-control" placeholder="3" aria-label="sys-nodes" aria-describedby="sys-nodes" id="sys-nodes">
-                        <span class="input-group-text" id="sys-nodes-unit">#</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Capacity Pool</span>
-                        <select class="form-select" aria-label="" id="sys-pool">
-                            <option value="P1" selected>P1</option>
-                            <option value="P2">P2</option>
-                            <option value="P3">P3</option>
-                            <option value="P4">P4</option>
-                            <option value="P5">P5</option>
-                            <option value="P6">P6</option>
-                            <option value="P7">P7</option>
-                            <option value="P8">P8</option>
-                            <option value="P9">P9</option>
-                        </select>
-                    </div>
-                    <div class="float-end">
-                        <button onclick="addSystem()" type="button" class="btn btn-primary btn-sm">Add System</button>
+                </div>
+                <div class="card-body p-0 border-0">
+                    <div class="accordion" id="accordionFlushExample">
+                        <div class="accordion-item rounded-0">
+                        <h2 class="accordion-header">
+                            <button id="mainAccordianButtonOne" class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                            <h5 id="addSystemsAndVolumes">Add Systems and Volumes<h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body p-2 pt-4 pb-4">
+                                <div class="row">
+                                    <div class="col ps-4">
+                                        <div class="accordion" id="accordianFlushInput">
+                                            <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#accordianFlushSystem" aria-expanded="false" aria-controls="accordianFlushSystem">
+                                                    <strong>Add SAP HANA System</strong>
+                                                </button>
+
+                                            </h2>
+                                            <div id="accordianFlushSystem" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushInput">
+                                                <div class="accordion-body pb-5 mb-3">
+                                                    <form id="addSystemForm">
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="invisible" id="warningMessage">.</span>
+                                                           </div>
+                                                       
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">SID&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The SAP system identification must be three characters in length. e.g. P01" class="bi bi-info-circle"></i>
+                                                        </span>
+                                                        <input oninput="validateInput('sys-sid')" type="text" class="form-control" placeholder="" aria-label="sys-sid" aria-describedby="sys-sid" id="sys-sid">
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">Description&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The description of the system being entered. e.g. S/4 Retail" class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('sys-description')" type="text" class="form-control" placeholder="" aria-label="sys-description" aria-describedby="sys-description" id="sys-description">
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">System type&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The system type will determine which parameters are used to calculate the capacity, performance, and data protection requirements." class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="sys-env">
+                                                            <option value="PROD" selected>PROD</option>
+                                                            <option value="PRE-PROD">PRE-PROD</option>
+                                                            <option value="QAS">QAS</option>
+                                                            <option value="DEV">DEV</option>
+                                                            <option value="TST">TST</option>
+                                                            <option value="SBX">SBX</option>
+                                                            <option value="DR">DR</option>
+                                                            <option value="OTHER">OTHER</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">RAM size&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The amount of memory (RAM) the SAP HANA database server has been allocated." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('sys-ram')" type="number" class="form-control" placeholder="" aria-label="sys-ram" aria-describedby="sys-ram" id="sys-ram">
+                                                        <span class="input-group-text" id="sys-ram-unit">GiB</span>
+                                                    </div>
+                                                    
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">HA (HSR)&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="If this system will be configured as HA using HANA system replication." class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="sys-ha">
+                                                            <option value="2">Yes</option>
+                                                            <option value="1" selected>No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">HA secondary performance&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The performance factor of the HA (HSR) secondary system(s) relative to the primary." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('sys-secondary-perf')" type="number" class="form-control" placeholder="" aria-label="prodPerf" aria-describedby="proderf" value="100" id="sys-secondary-perf">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">Host count&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The number of SAP database hosts." class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="host-count">
+                                                            <option value="1" selected>1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">Capacity pool&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The capacity pool is used to group systems together for TCO calculations." class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="sys-pool">
+                                                            <option value="P1" selected>P1</option>
+                                                            <option value="P2">P2</option>
+                                                            <option value="P3">P3</option>
+                                                            <option value="P4">P4</option>
+                                                            <option value="P5">P5</option>
+                                                            <option value="P6">P6</option>
+                                                            <option value="P7">P7</option>
+                                                            <option value="P8">P8</option>
+                                                            <option value="P9">P9</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="float-end">
+                                                        <button onclick="addSystem()" type="button" class="btn btn-outline-primary btn-sm">Add System</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingTwo">
+                                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#accordianFlushVolume" aria-expanded="false" aria-controls="accordianFlushVolume">
+                                                    <strong>Add Single Volume</strong>
+                                                </button>
+                                            </h2>
+                                            <div id="accordianFlushVolume" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordianFlushInput">
+                                                <div class="accordion-body pb-5  mb-3">
+                                                <form id="addVolumeForm">
+                                                    <div class="justify-content-end input-group input-group-sm mb-1">
+                                                        <span class="invisible" id="warningMessageVolume">.</span>
+                                                       </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">SID&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The SAP system identification must be three characters in length. e.g. P01" class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-sid')" type="text" class="form-control" placeholder="" aria-label="vol-sid" aria-describedby="vol-sid" id="vol-sid">
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Description&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The description of the system being entered. e.g. S/4 Retail" class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-description')" type="text" class="form-control" placeholder="" aria-label="vol-description" aria-describedby="vol-description" id="vol-description">
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Type&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The system type will determine which parameters are used to calculate the capacity, performance, and data protection requirements." class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="vol-type">
+                                                            <option value="PROD" selected>PROD</option>
+                                                            <option value="PRE-PROD">PRE-PROD</option>
+                                                            <option value="QAS">QAS</option>
+                                                            <option value="DEV">DEV</option>
+                                                            <option value="TST">TST</option>
+                                                            <option value="SBX">SBX</option>
+                                                            <option value="DR">DR</option>
+                                                            <option value="OTHER">OTHER</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Size&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The size in GiB of the volume." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-size')" type="text" class="form-control" placeholder="" aria-label="vol-size" aria-describedby="vol-size" id="vol-size">
+                                                        <span class="input-group-text" id="vol-size-unit">GiB</span>
+                                                    </div>
+                                                    
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Throughput&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The required throughput in MiB/s of the volume." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-tPut')" type="text" class="form-control" placeholder="" aria-label="vol-tPut" aria-describedby="vol-tPut" id="vol-tPut">
+                                                        <span class="input-group-text" id="vol-tPut-unit">MiB/s</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Daily change&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The daily change rate of the volume. This determines the snapshot capacity and backup costs." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-changeRate')" type="number" class="form-control" placeholder="" aria-label="vol-changeRate" aria-describedby="vol-changeRate" id="vol-changeRate">
+                                                        <span class="input-group-text" id="vol-changerate-unit">%</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Snapshot retention&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The snapshot retention in days. This determines the volume capacity required for snapshots." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-snapshotRet')" type="number" class="form-control" placeholder="" aria-label="vol-snapshotRet" aria-describedby="vol-snapshotRet" id="vol-snapshotRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Backup retention&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The backup retention in days. This determines the backup capacity and costs." class="bi bi-info-circle"></i></span>
+                                                        <input oninput="validateInput('vol-backupRet')" type="number" class="form-control" placeholder="" aria-label="vol-backupRet" aria-describedby="vol-backupRet" id="vol-backupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">Capacity pool&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="The capacity pool is used to group systems together for TCO calculations." class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="vol-pool">
+                                                            <option value="P1" selected>P1</option>
+                                                            <option value="P2">P2</option>
+                                                            <option value="P3">P3</option>
+                                                            <option value="P4">P4</option>
+                                                            <option value="P5">P5</option>
+                                                            <option value="P6">P6</option>
+                                                            <option value="P7">P7</option>
+                                                            <option value="P8">P8</option>
+                                                            <option value="P9">P9</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="float-end">
+                                                        <button onclick="addVolume()" type="button" class="btn btn-outline-primary btn-sm">Add Volume</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col pe-4">
+                                        <div class="accordion" id="accordianFlushSettings">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="flush-headingPoolRegion">
+                                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#accordianFlushPoolRegion" aria-expanded="false" aria-controls="accordianFlushPoolRegion">
+                                                    <strong>Capacity Pool Region</strong>
+                                                    </button>
+                                                </h2>
+                                                <div id="accordianFlushPoolRegion" class="accordion-collapse collapse show" aria-labelledby="flush-headingRegion" data-bs-parent="#accordianFlushSettings">
+                                                    <div class="accordion-body pb-5  mb-3">
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P1 region</span>
+                                                            <select class="form-select" aria-label="" id="P1region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P2 region</span>
+                                                            <select class="form-select" aria-label="" id="P2region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P3 region</span>
+                                                            <select class="form-select" aria-label="" id="P3region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P4 region</span>
+                                                            <select class="form-select" aria-label="" id="P4region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P5 region</span>
+                                                            <select class="form-select" aria-label="" id="P5region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P6 region</span>
+                                                            <select class="form-select" aria-label="" id="P6region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P7 region</span>
+                                                            <select class="form-select" aria-label="" id="P7region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P8 region</span>
+                                                            <select class="form-select" aria-label="" id="P8region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="input-group input-group-sm mb-1">
+                                                            <span class="input-group-text col-sm-4 col-form-label col-form-label-sm">P9 region</span>
+                                                            <select class="form-select" aria-label="" id="P9region">
+                                                                <option value="centralus">Central US</option>
+                                                                <option value="eastus" selected>East US</option>
+                                                                <option value="eastus2">East US 2</option>
+                                                                <option value="northcentralus">North Central US</option>
+                                                                <option value="southcentralus">South Central US</option>
+                                                                <option value="westus">West US</option>
+                                                                <option value="westus2">West US 2</option>
+                                                                <option value="westus3">West US 3</option>
+                                                                <option value="usgovarizona">US Gov Arizona</option>
+                                                                <option value="usgovvirginia">US Gov Virginia</option>
+                                                                <option value="usgovtexas">US Gov Texas</option>
+                                                                <option value="uksouth">UK South</option>
+                                                                <option value="ukwest">UK West</option>
+    
+                                                                <option value="uaecentral">UAE Central</option>
+                                                                <option value="uaenorth">UAE North</option>
+    
+                                                                <option value="switzerlandnorth">Switzerland North</option>
+                                                                <option value="switzerlandwest">Switzerland West</option>
+    
+                                                                <option value="swedencentral">Sweden Central</option>
+    
+                                                                <option value="qatarcentral">Qatar Central</option>
+    
+                                                                <option value="norwayeast">Norway East</option>
+                                                                <option value="norwaywest">Norway West</option>
+    
+                                                                <option value="koreacentral">Korea Central</option>
+    
+                                                                <option value="japaneast">Japan East</option>
+                                                                <option value="japanwest">Japan West</option>
+    
+                                                                <option value="centralindia">Central India</option>
+                                                                <option value="southindia">South India</option>
+    
+                                                                <option value="germanynorth">Germany North</option>
+                                                                <option value="germanywestcentral">Germany West Central</option>
+    
+                                                                <option value="francecentral">France Central</option>
+    
+                                                                <option value="northeurope">North Europe</option>
+                                                                <option value="westeurope">West Europe</option>
+    
+                                                                <option value="canadacentral">Canada Central</option>
+                                                                <option value="canadaeast">Canada East</option>
+    
+                                                                <option value="brazilsouth">Brazil South</option>
+    
+                                                                <option value="australiacentral">Australia Central</option>
+                                                                <option value="australiacentral2">Australia Central 2</option>
+                                                                <option value="australiaeast">Australia East</option>
+                                                                <option value="australiasoutheast">Australia Southeast</option>
+                            
+                                                                <option value="eastasia">East Asia</option>
+                                                                <option value="southeastasia">Southeast Asia</option>
+                                                                <option value="southafricanorth">South Africa North</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="float-end">
+                                                            <button onclick="updatePoolGroupRegions()" type="button" class="btn btn-outline-primary btn-sm">Update</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingPerf">
+                                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#accordianFlushPerformance" aria-expanded="false" aria-controls="accordianFlushPerformance">
+                                                <strong>Performance Modifiers</strong>
+                                                </button>
+                                            </h2>
+                                            <div id="accordianFlushPerformance" class="accordion-collapse collapse" aria-labelledby="flush-headingPerf" data-bs-parent="#accordianFlushSettings">
+                                                <div class="accordion-body pb-5  mb-3">
+                                                    <span>Performance Baseline</span>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">data</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="dataBaseline" aria-describedby="dataBaseline" value="400" id="dataBaseline">
+                                                    <span class="input-group-text">MiB/s</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">log</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="logBaseline" aria-describedby="logBaseline" value="250" id="logBaseline">
+                                                    <span class="input-group-text">MiB/s</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">shared</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="sharedBaseline" aria-describedby="sharedBaseline" value="50" id="sharedBaseline">
+                                                    <span class="input-group-text">MiB/s</span>
+                                                </div>
+                                                <span>Performance Factor</span>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">PROD</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="prodPerf" aria-describedby="proderf" value="100" id="prodPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">PRE-PROD</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="preProdPerf" aria-describedby="preProdPerf" value="80" id="preProdPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">QAS</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="qasPerf" aria-describedby="qasPerf" value="50" id="qasPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">DEV</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="devPerf" aria-describedby="devPerf" value="25" id="devPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">TST</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="tstPerf" aria-describedby="tstPerf" value="25" id="tstPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">SBX</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="sbxPerf" aria-describedby="sbxPerf" value="10" id="sbxPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">DR</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="drPerf" aria-describedby="drPerf" value="1" id="drPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="input-group input-group-sm mb-1">
+                                                    <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">OTHER</span>
+                                                    <input type="number" class="form-control" placeholder="" aria-label="otherPerf" aria-describedby="otherPerf" value="2" id="otherPerf">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                <div class="float-end">
+                                                    <button onclick="updateKpiMultipliers()" type="button" class="btn btn-outline-primary btn-sm">Update</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingSnapshots">
+                                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#accordianFlushBackup" aria-expanded="false" aria-controls="accordianFlushVolume">
+                                                <strong>Snapshots and Backup</strong>
+                                                </button>
+                                            </h2>
+                                            <div id="accordianFlushBackup" class="accordion-collapse collapse" aria-labelledby="flush-headingSnapshots" data-bs-parent="#accordianFlushSettings">
+                                                <div class="accordion-body pb-5  mb-3">
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm" style="color: white; background-color: #6c757d;">type</span>
+                                                        <input type="text" class="form-control" style="color: white; background-color: #6c757d;" value="data" disabled>
+                                                        <span class="input-group-text" style="color: white; background-color: #6c757d;">%</span>
+                                                        <input type="text" class="form-control" style="color: white; background-color: #6c757d;" value="shared" disabled>
+                                                        <span class="input-group-text" style="color: white; background-color: #6c757d;">%</span>
+                                                        <input type="text" class="form-control" style="color: white; background-color: #6c757d;" value="snapshot" disabled>
+                                                        <span class="input-group-text" style="color: white; background-color: #6c757d;">days</span>
+                                                        <input type="text" class="form-control" style="color: white; background-color: #6c757d;" value="backup" disabled>
+                                                        <span class="input-group-text" style="color: white; background-color: #6c757d;">days</span>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">PROD</span>
+                                                        <input type="number" class="form-control" value="50" id="prodDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="2" id="prodSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="prodSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="30" id="prodBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">PRE-PROD</span>
+                                                        <input type="number" class="form-control" value="30" id="preProdDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="2" id="preProdSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="preProdSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="30" id="preProdBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">QAS</span>
+                                                        <input type="number" class="form-control" value="20" id="qasDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="2" id="qasSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="qasSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="30" id="qasBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">DEV</span>
+                                                        <input type="number" class="form-control" value="10" id="devDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="1" id="devSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="devSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="0" id="devBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">TST</span>
+                                                        <input type="number" class="form-control" value="10" id="tstDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="1" id="tstSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="tstSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="0" id="tstBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">SBX</span>
+                                                        <input type="number" class="form-control" value="10" id="sbxDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="1" id="sbxSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="0" id="sbxSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="0" id="sbxBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">DR</span>
+                                                        <input type="number" class="form-control" value="30" id="drDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="2" id="drSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="drSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="0" id="drBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-lg-2 col-sm-5 col-form-label col-form-label-sm">OTHER</span>
+                                                        <input type="number" class="form-control" value="10" id="otherDataChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="2" id="otherSharedChange">
+                                                        <span class="input-group-text">%</span>
+                                                        <input type="number" class="form-control" value="5" id="otherSnapRet">
+                                                        <span class="input-group-text">days</span>
+                                                        <input type="number" class="form-control" value="0" id="otherBackupRet">
+                                                        <span class="input-group-text">days</span>
+                                                    </div>
+                                                    <div class="float-end">
+                                                        <button onclick="updateSnapshotBackup()" type="button" class="btn btn-outline-primary btn-sm">Update</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>
+                        </div>
+                        <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button id="mainAccordianButtonTwo" class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <h5 id="volumeCosts">Estimated ANF Storage Costs</h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <span class="d-none" id="warningMessageStorageCosts"></span>
+                                <table class="mt-1 table table-hover table-light table-striped table-bordered table-sm" id="anfVolumeTCO">
+                                    <thead class="thead-light">
+                                        <th class="text-dark align-middle" scope="col">Capacity pool</th>
+                                        <th class="text-dark align-middle" scope="col">Service Level</th>
+                                        <th class="text-dark align-middle" scope="col">Region</th>
+                                        <th class="text-dark align-middle" scope="col">Capacity (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Cost (USD/month)</th>
+                                        <th class="text-dark align-middle" scope="col">Sizing</th>
+                                        <th class="text-dark align-middle" scope="col">Excess Capacity (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Excess Performance (MiB/s)</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button id="mainAccordianButtonThree" class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <h5 id="backupCosts">Estimated ANF Backup Costs</h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <span class="d-none" id="warningMessageBackupCosts"></span>
+                                <table class="mt-1 table table-hover table-light table-striped table-bordered table-sm" id="anfBackupTable">
+                                    <thead class="thead-light">
+                                        <th class="text-dark align-middle" scope="col">Capacity pool</th>
+                                        <th class="text-dark align-middle" scope="col">Baseline capacity (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Delta capacity (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Total capacity (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Total cost (USD/month)</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button id="mainAccordianButtonFour" class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                <h5 id="poolGroupSummary">Capacity Pool Summary</h5>
+                            </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <table class="table table-hover table-light table-striped table-bordered table-sm" id="poolGroup-requirements">
+                                    <thead class="thead-light">
+                                        <th class="text-dark align-middle" scope="col">Capacity pool</th>
+                                        <th class="text-dark align-middle" scope="col">Logical data (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Additional snapshot space (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Volume capacity (TiB)</th>
+                                        <th class="text-dark align-middle" scope="col">Volume performance (MiB/s)</th>
+                                        <th class="text-dark align-middle" scope="col">Total snapshot space (TiB)</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item rounded-0">
+                            <h2 class="accordion-header">
+                            <button id="mainAccordianButtonFive" class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                <h5 id="volumeSummary">Volume Summary</h5>
+                            </button>
+                            </h2>
+                            <div id="flush-collapseFive" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <table class="table table-hover table-light table-striped table-bordered table-sm" id="volume-list">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th class="text-dark align-middle" scope="col">SID</th>
+                                            <th class="text-dark align-middle" scope="col">Description</th>
+                                            <th class="text-dark align-middle" scope="col">Environment</th>
+                                            <th class="text-dark align-middle" scope="col">Capacity pool</th>
+                                            <th class="text-dark align-middle" scope="col">Volume type</th>
+                                            <th class="text-dark align-middle" scope="col">Host count</th>
+                                            <th class="text-dark align-middle" scope="col">Capacity (GiB)</th>
+                                            <th class="text-dark align-middle" scope="col">Required snapshot capacity (GiB)</th>
+                                            <th class="text-dark align-middle" scope="col">Assumed volume free space (GiB)</th>
+                                            <th class="text-dark align-middle" scope="col">Additional snapshot space (GiB)</th>
+                                            <th class="text-dark align-middle" scope="col">Total required capacity (GiB)</th>
+                                            <th class="text-dark align-middle" scope="col">Required performance (MiB/s)</th>
+                                            <th class="text-dark align-middle" scope="col">Daily change rate (%)</th>
+                                            <th class="text-dark align-middle" scope="col">Snapshot retention (days)</th>
+                                            <th class="text-dark align-middle" scope="col">ANF backup retention (days)</th>
+                                            
+                                            
+                                            <th class="text-dark align-middle" scope="col"><i class="bi bi-trash"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <h5>Add Single Volumes</h5>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Description</span>
-                        <input type="text" class="form-control" placeholder="" aria-label="vol-description" aria-describedby="vol-description" id="vol-description">
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Size</span>
-                        <input type="text" class="form-control" placeholder="4096" aria-label="vol-size" aria-describedby="vol-size" id="vol-size">
-                        <span class="input-group-text" id="vol-size-unit">GiB</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Throughput</span>
-                        <input type="text" class="form-control" placeholder="250" aria-label="vol-tPut" aria-describedby="vol-tPut" id="vol-tPut">
-                        <span class="input-group-text" id="vol-tPut-unit">MiB/s</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Type</span>
-                        <select class="form-select" aria-label="" id="vol-type">
-                            <option value="PROD" selected>PROD</option>
-                            <option value="PRE-PROD">PRE-PROD</option>
-                            <option value="QAS">QAS</option>
-                            <option value="DEV">DEV</option>
-                            <option value="TST">TST</option>
-                            <option value="SBX">SBX</option>
-                            <option value="DR">DR</option>
-                            <option value="OTHER">OTHER</option>
-                        </select>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Capacity Pool</span>
-                        <select class="form-select" aria-label="" id="vol-pool">
-                            <option value="P1" selected>P1</option>
-                            <option value="P2">P2</option>
-                            <option value="P3">P3</option>
-                            <option value="P4">P4</option>
-                            <option value="P5">P5</option>
-                            <option value="P6">P6</option>
-                            <option value="P7">P7</option>
-                            <option value="P8">P8</option>
-                            <option value="P9">P9</option>
-                        </select>
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Daily change rate</span>
-                        <input type="text" class="form-control" placeholder="2" aria-label="vol-changeRate" aria-describedby="vol-changeRate" id="vol-changeRate">
-                        <span class="input-group-text" id="vol-changerate-unit">%</span>
-                    </div>
-                    <div class="float-end">
-                        <button onclick="addVolume()" type="button" class="btn btn-primary btn-sm">Add Volume</button>
+                <div class="card-footer text-body-secondary border border-top-0">
+                    <div class="container-fluid d-grid gap-2 d-md-flex justify-content-md-end">
+                        <small>Created by Sean Luce, Azure NetApp Files TME <a href="https://linkedin.com/in/seanluce" target="_blank"><i class="bi bi-linkedin"></i></a>&nbsp;<a href="https://github.com/seanluce" target="_blank"><i class="bi bi-github"></i></a></small>
                     </div>
                 </div>
-                
             </div>
-            <div class="row">
-                <div class="col">
-                    <h6>Pool Group Requirements</h6>
-                    <table class="table table-hover table-light table-striped table-bordered table-sm" id="poolGroup-requirements">
-                        <thead class="thead-light">
-                            <th scope="col">Pool group</th>
-                            <th scope="col">Logical data (TiB)</th>
-                            <th scope="col">Additional snapshot space (TiB)</th>
-                            <th scope="col">Volume capacity (TiB)</th>
-                            <th scope="col">Volume performance (MiB/s)</th>
-                            <th scope="col">Total snapshot space (TiB)</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h6>Volume List</h6>
-                    <table class="table table-hover table-light table-striped table-bordered table-sm" id="volume-list">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Description</th>
-                                <th scope="col">SID</th>
-                                <th scope="col">Zone</th>
-                                <th scope="col">Environment</th>
-                                <th scope="col">Pool group</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Logical space (GiB)</th>
-                                <th scope="col">Additional snapshot space (GiB)</th>
-                                <th scope="col">Required capacity (GiB)</th>
-                                <th scope="col">Required performance (MiB/s)</th>
-                                <th scope="col">Daily change Rate (%)</th>
-                                <th scope="col">Snapshot retention (days)</th>
-                                <th scope="col">Total snapshot Size (GiB)</th>
-                                <th scope="col">Assumed free space (GiB)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
         </div>
-        
-
-        
-
-
-
-
+        <script>
+            loadTooltips();
+            
+        </script>
     </body>
 </html>
