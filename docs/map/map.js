@@ -267,7 +267,8 @@ var regionlist = [
         "longname": "Korea South",
         "location": regionlocation.koreasouth,
         "crrregions": ["koreacentral"],
-        "snf": true,"snfedit": false,
+        "snf": false,
+        "snfedit": false,
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
@@ -278,7 +279,7 @@ var regionlist = [
         "longname": "North Central US",
         "location": regionlocation.northcentralus,
         "crrregions": ["eastus2","southcentralus"],
-        "snf": false,
+        "snf": true,
         "snfedit": true,
         "avsdatastore": true,
         "backup": false,
@@ -325,7 +326,7 @@ var regionlist = [
         "shortname": "qatarcentral",
         "longname": "Qatar Central",
         "location": regionlocation.qatarcentral,
-        "crrregions": [],
+        "crrregions": ["westeurope"],
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -505,7 +506,7 @@ var regionlist = [
         "shortname": "westeurope",
         "longname": "West Europe",
         "location": regionlocation.westeurope,
-        "crrregions": ["northeurope","germanywestcentral","francecentral"],
+        "crrregions": ["northeurope","germanywestcentral","francecentral","qatarcentral"],
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -690,7 +691,7 @@ function initMap() {
                 color: 'DodgerBlue',
                 text: '10',
                 position: item.location,
-                htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://anftechteam.github.io/map/anficon.png'></div>",
+                htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
                 popup: new atlas.Popup({
                     content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>standard networking: ' + item.snf + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes +  '<br>customer-managed keys: ' + item.cmk + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                     pixelOffset: [0, -50],
@@ -819,7 +820,7 @@ function updateMap() {
             color: 'DodgerBlue',
             text: '10',
             position: item.location,
-            htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://anftechteam.github.io/map/anficon.png'></div>",
+            htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
                 content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>standard networking: ' + item.snf + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes +  '<br>customer-managed keys: ' + item.cmk + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
@@ -885,7 +886,7 @@ function updateMap() {
             color: 'DodgerBlue',
             text: '10',
             position: item.location,
-            htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://anftechteam.github.io/map/anficon_gray.png'></div>",
+            htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon_gray.png'></div>",
             popup: new atlas.Popup({
                 content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>standard networking: ' + item.snf + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes +  '<br>customer-managed keys: ' + item.cmk + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
@@ -944,8 +945,4 @@ function updateMap() {
             window[item.shortname].togglePopup();
         });
     }
-
 };
-
-
-
