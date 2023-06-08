@@ -51,6 +51,7 @@ var regionlist = [
         "longname": "Australia Central",
         "location": regionlocation.australiacentral,
         "crrregions": ["australiacentral2"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -63,6 +64,7 @@ var regionlist = [
         "longname": "Australia Central 2",
         "location": regionlocation.australiacentral2,
         "crrregions": ["australiacentral"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -75,6 +77,7 @@ var regionlist = [
         "longname": "Australia East",
         "location": regionlocation.australiaeast,
         "crrregions": ["australiasoutheast","southeastasia"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -87,6 +90,7 @@ var regionlist = [
         "longname": "Australia Southeast",
         "location": regionlocation.australiasoutheast,
         "crrregions": ["australiaeast"],
+        "czr": false,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -99,6 +103,7 @@ var regionlist = [
         "longname": "Brazil South",
         "location": regionlocation.brazilsouth,
         "crrregions": ["southcentralus"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -111,6 +116,7 @@ var regionlist = [
         "longname": "Canada Central",
         "location": regionlocation.canadacentral,
         "crrregions": ["canadaeast"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -123,6 +129,7 @@ var regionlist = [
         "longname": "Canada East",
         "location": regionlocation.canadaeast,
         "crrregions": ["canadacentral"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": true,
@@ -135,6 +142,7 @@ var regionlist = [
         "longname": "Central India",
         "location": regionlocation.centralindia,
         "crrregions": ["southindia"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": false,
@@ -147,6 +155,7 @@ var regionlist = [
         "longname": "Central US",
         "location": regionlocation.centralus,
         "crrregions": ["southcentralus","eastus2"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -159,6 +168,7 @@ var regionlist = [
         "longname": "East Asia",
         "location": regionlocation.eastasia,
         "crrregions": ["southeastasia"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -171,6 +181,7 @@ var regionlist = [
         "longname": "East US",
         "location": regionlocation.eastus,
         "crrregions": ["westus","westus2","southcentralus","eastus2","westus3"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -183,6 +194,7 @@ var regionlist = [
         "longname": "East US 2",
         "location": regionlocation.eastus2,
         "crrregions": ["southcentralus","centralus","eastus","northcentralus","westus2"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -195,6 +207,7 @@ var regionlist = [
         "longname": "France Central",
         "location": regionlocation.francecentral,
         "crrregions": ["germanywestcentral","westeurope"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -207,6 +220,7 @@ var regionlist = [
         "longname": "Germany West Central",
         "location": regionlocation.germanywestcentral,
         "crrregions": ["uksouth","germanynorth","westeurope","francecentral"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -219,6 +233,7 @@ var regionlist = [
         "longname": "Germany North",
         "location": regionlocation.germanynorth,
         "crrregions": ["germanywestcentral"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -231,6 +246,7 @@ var regionlist = [
         "longname": "Japan East",
         "location": regionlocation.japaneast,
         "crrregions": ["japanwest"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -243,6 +259,7 @@ var regionlist = [
         "longname": "Japan West",
         "location": regionlocation.japanwest,
         "crrregions": ["japaneast"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -255,6 +272,7 @@ var regionlist = [
         "longname": "Korea Central",
         "location": regionlocation.koreacentral,
         "crrregions": ["koreasouth"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -267,6 +285,7 @@ var regionlist = [
         "longname": "Korea South",
         "location": regionlocation.koreasouth,
         "crrregions": ["koreacentral"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": false,
@@ -279,6 +298,7 @@ var regionlist = [
         "longname": "North Central US",
         "location": regionlocation.northcentralus,
         "crrregions": ["eastus2","southcentralus"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -291,6 +311,7 @@ var regionlist = [
         "longname": "North Europe",
         "location": regionlocation.northeurope,
         "crrregions": ["westeurope"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -303,6 +324,7 @@ var regionlist = [
         "longname": "Norway East",
         "location": regionlocation.norwayeast,
         "crrregions": ["norwaywest"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -315,6 +337,7 @@ var regionlist = [
         "longname": "Norway West",
         "location": regionlocation.norwaywest,
         "crrregions": ["norwayeast"],
+        "czr": false,
         "snf": true,
         "snfedit": false,
         "avsdatastore": false,
@@ -327,6 +350,7 @@ var regionlist = [
         "longname": "Qatar Central",
         "location": regionlocation.qatarcentral,
         "crrregions": ["westeurope"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -339,6 +363,7 @@ var regionlist = [
         "longname": "South Africa North",
         "location": regionlocation.southafricanorth,
         "crrregions": [],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -351,6 +376,7 @@ var regionlist = [
         "longname": "South Central US",
         "location": regionlocation.southcentralus,
         "crrregions": ["centralus","eastus","eastus2","northcentralus","brazilsouth"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -363,6 +389,7 @@ var regionlist = [
         "longname": "South India",
         "location": regionlocation.southindia,
         "crrregions": ["centralindia"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -375,6 +402,7 @@ var regionlist = [
         "longname": "Southeast Asia",
         "location": regionlocation.southeastasia,
         "crrregions": ["australiaeast","eastasia"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -387,6 +415,7 @@ var regionlist = [
         "longname": "Sweden Central",
         "location": regionlocation.swedencentral,
         "crrregions": [],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": true,
@@ -399,6 +428,7 @@ var regionlist = [
         "longname": "Switzerland North",
         "location": regionlocation.switzerlandnorth,
         "crrregions": ["switzerlandwest"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -411,6 +441,7 @@ var regionlist = [
         "longname": "Switzerland West",
         "location": regionlocation.switzerlandwest,
         "crrregions": ["switzerlandnorth"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": true,
@@ -423,6 +454,7 @@ var regionlist = [
         "longname": "UAE Central",
         "location": regionlocation.uaecentral,
         "crrregions": ["uaenorth"],
+        "czr": false,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -435,6 +467,7 @@ var regionlist = [
         "longname": "UAE North",
         "location": regionlocation.uaenorth,
         "crrregions": ["uaecentral"],
+        "czr": true,
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
@@ -447,6 +480,7 @@ var regionlist = [
         "longname": "UK South",
         "location": regionlocation.uksouth,
         "crrregions": ["ukwest","germanywestcentral"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -459,6 +493,7 @@ var regionlist = [
         "longname": "UK West",
         "location": regionlocation.ukwest,
         "crrregions": ["uksouth"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": true,
@@ -471,6 +506,7 @@ var regionlist = [
         "longname": "US Gov Arizona",
         "location": regionlocation.usgovarizona,
         "crrregions": ["usgovtexas","usgovvirginia"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": false,
@@ -483,6 +519,7 @@ var regionlist = [
         "longname": "US Gov Virginia",
         "location": regionlocation.usgovvirginia,
         "crrregions": ["usgovtexas","usgovarizona"],
+        "czr": true,
         "snf": false,
         "snfedit": false,
         "avsdatastore": false,
@@ -495,6 +532,7 @@ var regionlist = [
         "longname": "US Gov Texas",
         "location": regionlocation.usgovtexas,
         "crrregions": ["usgovvirginia","usgovarizona"],
+        "czr": false,
         "snf": false,
         "snfedit": false,
         "avsdatastore": false,
@@ -507,6 +545,7 @@ var regionlist = [
         "longname": "West Europe",
         "location": regionlocation.westeurope,
         "crrregions": ["northeurope","germanywestcentral","francecentral","qatarcentral"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -519,6 +558,7 @@ var regionlist = [
         "longname": "West US",
         "location": regionlocation.westus,
         "crrregions": ["eastus"],
+        "czr": false,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -531,6 +571,7 @@ var regionlist = [
         "longname": "West US 2",
         "location": regionlocation.westus2,
         "crrregions": ["eastus","eastus2", "westus3"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": true,
@@ -543,6 +584,7 @@ var regionlist = [
         "longname": "West US 3",
         "location": regionlocation.westus3,
         "crrregions": ["eastus", "westus2"],
+        "czr": true,
         "snf": true,
         "snfedit": false,
         "avsdatastore": false,
@@ -586,6 +628,15 @@ regionlist.forEach(filterCRRregions);
 function filterCRRregions(item, index) {
     if (item.crrregions.length > 0) {
         CRRregions.push(item)
+    }
+};
+
+var CZRregions = [];
+regionlist.forEach(filterCZRregions);
+//this function build an array based on which regions have 'czr' set to true
+function filterCZRregions(item, index) {
+    if (item.czr == true) {
+        CZRregions.push(item)
     }
 };
 
@@ -669,6 +720,7 @@ function initMap() {
     document.getElementById("snfEditRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies#supported-regions">' + SNFEditregions.length + '</a>'
 
     document.getElementById("crrRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction#supported-region-pairs">' + CRRregions.length + '</a>'
+    document.getElementById("czrRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cross-zone-replication-introduction#supported-regions">' + CZRregions.length + '</a>'
 
     document.getElementById("avsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-vmware/attach-azure-netapp-files-to-azure-vmware-solution-hosts?tabs=azure-portal#supported-regions">' + AVSregions.length + '</a>'
     document.getElementById("backupRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/backup-introduction#supported-regions">' + Backupregions.length + '</a>'
@@ -768,6 +820,11 @@ function updateMap() {
         CRRregions = [];
         displayedList.forEach(filterCRRregions);
         displayedList = CRRregions;
+    }
+    if (document.getElementById("czr").checked) {
+        CZRregions = [];
+        displayedList.forEach(filterCZRregions);
+        displayedList = CZRregions;
     }
     if (document.getElementById("snfedit").checked) {
         SNFEditregions = [];
