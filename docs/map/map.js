@@ -588,7 +588,7 @@ var regionlist = [
         "snf": true,
         "snfedit": false,
         "avsdatastore": false,
-        "backup": false,
+        "backup": true,
         "largevolumes": true,
         "cmk": true
     }
@@ -689,6 +689,7 @@ function filterUSGovregions(item, index) {
 function initMap() {
     //Initialize a map instance.
     map = new atlas.Map('myMap', {
+        language: 'NGT-Latn',
         center: [0, 0],
         zoom: 2,
         renderWorldCopies: false, 
