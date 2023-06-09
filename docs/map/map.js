@@ -588,7 +588,7 @@ var regionlist = [
         "snf": true,
         "snfedit": false,
         "avsdatastore": false,
-        "backup": false,
+        "backup": true,
         "largevolumes": true,
         "cmk": true
     }
