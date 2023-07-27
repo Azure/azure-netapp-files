@@ -58,7 +58,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
@@ -73,7 +73,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
@@ -88,7 +88,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -98,12 +98,12 @@ var regionlist = [
         "crrregions": ["australiaeast"],
         "czr": false,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
@@ -118,7 +118,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -133,7 +133,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -158,7 +158,7 @@ var regionlist = [
         "crrregions": ["southindia"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": false,
         "backup": false,
         "largevolumes": true,
@@ -178,7 +178,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -203,12 +203,12 @@ var regionlist = [
         "crrregions": ["westus","westus2","southcentralus","eastus2","westus3"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -218,7 +218,7 @@ var regionlist = [
         "crrregions": ["southcentralus","centralus","eastus","northcentralus","westus2"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
@@ -233,12 +233,12 @@ var regionlist = [
         "crrregions": ["germanywestcentral","westeurope"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -248,12 +248,12 @@ var regionlist = [
         "crrregions": ["uksouth","germanynorth","westeurope","francecentral"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -278,12 +278,12 @@ var regionlist = [
         "crrregions": ["japanwest"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -313,7 +313,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -343,7 +343,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
@@ -353,12 +353,12 @@ var regionlist = [
         "crrregions": ["westeurope"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -373,7 +373,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -383,7 +383,7 @@ var regionlist = [
         "crrregions": ["norwayeast"],
         "czr": false,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
@@ -398,12 +398,12 @@ var regionlist = [
         "crrregions": ["westeurope"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -418,7 +418,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -433,7 +433,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -458,7 +458,7 @@ var regionlist = [
         "crrregions": ["australiaeast","eastasia"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": false,
@@ -478,7 +478,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -488,12 +488,12 @@ var regionlist = [
         "crrregions": ["switzerlandwest"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -503,7 +503,7 @@ var regionlist = [
         "crrregions": ["switzerlandnorth"],
         "czr": false,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
@@ -538,7 +538,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -553,7 +553,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -623,7 +623,7 @@ var regionlist = [
         "crrregions": ["northeurope","germanywestcentral","francecentral","qatarcentral"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
@@ -638,12 +638,12 @@ var regionlist = [
         "crrregions": ["eastus"],
         "czr": false,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
@@ -653,12 +653,12 @@ var regionlist = [
         "crrregions": ["eastus","eastus2", "westus3"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     },
     {
@@ -668,12 +668,12 @@ var regionlist = [
         "crrregions": ["eastus", "westus2"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": true
     }
 ];
