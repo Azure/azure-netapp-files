@@ -142,7 +142,7 @@ var regionlist = [
         "location": regionlocation.canadaeast,
         "crrregions": ["canadacentral"],
         "czr": false,
-        "snf": false,
+        "snf": true,
         "snfedit": false,
         "avsdatastore": true,
         "backup": true,
