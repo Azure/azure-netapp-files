@@ -1716,7 +1716,10 @@ function importConfigUrl(jsonurl){
     fetch(jsonurl)
     .then((res) => res.text())
     .then((text) => {
-        console.log(text);
+        json = JSON.parse(text);
+        //result = json.record;
+        result = json;
+        console.log(result.record);
         updateKpiMultipliers(result.settings);
         updateSnapshotBackup(result.settings);
         updatePoolGroupRegions(result.settings);
