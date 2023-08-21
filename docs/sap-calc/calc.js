@@ -1660,6 +1660,7 @@ function loadConfig() {
 function getConfigId(){
     let params = new URLSearchParams(location.search);
     let configId = params.get('configid');
+    let jsonurl = params.get('jsonurl');
     console.log(configId);
     if(configId != null){
         collapse = document.getElementById('flush-collapseOne');
@@ -1686,6 +1687,45 @@ function getConfigId(){
     }else{
         console.log("No config ID");
     }
+    if(jsonurl != null){
+        collapse = document.getElementById('flush-collapseOne');
+        collapse.classList.remove('show');
+        collapse = document.getElementById('mainAccordianButtonOne');
+        collapse.classList.add('collapsed');
+        collapse = document.getElementById('flush-collapseTwo');
+        collapse.classList.add('show');
+        collapse = document.getElementById('mainAccordianButtonTwo');
+        collapse.classList.remove('collapsed');
+        collapse = document.getElementById('flush-collapseThree');
+        collapse.classList.add('show');
+        collapse = document.getElementById('mainAccordianButtonThree');
+        collapse.classList.remove('collapsed');
+        collapse = document.getElementById('flush-collapseFour');
+        collapse.classList.add('show');
+        collapse = document.getElementById('mainAccordianButtonFour');
+        collapse.classList.remove('collapsed');
+        collapse = document.getElementById('flush-collapseFive');
+        collapse.classList.remove('show');
+        collapse = document.getElementById('mainAccordianButtonFive');
+        collapse.classList.add('collapsed');
+        importConfigUrl(jsonurl);
+    }
+}
+
+function importConfigUrl(jsonurl){
+    fetch(jsonurl)
+    .then((res) => res.text())
+    .then((text) => {
+        json = JSON.parse(text);
+        //result = json.record;
+        result = json;
+        console.log(result.record);
+        updateKpiMultipliers(result.settings);
+        updateSnapshotBackup(result.settings);
+        updatePoolGroupRegions(result.settings);
+        updateTables(result.input);
+    })
+    .catch((e) => console.error(e));
 }
 
 function importConfig(configId){
