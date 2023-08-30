@@ -148,7 +148,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": false,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
@@ -568,7 +568,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": true,
         "cmk": false,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "azplacement": false
     },
     {
