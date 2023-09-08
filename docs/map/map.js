@@ -592,7 +592,7 @@ var regionlist = [
         "location": regionlocation.usgovvirginia,
         "crrregions": ["usgovtexas","usgovarizona"],
         "czr": true,
-        "snf": false,
+        "snf": true,
         "snfedit": false,
         "avsdatastore": false,
         "backup": false,
