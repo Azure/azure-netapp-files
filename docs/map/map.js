@@ -173,7 +173,7 @@ var regionlist = [
         "crrregions": ["southcentralus","eastus2"],
         "czr": true,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
