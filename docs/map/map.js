@@ -597,7 +597,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": true
     },
