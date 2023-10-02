@@ -147,7 +147,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": true,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": true,
         "azplacement": false
     },
@@ -162,7 +162,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": true,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": true
     },
@@ -507,7 +507,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": false
     },
@@ -567,7 +567,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": true,
         "azplacement": false
     },
@@ -612,7 +612,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": false
     },
