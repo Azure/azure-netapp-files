@@ -7,6 +7,7 @@ var regionlocation = {
     australiaeast: [151.2094, -33.86],
     australiasoutheast: [144.9631, -37.8136],
     brazilsouth: [-46.633, -23.55],
+    brazilsoutheast: [-43.2075, -22.90278],
     canadacentral: [-79.383, 43.653],
     canadaeast: [-71.217, 46.817],
     centralindia: [73.9197, 18.5822],
@@ -110,7 +111,7 @@ var regionlist = [
         "shortname": "brazilsouth",
         "longname": "Brazil South",
         "location": regionlocation.brazilsouth,
-        "crrregions": ["southcentralus"],
+        "crrregions": ["southcentralus", "brazilsoutheast"],
         "czr": true,
         "snf": true,
         "snfedit": true,
@@ -120,6 +121,21 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true
+    },
+    {
+        "shortname": "brazilsoutheast",
+        "longname": "Brazil Southeast",
+        "location": regionlocation.brazilsoutheast, 
+        "crrregions": ["brazilsouth"],
+        "czr": false,
+        "snf": true,
+        "snfedit": true,
+        "avsdatastore": false, 
+        "backup": false,
+        "largevolumes": false,
+        "cmk": false,
+        "doubleencryption": false,
+        "azplacement": false
     },
     {
         "shortname": "canadacentral",
@@ -147,7 +163,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": true,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": true,
         "azplacement": false
     },
@@ -162,7 +178,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": true,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": true
     },
@@ -507,7 +523,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": false
     },
@@ -567,7 +583,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": true,
         "azplacement": false
     },
@@ -612,7 +628,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "azplacement": false
     },
