@@ -93,7 +93,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "australiasoutheast",
@@ -109,7 +109,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": false,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "brazilsouth",
@@ -125,7 +125,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "brazilsoutheast",
@@ -157,7 +157,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "canadaeast",
@@ -173,7 +173,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": false,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "centralindia",
@@ -189,7 +189,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": false,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "centralus",
@@ -221,7 +221,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "eastus",
@@ -253,7 +253,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "francecentral",
@@ -269,7 +269,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "germanywestcentral",
@@ -381,7 +381,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": false,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "northeurope",
@@ -397,7 +397,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "norwayeast",
