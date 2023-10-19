@@ -205,7 +205,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": true,
         "azplacement": true,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "eastasia",
@@ -429,7 +429,7 @@ var regionlist = [
         "cmk": true,
         "doubleencryption": false,
         "azplacement": false,
-        "coolaccess": false
+        "coolaccess": true
     },
     {
         "shortname": "qatarcentral",
