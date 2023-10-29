@@ -96,61 +96,17 @@
             minimum_pool_size = 1024;
 
             var standard_region_rates = {
-                "Central US": 0.000202,
-                "East US": 0.000202,
-                "East US 2": 0.000202,
-                "North Central US": 0.000242,
-                "South Central US": 0.000202,
-                "West US": 0.000202,
-                "West US 2": 0.000202,
-                "West US 3": 0.000202,
-
-                "US Gov Arizona": 0.000243,
-                "US Gov Virginia": 0.000252,
-                "US Gov Texas": 0.000252,
-            
-                "UK South": 0.000222,
-                "UK West": 0.000222,
-
-                "UAE Central": 0.000316,
-                "UAE North": 0.000288,
-
-                "Switzerland North": 0.000222,
-                "Switzerland West": 0.000289,
-
-                "Sweden Central": 0.000202,
-                "Sweden South": 0.000263,
-
-                "Norway East": 0.000315,
-                "Norway West": 0.000315,
-
-                "Korea Central": 0.000272,
-
-                "Japan East": 0.000242,
-                "Japan West": 0.000314,
-
-                "Central India": 0.000223,
-                "South India": 0.000285,
-
-                "Germany North": 0.000324,
-                "Germany West Central": 0.000243,
-
-                "France Central": 0.000252,
-
-                "North Europe": 0.000202,
-                "West Europe": 0.000202,
-
-                "Canada Central": 0.000223,
-                "Canada East": 0.000243,
-              
-                "Brazil South": 0.000403,
-                
-                "Australia Central": 0.000292,
                 "Australia East": 0.000223,
                 "Australia Southeast": 0.000263,
-
+                "Brazil South": 0.000403,
+                "Canada Central": 0.000223,
+                "Canada East": 0.000243,
+                "Central India": 0.000223,
                 "East Asia": 0.000312,
-                "Southeast Asia": 0.000202
+                "East US 2": 0.000202,
+                "France Central": 0.000252,
+                "North Central US": 0.000242,
+                "North Europe": 0.000202
             };
 
             var premium_region_rates = {
@@ -269,6 +225,20 @@
                 "Southeast Asia": 0.000538
             };
 
+            var standardcool_region_rates = {
+                "Australia East": 0.000082,
+                "Australia Southeast": 0.000082,
+                "Brazil South": 0.000082,
+                "Canada Central": 0.000082,
+                "Canada East": 0.000082,
+                "Central India": 0.000082,
+                "East Asia": 0.000082,
+                "East US 2": 0.000082,
+                "France Central": 0.000082,
+                "North Central US": 0.000082,
+                "North Europe": 0.000082
+            }
+
             var coolpercent = coolslider.slider('getValue');
         
             var coolnessperiod = coolnessslider.slider('getValue');
@@ -279,24 +249,25 @@
 
             if (document.getElementById("standard").checked) {
                 before_rate = standard_region_rates[active_region] * discount_percent;
+                cool_rate = standardcool_region_rates[active_region] * discount_percent;
                 //document.getElementById("tier_label").innerText = "standard";
                 document.getElementById("tier_warning").classList.remove('text-danger')
                 document.getElementById("tier_warning").classList.add('text-muted')
             };
 
-            if (document.getElementById("premium").checked) {
-                before_rate = premium_region_rates[active_region] * discount_percent;
+            //if (document.getElementById("premium").checked) {
+              //  before_rate = premium_region_rates[active_region] * discount_percent;
                 //document.getElementById("tier_label").innerText = "premium";
-                document.getElementById("tier_warning").classList.remove('text-muted')
-                document.getElementById("tier_warning").classList.add('text-danger')
-            };
+              //  document.getElementById("tier_warning").classList.remove('text-muted')
+              //  document.getElementById("tier_warning").classList.add('text-danger')
+            //};
 
-            if (document.getElementById("ultra").checked) {
-                before_rate = ultra_region_rates[active_region] * discount_percent;
+            //if (document.getElementById("ultra").checked) {
+              //  before_rate = ultra_region_rates[active_region] * discount_percent;
                 //document.getElementById("tier_label").innerText = "ultra";
-                document.getElementById("tier_warning").classList.remove('text-muted')
-                document.getElementById("tier_warning").classList.add('text-danger')
-            };
+              //  document.getElementById("tier_warning").classList.remove('text-muted')
+              //  document.getElementById("tier_warning").classList.add('text-danger')
+            //};
             
             volume_in_gb = data_size * 1024; 
         
@@ -551,57 +522,17 @@
   </button>
                     <div class="col-md-auto" class="input-group mb-3">    
                         <select input oninput="getResults()" class="custom-select float-right" id="regionselector">
-                                <option value="Central US">Central US</option>
-                                <option value="East US" selected>East US</option>
                                 <option value="East US 2">East US 2</option>
                                 <option value="North Central US">North Central US</option>
-                                <option value="South Central US">South Central US</option>
-                                <option value="West US">West US</option>
-                                <option value="West US 2">West US 2</option>
-                                <option value="West US 3">West US 3</option>
-                                <option value="US Gov Arizona">US Gov Arizona</option>
-                                <option value="US Gov Virginia">US Gov Virginia</option>
-                                <option value="US Gov Texas">US Gov Texas</option>
-                                <option value="UK South">UK South</option>
-                                <option value="UK West">UK West</option>
-                                <option value="UAE Central">UAE Central</option>
-                                <option value="UAE North">UAE North</option>
-                                <option value="Switzerland North">Switzerland North</option>
-                                <option value="Switzerland West">Switzerland West</option>
-    
-                                <option value="Sweden Central">Sweden Central</option>
-                                <option value="Sweden South">Sweden South</option>
-    
-                                <option value="Norway East">Norway East</option>
-                                <option value="Norway West">Norway West</option>
-    
-                                <option value="Korea Central">Korea Central</option>
-    
-                                <option value="Japan East">Japan East</option>
-                                <option value="Japan West">Japan West</option>
-    
                                 <option value="Central India">Central India</option>
-                                <option value="South India">South India</option>
-    
-                                <option value="Germany North">Germany North</option>
-                                <option value="Germany West Central">Germany West Central</option>
-    
                                 <option value="France Central">France Central</option>
-    
                                 <option value="North Europe">North Europe</option>
-                                <option value="West Europe">West Europe</option>
-    
                                 <option value="Canada Central">Canada Central</option>
                                 <option value="Canada East">Canada East</option>
-    
                                 <option value="Brazil South">Brazil South</option>
-    
-                                <option value="Australia Central">Australia Central</option>
                                 <option value="Australia East">Australia East</option>
                                 <option value="Australia Southeast">Australia Southeast</option>
-                                
                                 <option value="East Asia">East Asia</option>
-                                <option value="Southeast Asia">Southeast Asia</option>
                         </select>
                     </div>   
                 </div>          
@@ -614,12 +545,12 @@
                         <label class="btn btn-outline-primary my-1">
                         <input onclick="getResults()" name="begintier" type="radio" value="standard" id="standard" checked>Standard</input>
                         </label>
-                        <label class="btn btn-outline-primary my-1">
+                        <!--<label class="btn btn-outline-primary my-1">
                         <input onclick="getResults()" name="begintier" type="radio" value="premium" id="premium">Premium</input>
                         </label>
                         <label class="btn btn-outline-primary my-1">
                         <input onclick="getResults()" name="begintier" type="radio" value="ultra" id="ultra">Ultra</input>
-                        </label>
+                        </label>-->
                     </div>
                 </div>
                 <br>
@@ -627,7 +558,7 @@
                 <div class="clearfix no-gutter">
                     <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
                     <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
-                        <input style="width: 100%; padding: 20px;" data-slider-id="coolslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms1" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="80"/>
+                        <input style="width: 100%; padding: 20px;" data-slider-id="coolslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms1" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80"/>
                     </div> 
                 </div>
                 
@@ -644,7 +575,7 @@
                 <div class="clearfix no-gutter">
                     <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
                     <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
-                        <input style="width: 100%; padding: 20px;" data-slider-id="retrieveslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms2" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="10"/>
+                        <input style="width: 100%; padding: 20px;" data-slider-id="retrieveslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms2" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
                     </div> 
                 </div>                
                 <br><br>
@@ -822,17 +753,20 @@
                 </div> 
             </div>
             <div class="card-footer">
-                <small class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
-                <br>
-                <small id="tier_warning" class="text-danger">standard tier with cool access is only supported with Azure NetApp Files standard tier</small><br>
-                <small class="text-muted">results are for estimation purposes only and your actual savings may vary</small><br>
-                <small class="text-muted">monthly costs are based on a 730 hour billing month</small><br>
-                <div class="text-right float-right">
-                    <small class="text-muted">&copy;Copyright 2023, <a href="https://github.com/seanluce">NetApp</a></small>
+                <div class="float-left">
+                    <small class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
+                    <br>
+                    <small id="tier_warning" class="text-danger">standard tier with cool access is only supported with Azure NetApp Files standard tier</small><br>
+                    <small class="text-muted">results are for estimation purposes only and your actual savings may vary</small><br>
+                    <small class="text-muted">monthly costs are based on a 730 hour billing month</small><br>
                 </div>
             </div>
-        </div>    
+        </div>
+        <div class="float-right">
+            <small class="text-muted">Created by <a href="https://github.com/seanluce" target="_blank">Sean Luce</a></small>  
+        </div>
     </div>
+    
 </body>
 <script>
 var coolslider = $("#ms1").slider()
@@ -844,13 +778,5 @@ var coolslider = $("#ms1").slider()
 var retrieveslider = $("#ms2").slider()
     .on('slide', getResults)
     .on('change', getResults);
-
-$('#ms1').slider('refresh', { useCurrentValue: true });
-
-
-
 </script>
-
-<input id="ms1" data-slider-id="ms1" type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="10"/>
-
 </html>
