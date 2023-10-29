@@ -54,6 +54,7 @@
             padding-top: 0;
             list-style: circle;
             margin-top: 0;
+            font-size: 1em;
         }
         #eventPanel h4,h3 {
             padding: 0;
@@ -61,10 +62,11 @@
             margin-top: 5px;
         }
         #miniImg {
-            float: right;
+            float: left;
             width: 20px;
             padding-top: 5px;
-            padding-right: 5px;
+            padding-left: 5px;
+            padding-bottom: 5px;
             margin: 0;
         }
         #miniPanel {
@@ -72,7 +74,7 @@
             margin: 0;
         }
         #mainPanel {
-            padding: 25px;
+            padding: 15px;
             padding-bottom: 10px;
         }
         #mainPanel a {
@@ -101,14 +103,15 @@
         small {
             color: gray;
         }
+        label {
+            font-size: 1em;
+        }
      </style>
  </head>
  <body onload="initMap()">
     <div id="myMap"></div>
     <div id="eventPanel">
-        <div id="miniPanel">
-            <img id="miniImg" src="./minimize.png" onclick=minimizePanel()>
-        </div>
+        
         <div id="mainPanel">
             <h3>Azure NetApp Files</h3>
             <h4>Region and Feature Map</h4>
@@ -149,6 +152,9 @@
             <input onclick="updateMap()" type="checkbox" id="doubleencryption" name="doubleencryption" value="doubleencryption">
             <label for="doubleencryption">double encryption at rest </label>(<span id="doubleencryptionRegionCount"></span>)<br>
 
+            <input onclick="updateMap()" type="checkbox" id="standardcool" name="standardcool" value="standardcool">
+            <label for="standardcool">standard storage w/ cool access </label>(<span id="standardcoolRegionCount"></span>)<br>
+
             <input onclick="updateMap()" type="checkbox" id="usgov" name="usgov" value="usgov">
             <label for="usgov">US Gov </label>(<span id="USGovRegionCount"></span>)<br>
             <br>
@@ -156,6 +162,9 @@
             <button onclick="window.location.href=window.location.href">Reset</button>
             <br><br>
             <small>Created by <a target="_blank" href="https://github.com/seanluce">@seanluce</a> | <a target="_blank" href="https://netapp.com">NetApp</a></small>
+        </div>
+        <div id="miniPanel">
+            <img id="miniImg" src="./minimize.png" onclick=minimizePanel()>
         </div>
     </div>
     <div class="hidden" id="minimizedPanel">
