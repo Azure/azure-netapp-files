@@ -199,7 +199,13 @@
                                                         <input oninput="validateInput('sys-ram')" type="number" class="form-control" placeholder="" aria-label="sys-ram" aria-describedby="sys-ram" id="sys-ram">
                                                         <span class="input-group-text" id="sys-ram-unit">GiB</span>
                                                     </div>
-                                                    
+                                                    <div class="input-group input-group-sm mb-1">
+                                                        <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">Include HANA log&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Should HANA log be included in TCO estimation?" class="bi bi-info-circle"></i></span>
+                                                        <select class="form-select" aria-label="" id="sys-includelog">
+                                                            <option value="1" selected>Yes</option>
+                                                            <option value="0">No</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="input-group input-group-sm mb-1">
                                                         <span class="input-group-text col-sm-5 col-form-label col-form-label-sm">HA (HSR)&nbsp;<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="If this system will be configured as HA using HANA system replication." class="bi bi-info-circle"></i></span>
                                                         <select class="form-select" aria-label="" id="sys-ha">

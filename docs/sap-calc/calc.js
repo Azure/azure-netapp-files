@@ -666,6 +666,7 @@ function addSystem(inputJson){
         var sysSecondaryPerf = document.getElementById("sys-secondary-perf").value;
         var sysHostCount = document.getElementById("host-count").value;
         var sysPool = document.getElementById("sys-pool").value;
+        var sysIncludeLog = document.getElementById("sys-includelog").value;
         if(invalidInputs > 0){
             return;
         }else{
@@ -688,6 +689,11 @@ function addSystem(inputJson){
         var sysSecondaryPerf = inputJson.inputSecondaryPerf;
         var sysHostCount = inputJson.inputHostCount;
         var sysPool = inputJson.inputPool;
+        if(inputJson.inputIncludeLog) {
+            var sysIncludeLog = inputJson.inputIncludeLog
+        }else{
+            var sysIncludeLog = 1
+        }
     };
 
     // add to input json for export
@@ -702,6 +708,7 @@ function addSystem(inputJson){
         "inputSecondaryPerf": sysSecondaryPerf,
         "inputHostCount": sysHostCount,
         "inputPool": sysPool,
+        "inputIncludeLog": sysIncludeLog
     };
 
     
@@ -795,72 +802,74 @@ function addSystem(inputJson){
             
         }
 
-        for (let host = 1; host <= sysHostCount; host++) {
+        if(sysIncludeLog == 1){
+            for (let host = 1; host <= sysHostCount; host++) {
 
-        // calculate
-        if(sysRamSize <= 1024){
-            var logGiB = sysRamSize / 2;
-        }else{
-            var logGiB = Math.min(sysRamSize * 1.0, 512);
-        }
-        if(logGiB < 100){
-            logGiB=100;
-        }
-        
-        let logFreeSpace = 0;
-        let logDailyChangeRate = 0;
-        let logSnapshotRetentionDays = 0;
-        let logSnapshotSize = 0;
-        let logAddSnapshotSpace = 0;
-        let logTotalSpace = logGiB + logAddSnapshotSpace;
+            // calculate
+            if(sysRamSize <= 1024){
+                var logGiB = sysRamSize / 2;
+            }else{
+                var logGiB = Math.min(sysRamSize * 1.0, 512);
+            }
+            if(logGiB < 100){
+                logGiB=100;
+            }
+            
+            let logFreeSpace = 0;
+            let logDailyChangeRate = 0;
+            let logSnapshotRetentionDays = 0;
+            let logSnapshotSize = 0;
+            let logAddSnapshotSpace = 0;
+            let logTotalSpace = logGiB + logAddSnapshotSpace;
 
-        // add to running totals
-        runningLogicalTotal[sysPool] += logGiB;
-        runningAddSnapshotTotal[sysPool] += logAddSnapshotSpace;
-        runningTotalCapacity[sysPool] += logTotalSpace;
-        runningPerformance[sysPool] += logPerf;
-        runningSnapshotSpace[sysPool] += logSnapshotSize;
+            // add to running totals
+            runningLogicalTotal[sysPool] += logGiB;
+            runningAddSnapshotTotal[sysPool] += logAddSnapshotSpace;
+            runningTotalCapacity[sysPool] += logTotalSpace;
+            runningPerformance[sysPool] += logPerf;
+            runningSnapshotSpace[sysPool] += logSnapshotSize;
 
-        // create new row in the volume table, data
-        var tbodyRef = document.getElementById('volume-list').getElementsByTagName('tbody')[0];
-        var logRow = tbodyRef.insertRow();
+            // create new row in the volume table, data
+            var tbodyRef = document.getElementById('volume-list').getElementsByTagName('tbody')[0];
+            var logRow = tbodyRef.insertRow();
 
-        // create new cells in the new row
-        var logRowSID = logRow.insertCell(0);
-        var logRowDescription = logRow.insertCell(1);
-        var logRowEnv = logRow.insertCell(2);
-        var logRowPool = logRow.insertCell(3);
-        var logRowType = logRow.insertCell(4);
-        var logRowHost = logRow.insertCell(5);
-        var logRowLogical = logRow.insertCell(6);
-        var logRowSnapshotSize = logRow.insertCell(7);
-        var logRowFreeSpace = logRow.insertCell(8);
-        var logRowAddSnapshot = logRow.insertCell(9);
-        var logRowRequiredCapacity = logRow.insertCell(10);
-        var logRowRequiredPerformance = logRow.insertCell(11);
-        var logRowDailyChangeRate = logRow.insertCell(12);
-        var logRowSnapshotRetentionDays = logRow.insertCell(13);
-        var logRowBackupRetentionDays = logRow.insertCell(14);
-        
-        
-        var logRowDelete = logRow.insertCell(15);
+            // create new cells in the new row
+            var logRowSID = logRow.insertCell(0);
+            var logRowDescription = logRow.insertCell(1);
+            var logRowEnv = logRow.insertCell(2);
+            var logRowPool = logRow.insertCell(3);
+            var logRowType = logRow.insertCell(4);
+            var logRowHost = logRow.insertCell(5);
+            var logRowLogical = logRow.insertCell(6);
+            var logRowSnapshotSize = logRow.insertCell(7);
+            var logRowFreeSpace = logRow.insertCell(8);
+            var logRowAddSnapshot = logRow.insertCell(9);
+            var logRowRequiredCapacity = logRow.insertCell(10);
+            var logRowRequiredPerformance = logRow.insertCell(11);
+            var logRowDailyChangeRate = logRow.insertCell(12);
+            var logRowSnapshotRetentionDays = logRow.insertCell(13);
+            var logRowBackupRetentionDays = logRow.insertCell(14);
+            
+            
+            var logRowDelete = logRow.insertCell(15);
 
-        logRowDescription.innerHTML = sysDescription;
-        logRowSID.innerHTML = sidDisplayed;
-        logRowEnv.innerHTML = sysEnv;
-        logRowPool.innerHTML = sysPool;
-        logRowType.innerHTML = "log";
-        logRowHost.innerHTML = host;
-        logRowLogical.innerHTML = logGiB.toFixed(0);
-        logRowAddSnapshot.innerHTML = logAddSnapshotSpace.toFixed(0);
-        logRowRequiredCapacity.innerHTML = logTotalSpace.toFixed(0);
-        logRowRequiredPerformance.innerHTML = logPerf;
-        logRowDailyChangeRate.innerHTML = logDailyChangeRate;
-        logRowSnapshotRetentionDays.innerHTML = logSnapshotRetentionDays;
-        logRowBackupRetentionDays.innerHTML = "n/a"
-        logRowSnapshotSize.innerHTML = logSnapshotSize.toFixed(0);
-        logRowFreeSpace.innerHTML = logFreeSpace.toFixed(0);
-        logRowDelete.innerHTML = '<div class="dropdown"><a type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-x"></i></a><div class="bg-danger dropdown-menu"><div class="container" style="width: 100%"><span class="text-nowrap text-white">Delete entire system?&nbsp;&nbsp;<button onclick="deleteRecord(' + inputId + ')" type="button" class="btn btn-light btn-sm">Confirm</button></span></div></div></div>';
+            logRowDescription.innerHTML = sysDescription;
+            logRowSID.innerHTML = sidDisplayed;
+            logRowEnv.innerHTML = sysEnv;
+            logRowPool.innerHTML = sysPool;
+            logRowType.innerHTML = "log";
+            logRowHost.innerHTML = host;
+            logRowLogical.innerHTML = logGiB.toFixed(0);
+            logRowAddSnapshot.innerHTML = logAddSnapshotSpace.toFixed(0);
+            logRowRequiredCapacity.innerHTML = logTotalSpace.toFixed(0);
+            logRowRequiredPerformance.innerHTML = logPerf;
+            logRowDailyChangeRate.innerHTML = logDailyChangeRate;
+            logRowSnapshotRetentionDays.innerHTML = logSnapshotRetentionDays;
+            logRowBackupRetentionDays.innerHTML = "n/a"
+            logRowSnapshotSize.innerHTML = logSnapshotSize.toFixed(0);
+            logRowFreeSpace.innerHTML = logFreeSpace.toFixed(0);
+            logRowDelete.innerHTML = '<div class="dropdown"><a type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-x"></i></a><div class="bg-danger dropdown-menu"><div class="container" style="width: 100%"><span class="text-nowrap text-white">Delete entire system?&nbsp;&nbsp;<button onclick="deleteRecord(' + inputId + ')" type="button" class="btn btn-light btn-sm">Confirm</button></span></div></div></div>';
+            }
         }
 
         // calculate
@@ -1650,9 +1659,7 @@ function loadConfig() {
         console.log(e);
         var result = JSON.parse(e.target.result);
         var formatted = JSON.stringify(result, null, 2);
-        document.getElementById('result').value = formatted;
-        
-        
+        document.getElementById('result').value = formatted; 
     }
     fr.readAsText(files.item(0));
 };
