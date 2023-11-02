@@ -317,11 +317,35 @@
                     labelOne = "monthly w/o cool access";
                     labelTwo = "2nd month";
                     labelThree = "monthly steady state";
-                }else {
+                }else if (hot_hours_for_text > month_hours * 2 && hot_hours_for_text <= month_hours * 3 ) {
                     document.getElementById('initial_term').innerText = "3rd month";
-                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1 and 2)"
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-2)"
                     labelOne = "monthly w/o cool access";
                     labelTwo = "3rd month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 3 && hot_hours_for_text <= month_hours * 4 ) {
+                    document.getElementById('initial_term').innerText = "4th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-3)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "4th month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 4 && hot_hours_for_text <= month_hours * 5 ) {
+                    document.getElementById('initial_term').innerText = "5th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-4)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "5th month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 5 && hot_hours_for_text <= month_hours * 6 ) {
+                    document.getElementById('initial_term').innerText = "6th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-5)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "6th month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 6 && hot_hours_for_text <= month_hours * 7 ) {
+                    document.getElementById('initial_term').innerText = "7th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-6)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "7th month";
                     labelThree = "monthly steady state";
                 }
 
@@ -332,7 +356,7 @@
 
                 month0_standard_cost = (volume_in_gb * standard_region_rates[active_region]) * month_hours
 
-                month12_storedon_cool = (volume_in_gb * (coolpercent/100)) - (volume_in_gb * (coolpercent/100) * (retrieve_percent/100)); //how much data is stored on cool
+                month12_storedon_cool = (volume_in_gb * (coolpercent/100)); //- (volume_in_gb * (coolpercent/100)); //* (retrieve_percent/100)); //how much data is stored on cool
                 
                 month11_standard_cost = (volume_in_gb * standard_region_rates[active_region]) * hot_hours; //first portion of month one stored on hot
                 month12_standard_cost = ((pool_size - month12_storedon_cool) * standard_region_rates[active_region]) * cool_hours; //second portion of month one
@@ -361,7 +385,7 @@
 
                 ctcoolcostmonth2 =  month2_cool_cost;
 
-                totalnetwork = egresscost + retrievecost;
+                totalnetwork = egresscost; //+ retrievecost;
                 cttotalcostmonth1 = ctstandardcostmonth1 + ctcoolcostmonth1 + totalnetwork;
 
                 cttotalcostmonth2 = month2_cool_cost + month2_standard_cost + retrievecost;
