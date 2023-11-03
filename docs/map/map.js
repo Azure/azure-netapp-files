@@ -505,7 +505,7 @@ var regionlist = [
         "snfedit": true,
         "avsdatastore": true,
         "backup": true,
-        "largevolumes": false,
+        "largevolumes": true,
         "cmk": true,
         "doubleencryption": false,
         "standardcool": false,
@@ -634,7 +634,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": false,
+        "cmk": true,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
