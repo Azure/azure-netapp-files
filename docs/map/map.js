@@ -634,7 +634,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
@@ -650,7 +650,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": true
@@ -666,7 +666,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
