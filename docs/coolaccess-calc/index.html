@@ -87,28 +87,78 @@
         function getResults() {
             month_hours = 730;
             standard_rate = 0.000202;
-            cool_rate = 0.06 / month_hours;
+            cool_rate = 0.000101;
             data_size = 30;
             min_data_size = 1;
             max_data_size = 100000;
             discount_percent = 1;
-            retrieve_rate = 0.02;
+            retrieve_rate = 0.024600;
             minimum_pool_size = 1024;
-
             var standard_region_rates = {
-                "Australia East": 0.000223,
-                "Australia Southeast": 0.000263,
-                "Brazil South": 0.000403,
+                "Central US": 0.000202,
+                "East US": 0.000202,
+                "East US 2": 0.000202,
+                "North Central US": 0.000242,
+                "South Central US": 0.000202,
+                "West US": 0.000202,
+                "West US 2": 0.000202,
+                "West US 3": 0.000202,
+
+                "UK South": 0.000202,
+                "UK West": 0.000222,
+
+                "UAE Central": 0.000316,
+                "UAE North": 0.000288,
+
+                "Switzerland North": 0.000222,
+                "Switzerland West": 0.000289,
+
+                "Sweden Central": 0.000202,
+                "Sweden South": 0.000263,
+                "Qatar Central": 0.000289,
+                "Norway East": 0.000222,
+                "Norway West": 0.000222,
+
+                "Korea Central": 0.000272,
+                "Korea South": 0.000252,
+
+                "Japan East": 0.000242,
+                "Japan West": 0.000314,
+
+                "Italy North": 0.000202,
+
+                "Israel Central": 0.000289,
+
+                "Central India": 0.000223,
+                "South India": 0.000285,
+
+                "Germany North": 0.000324,
+                "Germany West Central": 0.000243,
+
+                "France Central": 0.000252,
+
+                "North Europe": 0.000202,
+                "West Europe": 0.000202,
+
                 "Canada Central": 0.000223,
                 "Canada East": 0.000243,
-                "Central India": 0.000223,
-                "East Asia": 0.000312,
-                "East US 2": 0.000202,
-                "France Central": 0.000252,
-                "North Central US": 0.000242,
-                "North Europe": 0.000202
-            };
+              
+                "Brazil South": 0.000403,
+                "Brazil Southeast": 0.000464,
 
+                "US Gov Arizona": 0.000243,
+                "US Gov Texas": 0.000252,
+                "US Gov Virginia": 0.000252,
+
+                "Australia Central": 0.000292,
+                "Australia Central 2": 0.000242,
+                "Australia East": 0.000223,
+                "Australia Southeast": 0.000263,
+
+                "East Asia": 0.000312,
+                "Southeast Asia": 0.000202,
+                "South Africa North": 0.000295
+            };
             var premium_region_rates = {
                 "Central US": 0.000403,
                 "East US": 0.000403,
@@ -119,11 +169,7 @@
                 "West US 2": 0.000403,
                 "West US 3": 0.000403,
 
-                "US Gov Arizona": 0.000484,
-                "US Gov Virginia": 0.000504,
-                "US Gov Texas": 0.000504,
-            
-                "UK South": 0.000443,
+                "UK South": 0.000403,
                 "UK West": 0.000443,
 
                 "UAE Central": 0.000629,
@@ -135,13 +181,20 @@
                 "Sweden Central": 0.000403,
                 "Sweden South": 0.000524,
 
-                "Norway East": 0.000629,
-                "Norway West": 0.000629,
+                "Qatar Central": 0.000576,
+
+                "Norway East": 0.000443,
+                "Norway West": 0.000443,
 
                 "Korea Central": 0.000544,
+                "Korea South": 0.000504,
 
                 "Japan East": 0.000483,
                 "Japan West": 0.000625,
+
+                "Italy North": 0.000403,
+
+                "Israel Central": 0.000576,
 
                 "Central India": 0.000444,
                 "South India": 0.000569,
@@ -158,15 +211,21 @@
                 "Canada East": 0.000484,
               
                 "Brazil South": 0.000806,
-                
+                "Brazil Southeast": 0.000927,
+
+                "US Gov Arizona": 0.000484,
+                "US Gov Virginia": 0.000504,
+                "US Gov Texas": 0.000504,
+
                 "Australia Central": 0.000585,
+                "Australia Central 2": 0.000484,
                 "Australia East": 0.000444,
                 "Australia Southeast": 0.000524,
 
                 "East Asia": 0.000625,
-                "Southeast Asia": 0.000403
+                "Southeast Asia": 0.000403,
+                "South Africa North": 0.000588
             };
-
             var ultra_region_rates = {
                 "Central US": 0.000538,
                 "East US": 0.000538,
@@ -177,11 +236,7 @@
                 "West US 2": 0.000538,
                 "West US 3": 0.000538,
 
-                "US Gov Arizona": 0.000646,
-                "US Gov Virginia": 0.000672,
-                "US Gov Texas": 0.000673,
-            
-                "UK South": 0.000591,
+                "UK South": 0.000538,
                 "UK West": 0.000591,
 
                 "UAE Central": 0.000840,
@@ -193,13 +248,20 @@
                 "Sweden Central": 0.000538,
                 "Sweden South": 0.000699,
 
-                "Norway East": 0.000839,
-                "Norway West": 0.000839,
+                "Qatar Central": 0.000769,
+
+                "Norway East": 0.000592,
+                "Norway West": 0.000592,
 
                 "Korea Central": 0.000726,
+                "Korea South": 0.000673,
 
                 "Japan East": 0.000645,
                 "Japan West": 0.000834,
+
+                "Italy North": 0.000538,
+
+                "Israel Central": 0.000769,
 
                 "Central India": 0.000592,
                 "South India": 0.000759,
@@ -216,27 +278,114 @@
                 "Canada East": 0.000646,
               
                 "Brazil South": 0.001080,
-                
+                "Brazil Southeast": 0.001240,
+
+                "US Gov Arizona": 0.000646,
+                "US Gov Virginia": 0.000672,
+                "US Gov Texas": 0.000673,
+            
                 "Australia Central": 0.000780,
+                "Australia Central 2": 0.000646,
                 "Australia East": 0.000591,
                 "Australia Southeast": 0.000700,
 
                 "East Asia": 0.000834,
-                "Southeast Asia": 0.000538
+                "Southeast Asia": 0.000538,
+                "South Africa North": 0.000785
             };
-
             var standardcool_region_rates = {
-                "Australia East": 0.000082,
-                "Australia Southeast": 0.000082,
-                "Brazil South": 0.000082,
-                "Canada Central": 0.000082,
-                "Canada East": 0.000082,
-                "Central India": 0.000082,
-                "East Asia": 0.000082,
+                "Central US": 0.000101,
+                "East US": 0.000082,
                 "East US 2": 0.000082,
-                "France Central": 0.000082,
                 "North Central US": 0.000082,
-                "North Europe": 0.000082
+                "South Central US": 0.000099,
+                "West US": 0.000093,
+                "West US 2": 0.000082,
+                "West US 3": 0.000082,
+                "UK South": 0.000086,
+                "UK West": 0.000108,
+                "UAE Central": 0.000115,
+                "UAE North": 0.000089,
+                "Switzerland North": 0.000128,
+                "Switzerland West": 0.000167,
+                "Sweden Central": 0.000082,
+                "Sweden South": 0.000107,
+                "Qatar Central": 0.000117,
+                "Norway East": 0.000096,
+                "Norway West": 0.000125,
+                "Korea Central": 0.000089,
+                "Korea South": 0.000103,
+                "Japan East": 0.000089,
+                "Japan West": 0.000089,
+                "Italy North": 0.000087,
+                "Israel Central": 0.000117,
+                "Central India": 0.000089,
+                "South India": 0.000124,
+                "Germany North": 0.000114,
+                "Germany West Central": 0.000087,
+                "France Central": 0.000086,
+                "North Europe": 0.000082,
+                "West Europe": 0.000087,
+                "Canada Central": 0.000089,
+                "Canada East": 0.000089,
+                "Brazil South": 0.000144,
+                "US Gov Arizona": 0.000139,
+                "US Gov Texas": 0.000103,
+                "US Gov Virginia": 0.000139,
+                "Australia Central": 0.000089,
+                "Australia Central 2": 0.000089,
+                "Australia East": 0.000089,
+                "Australia Southeast": 0.000107,
+                "East Asia": 0.000089,
+                "Southeast Asia": 0.000089,
+                "South Africa North": 0.000144
+            }
+            var standardcool_network_rates = {
+                "Central US": 0.024600,
+                "East US": 0.020000,
+                "East US 2": 0.020000,
+                "North Central US": 0.020000,
+                "South Central US": 0.024000,
+                "West US": 0.026000,
+                "West US 2": 0.020000,
+                "West US 3": 0.020000,
+                "UK South": 0.020900,
+                "UK West": 0.026200,
+                "UAE Central": 0.028100,
+                "UAE North": 0.021600,
+                "Switzerland North": 0.031200,
+                "Switzerland West": 0.040600,
+                "Sweden Central": 0.020000,
+                "Sweden South": 0.026000,
+                "Qatar Central": 0.028600,
+                "Norway East": 0.023430,
+                "Norway West": 0.030459,
+                "Korea Central": 0.021800,
+                "Korea South": 0.025000,
+                "Japan East": 0.021800,
+                "Japan West": 0.031000,
+                "Italy North": 0.021300,
+                "Israel Central": 0.028600,
+                "Central India": 0.021800,
+                "South India": 0.030200,
+                "Germany North": 0.027700,
+                "Germany West Central": 0.021300,
+                "France Central": 0.020900,
+                "North Europe": 0.020000,
+                "West Europe": 0.021300,
+                "Canada Central": 0.021800,
+                "Canada East": 0.021800,
+                "Brazil South": 0.035200,
+                "US Gov Arizona": 0.033900,
+                "US Gov Texas": 0.025000,
+                "US Gov Virginia": 0.033900,
+                "Australia Central": 0.021600,
+                "Australia Central 2": 0.021600,
+                "Australia East": 0.021600,
+                "Australia Southeast": 0.026000,
+                "East Asia": 0.021600,
+                "Southeast Asia": 0.021600,
+                "South Africa North": 0.035040
             }
 
             var coolpercent = coolslider.slider('getValue');
@@ -367,13 +516,13 @@
 
                 ctcoolcostmonth1 = month12_cool_cost;
 
-                egresscost =  month12_storedon_cool * retrieve_rate;
+                egresscost =  month12_storedon_cool * standardcool_network_rates[active_region];
         
 
 
                 
 
-                retrievecost = (volume_in_gb * (coolpercent/100) * (retrieve_percent/100)) * retrieve_rate;
+                retrievecost = (volume_in_gb * (coolpercent/100) * (retrieve_percent/100)) * standardcool_network_rates[active_region];
                 
                 month2_storedon_cool = (volume_in_gb * (coolpercent/100)) - (volume_in_gb * (coolpercent/100)) * retrieve_percent/100; //month two accounting for data brought back previous month
                 //month2_storedon_cool = (volume_in_gb * (coolpercent/100)); //how much data is stored on cool
@@ -546,17 +695,66 @@
   </button>
                     <div class="col-md-auto" class="input-group mb-3">    
                         <select input oninput="getResults()" class="custom-select float-right" id="regionselector">
-                                <option value="East US 2">East US 2</option>
-                                <option value="North Central US">North Central US</option>
-                                <option value="Central India">Central India</option>
-                                <option value="France Central">France Central</option>
-                                <option value="North Europe">North Europe</option>
-                                <option value="Canada Central">Canada Central</option>
-                                <option value="Canada East">Canada East</option>
-                                <option value="Brazil South">Brazil South</option>
-                                <option value="Australia East">Australia East</option>
-                                <option value="Australia Southeast">Australia Southeast</option>
-                                <option value="East Asia">East Asia</option>
+                            <option value="Central US" selected>Central US</option>
+                            <option value="East US">East US</option>
+                            <option value="East US 2">East US 2</option>
+                            <option value="North Central US">North Central US</option>
+                            <option value="South Central US">South Central US</option>
+                            <option value="West US">West US</option>
+                            <option value="West US 2">West US 2</option>
+                            <option value="West US 3">West US 3</option>
+
+                            <option value="UK South">UK South</option>
+                            <option value="UK West">UK West</option>
+
+                            <option value="UAE Central">UAE Central</option>
+                            <option value="UAE North">UAE North</option>
+
+                            <option value="Switzerland North">Switzerland North</option>
+                            <option value="Switzerland West">Switzerland West</option>
+
+                            <option value="Sweden Central">Sweden Central</option>
+
+
+                            <option value="Qatar Central">Qatar Central</option>
+
+                            <option value="Norway East">Norway East</option>
+                            <option value="Norway West">Norway West</option>
+
+                            <option value="Korea Central">Korea Central</option>
+                            <option value="Korea South">Korea South</option>
+
+                            <option value="Japan East">Japan East</option>
+                            <option value="Japan West">Japan West</option>
+
+                            <option value="Central India">Central India</option>
+                            <option value="South India">South India</option>
+
+                            <option value="Germany North">Germany North</option>
+                            <option value="Germany West Central">Germany West Central</option>
+
+                            <option value="France Central">France Central</option>
+
+                            <option value="North Europe">North Europe</option>
+                            <option value="West Europe">West Europe</option>
+
+                            <option value="Canada Central">Canada Central</option>
+                            <option value="Canada East">Canada East</option>
+
+                            <option value="Brazil South">Brazil South</option>
+
+                            <option value="US Gov Arizona">US Gov Arizona</option>
+                            <option value="US Gov Virginia">US Gov Virginia</option>
+                            <option value="US Gov Texas">US Gov Texas</option>
+
+                            <option value="Australia Central">Australia Central</option>
+                            <option value="Australia Central 2">Australia Central 2</option>
+                            <option value="Australia East">Australia East</option>
+                            <option value="Australia Southeast">Australia Southeast</option>
+                            
+                            <option value="East Asia">East Asia</option>
+                            <option value="Southeast Asia">Southeast Asia</option>
+                            <option value="South Africa North">South Africa North</option>
                         </select>
                     </div>   
                 </div>          
@@ -781,6 +979,7 @@
                     <small class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
                     <br>
                     <small id="tier_warning" class="text-danger">standard tier with cool access is only supported with Azure NetApp Files standard tier</small><br>
+                    <small class="text-muted">standard storage with cool access is subject to <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction#supported-regions" target="_blank">regional availability</a></small><br>
                     <small class="text-muted">results are for estimation purposes only and your actual savings may vary</small><br>
                     <small class="text-muted">monthly costs are based on a 730 hour billing month</small><br>
                 </div>
