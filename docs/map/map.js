@@ -60,7 +60,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -76,7 +76,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -540,7 +540,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": true
     },
     {
@@ -556,7 +556,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": false,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -588,7 +588,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": true
     },
     {
@@ -634,7 +634,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
@@ -650,7 +650,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": true
@@ -666,7 +666,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
