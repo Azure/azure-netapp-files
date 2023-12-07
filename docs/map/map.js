@@ -60,7 +60,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -76,7 +76,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -296,7 +296,7 @@ var regionlist = [
         "snf": true,
         "snfedit": true,
         "avsdatastore": false,
-        "backup": false,
+        "backup": true,
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": false,
@@ -540,7 +540,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": true
     },
     {
@@ -556,7 +556,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": true,
         "doubleencryption": false,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -588,7 +588,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": true
     },
     {
@@ -629,12 +629,12 @@ var regionlist = [
         "location": regionlocation.usgovarizona,
         "crrregions": ["usgovtexas","usgovvirginia"],
         "czr": false,
-        "snf": false,
+        "snf": true,
         "snfedit": false,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
@@ -650,7 +650,7 @@ var regionlist = [
         "avsdatastore": true,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": true
@@ -666,7 +666,7 @@ var regionlist = [
         "avsdatastore": false,
         "backup": false,
         "largevolumes": false,
-        "cmk": true,
+        "cmk": false,
         "doubleencryption": false,
         "standardcool": false,
         "azplacement": false
@@ -861,7 +861,7 @@ function filterUSGovregions(item, index) {
 function initMap() {
     //Initialize a map instance.
     map = new atlas.Map('myMap', {
-        language: 'NGT-Latn',
+        language: 'en-US',
         center: [0, 0],
         zoom: 2,
         renderWorldCopies: false, 
