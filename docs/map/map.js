@@ -614,7 +614,7 @@ var regionlist = [
         "crrregions": ["uksouth"],
         "czr": false,
         "snf": true,
-        "snfedit": false,
+        "snfedit": true,
         "avsdatastore": true,
         "backup": false,
         "largevolumes": true,
