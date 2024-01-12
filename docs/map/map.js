@@ -636,7 +636,7 @@ var regionlist = [
         "largevolumes": false,
         "cmk": false,
         "doubleencryption": false,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
