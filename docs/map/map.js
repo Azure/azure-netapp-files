@@ -171,7 +171,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": true,
+        "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
     },
