@@ -620,7 +620,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": false
     },
     {
@@ -732,7 +732,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "doubleencryption": true,
-        "standardcool": false,
+        "standardcool": true,
         "azplacement": true
     }
 ];
