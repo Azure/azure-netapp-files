@@ -18,6 +18,8 @@ var regionlocation = {
     francecentral: [2.3730, 46.3772],
     germanynorth: [8.806422, 53.073635],
     germanywestcentral: [8.682127, 50.110924],
+    israelcentral: [33.4506633, 31.2655698],
+    italynorth: [9.18109, 45.46888],
     japaneast: [139.77, 35.68],
     japanwest: [135.5022, 34.6939],
     koreacentral: [126.9780, 37.5665],
@@ -46,6 +48,11 @@ var regionlocation = {
     westus2: [-119.852, 47.233],
     westus3: [-112.074036, 33.448376]
 };
+
+
+
+
+
 var regionlist = [
     {
         "shortname": "australiacentral",
@@ -302,6 +309,22 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
+    },
+    {
+        "shortname": "israelcentral",
+        "longname": "Israel Central",
+        "location": regionlocation.israelcentral,
+        "crrregions": [],
+        "czr": false,
+        "snf": false,
+        "snfedit": false,
+        "avsdatastore": false,
+        "backup": false,
+        "largevolumes": false,
+        "cmk": false,
+        "doubleencryption": false,
+        "standardcool": false,
+        "azplacement": true
     },
     {
         "shortname": "japaneast",
