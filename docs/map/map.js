@@ -190,7 +190,7 @@ var regionlist = [
         "czr": true,
         "snf": true,
         "snfedit": true,
-        "avsdatastore": false,
+        "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
