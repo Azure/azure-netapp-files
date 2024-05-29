@@ -146,7 +146,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
     },
@@ -178,7 +178,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
     },
@@ -194,7 +194,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
     },
@@ -322,7 +322,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
     },
@@ -386,7 +386,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
     },
@@ -530,7 +530,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
     },
@@ -546,7 +546,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
     },
@@ -578,7 +578,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
     },
@@ -658,7 +658,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": false,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
     },
@@ -674,7 +674,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": true,
         "cmk": false,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
     },
@@ -690,7 +690,7 @@ var regionlist = [
         "backup": false,
         "largevolumes": false,
         "cmk": false,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
     },
