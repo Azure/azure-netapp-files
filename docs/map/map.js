@@ -327,6 +327,22 @@ var regionlist = [
         "azplacement": true
     },
     {
+        "shortname": "italynorth",
+        "longname": "Italy North",
+        "location": regionlocation.italynorth,
+        "crrregions": [],
+        "czr": true,
+        "snf": true,
+        "snfedit": true,
+        "avsdatastore": true,
+        "backup": true,
+        "largevolumes": false,
+        "cmk": true,
+        "doubleencryption": false,
+        "standardcool": true,
+        "azplacement": true
+    },
+    {
         "shortname": "japaneast",
         "longname": "Japan East",
         "location": regionlocation.japaneast,
