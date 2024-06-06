@@ -329,7 +329,7 @@ var regionlist = [
     {
         "shortname": "italynorth",
         "longname": "Italy North",
-        "location": regionlocation.israelcentral,
+        "location": regionlocation.italynorth,
         "crrregions": [],
         "czr": true,
         "snf": true,
