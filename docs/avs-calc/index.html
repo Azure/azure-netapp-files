@@ -1,5 +1,5 @@
 <!--
-   NetApp Inc. (c) 3 Solutions Engineering Team, HCG
+   NetApp Inc. (c) 2024 Solutions Engineering Team, HCG
    Developers: Vedant Sethia (vedant.sethia@netapp.com)
    Author: Niyaz Mohamed (niyaz.mohamed@netapp.com)
 -->
@@ -9,7 +9,7 @@
       <meta charset="utf-8">
       <meta name="description" content="Azure NetApp Files datastore for Azure VMware Solution TCO Estimator">
       <meta name="keywords" content="NetApp, Azure, ANF, AVS, TCO">
-      <meta name="author" content="Vedant Sethia, Dhruv Tyagi, Mohamed Niyaz">
+      <meta name="author" content="Vedant Sethia, Mohamed Niyaz">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="shortcut icon" href="favicon.ico">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -85,36 +85,39 @@
                        <span class="input-group-text" style="color:#000">Region</span>
                     </div>
                      <select input oninput="getResults()" class="form-control custom-select float-right" id="regionselector">
+                        <option value="Australia East">Australia East</option>
+                        <option value="Australia Southeast">Australia Southeast</option>
+                        <option value="Brazil South">Brazil South</option>
+                        <option value="Canada Central">Canada Central</option>
+                        <option value="Canada East">Canada East</option>
+                        <option value="Central India">Central India</option>
+                        <option value="Central US">Central US</option>
+                        <option value="East Asia">East Asia</option>
                         <option value="East US" selected>East US</option>
                         <option value="East US 2">East US 2</option>
-                        <option value="Central US">Central US</option>
+                        <option value="France Central">France Central</option>
+                        <option value="Germany West Central">Germany West Central</option>
+                        <option value="Italy North">Italy North</option>
+                        <option value="Japan East">Japan East</option>
+                        <option value="Japan West">Japan West</option>
                         <option value="North Central US">North Central US</option>
+                        <option value="North Europe">North Europe</option>
+                        <option value="Qatar Central">Qatar Central</option>
+                        <option value="South Africa North">South Africa North</option>
                         <option value="South Central US">South Central US</option>
+                        <option value="Southeast Asia">Southeast Asia</option>
+                        <option value="Sweden Central">Sweden Central</option>
+                        <option value="Switzerland North">Switzerland North</option>
+                        <option value="Switzerland West">Switzerland West</option>
+                        <option value="UAE North">UAE North</option>
+                        <option value="UK South">UK South</option>
+                        <option value="UK West">UK West</option>
+                        <option value="US Gov Arizona">US Gov Arizona</option>
+                        <option value="US Gov Virginia">US Gov Virginia</option>
+                        <option value="West Europe">West Europe</option>
                         <option value="West US">West US</option>
                         <option value="West US 2">West US 2</option>
                         <option value="West US 3">West US 3</option>
-                        <option value="UK South">UK South</option>
-                        <option value="UK West">UK West</option>
-                        <option value="Switzerland North">Switzerland North</option>
-                        <option value="Switzerland West">Switzerland West</option>
-                        <option value="Qatar Central">Qatar Central</option>
-                        <option value="Sweden Central">Sweden Central</option>
-                        <option value="Japan East">Japan East</option>
-                        <option value="Japan West">Japan West</option>
-                        <option value="Germany West Central">Germany West Central</option>
-                        <option value="France Central">France Central</option>
-                        <option value="North Europe">North Europe</option>
-                        <option value="West Europe">West Europe</option>
-                        <option value="Canada Central">Canada Central</option>
-                        <option value="Canada East">Canada East</option>
-                        <option value="Brazil South">Brazil South</option>
-                        <option value="Australia East">Australia East</option>
-                        <option value="Australia Southeast">Australia Southeast</option>
-                        <option value="East Asia">East Asia</option>
-                        <option value="Southeast Asia">Southeast Asia</option>
-                        <option value="South Africa North">South Africa North</option>
-                        <option value="US Gov Arizona">US Gov Arizona</option>
-                        <option value="US Gov Virginia">US Gov Virginia</option>
                      </select>
                   </div>
                 </div>
@@ -830,7 +833,7 @@
                </div>
                <hr/>
                <center>
-                  <button type="button" class="btn btn-primary mb-3" onclick="changeDisplay('tableout')">Show advanced calculations</button>
+                  <button id="tableoutshowbutton" type="button" class="btn btn-primary mb-3" onclick="changeDisplay('tableout')">Show advanced calculations</button>
                </center>
                <div id="tableout" style='overflow-x:auto;display:none;'>
                   <center>
@@ -1098,6 +1101,7 @@
                
             </div>
             <center><small id="error_message" class="text-danger"></small></center>
+            <center><button type="button" id="downloadreportbutton" class="btn btn-primary mb-3" style='width:170px;' onclick="saveReport()">Download Report</button></center>
             <div class="card-footer">
                <small class="text-muted"><b>Source</b>: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels" target="_blank">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/" target="_blank">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits" target="_blank">Resource Limits</a>
                </small><br>
@@ -1109,13 +1113,22 @@
                <small class="text-muted">NetApp Solutions Engineering Team - <a href="mailto:d3b651c4.netapp.onmicrosoft.com@amer.teams.ms">Send feedback</a></small>
             </div>
             <div class="col text-right mr-5">
-               <small class="text-muted">&copy;Copyright 2023, <a href="">NetApp Inc.(c)</a></small>
+               <small class="text-muted">&copy;Copyright 2024, <a href="">NetApp Inc.(c)</a></small>
             </div>
 
 
          </div>
       </div>
    </body>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha256-c9vxcXyAG4paArQG3xk6DjyW/9aHxai2ef9RpMWO44A=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script> -->
+
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script> -->
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
    <script type="text/javascript">
      $(".custom-file-input").on("change", function() {
       var fileName = $(this).val().split("\\").pop();

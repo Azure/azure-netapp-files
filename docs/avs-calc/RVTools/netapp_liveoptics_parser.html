@@ -1,18 +1,18 @@
 <!--
    NetApp Inc. (c) 2024 Solutions Engineering Team, HCG
    Author: Niyaz Mohamed (niyaz.mohamed@netapp.com)
-   Developers: Vedant Sethia (vedant.sethia@netapp.com), Dhruv Tyagi (dhruv.tyagi@netapp.com)
+   Developer: Vedant Sethia (vedant.sethia@netapp.com)
 -->
 <!doctype html>
 <html lang="en">
    <head>
       <meta charset="utf-8">
       <meta name="description" content="Azure NetApp Files with Azure VMware Solution TCO Estimator">
-      <meta name="keywords" content="NetApp, Azure, ANF, AVS, TCO">
-      <meta name="author" content="Vedant Sethia, Dhruv Tyagi, Mohamed Niyaz">
+      <meta name="keywords" content="NetApp, Azure, ANF, AVS, TCO, liveoptics">
+      <meta name="author" content="Vedant Sethia, Mohamed Niyaz">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <title>ANF AVS TCO Calculator</title>
+      <title>NetApp | Live Optics parser</title>
       <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
    </head>
    <body>
@@ -20,13 +20,13 @@
          <div class="card p-4 m-5">
             <div class="card-body">
               <div class="row border-bottom mb-2">
-                <div class="col float-left mb-3"><span class="h5">RVTools Offline Parser</span></div>
+                <div class="col float-left mb-3"><span class="h5">Live Optics Offline Parser</span></div>
               </div>
 
-               <div id="azurervtoolsdiv" class="border-bottom mb-3">
+               <div id="azureliveopticsdiv" class="border-bottom mb-3">
                  <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Upload RVTOOLS file</span>
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload Live Optics file</span>
                   </div>
                   <div class="custom-file">
                     <input oninput="getResults()" class="custom-file-input" type="file" id="excel_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
@@ -84,14 +84,14 @@
                         </div>
                      </div>
                   </div>
-                  <div class="rvtools_output mb-3" id="rvtools_output_div" style="display: none">
+                  <div class="liveoptics_output mb-3" id="liveoptics_output_div" style="display: none">
                     <div class="row">
                       <div class="col-md-auto">
                           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 101.9" height="70px" width="100px"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><title>computer-monitor</title><path class="cls-1" d="M3.34,0h116.2a3.35,3.35,0,0,1,3.34,3.34v77a3.35,3.35,0,0,1-3.34,3.34H3.34A3.35,3.35,0,0,1,0,80.32v-77A3.35,3.35,0,0,1,3.34,0Zm43,88.27h30.3c.08,5.24,2.24,9.94,8.09,13.63H38.2c4.68-3.39,8.11-7.51,8.09-13.63Zm-39-83.5H115.56a3,3,0,0,1,3,3V68a3,3,0,0,1-3,3H7.33a3,3,0,0,1-2.95-3V7.72a3,3,0,0,1,3-2.95Z"/></svg>
                       </div>
                       <div class="col">
                         <div class="row">
-                            <h4 id="vm_value_rvtools"></h4>
+                            <h4 id="vm_value_liveoptics"></h4>
                         </div>
                         <div class="row text-secondary">
                            <h6>Virtual Machines</h6>
@@ -103,7 +103,7 @@
                       </div>
                       <div class="col">
                         <div class="row">
-                            <h4 id="vcpupcore_value_rvtools"></h4>
+                            <h4 id="vcpupcore_value_liveoptics"></h4>
                         </div>
                         <div class="row text-secondary">
                            <h6>vCPU/pcore</h6>
@@ -123,7 +123,7 @@
                       </div>
                       <div class="col">
                         <div class="row">
-                            <h4 id="vcpuvm_value_rvtools"></h4>
+                            <h4 id="vcpuvm_value_liveoptics"></h4>
                         </div>
                         <div class="row text-secondary">
                            <h6>vCPU/VM</h6>
@@ -136,7 +136,7 @@
                       </div>
                       <div class="col">
                         <div class="row">
-                            <h4 id="vramvm_value_rvtools"></h4>
+                            <h4 id="vramvm_value_liveoptics"></h4>
                         </div>
                         <div class="row text-secondary">
                            <h6>vRAM/VM</h6>
@@ -149,7 +149,7 @@
                       </div>
                       <div class="col">
                         <div class="row">
-                            <h4 id="storagevm_value_rvtools"></h4>
+                            <h4 id="storagevm_value_liveoptics"></h4>
                         </div>
                         <div class="row text-secondary">
                            <h6>Storage/VM</h6>
@@ -160,7 +160,7 @@
                   </div>
               </div>
             </div>
-            <center><small id="rvtools_message" class="text-danger mt-3 mb-3"></small></center>
+            <center><small id="liveoptics_message" class="text-danger mt-3 mb-3"></small></center>
             <div class="card-footer">
                <small class="text-muted ml-4">*These calculations are for estimation purposes only</small><br/>
                <small class="text-muted ml-4">Go to <a href="https://bluexp.netapp.com/anf-avs/tcoestimator">NetApp ANF+AVS TCO Estimator</a></small>
@@ -196,42 +196,43 @@
             // Get Sheet Name List in WorkBook
             var sheet_name =  work_book.SheetNames;
 
-            // Get vInfo Sheet Index and Data
-            var vinfo_sheet_index = sheet_name.findIndex(name => {return name === "vInfo"});
-            var vinfo_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[vinfo_sheet_index]], {header:1});
+            // Get VMs Sheet Index and Data
+            var vms_sheet_index = sheet_name.findIndex(name => {return name === "VMs"});
+            var vms_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[vms_sheet_index]], {header:1});
 
-            // Get vMemory Sheet Index and Data
-            var vmemory_sheet_index = sheet_name.findIndex(name => {return name === "vMemory"});
-            var vmemory_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[vmemory_sheet_index]], {header:1});
+            // Get VM Performance Sheet Index and Data
+            var vmperformance_sheet_index = sheet_name.findIndex(name => {return name === "VM Performance"});
+            var vmperformance_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[vmperformance_sheet_index]], {header:1});
 
 
-            if(vinfo_sheet_data.length > 0){
+            if(vms_sheet_data.length > 0){
 
                 // Select Rows in vInfo Sheet based on checkbox selected
                 var selected_rows = [];
-                var powerstate_column_index = vinfo_sheet_data[0].findIndex(header => {return header === "Powerstate" || header.split(" ").join("").toLowerCase() === "vinfopowerstate"});
-                for(var row = 1; row < vinfo_sheet_data.length; row++){
-                    if(document.getElementById("powered_on").checked && vinfo_sheet_data[row][powerstate_column_index] === "poweredOn"){
+                var powerstate_column_index = vms_sheet_data[0].findIndex(header => {return header === "Power State"});
+                for(var row = 1; row < vms_sheet_data.length; row++){
+                    if(document.getElementById("powered_on").checked && vms_sheet_data[row][powerstate_column_index] === "poweredOn"){
                         selected_rows[selected_rows.length] = row;
                     }
-                    if(document.getElementById("powered_off").checked && vinfo_sheet_data[row][powerstate_column_index] === "poweredOff"){
+                    if(document.getElementById("powered_off").checked && vms_sheet_data[row][powerstate_column_index] === "poweredOff"){
                         selected_rows[selected_rows.length] = row;
                     }
-                    if(document.getElementById("suspended").checked && vinfo_sheet_data[row][powerstate_column_index] === "suspended"){
+                    // need to verify this with NiMo -> sheet does not have suspended
+                    if(document.getElementById("suspended").checked && vms_sheet_data[row][powerstate_column_index] === "poweredOff"){
                         selected_rows[selected_rows.length] = row;
                     }
                 }
 
-                // Get Averaage values
-                var cpu_column_index = vinfo_sheet_data[0].findIndex(header => {return header === "CPUs" || header.split(" ").join("").toLowerCase() === "vinfocpus"});
+                // Get average values
+                var cpu_column_index = vms_sheet_data[0].findIndex(header => {return header === "Virtual CPU"});
                 var cpu_avg = 0;
 
                 if(document.getElementById("utilized_memory").checked){
-                    var memory_column_index = vmemory_sheet_data[0].findIndex(header => {return header === "Consumed" || header.split(" ").join("").toLowerCase() === "vmemoryconsumed"});
+                    var memory_column_index = vms_sheet_data[0].findIndex(header => {return header === "Used Memory (active) (MB)"});
                     var memory_avg = 0;
                 }
                 if(document.getElementById("provisioned_memory").checked){
-                    var memory_column_index = vinfo_sheet_data[0].findIndex(header => {return header === "Memory" || header.split(" ").join("").toLowerCase() === "vinfomemory"});
+                    var memory_column_index = vms_sheet_data[0].findIndex(header => {return header === "Provisioned Memory (MB)"});
                     var memory_avg = 0;
                 }
 
@@ -239,101 +240,71 @@
                 var vm_count = selected_rows.length;
 
                 if(document.getElementById("utilized").checked){
-                    if(vinfo_sheet_data[0].findIndex(header => {return header === "In Use MiB" || header.split(" ").join("").toLowerCase() === "vinfoinusemib"}) === -1){
-                        var in_use_mib_column_index = vinfo_sheet_data[0].findIndex(header => {return header === "In Use MB" || header.split(" ").join("").toLowerCase() === "vinfoinusemib"});
-                    } else {
-                        var in_use_mib_column_index = vinfo_sheet_data[0].findIndex(header => {return header === "In Use MiB" || header.split(" ").join("").toLowerCase() === "vinfoinusemib"});
-                    }
-                    var in_use_mib_avg = 0;
+                    var storage_column_index = vms_sheet_data[0].findIndex(header => {return header === "Virtual Disk Used (MB)"});
+                    var storage_avg = 0;
                 }
                 if(document.getElementById("provisioned").checked){
-                    var provisioned_mib_column_index = vinfo_sheet_data[0].findIndex(header => {return header === "Provisioned MiB" || header.split(" ").join("").toLowerCase() === "vinfoprovisionedmib"});
-                    var provisioned_mib_avg = 0;
+                    var storage_column_index = vms_sheet_data[0].findIndex(header => {return header === "Virtual Disk Size (MB)"});
+                    var storage_avg = 0;
                 }
 
 
                 for(var row = 0; row < selected_rows.length; row++){
-                    if(typeof vinfo_sheet_data[selected_rows[row]][cpu_column_index] == 'number'){
-                        cpu_avg += vinfo_sheet_data[selected_rows[row]][cpu_column_index];
+                    if(typeof vms_sheet_data[selected_rows[row]][cpu_column_index] == 'number'){
+                        cpu_avg += vms_sheet_data[selected_rows[row]][cpu_column_index];
                     }
-                    if(document.getElementById("provisioned_memory").checked && typeof vinfo_sheet_data[selected_rows[row]][memory_column_index] == 'number'){
-                        memory_avg += vinfo_sheet_data[selected_rows[row]][memory_column_index];
+                    if(document.getElementById("provisioned_memory").checked && typeof vms_sheet_data[selected_rows[row]][memory_column_index] == 'number'){
+                        memory_avg += vms_sheet_data[selected_rows[row]][memory_column_index];
                     }
-                    if(document.getElementById("utilized").checked && typeof vinfo_sheet_data[selected_rows[row]][in_use_mib_column_index] == 'number'){
-                        in_use_mib_avg += vinfo_sheet_data[selected_rows[row]][in_use_mib_column_index];
+                    if(document.getElementById("utilized_memory").checked && typeof vms_sheet_data[selected_rows[row]][memory_column_index] == 'number'){
+                        memory_avg += vms_sheet_data[selected_rows[row]][memory_column_index];
                     }
-                    if(document.getElementById("provisioned").checked && typeof vinfo_sheet_data[selected_rows[row]][provisioned_mib_column_index] == 'number'){
-                        provisioned_mib_avg += vinfo_sheet_data[selected_rows[row]][provisioned_mib_column_index];
+                    if(document.getElementById("utilized").checked && typeof vms_sheet_data[selected_rows[row]][storage_column_index] == 'number'){
+                        storage_avg += vms_sheet_data[selected_rows[row]][storage_column_index];
                     }
-                }
-
-                // Get Memory in case Provisioned is selected
-                if(document.getElementById("utilized_memory").checked){
-                    for(var row = 1; row < vmemory_sheet_data.length; row++){
-                        if(typeof vmemory_sheet_data[row][memory_column_index] == 'number'){
-                            memory_avg += vmemory_sheet_data[row][memory_column_index];
-                        }
+                    if(document.getElementById("provisioned").checked && typeof vms_sheet_data[selected_rows[row]][storage_column_index] == 'number'){
+                        storage_avg += vms_sheet_data[selected_rows[row]][storage_column_index];
                     }
                 }
 
-
-                // Get Averaage value for CPU Column for vcpu/vm
+                // Get average value for CPU Column for vcpu/vm
+                total_cpu = cpu_avg;
                 cpu_avg /= selected_rows.length;
 
-
-                // Get Averaage value for Memory Column for vram/vm
-                if(document.getElementById("utilized_memory").checked){
-                    memory_avg /= selected_rows.length;
-                }
-                if(document.getElementById("provisioned_memory").checked){
-                    memory_avg /= selected_rows.length;
-                }
+                // Get average value for Memory Column for vram/vm
+                memory_avg /= selected_rows.length;
 
 
-                // Get Averaage value for CPU Column for storage/vm (Add option for provisioned mib later)
-                if(document.getElementById("utilized").checked){
-                    in_use_mib_avg /= selected_rows.length;
-                }
-                if(document.getElementById("provisioned").checked){
-                    provisioned_mib_avg /= selected_rows.length;
-                }
-
-                // console.log("vm_count" + vm_count + " cpu_avg" + cpu_avg + " memory_avg" + memory_avg);
-
-                // if(document.getElementById("utilized").checked){
-                //     console.log(" in_use_mib_avg" + in_use_mib_avg);
-                // }
-                // if(document.getElementById("provisioned").checked){
-                //     console.log("provisioned_mib_avg" + provisioned_mib_avg);
-                // }
+                // Get average value for storage Column for storage/vm (Add option for provisioned mib later)
+                storage_avg /= selected_rows.length;
 
             }
 
-            var vhost_sheet_index = sheet_name.findIndex(name => {return name === "vHost"});
-            var vhost_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[vhost_sheet_index]], {header:1});
+            var esxhosts_sheet_index = sheet_name.findIndex(name => {return name === "ESX Hosts"});
+            var esxhosts_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[esxhosts_sheet_index]], {header:1});
 
-            if(vhost_sheet_data.length > 0){
-                var vcpus_per_core_column_index = vhost_sheet_data[0].findIndex(header => {return header === "vCPUs per Core" || header.split(" ").join("").toLowerCase() === "vhostvcpuspercore"});
-                var vpcus_per_core_avg = 0;
+            var vpcus_per_core_avg = 0;
 
-                // Get Averaage value
-                for(var row = 1; row < vhost_sheet_data.length; row++){
-                    if(typeof vhost_sheet_data[row][vcpus_per_core_column_index] == 'number'){
-                        vpcus_per_core_avg += vhost_sheet_data[row][vcpus_per_core_column_index];
+            if(esxhosts_sheet_data.length > 0){
+                var vcpus_per_core_column_index = esxhosts_sheet_data[0].findIndex(header => {return header === "CPU Cores"});
+                var total_cores = 0;
+
+                // Get average value
+                for(var row = 1; row < esxhosts_sheet_data.length; row++){
+                    if(typeof esxhosts_sheet_data[row][vcpus_per_core_column_index] == 'number'){
+                        total_cores += esxhosts_sheet_data[row][vcpus_per_core_column_index];
                     }
                 }
 
-                // Get Averaage value for vCPUs per Core Column for vcpu/pcore
-                vpcus_per_core_avg /= (vhost_sheet_data.length - 1);
+                // Get average value for vCPUs per Core Column for vcpu/pcore
+                // var cores_avg = total_cores / (esxhosts_sheet_data.length - 1);
+                if(total_cores > 0){
+                    vpcus_per_core_avg = total_cpu / total_cores;
+                }
+            }
 
-                // console.log("vpcus_per_core_avg" + vpcus_per_core_avg);
-            }
-            if(document.getElementById("utilized").checked){
-                return([vm_count,cpu_avg,memory_avg,in_use_mib_avg,vpcus_per_core_avg]);
-            }
-            if(document.getElementById("provisioned").checked){
-                return([vm_count,cpu_avg,memory_avg,provisioned_mib_avg,vpcus_per_core_avg]);
-            }
+            return([vm_count,cpu_avg,memory_avg,storage_avg,vpcus_per_core_avg]);
+
         }
         var reader = new FileReader();
         excel_file =  document.getElementById("excel_file");
@@ -348,11 +319,11 @@
         function getResults() {
             output_list = process_excel(reader);
             if(output_list[0] == undefined){
-                document.getElementById("rvtools_message").innerText = "Invalid Input";
-                document.getElementById("rvtools_output_div").style.display = "none";
+                document.getElementById("liveoptics_message").innerText = "Invalid Input";
+                document.getElementById("liveoptics_output_div").style.display = "none";
             } else {
-                document.getElementById("rvtools_message").innerText = "";
-                document.getElementById("rvtools_output_div").style.display = "block";
+                document.getElementById("liveoptics_message").innerText = "";
+                document.getElementById("liveoptics_output_div").style.display = "block";
             }
             vmcount = parseFloat(output_list[0]).toFixed(0);
             vcpupcore = parseFloat(output_list[4]).toFixed(2);
@@ -360,11 +331,11 @@
             vramvm = parseFloat(parseFloat(output_list[2]).toFixed(2) / 1024).toFixed(2);
             utilstoragevm = parseFloat(parseFloat(output_list[3]).toFixed(2) / 1024).toFixed(2);
 
-            document.getElementById("vm_value_rvtools").innerText = vmcount;
-            document.getElementById("vcpupcore_value_rvtools").innerText = vcpupcore;
-            document.getElementById("vcpuvm_value_rvtools").innerText = vcpuvm;
-            document.getElementById("vramvm_value_rvtools").innerText = vramvm;
-            document.getElementById("storagevm_value_rvtools").innerText = utilstoragevm;
+            document.getElementById("vm_value_liveoptics").innerText = vmcount;
+            document.getElementById("vcpupcore_value_liveoptics").innerText = vcpupcore;
+            document.getElementById("vcpuvm_value_liveoptics").innerText = vcpuvm;
+            document.getElementById("vramvm_value_liveoptics").innerText = vramvm;
+            document.getElementById("storagevm_value_liveoptics").innerText = utilstoragevm;
         }
    </script>
 </html>
