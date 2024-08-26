@@ -1,0 +1,340 @@
+<!--
+   NetApp Inc. (c) 2024 Solutions Engineering Team, HCG
+   Author: Niyaz Mohamed (niyaz.mohamed@netapp.com)
+   Developer: Vedant Sethia (vedant.sethia@netapp.com)
+-->
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="description" content="Azure NetApp Files with Azure VMware Solution TCO Estimator">
+      <meta name="keywords" content="NetApp, Azure, ANF, AVS, TCO, cloud insights">
+      <meta name="author" content="Vedant Sethia, Mohamed Niyaz">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <title>NetApp | Cloud insights parser</title>
+      <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+      <script src="./papaparse.min.js"></script>
+   </head>
+   <body>
+      <div class="overflow-hidden">
+         <div class="card p-4 m-5">
+            <div class="card-body">
+              <div class="row border-bottom mb-2">
+                <div class="col float-left mb-3"><span class="h5">Cloud Insights Offline Parser</span></div>
+              </div>
+
+               <div id="azurecloudinsightsdiv" class="border-bottom mb-3">
+                 <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload Cloud Insights file</span>
+                  </div>
+                  <div class="custom-file">
+                    <input oninput="getResults()" class="custom-file-input" type="file" id="cloudinsights_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .csv" />
+                    <label class="custom-file-label" for="cloudinsights_file">Choose file</label>
+                  </div>
+                </div>
+
+                  <div class="row mb-2">
+                     <div class="col-2">
+                        Consider VMs:
+                     </div>
+                     <div class="col">
+                        <div class="form-check form-check-inline">
+                           <input oninput="getResults()" class="form-check-input" type="checkbox" id="powered_on" name="powered_on" value="powered_on" checked>
+                           <label class="form-check-label" for="powered_on"> Powered ON</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                           <input oninput="getResults()" class="form-check-input" type="checkbox" id="powered_off" name="powered_off" value="powered_off">
+                           <label class="form-check-label" for="powered_off"> Powered OFF</label>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="row mb-2">
+                     <div class="col-2">
+                        Storage to Consider:
+                     </div>
+                     <div class="col">
+                        <div class="form-check form-check-inline">
+                           <input oninput="getResults()" class="form-check-input" type="radio" id="utilized" name="storage_per_vm" value="utilized">
+                           <label class="form-check-label" for="utilized">Utilized</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                           <input oninput="getResults()" class="form-check-input" type="radio" id="provisioned" name="storage_per_vm" value="provisioned" checked>
+                           <label class="form-check-label" for="provisioned">Provisioned</label>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row mb-2">
+                     <div class="col-2 text-secondary">
+                        Memory to Consider:
+                     </div>
+                     <div class="col mb-3">
+                        <div class="form-check form-check-inline">
+                           <input oninput="getResults()" class="form-check-input" type="radio" id="utilized_memory" name="memory_per_vm" value="utilized_memory" disabled>
+                           <label class="form-check-label" for="utilized_memory">Utilized</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                           <input oninput="getResults()" class="form-check-input" type="radio" id="provisioned_memory" name="memory_per_vm" value="provisioned_memory" disabled checked>
+                           <label class="form-check-label" for="provisioned_memory">Provisioned</label>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cloudinsights_output mb-3" id="cloudinsights_output_div" style="display: none">
+                    <div class="row">
+                      <div class="col-md-auto">
+                          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 101.9" height="70px" width="100px"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><title>computer-monitor</title><path class="cls-1" d="M3.34,0h116.2a3.35,3.35,0,0,1,3.34,3.34v77a3.35,3.35,0,0,1-3.34,3.34H3.34A3.35,3.35,0,0,1,0,80.32v-77A3.35,3.35,0,0,1,3.34,0Zm43,88.27h30.3c.08,5.24,2.24,9.94,8.09,13.63H38.2c4.68-3.39,8.11-7.51,8.09-13.63Zm-39-83.5H115.56a3,3,0,0,1,3,3V68a3,3,0,0,1-3,3H7.33a3,3,0,0,1-2.95-3V7.72a3,3,0,0,1,3-2.95Z"/></svg>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                            <h4 id="vm_value_cloudinsights"></h4>
+                        </div>
+                        <div class="row text-secondary">
+                           <h6>Virtual Machines</h6>
+                        </div>
+                      </div>
+
+                      <div class="col-md-auto">
+                          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 104.91" width="100px" height="70px"><title>cpu</title><path d="M32.05,18.59H90.83a12.71,12.71,0,0,1,9,3.76h0a12.76,12.76,0,0,1,3.76,9V73.52a12.78,12.78,0,0,1-3.77,9l0,0a12.77,12.77,0,0,1-9,3.76H32.05a12.76,12.76,0,0,1-9-3.77h0a12.76,12.76,0,0,1-3.76-9V31.39a12.75,12.75,0,0,1,3.76-9l0,0a12.78,12.78,0,0,1,9-3.75Zm11.75,44a10.56,10.56,0,0,1-3-.4,5,5,0,0,1-2.31-1.48A7.19,7.19,0,0,1,37,57.66a22.12,22.12,0,0,1-.51-5.25A20,20,0,0,1,37,47.3a7.34,7.34,0,0,1,1.52-3.08,5.18,5.18,0,0,1,2.32-1.5,9.89,9.89,0,0,1,3-.42,21.26,21.26,0,0,1,2.94.18,16.78,16.78,0,0,1,2.18.41,9.87,9.87,0,0,1,1.44.49v4.06c-.34-.07-.78-.15-1.32-.22s-1.15-.13-1.84-.17S45.76,47,45,47a5.33,5.33,0,0,0-1.55.19,1.8,1.8,0,0,0-1,.75,4.34,4.34,0,0,0-.55,1.66,18.62,18.62,0,0,0-.17,2.89,22.45,22.45,0,0,0,.13,2.69,4.68,4.68,0,0,0,.48,1.68,2,2,0,0,0,1,.86A4.83,4.83,0,0,0,45,58c1.36,0,2.47,0,3.32-.06s1.53-.11,2-.18v4.06a9.88,9.88,0,0,1-1.57.46,19.62,19.62,0,0,1-2.11.29c-.81.08-1.77.11-2.88.11Zm9.34-.16v-20h8.77a10.3,10.3,0,0,1,2.1.23,4.61,4.61,0,0,1,2,.94,4.89,4.89,0,0,1,1.46,2.15A11.14,11.14,0,0,1,68,49.64a11.51,11.51,0,0,1-.54,3.89,5.1,5.1,0,0,1-1.4,2.2,4.43,4.43,0,0,1-1.87,1,8,8,0,0,1-2,.25,9.92,9.92,0,0,1-1.07,0c-.36,0-.72-.08-1.07-.15s-.67-.12-1-.19l-.74-.14v6ZM58.36,52.3h3a1.17,1.17,0,0,0,.85-.29,1.63,1.63,0,0,0,.43-.87,7.31,7.31,0,0,0,.12-1.44,5.5,5.5,0,0,0-.15-1.4,1.75,1.75,0,0,0-.44-.85,1.13,1.13,0,0,0-.81-.28h-3V52.3Zm20,10.3a18.12,18.12,0,0,1-3.11-.26,7.15,7.15,0,0,1-2.59-1,4.76,4.76,0,0,1-1.76-2,7.82,7.82,0,0,1-.64-3.42V42.49h5.22V55.85A1.86,1.86,0,0,0,75.79,57a2,2,0,0,0,1,.69,5.41,5.41,0,0,0,3.12,0,2.05,2.05,0,0,0,1-.69,1.92,1.92,0,0,0,.33-1.16V42.49h5.22V55.88a8,8,0,0,1-.63,3.42,4.83,4.83,0,0,1-1.76,2,7.24,7.24,0,0,1-2.58,1,18.07,18.07,0,0,1-3.12.26Zm3.23,29.71h6.83a1.28,1.28,0,0,1,1.27,1.28v10a1.28,1.28,0,0,1-1.27,1.28H81.56a1.28,1.28,0,0,1-1.28-1.28v-10a1.28,1.28,0,0,1,1.28-1.28Zm-15.69,0H72.7A1.29,1.29,0,0,1,74,93.59v10a1.29,1.29,0,0,1-1.28,1.28H65.87a1.28,1.28,0,0,1-1.28-1.28v-10a1.28,1.28,0,0,1,1.28-1.28Zm-15.69,0H57a1.28,1.28,0,0,1,1.28,1.28v10A1.28,1.28,0,0,1,57,104.91H50.18a1.29,1.29,0,0,1-1.28-1.28v-10a1.29,1.29,0,0,1,1.28-1.28Zm-15.69,0h6.84a1.28,1.28,0,0,1,1.27,1.28v10a1.28,1.28,0,0,1-1.27,1.28H34.49a1.28,1.28,0,0,1-1.27-1.28v-10a1.28,1.28,0,0,1,1.27-1.28ZM81.56,0h6.83a1.27,1.27,0,0,1,1.27,1.28v10a1.27,1.27,0,0,1-1.27,1.28H81.56a1.28,1.28,0,0,1-1.28-1.28v-10A1.28,1.28,0,0,1,81.56,0ZM65.87,0H72.7A1.28,1.28,0,0,1,74,1.28v10a1.28,1.28,0,0,1-1.28,1.28H65.87a1.28,1.28,0,0,1-1.28-1.28v-10A1.28,1.28,0,0,1,65.87,0ZM50.18,0H57a1.28,1.28,0,0,1,1.28,1.28v10A1.28,1.28,0,0,1,57,12.59H50.18a1.28,1.28,0,0,1-1.28-1.28v-10A1.28,1.28,0,0,1,50.18,0ZM34.49,0h6.84A1.27,1.27,0,0,1,42.6,1.28v10a1.27,1.27,0,0,1-1.27,1.28H34.49a1.27,1.27,0,0,1-1.27-1.28v-10A1.27,1.27,0,0,1,34.49,0Zm75.8,56.36v6.83a1.28,1.28,0,0,0,1.28,1.28h10a1.28,1.28,0,0,0,1.28-1.28V56.36a1.28,1.28,0,0,0-1.28-1.28h-10a1.28,1.28,0,0,0-1.28,1.28Zm0-15.69v6.84a1.27,1.27,0,0,0,1.28,1.27h10a1.27,1.27,0,0,0,1.28-1.27V40.67a1.27,1.27,0,0,0-1.28-1.27h-10a1.27,1.27,0,0,0-1.28,1.27Zm0,31.38v6.83a1.28,1.28,0,0,0,1.28,1.28h10a1.28,1.28,0,0,0,1.28-1.28V72.05a1.28,1.28,0,0,0-1.28-1.28h-10a1.28,1.28,0,0,0-1.28,1.28Zm0-47.06v6.83a1.28,1.28,0,0,0,1.28,1.28h10a1.28,1.28,0,0,0,1.28-1.28V25a1.28,1.28,0,0,0-1.28-1.28h-10A1.28,1.28,0,0,0,110.29,25ZM12.59,56.36v6.83a1.28,1.28,0,0,1-1.28,1.28h-10A1.28,1.28,0,0,1,0,63.19V56.36a1.28,1.28,0,0,1,1.28-1.28h10a1.28,1.28,0,0,1,1.28,1.28Zm0-15.69v6.84a1.27,1.27,0,0,1-1.28,1.27h-10A1.27,1.27,0,0,1,0,47.51V40.67A1.27,1.27,0,0,1,1.28,39.4h10a1.27,1.27,0,0,1,1.28,1.27Zm0,31.38v6.83a1.28,1.28,0,0,1-1.28,1.28h-10A1.28,1.28,0,0,1,0,78.88V72.05a1.28,1.28,0,0,1,1.28-1.28h10a1.28,1.28,0,0,1,1.28,1.28Zm0-47.06v6.83a1.28,1.28,0,0,1-1.28,1.28h-10A1.28,1.28,0,0,1,0,31.82V25a1.28,1.28,0,0,1,1.28-1.28h10A1.28,1.28,0,0,1,12.59,25Zm78.24,0H32.05a6.34,6.34,0,0,0-4.5,1.86h0a6.34,6.34,0,0,0-1.86,4.5V73.52a6.38,6.38,0,0,0,6.37,6.37H90.83A6.34,6.34,0,0,0,95.32,78h0a6.3,6.3,0,0,0,1.87-4.49V31.39a6.38,6.38,0,0,0-1.87-4.5h0A6.32,6.32,0,0,0,90.83,25Z"/></svg>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                            <h4 id="vcpupcore_value_cloudinsights"></h4>
+                        </div>
+                        <div class="row text-secondary">
+                           <h6>vCPU/pcore</h6>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100px" height="70px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 508.84">
+                        <g id="Layer_x0020_1">
+
+                        <path fill="black" fill-rule="nonzero" d="M122.58 82.55l266.84 0c10.1,0 19.28,4.14 25.92,10.78l0.56 0.62c6.33,6.6 10.24,15.55 10.24,25.31l0 270.32c0,10.04 -4.15,19.21 -10.8,25.87l-0.04 0.04c-6.66,6.65 -15.83,10.8 -25.88,10.8l-266.84 0c-10.05,0 -19.23,-4.14 -25.89,-10.79 -6.68,-6.65 -10.83,-15.83 -10.83,-25.92l0 -270.32c0,-10.1 4.13,-19.29 10.78,-25.93l0.61 -0.56c6.6,-6.32 15.54,-10.22 25.33,-10.22zm44.46 167.97c7.83,0 14.96,3.19 20.13,8.35l0.04 0.04c5.17,5.19 8.35,12.31 8.35,20.13 0,7.86 -3.19,15 -8.35,20.16l-0.54 0.5c-2.82,2.67 -6.18,4.78 -9.89,6.13l0 41.93 97.67 0c4.82,0 8.73,3.9 8.73,8.72l0 50.47 106.24 0c4.75,0 9.1,-1.96 12.26,-5.11 3.16,-3.17 5.12,-7.52 5.12,-12.26l0 -270.32c0,-4.56 -1.8,-8.75 -4.72,-11.87l-0.41 -0.39c-3.15,-3.15 -7.49,-5.11 -12.25,-5.11l-24.78 0 0 138.73c0,4.82 -3.9,8.73 -8.73,8.73l-38.24 0c-1.37,4.59 -3.88,8.72 -7.19,12.03 -5.14,5.18 -12.28,8.38 -20.15,8.38 -7.82,0 -14.95,-3.2 -20.12,-8.36l-0.04 -0.03c-5.17,-5.19 -8.35,-12.31 -8.35,-20.13 0,-7.87 3.19,-15.01 8.35,-20.17 5.16,-5.15 12.3,-8.35 20.16,-8.35 7.87,0 15.01,3.2 20.17,8.36l0.49 0.54c2.77,2.92 4.94,6.41 6.28,10.27l29.92 0 0 -130 -224.61 0c-4.58,0 -8.77,1.79 -11.89,4.7l-0.38 0.41c-3.15,3.15 -5.11,7.5 -5.11,12.26l0 35.07 151.42 0 0 -6.25c0,-3.48 1.42,-6.64 3.7,-8.92 2.28,-2.28 5.45,-3.7 8.92,-3.7l29.71 0c3.48,0 6.64,1.42 8.92,3.7 2.27,2.28 3.7,5.44 3.7,8.92l0 29.95c0,3.47 -1.43,6.64 -3.7,8.91 -2.28,2.28 -5.44,3.7 -8.92,3.7l-29.71 0c-3.47,0 -6.64,-1.42 -8.92,-3.7 -2.28,-2.27 -3.7,-5.44 -3.7,-8.91l0 -6.25 -151.42 0 0 37.9 121.36 0c4.82,0 8.73,3.91 8.73,8.73l0 85.8 77.27 0 0 -8.63c0,-3.61 1.48,-6.9 3.84,-9.26 2.37,-2.37 5.66,-3.85 9.27,-3.85l32.98 0c3.62,0 6.9,1.48 9.27,3.85 2.36,2.36 3.84,5.65 3.84,9.26l0 33.24c0,3.62 -1.48,6.9 -3.84,9.27 -2.37,2.37 -5.65,3.85 -9.27,3.85l-32.98 0c-3.61,0 -6.9,-1.48 -9.27,-3.85 -2.36,-2.37 -3.84,-5.65 -3.84,-9.27l0 -7.15 -86 0c-4.82,0 -8.73,-3.91 -8.73,-8.73l0 -85.81 -112.63 0 0 162.45c0,4.75 1.97,9.1 5.12,12.25 3.15,3.16 7.5,5.12 12.26,5.12l143.14 0 0 -41.74 -97.66 0c-4.82,0 -8.73,-3.91 -8.73,-8.73l0 -49.98c-4.77,-1.34 -9.04,-3.89 -12.45,-7.3 -5.16,-5.16 -8.35,-12.3 -8.35,-20.16 0,-7.84 3.2,-14.98 8.37,-20.15 5.14,-5.18 12.27,-8.37 20.14,-8.37zm8.71 19.77c-2.2,-2.2 -5.28,-3.57 -8.71,-3.57 -3.4,0 -6.48,1.38 -8.71,3.61 -2.24,2.2 -3.6,5.28 -3.6,8.71 0,3.4 1.38,6.48 3.6,8.71 2.23,2.22 5.31,3.6 8.71,3.6 3.26,0 6.2,-1.23 8.38,-3.25l0.33 -0.35c2.23,-2.23 3.61,-5.31 3.61,-8.71 0,-3.43 -1.37,-6.51 -3.57,-8.71l-0.04 -0.04zm179.81 28.38l-26.8 0 0 27.06 26.8 0 0 -27.06zm-56.52 -66.14c-2.22,-2.22 -5.3,-3.6 -8.71,-3.6 -3.4,0 -6.48,1.37 -8.7,3.6 -2.23,2.22 -3.61,5.31 -3.61,8.71 0,3.42 1.37,6.5 3.57,8.71l0.04 0.03c2.2,2.21 5.28,3.57 8.7,3.57 3.41,0 6.49,-1.38 8.71,-3.6 1.93,-1.9 3.21,-4.44 3.53,-7.29 -0.15,-0.66 -0.24,-1.34 -0.24,-2.04 0,-0.52 0.05,-1.03 0.14,-1.53 -0.42,-2.39 -1.51,-4.54 -3.07,-6.22l-0.36 -0.34zm-3.68 -80.87l-22.54 0 0 22.78 22.54 0 0 -22.78zm-295.36 192.64l0 30.52c0,3.14 2.57,5.71 5.71,5.71l44.84 0c3.14,0 5.71,-2.57 5.71,-5.71l0 -30.52c0,-3.14 -2.57,-5.71 -5.71,-5.71l-44.84 0c-3.14,0 -5.71,2.57 -5.71,5.71zm0 -70.09l0 30.52c0,3.14 2.57,5.71 5.71,5.71l44.84 0c3.14,0 5.71,-2.57 5.71,-5.71l0 -30.52c0,-3.14 -2.57,-5.71 -5.71,-5.71l-44.84 0c-3.14,0 -5.71,2.57 -5.71,5.71zm0 -70.09l0 30.52c0,3.14 2.57,5.71 5.71,5.71l44.84 0c3.14,0 5.71,-2.57 5.71,-5.71l0 -30.52c0,-3.14 -2.57,-5.71 -5.71,-5.71l-44.84 0c-3.14,0 -5.71,2.57 -5.71,5.71zm0 -70.09l0 30.52c0,3.14 2.57,5.71 5.71,5.71l44.84 0c3.14,0 5.71,-2.57 5.71,-5.71l0 -30.52c0,-3.14 -2.57,-5.71 -5.71,-5.71l-44.84 0c-3.14,0 -5.71,2.57 -5.71,5.71zm512 210.27l0 30.52c0,3.14 -2.57,5.71 -5.71,5.71l-44.85 0c-3.13,0 -5.7,-2.57 -5.7,-5.71l0 -30.52c0,-3.14 2.57,-5.71 5.7,-5.71l44.85 0c3.14,0 5.71,2.57 5.71,5.71zm0 -70.09l0 30.52c0,3.14 -2.57,5.71 -5.71,5.71l-44.85 0c-3.13,0 -5.7,-2.57 -5.7,-5.71l0 -30.52c0,-3.14 2.57,-5.71 5.7,-5.71l44.85 0c3.14,0 5.71,2.57 5.71,5.71zm0 -70.09l0 30.52c0,3.14 -2.57,5.71 -5.71,5.71l-44.85 0c-3.13,0 -5.7,-2.57 -5.7,-5.71l0 -30.52c0,-3.14 2.57,-5.71 5.7,-5.71l44.85 0c3.14,0 5.71,2.57 5.71,5.71zm0 -70.09l0 30.52c0,3.14 -2.57,5.71 -5.71,5.71l-44.85 0c-3.13,0 -5.7,-2.57 -5.7,-5.71l0 -30.52c0,-3.14 2.57,-5.71 5.7,-5.71l44.85 0c3.14,0 5.71,2.57 5.71,5.71zm-166.13 374.81l30.52 0c3.14,0 5.71,-2.57 5.71,-5.71l0 -44.84c0,-3.14 -2.57,-5.71 -5.71,-5.71l-30.52 0c-3.14,0 -5.71,2.57 -5.71,5.71l0 44.84c0,3.14 2.57,5.71 5.71,5.71zm-70.08 0l30.52 0c3.14,0 5.7,-2.57 5.7,-5.71l0 -44.84c0,-3.14 -2.56,-5.71 -5.7,-5.71l-30.52 0c-3.14,0 -5.71,2.57 -5.71,5.71l0 44.84c0,3.14 2.57,5.71 5.71,5.71zm-70.09 0l30.52 0c3.13,0 5.7,-2.57 5.7,-5.71l0 -44.84c0,-3.14 -2.57,-5.71 -5.7,-5.71l-30.52 0c-3.14,0 -5.71,2.57 -5.71,5.71l0 44.84c0,3.14 2.57,5.71 5.71,5.71zm-70.09 0l30.52 0c3.14,0 5.7,-2.57 5.7,-5.71l0 -44.84c0,-3.14 -2.56,-5.71 -5.7,-5.71l-30.52 0c-3.14,0 -5.71,2.57 -5.71,5.71l0 44.84c0,3.14 2.57,5.71 5.71,5.71zm210.26 -508.84l30.52 0c3.14,0 5.71,2.57 5.71,5.71l0 44.85c0,3.13 -2.57,5.7 -5.71,5.7l-30.52 0c-3.14,0 -5.71,-2.57 -5.71,-5.7l0 -44.85c0,-3.14 2.57,-5.71 5.71,-5.71zm-70.08 0l30.52 0c3.14,0 5.7,2.57 5.7,5.71l0 44.85c0,3.13 -2.56,5.7 -5.7,5.7l-30.52 0c-3.14,0 -5.71,-2.57 -5.71,-5.7l0 -44.85c0,-3.14 2.57,-5.71 5.71,-5.71zm-70.09 0l30.52 0c3.13,0 5.7,2.57 5.7,5.71l0 44.85c0,3.13 -2.57,5.7 -5.7,5.7l-30.52 0c-3.14,0 -5.71,-2.57 -5.71,-5.7l0 -44.85c0,-3.14 2.57,-5.71 5.71,-5.71zm-70.09 0l30.52 0c3.14,0 5.7,2.57 5.7,5.71l0 44.85c0,3.13 -2.56,5.7 -5.7,5.7l-30.52 0c-3.14,0 -5.71,-2.57 -5.71,-5.7l0 -44.85c0,-3.14 2.57,-5.71 5.71,-5.71z"/>
+
+                        </g>
+
+                        </svg>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                            <h4 id="vcpuvm_value_cloudinsights"></h4>
+                        </div>
+                        <div class="row text-secondary">
+                           <h6>vCPU/VM</h6>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-auto">
+                          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" height="70px" width="100px" viewBox="0 0 122.88 98.08" style="enable-background:new 0 0 122.88 98.08" xml:space="preserve"><g><path d="M13.78,13.25V3.84C13.78,1.72,15.5,0,17.62,0s3.84,1.72,3.84,3.84v9.41h9.73V3.84c0-2.12,1.72-3.84,3.84-3.84 c2.12,0,3.84,1.72,3.84,3.84v9.41h9.73V3.84c0-2.12,1.72-3.84,3.84-3.84c2.12,0,3.84,1.72,3.84,3.84v9.41h9.73V3.84 c0-2.12,1.72-3.84,3.84-3.84c2.12,0,3.84,1.72,3.84,3.84v9.41h9.73V3.84c0-2.12,1.72-3.84,3.84-3.84c2.12,0,3.84,1.72,3.84,3.84 v9.41h9.73V3.84c0-2.12,1.72-3.84,3.84-3.84c2.12,0,3.84,1.72,3.84,3.84v9.41h8.6c1.59,0,3.03,0.65,4.07,1.69 c1.04,1.04,1.69,2.48,1.69,4.07v60.66c0,1.57-0.65,3.01-1.69,4.06l0.01,0.01c-1.04,1.04-2.48,1.69-4.07,1.69h-8.6v8.82 c0,2.12-1.72,3.84-3.84,3.84c-2.12,0-3.84-1.72-3.84-3.84v-8.82h-9.73v8.82c0,2.12-1.72,3.84-3.84,3.84 c-2.12,0-3.84-1.72-3.84-3.84v-8.82H73.7v8.82c0,2.12-1.72,3.84-3.84,3.84c-2.12,0-3.84-1.72-3.84-3.84v-8.82h-9.73v8.82 c0,2.12-1.72,3.84-3.84,3.84c-2.12,0-3.84-1.72-3.84-3.84v-8.82h-9.73v8.82c0,2.12-1.72,3.84-3.84,3.84 c-2.12,0-3.84-1.72-3.84-3.84v-8.82h-9.73v8.82c0,2.12-1.72,3.84-3.84,3.84s-3.84-1.72-3.84-3.84v-8.82H5.75 c-1.59,0-3.03-0.65-4.07-1.69C0.65,82.69,0,81.25,0,79.67V19.01c0-1.59,0.65-3.03,1.69-4.07c0.12-0.12,0.25-0.23,0.38-0.33 c1.01-0.84,2.29-1.35,3.69-1.35H13.78L13.78,13.25z M115.2,20.93H7.68v56.81H115.2V20.93L115.2,20.93z"/></g></svg>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                            <h4 id="vramvm_value_cloudinsights"></h4>
+                        </div>
+                        <div class="row text-secondary">
+                           <h6>vRAM/VM</h6>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-auto">
+                          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101.15 122.88" height="70px" width="100px"><title>database</title><path d="M18,27.19c8.26,2.76,19.76,4.46,32.53,4.46S74.83,30,83.09,27.19c7.25-2.42,11.73-5.35,11.73-8.22s-4.48-5.79-11.73-8.21C74.83,8,63.33,6.29,50.56,6.29S26.29,8,18,10.76C2.65,15.89,2.22,21.91,18,27.19Zm62,70.5a5,5,0,1,1-4.94,5,4.94,4.94,0,0,1,4.94-5Zm0-28a4.95,4.95,0,1,1-4.94,5,4.94,4.94,0,0,1,4.94-5Zm0-29.13a4.95,4.95,0,1,1-4.94,4.95A4.94,4.94,0,0,1,80,40.59Zm14.8,45a39.45,39.45,0,0,1-9.76,4.62C76.18,93.18,64,95,50.56,95S24.94,93.18,16,90.21a39.87,39.87,0,0,1-9.68-4.55V104.5c.57,2.68,4.92,5.37,11.67,7.62,8.26,2.76,19.76,4.47,32.53,4.47s24.27-1.71,32.53-4.47c5-1.67,8.69-3.58,10.49-5.55,1.49-1.63,1.26-2.7,1.26-4.64V85.59ZM0,19C0,13.1,6.13,8.12,16,4.81,24.94,1.84,37.15,0,50.56,0S76.18,1.84,85.08,4.81,100,12.22,101,17.41a3.11,3.11,0,0,1,.18,1.06v86.74c0,6-11.49,11.33-16.07,12.86-8.9,3-21.11,4.81-34.52,4.81S24.94,121,16,118.07c-4.69-1.56-16-6.71-16-12.86v-2Q.07,61.09,0,19ZM6.36,76.64C6.93,79.32,11.28,82,18,84.26c8.26,2.76,19.76,4.47,32.53,4.47S74.83,87,83.09,84.26c7.25-2.42,11.73-5.35,11.73-8.21h0V57.73a39.79,39.79,0,0,1-9.78,4.62c-8.9,3-21.11,4.81-34.52,4.81S24.94,65.32,16,62.35A39.87,39.87,0,0,1,6.36,57.8V76.64Zm0-27.86c.57,2.68,4.92,5.37,11.67,7.62,8.26,2.76,19.76,4.47,32.53,4.47s24.27-1.71,32.53-4.47c7.25-2.42,11.73-5.35,11.73-8.21h0V28.52a40.15,40.15,0,0,1-9.78,4.62C76.18,36.11,64,38,50.56,38S24.94,36.11,16,33.14a39.87,39.87,0,0,1-9.68-4.56v20.2Z"/></svg>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                            <h4 id="storagevm_value_cloudinsights"></h4>
+                        </div>
+                        <div class="row text-secondary">
+                           <h6>Storage/VM</h6>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+            <center><small id="cloudinsights_message" class="text-danger mt-3 mb-3"></small></center>
+            <div class="card-footer">
+               <small class="text-muted ml-4">*These calculations are for estimation purposes only</small><br/>
+               <small class="text-muted ml-4">Go to <a href="https://bluexp.netapp.com/anf-avs/tcoestimator">NetApp ANF+AVS TCO Estimator</a></small>
+            </div>
+            <div class="row mb-3">
+                <!-- <div class="col text-left ml-5">
+                   <small class="text-muted">NetApp Solutions Engineering Team - <a href="mailto:d3b651c4.netapp.onmicrosoft.com@amer.teams.ms">Send feedback</a></small>
+                </div> -->
+                <div class="col text-right">
+                   <small class="text-muted">&copy;Copyright 2024, <a href="">NetApp Inc.(c)</a></small>
+                </div>
+    
+    
+             </div>
+         </div>
+         
+      </div>
+   </body>
+   <script type="text/javascript">
+     $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+     $(function () {
+       $('[data-toggle="tooltip"]').tooltip()
+     })
+   </script>
+   <script>
+        var extension = null;
+        function process_excel(reader){
+            var data = new Uint8Array(reader.result);
+            if (extension == "csv"){
+                var csvString = new TextDecoder().decode(data);
+                var vms_sheet_data = Papa.parse(csvString, { skipEmptyLines: true }).data;
+            } else if(extension == "xlsx"){
+                var work_book = XLSX.read(data, {type: 'array'});
+                var sheet_name =  work_book.SheetNames;
+                var vms_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+            }
+            console.log(vms_sheet_data)
+
+            if(vms_sheet_data.length > 0){
+                console.log("vmssheetdatalength if")
+                // Select Rows in vInfo Sheet based on checkbox selected
+                var selected_rows = [];
+                var powerstate_column_index = vms_sheet_data[0].findIndex(header => {return header === "powerState"});
+                for(var row = 1; row < vms_sheet_data.length; row++){
+                    if(document.getElementById("powered_on").checked && vms_sheet_data[row][powerstate_column_index] === "On"){
+                        selected_rows[selected_rows.length] = row;
+                    }
+                    if(document.getElementById("powered_off").checked && vms_sheet_data[row][powerstate_column_index] === "Off"){
+                        selected_rows[selected_rows.length] = row;
+                    }
+                }
+                console.log(selected_rows)
+                // Get average values
+                var cpu_column_index = vms_sheet_data[0].findIndex(header => {return header === "processors"});
+                var cpu_avg = 0;
+
+                var memory_column_index = vms_sheet_data[0].findIndex(header => {return header === "memory (GiB)"});
+                var memory_avg = 0;
+                
+
+                var vm_count = selected_rows.length;
+                console.log("vm_count ")
+                console.log(vm_count)
+                if(document.getElementById("utilized").checked){
+                    var storage_column_index = vms_sheet_data[0].findIndex(header => {return header === "capacity.used (GiB)"});
+                    var storage_avg = 0;
+                }
+                if(document.getElementById("provisioned").checked){
+                    var storage_column_index = vms_sheet_data[0].findIndex(header => {return header === "capacity.total (GiB)"});
+                    var storage_avg = 0;
+                }
+
+                // this logic is flawed fix this 
+                // left here -> take control
+                for(var row = 0; row < selected_rows.length; row++){
+                    if(!isNaN([selected_rows[row]][cpu_column_index])){
+                        cpu_avg += parseFloat(vms_sheet_data[selected_rows[row]][cpu_column_index]);
+                    }
+                    if(!isNaN(vms_sheet_data[selected_rows[row]][memory_column_index])){
+                        memory_avg += parseFloat(vms_sheet_data[selected_rows[row]][memory_column_index]);
+                    }
+                    if(document.getElementById("utilized").checked && !isNaN(vms_sheet_data[selected_rows[row]][storage_column_index])){
+                        console.log(Number(vms_sheet_data[selected_rows[row]][storage_column_index]))
+                        storage_avg += parseFloat(vms_sheet_data[selected_rows[row]][storage_column_index]);
+                    }
+                    if(document.getElementById("provisioned").checked &&  isNaN(vms_sheet_data[selected_rows[row]][storage_column_index])){
+                        storage_avg += parseFloat(vms_sheet_data[selected_rows[row]][storage_column_index]);
+                    }
+                }
+
+                console.log("values")
+                console.log(storage_avg)
+                console.log(memory_avg)
+                console.log(cpu_avg)
+                
+
+                // Get average value for CPU Column for vcpu/vm
+                total_cpu = cpu_avg;
+                cpu_avg /= selected_rows.length;
+
+                // Get average value for Memory Column for vram/vm
+                memory_avg /= selected_rows.length;
+
+
+                // Get average value for storage Column for storage/vm (Add option for provisioned mib later)
+                storage_avg /= selected_rows.length;
+                console.log("reached here end")
+                console.log([vm_count,cpu_avg,memory_avg,storage_avg,4])
+                return([vm_count,cpu_avg,memory_avg,storage_avg,4]);
+            } else {
+                console.log("in else")
+                return null;
+            }
+
+            // var esxhosts_sheet_index = sheet_name.findIndex(name => {return name === "ESX Hosts"});
+            // var esxhosts_sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[esxhosts_sheet_index]], {header:1});
+
+            // var vpcus_per_core_avg = 0;
+
+            // if(esxhosts_sheet_data.length > 0){
+            //     var vcpus_per_core_column_index = esxhosts_sheet_data[0].findIndex(header => {return header === "CPU Cores"});
+            //     var total_cores = 0;
+
+            //     // Get average value
+            //     for(var row = 1; row < esxhosts_sheet_data.length; row++){
+            //         if(typeof esxhosts_sheet_data[row][vcpus_per_core_column_index] == 'number'){
+            //             total_cores += esxhosts_sheet_data[row][vcpus_per_core_column_index];
+            //         }
+            //     }
+
+            //     // Get average value for vCPUs per Core Column for vcpu/pcore
+            //     // var cores_avg = total_cores / (esxhosts_sheet_data.length - 1);
+            //     if(total_cores > 0){
+            //         vpcus_per_core_avg = total_cpu / total_cores;
+            //     }
+            // }
+        }
+        var reader = new FileReader();
+        cloudinsights_file =  document.getElementById("cloudinsights_file");
+        cloudinsights_file.addEventListener('change', (event) => {
+
+            const f = cloudinsights_file.files[0];
+            if (f.name.endsWith('.csv')){
+                extension = "csv"
+            } else{
+                extension = "xlsx";
+            }
+
+            reader.readAsArrayBuffer(event.target.files[0]);
+            reader.onload = function(event){
+                getResults();
+            }
+
+        });
+        function getResults() {
+            output_list = process_excel(reader);
+            if(output_list[0] == undefined){
+                document.getElementById("cloudinsights_message").innerText = "Invalid Input";
+                document.getElementById("cloudinsights_output_div").style.display = "none";
+            } else {
+                document.getElementById("cloudinsights_message").innerText = "";
+                document.getElementById("cloudinsights_output_div").style.display = "block";
+            }
+            vmcount = parseFloat(output_list[0]).toFixed(0);
+            vcpupcore = parseFloat(output_list[4]).toFixed(2);
+            vcpuvm = parseFloat(output_list[1]).toFixed(2);
+            vramvm = parseFloat(parseFloat(output_list[2]).toFixed(2) / 1024).toFixed(2);
+            utilstoragevm = parseFloat(parseFloat(output_list[3]).toFixed(2) / 1024).toFixed(2);
+
+            document.getElementById("vm_value_cloudinsights").innerText = vmcount;
+            document.getElementById("vcpupcore_value_cloudinsights").innerText = vcpupcore;
+            document.getElementById("vcpuvm_value_cloudinsights").innerText = vcpuvm;
+            document.getElementById("vramvm_value_cloudinsights").innerText = vramvm;
+            document.getElementById("storagevm_value_cloudinsights").innerText = utilstoragevm;
+        }
+   </script>
+</html>
