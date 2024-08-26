@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>RVTools Parser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <meta name="author" content="Vedant Sethia, Dhruv Tyagi, Mohamed Niyaz">
+  </head>
+  <body>
+    <div class="overflow-hidden">
+      <div class="card p-4 m-5">
+        <div class="card-body">
+          <div class="row border-bottom mb-2">
+            <div class="col float-left mb-3">
+              <span class="h5">NetApp RVTools Parser</span>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Select the RVTools Excel file:</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" id="fileInput1" class="custom-file-input" onchange="handleFileSelect(event, 1)">
+              <label class="custom-file-label" for="excel_file">Choose file</label>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Select the DISKINFO Excel file:</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" id="fileInput2" class="custom-file-input" onchange="handleFileSelect(event, 2)">
+              <label class="custom-file-label" for="excel_file">Choose file</label>
+            </div>
+          </div>
+          <button id="submit_buttom" class="btn btn-primary mb-3" onclick="button_toggle();compareAndAdd();button_toggle();">Submit</button>
+          <div id="output"></div>
+        </div>
+        <script>
+          $('#fileInput1').on('change', function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).next('.custom-file-label').html(fileName);
+          })
+          $('#fileInput2').on('change', function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).next('.custom-file-label').html(fileName);
+          })
+        </script>
+        <script>
+          let sourceData1, sourceData2;
+
+          function handleFileSelect(event, fileNumber) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+              if (fileNumber === 1) {
+                sourceData1 = new Uint8Array(event.target.result);
+              } else if (fileNumber === 2) {
+                sourceData2 = new Uint8Array(event.target.result);
+              }
+            };
+            reader.readAsArrayBuffer(file);
+          }
+
+          function button_toggle() {
+            var btn = document.getElementById('submit_buttom');
+            if (btn.disabled) {
+              btn.disabled = false;
+              btn.innerText = 'Submit';
+            } else {
+              btn.disabled = true;
+              btn.innerText = 'Processing...';
+            }
+          }
+
+          function compareAndAdd() {
+            if (sourceData1 != undefined && sourceData2 != undefined) {
+              const workbook1 = XLSX.read(sourceData1, {
+                type: 'array'
+              });
+              const workbook2 = XLSX.read(sourceData2, {
+                type: 'array'
+              });
+              //   const sheetName1 = workbook1.SheetNames[0];
+              const sheetName1 = "vInfo";
+              const sheetName2 = workbook2.SheetNames[0];
+              const sheet1 = workbook1.Sheets[sheetName1];
+              const sheet2 = workbook2.Sheets[sheetName2];
+              const data1 = XLSX.utils.sheet_to_json(sheet1, {
+                header: 1
+              });
+              const data2 = XLSX.utils.sheet_to_json(sheet2, {
+                header: 1
+              });
+              // Find the column indices for column "name" in both files
+              const columnNameIndex1 = data1[0].indexOf("VM");
+              const columnNameIndex2 = data2[0].indexOf("Name");
+              // Create a new column header in the second file for the data to be added
+              const newColumnIndex = data2[0].length;
+              data2[0][newColumnIndex] = "In use MiB";
+              // Iterate over rows in the second file and compare to the first file
+              for (let i = 1; i < data2.length; i++) {
+                const row2 = data2[i];
+                const valueToMatch = row2[columnNameIndex2];
+                // Find the matching row in the first file
+                const row1 = data1.find(row => row[columnNameIndex1] === valueToMatch);
+                if (row1) {
+                  // If a match is found, add the corresponding value from the first file's "AQ" column
+                  row2[newColumnIndex] = row1[42];
+                }
+              }
+              // Create a new sheet in the second file with the updated data
+              const updatedSheet2 = XLSX.utils.aoa_to_sheet(data2);
+              // Create a new workbook with the updated sheet
+              const updatedWorkbook2 = XLSX.utils.book_new();
+              XLSX.utils.book_append_sheet(updatedWorkbook2, updatedSheet2, sheetName2);
+              // Save the updated workbook to a new file
+              const updatedFile2 = './RVTools_Output.xlsx';
+              XLSX.writeFile(updatedWorkbook2, updatedFile2);
+              document.getElementById("output").innerHTML = "<div class='text-success'> Success!! </div>";
+            } else {
+              document.getElementById("output").innerHTML = " <div class='text-danger'> Invalid Input </div>";
+            }
+          }
+        </script>
+  </body>
+</html>
