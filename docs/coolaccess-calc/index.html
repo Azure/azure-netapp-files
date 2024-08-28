@@ -22,7 +22,7 @@
             /* ...Other Configuration Options... */
         }});
         </script>
-    <title>Azure NetApp Files - standard storage with cool access cost savings estimator</title>
+    <title>Azure NetApp Files storage with cool access cost savings estimator</title>
     <script type="text/javascript">
         function createChart() {
             canvas = document.getElementById('myChart');
@@ -329,6 +329,7 @@
                 "Canada Central": 0.000089,
                 "Canada East": 0.000089,
                 "Brazil South": 0.000144,
+                "Brazil Southeast": 0.000188,
                 "US Gov Arizona": 0.000139,
                 "US Gov Texas": 0.000103,
                 "US Gov Virginia": 0.000139,
@@ -376,6 +377,7 @@
                 "Canada Central": 0.021800,
                 "Canada East": 0.021800,
                 "Brazil South": 0.035200,
+                "Brazil Southeast": 0.0458,
                 "US Gov Arizona": 0.033900,
                 "US Gov Texas": 0.025000,
                 "US Gov Virginia": 0.033900,
@@ -400,23 +402,25 @@
                 before_rate = standard_region_rates[active_region] * discount_percent;
                 cool_rate = standardcool_region_rates[active_region] * discount_percent;
                 //document.getElementById("tier_label").innerText = "standard";
-                document.getElementById("tier_warning").classList.remove('text-danger')
-                document.getElementById("tier_warning").classList.add('text-muted')
+                //document.getElementById("tier_warning").classList.remove('text-danger')
+                //document.getElementById("tier_warning").classList.add('text-muted')
             };
 
-            //if (document.getElementById("premium").checked) {
-              //  before_rate = premium_region_rates[active_region] * discount_percent;
+            if (document.getElementById("premium").checked) {
+                before_rate = premium_region_rates[active_region] * discount_percent;
+                cool_rate = standardcool_region_rates[active_region] * discount_percent;
                 //document.getElementById("tier_label").innerText = "premium";
-              //  document.getElementById("tier_warning").classList.remove('text-muted')
-              //  document.getElementById("tier_warning").classList.add('text-danger')
-            //};
+                //document.getElementById("tier_warning").classList.remove('text-muted')
+                //document.getElementById("tier_warning").classList.add('text-danger')
+            };
 
-            //if (document.getElementById("ultra").checked) {
-              //  before_rate = ultra_region_rates[active_region] * discount_percent;
+            if (document.getElementById("ultra").checked) {
+                before_rate = ultra_region_rates[active_region] * discount_percent;
+                cool_rate = standardcool_region_rates[active_region] * discount_percent;
                 //document.getElementById("tier_label").innerText = "ultra";
-              //  document.getElementById("tier_warning").classList.remove('text-muted')
-              //  document.getElementById("tier_warning").classList.add('text-danger')
-            //};
+                //document.getElementById("tier_warning").classList.remove('text-muted')
+                //document.getElementById("tier_warning").classList.add('text-danger')
+            };
             
             volume_in_gb = data_size * 1024; 
         
@@ -503,12 +507,12 @@
                 hot_hours = (coolnessperiod * 24) % month_hours //how many hours of the month are hot
                 cool_hours = month_hours - hot_hours; //how many hours of the month are cool
 
-                month0_standard_cost = (volume_in_gb * standard_region_rates[active_region]) * month_hours
+                month0_standard_cost = (volume_in_gb * before_rate) * month_hours
 
                 month12_storedon_cool = (volume_in_gb * (coolpercent/100)); //- (volume_in_gb * (coolpercent/100)); //* (retrieve_percent/100)); //how much data is stored on cool
                 
-                month11_standard_cost = (volume_in_gb * standard_region_rates[active_region]) * hot_hours; //first portion of month one stored on hot
-                month12_standard_cost = ((pool_size - month12_storedon_cool) * standard_region_rates[active_region]) * cool_hours; //second portion of month one
+                month11_standard_cost = (volume_in_gb * before_rate) * hot_hours; //first portion of month one stored on hot
+                month12_standard_cost = ((pool_size - month12_storedon_cool) * before_rate) * cool_hours; //second portion of month one
 
                 ctstandardcostmonth1 = month11_standard_cost + month12_standard_cost;
 
@@ -526,7 +530,7 @@
                 
                 month2_storedon_cool = (volume_in_gb * (coolpercent/100)) - (volume_in_gb * (coolpercent/100)) * retrieve_percent/100; //month two accounting for data brought back previous month
                 //month2_storedon_cool = (volume_in_gb * (coolpercent/100)); //how much data is stored on cool
-                month2_standard_cost = (pool_size - month2_storedon_cool) * standard_region_rates[active_region] * month_hours;
+                month2_standard_cost = (pool_size - month2_storedon_cool) * before_rate * month_hours;
 
                 ctstandardcostmonth2 = month2_standard_cost;
                 
@@ -631,7 +635,7 @@
         </div>
         <div class="modal-body">
             <div class="container" >
-                <p><strong>IMPORTANT: </strong>This tool is designed to estimate the potential savings when enabling <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction" target="_blank">standard storage with cool access in Azure NetApp Files</a>. Your actual savings will vary depending on several factors. These factors may include, but are not limited to:</p>
+                <p><strong>IMPORTANT: </strong>This tool is designed to estimate the potential savings when enabling <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction" target="_blank">Azure NetApp Files storage with cool access</a>. Your actual savings will vary depending on several factors. These factors may include, but are not limited to:</p>
                 <ul>
                     <li>
                         actual size of data marked as "cold"
@@ -644,8 +648,8 @@
                     </li>
                 </ul>
                 <hr>
-                <h5>How does standard storage with cool access lower my storage costs?</h5>
-                <p>Using Azure NetApp Files standard storage with cool access, you can configure inactive data to move from Azure NetApp Files standard service-level storage to an Azure storage account (the cool tier). In doing so, data blocks that have not been accessed for some time will be kept and stored in the cool tier, resulting in cost savings.</p>
+                <h5>How does Azure NetApp Files storage with cool access lower my storage costs?</h5>
+                <p>Using Azure NetApp Files storage with cool access, you can configure inactive data to move from Azure NetApp Files Standard, Premium, or Ultra service-level storage to an Azure storage account (the cool tier). In doing so, data blocks that have not been accessed for some time will be kept and stored in the cool tier, resulting in cost savings.</p>
                 <p>There are network transfer fees as data moves to and from the cool tier.</p>
                 <p>Maximum cost savings are reached once data tiering is complete and a steady state is achieved.</p>
                 <hr>
@@ -656,13 +660,13 @@
                 <p><strong>What percentage of this data is considered cool or infrequently accessed?</strong> How much data do you expect to move to the cool tier? The higher the the value, the more you'll save.</p>
                 <p><strong>After how many days should this data be considered cool?</strong> Select a value between 2 and 183, this represents the number a days your data needs to be unaccessed before being moved to the cool tier.</p>
                 <p><strong>Per month, what percentage of this cool data are you likely to retrieve?</strong> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</p>
-                <p><strong>For more information on standard storage with cool access, check out <a href="https://learn.microsoft.com/azure/azure-netapp-files/manage-cool-access" target="_blank">Manage Azure NetApp Files standard storage with cool access</a>!</strong></p>
+                <p><strong>For more information on Azure NetApp Files storage with cool access, check out <a href="https://learn.microsoft.com/azure/azure-netapp-files/manage-cool-access" target="_blank">Manage Azure NetApp Files storage with cool access</a>!</strong></p>
                 <!--<div class="float-end"><a href="https://youtu.be/wmS5Eiwejv8?si=UdDIgMv8h180HwLt" target="_blank"><img src="./qbsapthumb.png" height="120" /></a>
                 </div>-->
                 <hr>
                         <h6>Info / Links</h6>
                         
-                        <a href="https://learn.microsoft.com/en-us/azure/azure-netapp-files/" target="_blank">Azure NetApp Files documentation</a>
+                        <a href="https://learn.microsoft.com/azure/azure-netapp-files/" target="_blank">Azure NetApp Files documentation</a>
 
                         <br><i class="bi bi-bug"></i> Find a bug? Feature request? Suggestion? Please submit an issue on <a href="https://github.com/azure/azure-netapp-files/issues" target="_blank">GitHub</a>.
                 
@@ -686,8 +690,7 @@
                         <img src="anficon.png" height="50">
                     </div>
                     <div class="col">
-                        <span class="h6">Azure NetApp Files </span>
-                        <span class="h8"> - standard storage with cool access cost savings estimator</span>
+                        <span class="h6">Azure NetApp Files storage with cool access cost savings estimator </span>
                     </div>
                     <!-- Button trigger modal -->
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
@@ -695,66 +698,51 @@
   </button>
                     <div class="col-md-auto" class="input-group mb-3">    
                         <select input oninput="getResults()" class="custom-select float-right" id="regionselector">
-                            <option value="Central US" selected>Central US</option>
-                            <option value="East US">East US</option>
-                            <option value="East US 2">East US 2</option>
-                            <option value="North Central US">North Central US</option>
-                            <option value="South Central US">South Central US</option>
-                            <option value="West US">West US</option>
-                            <option value="West US 2">West US 2</option>
-                            <option value="West US 3">West US 3</option>
-
-                            <option value="UK South">UK South</option>
-                            <option value="UK West">UK West</option>
-
-                            <option value="UAE Central">UAE Central</option>
-                            <option value="UAE North">UAE North</option>
-
-                            <option value="Switzerland North">Switzerland North</option>
-                            <option value="Switzerland West">Switzerland West</option>
-
-                            <option value="Sweden Central">Sweden Central</option>
-
-
-                            <option value="Qatar Central">Qatar Central</option>
-
-                            <option value="Norway East">Norway East</option>
-                            <option value="Norway West">Norway West</option>
-
-                            <option value="Korea Central">Korea Central</option>
-                            <option value="Korea South">Korea South</option>
-
-                            <option value="Japan East">Japan East</option>
-                            <option value="Japan West">Japan West</option>
-
-                            <option value="Central India">Central India</option>
-                            <option value="South India">South India</option>
-
-                            <option value="Germany North">Germany North</option>
-                            <option value="Germany West Central">Germany West Central</option>
-
-                            <option value="France Central">France Central</option>
-
-                            <option value="North Europe">North Europe</option>
-                            <option value="West Europe">West Europe</option>
-
-                            <option value="Canada Central">Canada Central</option>
-                            <option value="Canada East">Canada East</option>
-
-                            <option value="Brazil South">Brazil South</option>
-
-                            <option value="US Gov Arizona">US Gov Arizona</option>
-                            <option value="US Gov Virginia">US Gov Virginia</option>
-                            <option value="US Gov Texas">US Gov Texas</option>
-
                             <option value="Australia Central">Australia Central</option>
                             <option value="Australia Central 2">Australia Central 2</option>
                             <option value="Australia East">Australia East</option>
                             <option value="Australia Southeast">Australia Southeast</option>
-                            
+                            <option value="Brazil South">Brazil South</option>
+                            <option value="Brazil Southeast">Brazil Southeast</option>
+                            <option value="Canada Central">Canada Central</option>
+                            <option value="Canada East">Canada East</option>
+                            <option value="Central India">Central India</option>
+                            <option value="Central US" selected>Central US</option>
                             <option value="East Asia">East Asia</option>
-                            <option value="Southeast Asia">Southeast Asia</option>
+                            <option value="East US">East US</option>
+                            <option value="East US 2">East US 2</option>
+                            <option value="France Central">France Central</option>
+                            <option value="Germany North">Germany North</option>
+                            <option value="Germany West Central">Germany West Central</option>
+                            <option value="Israel Central">Israel Central</option>
+                            <option value="Italy North">Italy North</option>
+                            <option value="Japan East">Japan East</option>
+                            <option value="Japan West">Japan West</option>
+                            <option value="Korea Central">Korea Central</option>
+                            <option value="Korea South">Korea South</option>
+                            <option value="North Central US">North Central US</option>
+                            <option value="North Europe">North Europe</option>
+                            <option value="Norway East">Norway East</option>
+                            <option value="Norway West">Norway West</option>
+                            <option value="Qatar Central">Qatar Central</option>
                             <option value="South Africa North">South Africa North</option>
+                            <option value="South Central US">South Central US</option>
+                            <option value="South India">South India</option>
+                            <option value="Southeast Asia">Southeast Asia</option>
+                            <option value="Switzerland North">Switzerland North</option>
+                            <option value="Switzerland West">Switzerland West</option>
+                            <option value="Sweden Central">Sweden Central</option>
+                            <option value="UAE Central">UAE Central</option>
+                            <option value="UAE North">UAE North</option>
+                            <option value="UK South">UK South</option>
+                            <option value="UK West">UK West</option>
+                            <option value="US Gov Arizona">US Gov Arizona</option>
+                            <option value="US Gov Virginia">US Gov Virginia</option>
+                            <option value="US Gov Texas">US Gov Texas</option>
+                            <option value="West Europe">West Europe</option>
+                            <option value="West US">West US</option>
+                            <option value="West US 2">West US 2</option>
+                            <option value="West US 3">West US 3</option>
                         </select>
                     </div>   
                 </div>          
@@ -765,14 +753,14 @@
                     <input oninput="getResults()" type="text" value="500" class="form-control my-1" aria-label="" id="datasize">
                     <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-primary my-1">
-                        <input onclick="getResults()" name="begintier" type="radio" value="standard" id="standard" checked>Standard</input>
-                        </label>
-                        <!--<label class="btn btn-outline-primary my-1">
-                        <input onclick="getResults()" name="begintier" type="radio" value="premium" id="premium">Premium</input>
+                        <input onchange="getResults()" name="test" type="radio" value="standard" id="standard" checked>Standard</input>
                         </label>
                         <label class="btn btn-outline-primary my-1">
-                        <input onclick="getResults()" name="begintier" type="radio" value="ultra" id="ultra">Ultra</input>
-                        </label>-->
+                        <input onchange="getResults()" name="test" type="radio" value="premium" id="premium">Premium</input>
+                        </label>
+                        <label class="btn btn-outline-primary my-1">
+                        <input onchange="getResults()" name="test" type="radio" value="ultra" id="ultra">Ultra</input>
+                        </label>
                     </div>
                 </div>
                 <br>
@@ -838,7 +826,7 @@
                         <div class="col">
                             <br>
                             <div class="bg-light border">
-                                <h5 class="text-center"><span id="without_text">standard storage cost without cool access</span></h5>
+                                <h5 class="text-center"><span id="without_text">storage cost without cool access</span></h5>
                                 <div class="container borderless">  
                                     <h5 id="standard_total_cost"></h5>        
                                 </div>
@@ -976,10 +964,9 @@
             </div>
             <div class="card-footer">
                 <div class="float-left">
-                    <small class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
+                    <small class="text-muted">source: <a href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
                     <br>
-                    <small id="tier_warning" class="text-danger">standard tier with cool access is only supported with Azure NetApp Files standard tier</small><br>
-                    <small class="text-muted">standard storage with cool access is subject to <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction#supported-regions" target="_blank">regional availability</a></small><br>
+                    <small class="text-muted">Azure NetApp Files storage with cool access is subject to <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction#supported-regions" target="_blank">regional availability</a></small><br>
                     <small class="text-muted">results are for estimation purposes only and your actual savings may vary</small><br>
                     <small class="text-muted">monthly costs are based on a 730 hour billing month</small><br>
                 </div>
