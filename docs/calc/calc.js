@@ -63,13 +63,13 @@ function getResults(convert) {
     standard_tputpertib = 16;
     premium_tputpertib = 64;
     ultra_tputpertib = 128;
-    min_vol_capacity = 100;
+    min_vol_capacity = 50;
     max_vol_capacity = 102400;
-    max_largevol_capacity = 102400 * 5;
-    min_pool_capacity = 2;
-    max_pool_capacity = 500;
-    min_tput = 1.56;
-    max_tput = 10240 * 1;
+    max_largevol_capacity = 1024 * 1024;
+    min_pool_capacity = 1;
+    max_pool_capacity = 2048;
+    min_tput = 1.56/2;
+    max_tput = 12800 * 1;
     max_standard_tput = 1600 * 1;
     max_premium_tput = 6400 * 1;
     max_ultra_tput = 10240 * 1;
@@ -464,8 +464,9 @@ function getResults(convert) {
     }
 
     if (volume_in_gb > 102400) {
-        max_premium_tput = 6400 * 1;
-        max_ultra_tput = 10240 * 1;
+        max_standard_tput = 12800 * 1;
+        max_premium_tput = 12800 * 1;
+        max_ultra_tput = 12800 * 1;
     }
 
     //CRR calculations
@@ -488,7 +489,7 @@ function getResults(convert) {
         currencyPerMonth = '(USD/month)'
         document.title = "ANF パフォーマンス計算ツール";
         document.getElementById("headerTitle").innerHTML = '&nbsp;&nbsp;Azure NetApp Files パフォーマンス計算ツール <small>(<a href="https://azure.github.io/azure-netapp-files/calc/advanced/">advanced</a>)</small></span>';
-        document.getElementById("volumewarning").innerHTML = '最小サイズは 100 GiB、最大サイズは 500TiB.';
+        document.getElementById("volumewarning").innerHTML = '最小サイズは 50 GiB、最大サイズは 1024TiB.';
         document.getElementById("tputwarning").innerHTML = '特定サイズボリュームの性能を確認するには「0」を、スループットからボリュームサイズを逆算するにはループットを入力してください。最大スループットは'+ max_tput + ' MiB/sとなります。';
         document.getElementById("crrwarning").innerHTML = 'レプリケーションやバックアップのコストを計算するために、日次データの変化率（.1～100）を指定します';
         document.getElementById("volumeSizeLabel").innerHTML = 'ボリューム サイズ';
@@ -534,7 +535,7 @@ function getResults(convert) {
         currencyPerMonth = '(USD/month)'
         document.title = "Azure NetApp Files Performance Calculator";
         document.getElementById("headerTitle").innerHTML = '&nbsp;&nbsp;Azure NetApp Files Performance Calculator <small>(<a href="https://azure.github.io/azure-netapp-files/calc/advanced/">advanced</a>)</small></span>';
-        document.getElementById("volumewarning").innerHTML = 'Minimum volume size is 100 GiB. Maximum volume size is 500 TiB.';
+        document.getElementById("volumewarning").innerHTML = 'Minimum volume size is 50 GiB. Maximum volume size is 1024 TiB.';
         document.getElementById("tputwarning").innerHTML = 'Enter 0 to size for capacity only. Maximum throughput is '+ max_tput + ' MiB/s.';
         document.getElementById("crrwarning").innerHTML = 'Specify percent daily change rate (.1 - 100) to calculate replication and/or backup costs.';
         document.getElementById("volumeSizeLabel").innerHTML = 'Volume Size';
