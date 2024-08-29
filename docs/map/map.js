@@ -66,6 +66,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -82,6 +83,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -98,6 +100,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -114,6 +117,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -130,6 +134,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -146,6 +151,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -162,6 +168,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -178,6 +185,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -194,6 +202,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -210,6 +219,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -226,6 +236,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -242,6 +253,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -258,6 +270,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -274,6 +287,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -290,6 +304,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -306,6 +321,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
@@ -322,6 +338,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -338,6 +355,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": true
@@ -354,6 +372,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -370,6 +389,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
@@ -386,6 +406,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -402,6 +423,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -418,6 +440,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -434,6 +457,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -450,6 +474,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -466,6 +491,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
@@ -482,6 +508,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -498,6 +525,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -514,6 +542,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -530,6 +559,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
@@ -546,6 +576,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -562,6 +593,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -578,6 +610,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -594,6 +627,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -610,6 +644,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
@@ -626,6 +661,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -642,6 +678,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -658,6 +695,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -674,6 +712,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -690,6 +729,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -706,6 +746,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -722,6 +763,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -738,6 +780,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false
@@ -754,6 +797,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -770,6 +814,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -858,6 +903,15 @@ function filterCMKregions(item, index) {
     }
 };
 
+var CMKHSMregions = [];
+regionlist.forEach(filterCMKHSMregions);
+//this function build an array based on which regions have 'cmkhsm' set to true
+function filterCMKHSMregions(item, index) {
+    if (item.cmkhsm == true) {
+        CMKHSMregions.push(item)
+    }
+};
+
 var DoubleEncryptionregions = [];
 regionlist.forEach(filterDoubleEncryptionregions);
 //this function build an array based on which regions have 'doubleencryption' set to true
@@ -939,6 +993,7 @@ function initMap() {
     document.getElementById("backupRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/backup-introduction#supported-regions">' + Backupregions.length + '</a>'
     document.getElementById("largevolumesRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations#supported-regions">' + Largevolumesregions.length + '</a>'
     document.getElementById("cmkRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys#supported-regions">' + CMKregions.length + '</a>'
+    document.getElementById("cmkhsmRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions">' + CMKHSMregions.length + '</a>'
     document.getElementById("doubleencryptionRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest">' + DoubleEncryptionregions.length + '</a>'
     document.getElementById("standardcoolRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">' + Standardcoolregions.length + '</a>'
 
@@ -960,7 +1015,7 @@ function initMap() {
                 position: item.location,
                 htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
                 popup: new atlas.Popup({
-                    content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes +  '<br>customer-managed keys: ' + item.cmk +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                    content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                     pixelOffset: [0, -50],
                     fillColor: 'rgba(0,0,0,0.6)'
                 })
@@ -1066,6 +1121,11 @@ function updateMap() {
         displayedList.forEach(filterCMKregions);
         displayedList = CMKregions;
     }
+    if (document.getElementById("cmkhsm").checked) {
+        CMKHSMregions = [];
+        displayedList.forEach(filterCMKHSMregions);
+        displayedList = CMKHSMregions;
+    }
     if (document.getElementById("doubleencryption").checked) {
         DoubleEncryptionregions = [];
         displayedList.forEach(filterDoubleEncryptionregions);
@@ -1109,7 +1169,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes +  '<br>customer-managed keys: ' + item.cmk +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
@@ -1175,7 +1235,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon_gray.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes +  '<br>customer-managed keys: ' + item.cmk +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
