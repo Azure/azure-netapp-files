@@ -33,6 +33,7 @@ var regionlocation = {
     southcentralus: [-98.5, 29.4167],
     southeastasia: [103.833, 1.283],
     southindia: [80.1636, 12.9822],
+    spaincentral: [40.4198,-3.7231],
     swedencentral: [17.14127, 60.67488],
     switzerlandnorth: [8.564572,47.451542],
     switzerlandwest: [6.143158,46.204391],
@@ -580,6 +581,23 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
+    },
+    {
+        "shortname": "spaincentral",
+        "longname": "Spain Central",
+        "location": regionlocation.spaincentral,
+        "crrregions": ["swedencentral"],
+        "czr": true,
+        "snf": true,
+        "snfedit": true,
+        "avsdatastore": true,
+        "backup": false,
+        "largevolumes": false,
+        "cmk": true,
+        "cmkhsm": true,
+        "doubleencryption": true,
+        "standardcool": true,
+        "azplacement": true    
     },
     {
         "shortname": "swedencentral",
