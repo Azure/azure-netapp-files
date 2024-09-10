@@ -462,6 +462,28 @@
     "subscriptionId": null
   },
   {
+    "displayName": "Spain Central",
+    "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/francecentral",
+    "metadata": {
+      "geographyGroup": "Europe",
+      "latitude": "40.4259",
+      "longitude": "3.4209",
+      "pairedRegion": [
+        {
+          "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/francesouth",
+          "name": "spaincentral",
+          "subscriptionId": null
+        }
+      ],
+      "physicalLocation": "Madrid",
+      "regionCategory": "Recommended",
+      "regionType": "Physical"
+    },
+    "name": "francecentral",
+    "regionalDisplayName": "(Europe) Spain Central",
+    "subscriptionId": null
+  },
+  {
     "displayName": "France Central",
     "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/francecentral",
     "metadata": {
