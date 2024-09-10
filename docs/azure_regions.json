@@ -463,15 +463,15 @@
   },
   {
     "displayName": "Spain Central",
-    "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/francecentral",
+    "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/spaincentral",
     "metadata": {
       "geographyGroup": "Europe",
       "latitude": "40.4259",
       "longitude": "3.4209",
       "pairedRegion": [
         {
-          "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/francesouth",
-          "name": "spaincentral",
+          "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/swedencentral",
+          "name": "swedencentral",
           "subscriptionId": null
         }
       ],
@@ -479,7 +479,7 @@
       "regionCategory": "Recommended",
       "regionType": "Physical"
     },
-    "name": "francecentral",
+    "name": "spaincentral",
     "regionalDisplayName": "(Europe) Spain Central",
     "subscriptionId": null
   },
