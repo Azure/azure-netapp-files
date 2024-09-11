@@ -51,9 +51,6 @@ var regionlocation = {
 };
 
 
-
-
-
 var regionlist = [
     {
         "shortname": "australiacentral",
@@ -263,7 +260,7 @@ var regionlist = [
         "shortname": "eastus2",
         "longname": "East US 2",
         "location": regionlocation.eastus2,
-        "crrregions": ["southcentralus","centralus","eastus","northcentralus","westus2"],
+        "crrregions": ["southcentralus","centralus","eastus","northcentralus","westus2","westus3"],
         "czr": true,
         "snf": true,
         "snfedit": true,
@@ -603,7 +600,7 @@ var regionlist = [
         "shortname": "swedencentral",
         "longname": "Sweden Central",
         "location": regionlocation.swedencentral,
-        "crrregions": [],
+        "crrregions": ["spaincentral"],
         "czr": true,
         "snf": true,
         "snfedit": true,
@@ -824,7 +821,7 @@ var regionlist = [
         "shortname": "westus3",
         "longname": "West US 3",
         "location": regionlocation.westus3,
-        "crrregions": ["eastus", "westus2"],
+        "crrregions": ["eastus", "eastus2", "westus2"],
         "czr": true,
         "snf": true,
         "snfedit": true,
