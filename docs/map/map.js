@@ -33,7 +33,7 @@ var regionlocation = {
     southcentralus: [-98.5, 29.4167],
     southeastasia: [103.833, 1.283],
     southindia: [80.1636, 12.9822],
-    spaincentral: [40.4259,3.4209],
+    spaincentral: [3.4209, 40.4259],
     swedencentral: [17.14127, 60.67488],
     switzerlandnorth: [8.564572,47.451542],
     switzerlandwest: [6.143158,46.204391],
