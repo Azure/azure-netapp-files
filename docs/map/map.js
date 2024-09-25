@@ -200,7 +200,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "cmkhsm": false,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
@@ -557,7 +557,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": false,
         "cmk": true,
-        "cmkhsm": false,
+        "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false
@@ -778,7 +778,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "cmkhsm": false,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true
