@@ -607,9 +607,9 @@ function getResults(convert) {
         document.getElementById("init_bkup_daily_cell").innerText = (volume_in_gb * backup_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
         document.getElementById("init_bkup_weekly_cell").innerText = (volume_in_gb * backup_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
         document.getElementById("inc_bkup_daily_cell").innerText = (((monthly_delta / 30) * 30) * backup_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
-        document.getElementById("inc_bkup_weekly_cell").innerText = (((monthly_delta / 30) * 4) * backup_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+        document.getElementById("inc_bkup_weekly_cell").innerText = (((monthly_delta / 30) * 7 * 4) * backup_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
         document.getElementById("month1_bkup_daily_cell").innerText = ((((monthly_delta / 30) * 30) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
-        document.getElementById("month1_bkup_weekly_cell").innerText = ((((monthly_delta / 30) * 4) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+        document.getElementById("month1_bkup_weekly_cell").innerText = ((((monthly_delta / 30) * 7 * 4) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
     }
 
     document.getElementById("size_standard_cell").classList.remove('text-primary');
