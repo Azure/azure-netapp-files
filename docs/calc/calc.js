@@ -602,7 +602,7 @@ function getResults(convert) {
         document.getElementById("inc_hourly_cell").innerText = ((((volume_in_gb * (change_rate/100)) * hourly_rate * .65))*31).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         document.getElementById("inc_daily_cell").innerText = ((((volume_in_gb * (change_rate/100)) * dailyplus_rate * .65))*31).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         document.getElementById("month1_10min_cell").innerText = ((volume_in_gb * tenmin_rate * .65) + ((((volume_in_gb * (change_rate/100)) * tenmin_rate * .65))*31)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-                document.getElementById("month1_hourly_cell").innerText = ((volume_in_gb * hourly_rate * .65) + ((((volume_in_gb * (change_rate/100)) * hourly_rate * .65))*31)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        document.getElementById("month1_hourly_cell").innerText = ((volume_in_gb * hourly_rate * .65) + ((((volume_in_gb * (change_rate/100)) * hourly_rate * .65))*31)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         document.getElementById("month1_daily_cell").innerText = ((volume_in_gb * dailyplus_rate * .65) +  ((((volume_in_gb * (change_rate/100)) * dailyplus_rate * .65))*31)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         
         document.getElementById("init_bkup_daily_cell").innerText = (volume_in_gb * backup_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
@@ -615,7 +615,7 @@ function getResults(convert) {
 
         document.getElementById("month1_bkup_daily_cell").innerText = ((((monthly_delta / 30) * 30) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
         document.getElementById("month1_bkup_weekly_cell").innerText = ((((monthly_delta / 30) * 7 * 4) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
-        document.getElementById("month1_bkup_monthly_cell").innerText = (((monthly_delta) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+        document.getElementById("month1_bkup_monthly_cell").innerText = (((monthly_delta / 30) * backup_rate) + (volume_in_gb * backup_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
     }
 
     document.getElementById("size_standard_cell").classList.remove('text-primary');
