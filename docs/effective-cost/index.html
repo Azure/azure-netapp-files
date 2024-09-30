@@ -337,10 +337,15 @@
             }
            
             var coolpercent = coolslider.slider('getValue');
-        
+            hot_percent = (100 - coolpercent)/100;
+            cool_percent = coolpercent/100;
+                
             var coolnessperiod = coolnessslider.slider('getValue');
 
             data_size = document.getElementById("datasize").value;
+            retained_snaps = document.getElementById("ms4").value;
+            daily_change = document.getElementById("ms5").value;
+
             retrieve_percent = retrieveslider.slider('getValue');
             active_region = document.getElementById("regionselector").value;
 
@@ -350,10 +355,10 @@
                 
                 // Calculate the result of before_rate * month_hours
                 var before_rate_month_hours_result = before_rate * month_hours;
+                var cool_rate_month_hours_result = cool_rate * month_hours;
 
                 // Set the value to the element with ID 'before_rate_month_hours'
-                document.getElementById("before_rate_month_hours").innerText = before_rate_month_hours_result;
-                
+                document.getElementById("logical_list_price_output").innerText = before_rate_month_hours_result;
             
                 //document.getElementById("tier_label").innerText = "standard";
                 //document.getElementById("tier_warning").classList.remove('text-danger')
@@ -368,7 +373,7 @@
                 var before_rate_month_hours_result = before_rate * month_hours;
 
                 // Set the value to the element with ID 'before_rate_month_hours'
-                document.getElementById("before_rate_month_hours").innerText = before_rate_month_hours_result;
+                document.getElementById("logical_list_price_output").innerText = before_rate_month_hours_result;
 
                 //document.getElementById("tier_label").innerText = "premium";
                 //document.getElementById("tier_warning").classList.remove('text-muted')
@@ -383,15 +388,80 @@
                 var before_rate_month_hours_result = before_rate * month_hours;
 
                 // Set the value to the element with ID 'before_rate_month_hours'
-                document.getElementById("before_rate_month_hours").innerText = before_rate_month_hours_result;
+                document.getElementById("logical_list_price_output").innerText = before_rate_month_hours_result;
 
                 //document.getElementById("tier_label").innerText = "ultra";
                 //document.getElementById("tier_warning").classList.remove('text-muted')
                 //document.getElementById("tier_warning").classList.add('text-danger')
             };
             
-            volume_in_gb = data_size * 1024; 
-        
+                //Universal Values
+                volume_in_gb = data_size * 1024; 
+                //No Snap Values
+                total_nosnap_hot_gib = (volume_in_gb) * (hot_percent)
+                total_nosnap_cool_gib = (volume_in_gb) * (cool_percent)
+                total_nosnap_network_gib = (volume_in_gb * (retrieve_percent/100) * cool_percent)
+
+
+                //With Snap Values
+                snaps_in_gb = data_size * 1024 * daily_change * retained_snaps;
+                total_withsnap_volume_in_gb = volume_in_gb + snaps_in_gb;
+                total_withsnap_hot_gib = (volume_in_gb) * (hot_percent)
+                total_withsnap_cool_gib = (volume_in_gb * cool_percent) + (snaps_in_gb) //assuming all snaps go cool
+                total_withsnap_network_gib = (volume_in_gb * (retrieve_percent/100) * cool_percent)
+
+
+    
+                network_rate = standardcool_network_rates[active_region]
+    
+    
+                //Calculate Hot Tier, Cool Tier and Network Transfer for each senario without snapshots
+               // document.getElementById("standard_hot_nosnap_gibs").innerText = (total_nosnap_hot_gib).toFixed(0) + ' GiB';
+               // document.getElementById("standard_cool_nosnap_gibs").innerText = (total_nosnap_cool_gib).toFixed(0) + ' GiB';
+               // document.getElementById("standard_network_nosnap_gibs").innerText = (total_nosnap_network_gib).toFixed(0) + ' GiB';
+    
+               // document.getElementById("standard_hot_withsnap_gibs").innerText = ((total_withsnap_volume_in_gb) * (hot_percent)).toFixed(0) + ' GiB';
+               // document.getElementById("standard_cool_withsnap_gibs").innerText = ((total_withsnap_volume_in_gb) * (cool_percent)).toFixed(0) + ' GiB';
+               // document.getElementById("standard_network_withsnap_gibs").innerText = ((total_withsnap_volume_in_gb * (retrieve_percent/100) * cool_percent)).toFixed(0) + ' GiB';
+               document.getElementById("standard_effective_price").innerText = '$' + (((total_nosnap_hot_gib * before_rate*730) + (total_nosnap_cool_gib * cool_rate*730) + (total_nosnap_network_gib * network_rate))/volume_in_gb).toFixed(3);
+    
+
+
+          //  document.getElementById("rc1_standard_hot_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+          //  document.getElementById("rc1_standard_cool_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+         //   document.getElementById("rc1_standard_network_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+//
+        //    document.getElementById("rc3_standard_hot_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+        //    document.getElementById("rc3_standard_cool_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+       //     document.getElementById("rc3_standard_network_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+
+        //    document.getElementById("customdiscount_standard_hot_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+       //     document.getElementById("customdiscount_standard_cool_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+       //     document.getElementById("customdiscount_standard_network_nosnap").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+
+            //Calculate Hot Tier, Cool Tier and Network Transfer for each senario with snapshots
+       //     document.getElementById("list_standard_hot").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+    //        document.getElementById("list_standard_cool").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+      //      document.getElementById("list_standard_network").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+
+      //      document.getElementById("rc1_standard_hot").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+     //       document.getElementById("rc1_standard_cool").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+     //       document.getElementById("rc1_standard_network").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+
+     //       document.getElementById("rc3_standard_hot").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+      //      document.getElementById("rc3_standard_cool").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+     //       document.getElementById("rc3_standard_network").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+
+      //      document.getElementById("customdiscount_standard_hot").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+      //      document.getElementById("customdiscount_standard_cool").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+      //      document.getElementById("customdiscount_standard_network").innerText = ().toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');;
+
+
+
+
+
+
+
             document.getElementById("datasize").classList.remove('text-danger');
             document.getElementById("datasize").classList.remove('text-primary');
 
@@ -488,10 +558,7 @@
 
                 ctcoolcostmonth1 = month12_cool_cost;
 
-                egresscost =  month12_storedon_cool * standardcool_network_rates[active_region];
-        
-                
-                
+                egresscost =  month12_storedon_cool * standardcool_network_rates[active_region];                  
 
                 retrievecost = (volume_in_gb * (coolpercent/100) * (retrieve_percent/100)) * standardcool_network_rates[active_region];
                 
@@ -753,9 +820,9 @@
                 <div class="clearfix no-gutter">
                     <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
                     <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
-                        <input style="width: 100%; padding: 20px;" data-slider-id="coolnessslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms3" type="text" data-slider-ticks="[2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,183]" data-slider-reversed="false" data-slider-min="7" data-slider-max="183" data-slider-step="1" data-slider-value="15"/>
+                        <input style="width: 100%; padding: 20px;" data-slider-id="coolnessslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms3" type="text" data-slider-ticks="[0,2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,183]" data-slider-reversed="false" data-slider-min="7" data-slider-max="183" data-slider-step="1" data-slider-value="15"/>
                     </div> 
-                </div>                
+                </div>
                 <br><br>
                 <h6>Per month, what percentage of this cool data are you likely to retrieve? <i data-toggle="tooltip" data-placement="top" title="This slider is used to calculate monthly network transfer fees as data is moved back to the hot tier." class="bi bi-info-circle"></i></h6>
                 <div class="clearfix no-gutter">
@@ -800,10 +867,10 @@
                     </div>
                         <div class="row">
                             <div class="col">
-                                <h3 class="text-success" id="before_rate_month_hours"></h3>
+                                <h3 class="text-success" id="logical_list_price_output"></h3>
                             </div>
                             <div class="col">
-                                <h3 class="text-success" id="total_savings_2year"></h3>
+                                <h3 class="text-success" id="standard_effective_price"></h3>
                             </div>
                             <div class="col">
                                 <h3 class="text-success" id="total_savings_3year"></h3>
@@ -957,6 +1024,7 @@
                     </div>   
                 </div> 
             </div>
+
             <div class="card-footer">
                 <div class="float-left">
                     <small class="text-muted">source: <a href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
