@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.css" integrity="sha512-SZgE3m1he0aEF3tIxxnz/3mXu/u/wlMNxQSnE0Cni9j/O8Gs+TjM9tm1NX34nRQ7GiLwUEzwuE3Wv2FLz2667w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="custom.css"> <!-- Add this line -->
+    <script type="text/javascript">
+        !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+        //name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+        //ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+        //useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+        //crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+        cfg: { // Application Insights Configuration
+            instrumentationKey: "8f84391c-82e5-4ef1-bf89-3e15ae7d10fc"
+            /* ...Other Configuration Options... */
+        }});
+        </script>
+    <title>Azure NetApp Files Effective Price Estimator</title>
+    <script type="text/javascript">
+        function createChart() {
+            canvas = document.getElementById('myChart');
+                ctx = canvas.getContext('2d');
+                data = {
+                        labels: ['without cool access', 'initial cost', 'steady state'],
+                        datasets: [
+                        {
+                            label: 'hot tier',
+                            data: [0,0,0],
+                            backgroundColor: 'rgb(0, 120, 212)', 
+                            },
+                            {
+                            label: 'cool tier',
+                            data: [0,0,0],
+                            backgroundColor: 'rgb(77, 195, 255)',
+                            },
+                            {
+                            label: 'network transfer',
+                            data: [0,0,0],
+                            backgroundColor: 'rgb(88, 88, 88)', 
+                            }
+                        ]
+                    }
+                chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        plugins: {
+                            legend: true,
+                            title: {
+                                display: true,
+                                text: 'Estimated Monthly Costs'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                stacked: true  
+                            },
+                            y: {
+                                beginAtZero: true,
+                                stacked: true
+                                
+                            }
+                        }
+                    }
+                });
+        };
+        function updateChart(chart,one,two,three,four,five,six,seven,eight,nine) {
+            chart.data.datasets[0].data[0] = three;
+            chart.data.datasets[0].data[1] = two;
+            chart.data.datasets[0].data[2] = one;
+            chart.data.datasets[1].data[0] = six;
+            chart.data.datasets[1].data[1] = five;
+            chart.data.datasets[1].data[2] = four;
+            chart.data.datasets[2].data[2] = seven;
+            chart.data.datasets[2].data[1] = eight;
+            chart.data.labels = nine;
+            chart.update();
+        };
+        function getResults() {
+            month_hours = 730;
+            standard_rate = 0.000202;
+            cool_rate = 0.000101;
+            data_size = 30;
+            min_data_size = 1;
+            max_data_size = 100000;
+            discount_percent = 1;
+            retrieve_rate = 0.024600;
+            minimum_pool_size = 1024;
+            var standard_region_rates = {
+                "Central US": 0.000202,
+                "East US": 0.000202,
+                "East US 2": 0.000202,
+                "North Central US": 0.000242,
+                "South Central US": 0.000202,
+                "West US": 0.000202,
+                "West US 2": 0.000202,
+                "West US 3": 0.000202,
+
+                "UK South": 0.000202,
+                "UK West": 0.000222,
+
+                "UAE Central": 0.000316,
+                "UAE North": 0.000288,
+
+                "Switzerland North": 0.000222,
+                "Switzerland West": 0.000289,
+
+                "Sweden Central": 0.000202,
+                "Sweden South": 0.000263,
+                "Qatar Central": 0.000289,
+                "Norway East": 0.000222,
+                "Norway West": 0.000222,
+
+                "Korea Central": 0.000272,
+                "Korea South": 0.000252,
+
+                "Japan East": 0.000242,
+                "Japan West": 0.000314,
+
+                "Italy North": 0.000202,
+
+                "Israel Central": 0.000289,
+
+                "Central India": 0.000223,
+                "South India": 0.000285,
+
+                "Germany North": 0.000324,
+                "Germany West Central": 0.000243,
+
+                "France Central": 0.000252,
+
+                "North Europe": 0.000202,
+                "West Europe": 0.000202,
+
+                "Canada Central": 0.000223,
+                "Canada East": 0.000243,
+              
+                "Brazil South": 0.000403,
+                "Brazil Southeast": 0.000464,
+
+                "US Gov Arizona": 0.000243,
+                "US Gov Texas": 0.000252,
+                "US Gov Virginia": 0.000252,
+
+                "Australia Central": 0.000292,
+                "Australia Central 2": 0.000242,
+                "Australia East": 0.000223,
+                "Australia Southeast": 0.000263,
+
+                "East Asia": 0.000312,
+                "Southeast Asia": 0.000202,
+                "South Africa North": 0.000295
+            };
+            var premium_region_rates = {
+                "Central US": 0.000403,
+                "East US": 0.000403,
+                "East US 2": 0.000403,
+                "North Central US": 0.000484,
+                "South Central US": 0.000403,
+                "West US": 0.000403,
+                "West US 2": 0.000403,
+                "West US 3": 0.000403,
+
+                "UK South": 0.000403,
+                "UK West": 0.000443,
+
+                "UAE Central": 0.000629,
+                "UAE North": 0.000577,
+
+                "Switzerland North": 0.000443,
+                "Switzerland West": 0.000576,
+
+                "Sweden Central": 0.000403,
+                "Sweden South": 0.000524,
+
+                "Qatar Central": 0.000576,
+
+                "Norway East": 0.000443,
+                "Norway West": 0.000443,
+
+                "Korea Central": 0.000544,
+                "Korea South": 0.000504,
+
+                "Japan East": 0.000483,
+                "Japan West": 0.000625,
+
+                "Italy North": 0.000403,
+
+                "Israel Central": 0.000576,
+
+                "Central India": 0.000444,
+                "South India": 0.000569,
+
+                "Germany North": 0.000645,
+                "Germany West Central": 0.000484,
+
+                "France Central": 0.000504,
+
+                "North Europe": 0.000403,
+                "West Europe": 0.000403,
+
+                "Canada Central": 0.000444,
+                "Canada East": 0.000484,
+              
+                "Brazil South": 0.000806,
+                "Brazil Southeast": 0.000927,
+
+                "US Gov Arizona": 0.000484,
+                "US Gov Virginia": 0.000504,
+                "US Gov Texas": 0.000504,
+
+                "Australia Central": 0.000585,
+                "Australia Central 2": 0.000484,
+                "Australia East": 0.000444,
+                "Australia Southeast": 0.000524,
+
+                "East Asia": 0.000625,
+                "Southeast Asia": 0.000403,
+                "South Africa North": 0.000588
+            };
+            var ultra_region_rates = {
+                "Central US": 0.000538,
+                "East US": 0.000538,
+                "East US 2": 0.000538,
+                "North Central US": 0.000646,
+                "South Central US": 0.000538,
+                "West US": 0.000538,
+                "West US 2": 0.000538,
+                "West US 3": 0.000538,
+
+                "UK South": 0.000538,
+                "UK West": 0.000591,
+
+                "UAE Central": 0.000840,
+                "UAE North": 0.000769,
+
+                "Switzerland North": 0.000592,
+                "Switzerland West": 0.000770,
+
+                "Sweden Central": 0.000538,
+                "Sweden South": 0.000699,
+
+                "Qatar Central": 0.000769,
+
+                "Norway East": 0.000592,
+                "Norway West": 0.000592,
+
+                "Korea Central": 0.000726,
+                "Korea South": 0.000673,
+
+                "Japan East": 0.000645,
+                "Japan West": 0.000834,
+
+                "Italy North": 0.000538,
+
+                "Israel Central": 0.000769,
+
+                "Central India": 0.000592,
+                "South India": 0.000759,
+
+                "Germany North": 0.000861,
+                "Germany West Central": 0.000646,
+
+                "France Central": 0.000673,
+
+                "North Europe": 0.000538,
+                "West Europe": 0.000538,
+
+                "Canada Central": 0.000592,
+                "Canada East": 0.000646,
+              
+                "Brazil South": 0.001080,
+                "Brazil Southeast": 0.001240,
+
+                "US Gov Arizona": 0.000646,
+                "US Gov Virginia": 0.000672,
+                "US Gov Texas": 0.000673,
+            
+                "Australia Central": 0.000780,
+                "Australia Central 2": 0.000646,
+                "Australia East": 0.000591,
+                "Australia Southeast": 0.000700,
+
+                "East Asia": 0.000834,
+                "Southeast Asia": 0.000538,
+                "South Africa North": 0.000785
+            };
+            var standardcool_region_rates = {
+                "Central US": 0.000101,
+                "East US": 0.000082,
+                "East US 2": 0.000082,
+                "North Central US": 0.000082,
+                "South Central US": 0.000099,
+                "West US": 0.000093,
+                "West US 2": 0.000082,
+                "West US 3": 0.000082,
+                "UK South": 0.000086,
+                "UK West": 0.000108,
+                "UAE Central": 0.000115,
+                "UAE North": 0.000089,
+                "Switzerland North": 0.000128,
+                "Switzerland West": 0.000167,
+                "Sweden Central": 0.000082,
+                "Sweden South": 0.000107,
+                "Qatar Central": 0.000117,
+                "Norway East": 0.000096,
+                "Norway West": 0.000125,
+                "Korea Central": 0.000089,
+                "Korea South": 0.000103,
+                "Japan East": 0.000089,
+                "Japan West": 0.000089,
+                "Italy North": 0.000087,
+                "Israel Central": 0.000117,
+                "Central India": 0.000089,
+                "South India": 0.000124,
+                "Germany North": 0.000114,
+                "Germany West Central": 0.000087,
+                "France Central": 0.000086,
+                "North Europe": 0.000082,
+                "West Europe": 0.000087,
+                "Canada Central": 0.000089,
+                "Canada East": 0.000089,
+                "Brazil South": 0.000144,
+                "Brazil Southeast": 0.000188,
+                "US Gov Arizona": 0.000139,
+                "US Gov Texas": 0.000103,
+                "US Gov Virginia": 0.000139,
+                "Australia Central": 0.000089,
+                "Australia Central 2": 0.000089,
+                "Australia East": 0.000089,
+                "Australia Southeast": 0.000107,
+                "East Asia": 0.000089,
+                "Southeast Asia": 0.000089,
+                "South Africa North": 0.000144
+            }
+            var standardcool_network_rates = {
+                "Central US": 0.024600,
+                "East US": 0.020000,
+                "East US 2": 0.020000,
+                "North Central US": 0.020000,
+                "South Central US": 0.024000,
+                "West US": 0.026000,
+                "West US 2": 0.020000,
+                "West US 3": 0.020000,
+                "UK South": 0.020900,
+                "UK West": 0.026200,
+                "UAE Central": 0.028100,
+                "UAE North": 0.021600,
+                "Switzerland North": 0.031200,
+                "Switzerland West": 0.040600,
+                "Sweden Central": 0.020000,
+                "Sweden South": 0.026000,
+                "Qatar Central": 0.028600,
+                "Norway East": 0.023430,
+                "Norway West": 0.030459,
+                "Korea Central": 0.021800,
+                "Korea South": 0.025000,
+                "Japan East": 0.021800,
+                "Japan West": 0.031000,
+                "Italy North": 0.021300,
+                "Israel Central": 0.028600,
+                "Central India": 0.021800,
+                "South India": 0.030200,
+                "Germany North": 0.027700,
+                "Germany West Central": 0.021300,
+                "France Central": 0.020900,
+                "North Europe": 0.020000,
+                "West Europe": 0.021300,
+                "Canada Central": 0.021800,
+                "Canada East": 0.021800,
+                "Brazil South": 0.035200,
+                "Brazil Southeast": 0.0458,
+                "US Gov Arizona": 0.033900,
+                "US Gov Texas": 0.025000,
+                "US Gov Virginia": 0.033900,
+                "Australia Central": 0.021600,
+                "Australia Central 2": 0.021600,
+                "Australia East": 0.021600,
+                "Australia Southeast": 0.026000,
+                "East Asia": 0.021600,
+                "Southeast Asia": 0.021600,
+                "South Africa North": 0.035040
+            }
+
+            var coolpercent = coolslider.slider('getValue');
+        
+            var coolnessperiod = coolnessslider.slider('getValue');
+
+            data_size = document.getElementById("datasize").value;
+            retrieve_percent = retrieveslider.slider('getValue');
+            active_region = document.getElementById("regionselector").value;
+
+            if (document.getElementById("standard").checked) {
+                before_rate = standard_region_rates[active_region] * discount_percent;
+                cool_rate = standardcool_region_rates[active_region] * discount_percent;
+                //document.getElementById("tier_label").innerText = "standard";
+                //document.getElementById("tier_warning").classList.remove('text-danger')
+                //document.getElementById("tier_warning").classList.add('text-muted')
+            };
+
+            if (document.getElementById("premium").checked) {
+                before_rate = premium_region_rates[active_region] * discount_percent;
+                cool_rate = standardcool_region_rates[active_region] * discount_percent;
+                //document.getElementById("tier_label").innerText = "premium";
+                //document.getElementById("tier_warning").classList.remove('text-muted')
+                //document.getElementById("tier_warning").classList.add('text-danger')
+            };
+
+            if (document.getElementById("ultra").checked) {
+                before_rate = ultra_region_rates[active_region] * discount_percent;
+                cool_rate = standardcool_region_rates[active_region] * discount_percent;
+                //document.getElementById("tier_label").innerText = "ultra";
+                //document.getElementById("tier_warning").classList.remove('text-muted')
+                //document.getElementById("tier_warning").classList.add('text-danger')
+            };
+            
+            volume_in_gb = data_size * 1024; 
+        
+            document.getElementById("datasize").classList.remove('text-danger');
+            document.getElementById("datasize").classList.remove('text-primary');
+
+            if (isNaN(data_size) || data_size < min_data_size || data_size > max_data_size) {
+                document.getElementById("datasize").style.borderColor = "red";
+    
+                document.getElementById("ct_total_cost").innerText = "";
+                document.getElementById("ct_standard_cost").innerText = "";
+                document.getElementById("ct_cool_cost").innerText = "";
+                document.getElementById("standard_total_cost").innerText = "";
+                document.getElementById("ct_network_month2").innerText = "";
+                document.getElementById("total_savings").innerText = "";
+               
+            } else if (retrieve_percent < 0 || retrieve_percent > 100) {
+                document.getElementById("retrieve").style.borderColor = "red";
+
+                document.getElementById("ct_total_cost").innerText = "";
+                document.getElementById("ct_standard_cost").innerText = "";
+                document.getElementById("ct_cool_cost").innerText = "";
+                document.getElementById("standard_total_cost").innerText = "";
+                document.getElementById("ct_network_month2").innerText = "";
+                document.getElementById("total_savings").innerText = "";
+            } else {
+                document.getElementById("datasize").style.borderColor = "lightgray";
+                if (volume_in_gb < minimum_pool_size) {
+                    pool_size = minimum_pool_size;
+                    standardstandardcost = pool_size * before_rate * month_hours;
+                } else {
+                    pool_size = volume_in_gb;
+                    standardstandardcost = volume_in_gb * before_rate * month_hours;
+                }
+
+                hot_hours_for_text = (coolnessperiod * 24); //how many hours of the month are hot
+
+                if (hot_hours_for_text <= 730) {
+                    document.getElementById('initial_term').innerText = "1st month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "1st month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours && hot_hours_for_text <= month_hours * 2 ) {
+                    document.getElementById('initial_term').innerText = "2nd month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (month 1)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "2nd month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 2 && hot_hours_for_text <= month_hours * 3 ) {
+                    document.getElementById('initial_term').innerText = "3rd month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-2)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "3rd month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 3 && hot_hours_for_text <= month_hours * 4 ) {
+                    document.getElementById('initial_term').innerText = "4th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-3)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "4th month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 4 && hot_hours_for_text <= month_hours * 5 ) {
+                    document.getElementById('initial_term').innerText = "5th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-4)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "5th month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 5 && hot_hours_for_text <= month_hours * 6 ) {
+                    document.getElementById('initial_term').innerText = "6th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-5)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "6th month";
+                    labelThree = "monthly steady state";
+                }else if (hot_hours_for_text > month_hours * 6 && hot_hours_for_text <= month_hours * 7 ) {
+                    document.getElementById('initial_term').innerText = "7th month";
+                    document.getElementById('without_text').innerHTML = "storage cost without cool access (months 1-6)"
+                    labelOne = "monthly w/o cool access";
+                    labelTwo = "7th month";
+                    labelThree = "monthly steady state";
+                }
+
+
+
+                hot_hours = (coolnessperiod * 24) % month_hours //how many hours of the month are hot
+                cool_hours = month_hours - hot_hours; //how many hours of the month are cool
+
+                month0_standard_cost = (volume_in_gb * before_rate) * month_hours
+
+                month12_storedon_cool = (volume_in_gb * (coolpercent/100)); //- (volume_in_gb * (coolpercent/100)); //* (retrieve_percent/100)); //how much data is stored on cool
+                
+                month11_standard_cost = (volume_in_gb * before_rate) * hot_hours; //first portion of month one stored on hot
+                month12_standard_cost = ((pool_size - month12_storedon_cool) * before_rate) * cool_hours; //second portion of month one
+
+                ctstandardcostmonth1 = month11_standard_cost + month12_standard_cost;
+
+                month12_cool_cost = (month12_storedon_cool * cool_rate) * cool_hours; //second half of month one
+
+                ctcoolcostmonth1 = month12_cool_cost;
+
+                egresscost =  month12_storedon_cool * standardcool_network_rates[active_region];
+        
+
+
+                
+
+                retrievecost = (volume_in_gb * (coolpercent/100) * (retrieve_percent/100)) * standardcool_network_rates[active_region];
+                
+                month2_storedon_cool = (volume_in_gb * (coolpercent/100)) - (volume_in_gb * (coolpercent/100)) * retrieve_percent/100; //month two accounting for data brought back previous month
+                //month2_storedon_cool = (volume_in_gb * (coolpercent/100)); //how much data is stored on cool
+                month2_standard_cost = (pool_size - month2_storedon_cool) * before_rate * month_hours;
+
+                ctstandardcostmonth2 = month2_standard_cost;
+                
+                month2_cool_cost = month2_storedon_cool * cool_rate * month_hours;
+
+                ctcoolcostmonth2 =  month2_cool_cost;
+
+                totalnetwork = egresscost; //+ retrievecost;
+                cttotalcostmonth1 = ctstandardcostmonth1 + ctcoolcostmonth1 + totalnetwork;
+
+                cttotalcostmonth2 = month2_cool_cost + month2_standard_cost + retrievecost;
+
+                totalsavings = standardstandardcost - cttotalcostmonth2;
+                
+                percent_savings = (((standardstandardcost - cttotalcostmonth2) / standardstandardcost) * 100).toFixed(0)
+
+                document.getElementById("ct_total_cost").innerText = '$' + cttotalcostmonth1.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_total_cost_month2").innerText = '$' + cttotalcostmonth2.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_standard_cost").innerText = '$' + ctstandardcostmonth1.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_standard_cost_month2").innerText = '$' + ctstandardcostmonth2.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_cool_cost").innerText = '$' + ctcoolcostmonth1.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_cool_cost_month2").innerText = '$' + ctcoolcostmonth2.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("standard_total_cost").innerText = '$' + month0_standard_cost.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_network_month2").innerText = '$' + retrievecost.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("ct_network_month1").innerText = '$' + totalnetwork.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                if (totalsavings > 0) {
+                    document.getElementById("total_savings_1year").classList.remove('text-danger');
+                    document.getElementById("total_savings_1year").classList.add('text-success');
+                    document.getElementById("total_savings_2year").classList.remove('text-danger');
+                    document.getElementById("total_savings_2year").classList.add('text-success');
+                    document.getElementById("total_savings_3year").classList.remove('text-danger');
+                    document.getElementById("total_savings_3year").classList.add('text-success');
+                    document.getElementById("total_savings").classList.remove('text-danger');
+                    document.getElementById("total_savings").classList.add('text-success');
+                } else {
+                    document.getElementById("total_savings_1year").classList.remove('text-success');
+                    document.getElementById("total_savings_1year").classList.add('text-danger');
+                    document.getElementById("total_savings_2year").classList.remove('text-success');
+                    document.getElementById("total_savings_2year").classList.add('text-danger');
+                    document.getElementById("total_savings_3year").classList.remove('text-success');
+                    document.getElementById("total_savings_3year").classList.add('text-danger');
+                    document.getElementById("total_savings").classList.remove('text-success');
+                    document.getElementById("total_savings").classList.add('text-danger');
+                }
+                totalsavings_1year = totalsavings * 12;
+                totalsavings_2year = totalsavings * 24;
+                totalsavings_3year = totalsavings * 36;
+
+                document.getElementById("total_savings_1year").innerText = '$' + totalsavings_1year.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + '  (' + percent_savings + '%)';
+                document.getElementById("total_savings_2year").innerText = '$' + totalsavings_2year.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + '  (' + percent_savings + '%)';
+                document.getElementById("total_savings_3year").innerText = '$' + totalsavings_3year.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + '  (' + percent_savings + '%)';
+                document.getElementById("total_savings").innerText = '$' + totalsavings.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + '  (' + percent_savings + '%)';
+
+
+                standardwithout = month0_standard_cost.toFixed(2);
+                coolwithout = 0;
+                standardwith = ctstandardcostmonth1.toFixed(2);
+                standardwithmonth2 = ctstandardcostmonth2.toFixed(2);
+                coolwith = ctcoolcostmonth1.toFixed(2);
+                coolwithmonth2 = ctcoolcostmonth2.toFixed(2);
+                retrievewith = retrievecost.toFixed(2);
+                egresswith = totalnetwork.toFixed(2);
+
+                chartlabels = [labelOne, labelTwo, labelThree];
+                
+                updateChart(chart,standardwithmonth2,standardwith,standardwithout,coolwithmonth2,coolwith,coolwithout,retrievewith,egresswith,chartlabels);
+            }        
+        }
+    </script>
+    <style>
+        .modal {
+            z-index: 2000;
+        }
+    </style>
+</head>
+
+
+<!-- class="table-success" -->
+
+<body onload="createChart(), getResults()">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.js" integrity="sha512-tCkLWlSXiiMsUaDl5+8bqwpGXXh0zZsgzX6pB9IQCZH+8iwXRYfcCpdxl/owoM6U4ap7QZDW4kw7djQUiQ4G2A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $(window).on('load', function() {
+         //   $('#staticBackdrop').modal('show');
+        });
+    </script>  
+    <div class="container">
+       
+  
+  <!-- Modal -->
+  <div class="modal fade in" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="staticBackdropLabel">Welcome!</h3>
+        </div>
+        <div class="modal-body">
+            <div class="container" >
+                <p><strong>IMPORTANT: </strong>This tool is designed to estimate the potential savings when enabling <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction" target="_blank">Azure NetApp Files storage with cool access</a>. Your actual savings will vary depending on several factors. These factors may include, but are not limited to:</p>
+                <ul>
+                    <li>
+                        actual size of data marked as "cold"
+                    </li>
+                    <li>
+                        duration of data movement to the cool tier
+                    </li>
+                    <li>
+                        actual size of data read back from the cool tier
+                    </li>
+                </ul>
+                <hr>
+                <h5>How does Azure NetApp Files storage with cool access lower my storage costs?</h5>
+                <p>Using Azure NetApp Files storage with cool access, you can configure inactive data to move from Azure NetApp Files Standard, Premium, or Ultra service-level storage to an Azure storage account (the cool tier). In doing so, data blocks that have not been accessed for some time will be kept and stored in the cool tier, resulting in cost savings.</p>
+                <p>There are network transfer fees as data moves to and from the cool tier.</p>
+                <p>Maximum cost savings are reached once data tiering is complete and a steady state is achieved.</p>
+                <hr>
+                <h5>Instructions / Help</h5>
+                <p></p>
+                <p>Begin by entering the amount of data you have stored today and on which tier.</p>
+                <p>Use the sliders to adjust the following parameters:</p>
+                <p><strong>What percentage of this data is considered cool or infrequently accessed?</strong> How much data do you expect to move to the cool tier? The higher the the value, the more you'll save.</p>
+                <p><strong>After how many days should this data be considered cool?</strong> Select a value between 2 and 183, this represents the number a days your data needs to be unaccessed before being moved to the cool tier.</p>
+                <p><strong>Per month, what percentage of this cool data are you likely to retrieve?</strong> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</p>
+                <p><strong>For more information on Azure NetApp Files storage with cool access, check out <a href="https://learn.microsoft.com/azure/azure-netapp-files/manage-cool-access" target="_blank">Manage Azure NetApp Files storage with cool access</a>!</strong></p>
+                <!--<div class="float-end"><a href="https://youtu.be/wmS5Eiwejv8?si=UdDIgMv8h180HwLt" target="_blank"><img src="./qbsapthumb.png" height="120" /></a>
+                </div>-->
+                <hr>
+                        <h6>Info / Links</h6>
+                        
+                        <a href="https://learn.microsoft.com/azure/azure-netapp-files/" target="_blank">Azure NetApp Files documentation</a>
+
+                        <br><i class="bi bi-bug"></i> Find a bug? Feature request? Suggestion? Please submit an issue on <a href="https://github.com/azure/azure-netapp-files/issues" target="_blank">GitHub</a>.
+                
+                <div class="footer pb-1 text-end">
+                    <br>
+                    <small>Created by Sean Luce, Azure NetApp Files TME <a href="https://linkedin.com/in/seanluce" target="_blank"><i class="bi bi-linkedin"></i></a>&nbsp;<a href="https://github.com/seanluce" target="_blank"><i class="bi bi-github"></i></a></small>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br>
+        <div class="card w-100">
+            <div class="card-header">
+                <div class="row align-items-center">    
+                    <div class="col-md-auto">
+                        <img src="anficon.png" height="50">
+                    </div>
+                    <div class="col">
+                        <span class="h6">Azure NetApp Files Effective Price Estimator </span>
+                    </div>
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
+    Help / Info&nbsp<i class="bi bi-info-circle"></i>
+  </button>
+                    <div class="col-md-auto" class="input-group mb-3">    
+                        <select input oninput="getResults()" class="custom-select float-right" id="regionselector">
+                            <option value="Australia Central">Australia Central</option>
+                            <option value="Australia Central 2">Australia Central 2</option>
+                            <option value="Australia East">Australia East</option>
+                            <option value="Australia Southeast">Australia Southeast</option>
+                            <option value="Brazil South">Brazil South</option>
+                            <option value="Brazil Southeast">Brazil Southeast</option>
+                            <option value="Canada Central">Canada Central</option>
+                            <option value="Canada East">Canada East</option>
+                            <option value="Central India">Central India</option>
+                            <option value="Central US" selected>Central US</option>
+                            <option value="East Asia">East Asia</option>
+                            <option value="East US">East US</option>
+                            <option value="East US 2">East US 2</option>
+                            <option value="France Central">France Central</option>
+                            <option value="Germany North">Germany North</option>
+                            <option value="Germany West Central">Germany West Central</option>
+                            <option value="Israel Central">Israel Central</option>
+                            <option value="Italy North">Italy North</option>
+                            <option value="Japan East">Japan East</option>
+                            <option value="Japan West">Japan West</option>
+                            <option value="Korea Central">Korea Central</option>
+                            <option value="Korea South">Korea South</option>
+                            <option value="North Central US">North Central US</option>
+                            <option value="North Europe">North Europe</option>
+                            <option value="Norway East">Norway East</option>
+                            <option value="Norway West">Norway West</option>
+                            <option value="Qatar Central">Qatar Central</option>
+                            <option value="South Africa North">South Africa North</option>
+                            <option value="South Central US">South Central US</option>
+                            <option value="South India">South India</option>
+                            <option value="Southeast Asia">Southeast Asia</option>
+                            <option value="Switzerland North">Switzerland North</option>
+                            <option value="Switzerland West">Switzerland West</option>
+                            <option value="Sweden Central">Sweden Central</option>
+                            <option value="UAE Central">UAE Central</option>
+                            <option value="UAE North">UAE North</option>
+                            <option value="UK South">UK South</option>
+                            <option value="UK West">UK West</option>
+                            <option value="US Gov Arizona">US Gov Arizona</option>
+                            <option value="US Gov Virginia">US Gov Virginia</option>
+                            <option value="US Gov Texas">US Gov Texas</option>
+                            <option value="West Europe">West Europe</option>
+                            <option value="West US">West US</option>
+                            <option value="West US 2">West US 2</option>
+                            <option value="West US 3">West US 3</option>
+                        </select>
+                    </div>   
+                    <div class="col-md-auto" class="input-group mb-4">    
+                        <select input oninput="getResults()" class="custom-select float-right" id="reservecapacityselector">
+                            <option value="None">No Reserved Capacity</option>
+                            <option value="1">1 Year Reserved Capacity</option>
+                            <option value="3">3 Year Reserved Capacity</option>
+                                                    </select>
+                    </div>   
+
+                </div>          
+            </div>
+            <div class="card-body">
+                <h6>How much data (TiBs) are you <b>storing</b> today and in which tier?</h6>
+                <div class="input-group my-1">
+                    <input oninput="getResults()" type="text" value="500" class="form-control my-1" aria-label="" id="datasize">
+                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary my-1">
+                        <input onchange="getResults()" name="test" type="radio" value="standard" id="standard" checked>Standard</input>
+                        </label>
+                        <label class="btn btn-outline-primary my-1">
+                        <input onchange="getResults()" name="test" type="radio" value="premium" id="premium">Premium</input>
+                        </label>
+                        <label class="btn btn-outline-primary my-1">
+                        <input onchange="getResults()" name="test" type="radio" value="ultra" id="ultra">Ultra</input>
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <h6>What percentage of this data is considered cool or infrequently accessed? <i data-toggle="tooltip" data-placement="top" title="This slider will determine how much data is moved to the cool tier and is used to calculate network transfer fees." class="bi bi-info-circle"></i></h6>
+                <div class="clearfix no-gutter">
+                    <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
+                    <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                        <input style="width: 100%; padding: 20px;" data-slider-id="coolslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms1" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80"/>
+                    </div> 
+                </div>
+                
+                <br><br>
+                <h6>After how many days should this data be considered cool? <i data-toggle="tooltip" data-placement="top" title="this slider determines after how many days of inactivity data should be considered cool." class="bi bi-info-circle"></i></h6>
+                <div class="clearfix no-gutter">
+                    <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
+                    <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                        <input style="width: 100%; padding: 20px;" data-slider-id="coolnessslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms3" type="text" data-slider-ticks="[2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,183]" data-slider-reversed="false" data-slider-min="7" data-slider-max="183" data-slider-step="1" data-slider-value="15"/>
+                    </div> 
+                </div>                
+                <br><br>
+                <h6>Per month, what percentage of this cool data are you likely to retrieve? <i data-toggle="tooltip" data-placement="top" title="This slider is used to calculate monthly network transfer fees as data is moved back to the hot tier." class="bi bi-info-circle"></i></h6>
+                <div class="clearfix no-gutter">
+                    <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
+                    <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                        <input style="width: 100%; padding: 20px;" data-slider-id="retrieveslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms2" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
+                    </div> 
+                    <br><br>
+                    <h6>How many daily snapshots would you retain? <i data-toggle="tooltip" data-placement="top" title="This slider is used to calculate the additional storage capacity required to store snapshots." class="bi bi-info-circle"></i></h6>
+                    <div class="clearfix no-gutter">
+                        <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
+                        <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                            <input style="width: 100%; padding: 20px;" data-slider-id="retrieveslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms4" type="text" data-slider-ticks="[0,7,14,30,60,90,180,255]" data-slider-reversed="false" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="30"/>
+                        </div>
+                        <br><br>
+                    <h6>How much of your data changes daily? <i data-toggle="tooltip" data-placement="top" title="This slider is used to calculate the additional storage capacity required to store snapshots based on the percent of data added/removed or changed." class="bi bi-info-circle"></i></h6>
+                    <div class="clearfix no-gutter">
+                        <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
+                        <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                            <input style="width: 100%; padding: 20px;" data-slider-id="retrieveslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms5" type="text" data-slider-ticks="[0,0.25,0.5,1,2.5,5,10]" data-slider-reversed="false" data-slider-min="0" data-slider-max="10" data-slider-step=".25" data-slider-value="1"/>
+                        </div>
+                        <br><br>
+                    <h6>Custom Discount? <i data-toggle="tooltip" data-placement="top" title="Non-zero custom discount rate will override reserved capacity discount." class="bi bi-info-circle"></i></h6>
+                    <div class="clearfix no-gutter">
+                        <div style="padding: 0;" id="writetext" class="float no-gutter"></div>
+                        <div style="padding: 5px 10px 10px 10px; border: 1px; border-color: black">    
+                            <input style="width: 100%; padding: 20px;" data-slider-id="retrieveslide" data-slider-tooltip="always" data-slider-tooltip-position="bottom" id="ms6" type="text" data-slider-ticks="[0,10,20,30,40,50,60,70,80,90,100]" data-slider-reversed="false" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="0"/>
+                        </div>                </div>                
+                <br><br>
+                <div class="bg-light text-center border">
+                    <h3>Estimated Annual Savings</h3>
+                    <div class="row">
+                        <div class="col">
+                            <h5>1 year</h5>
+                        </div>
+                        <div class="col">
+                            <h5>2 years</h5>
+                        </div>
+                        <div class="col">
+                            <h5>3 years</h5>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="text-success" id="total_savings_1year"></h3>
+                            </div>
+                            <div class="col">
+                                <h3 class="text-success" id="total_savings_2year"></h3>
+                            </div>
+                            <div class="col">
+                                <h3 class="text-success" id="total_savings_3year"></h3>
+                            </div>
+                    </div>
+                   
+                </div>
+                <br>
+               
+               
+                <br>
+                
+                <div class="text-center borderless">
+                    <h3>Monthly Breakdown</h3>
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <div class="bg-light border">
+                                <h5 class="text-center"><span id="without_text">storage cost without cool access</span></h5>
+                                <div class="container borderless">  
+                                    <h5 id="standard_total_cost"></h5>        
+                                </div>
+                            </div>
+                            <br>
+                            <div class="bg-light border">
+                                <h5 class="text-center"><span id="initial_term"></span> storage cost with cool access</h5>
+                                <div class="container borderless">
+                                    <div class="row text-center align-items-center">
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                            <h5 id="ct_total_cost"></h5>
+                                        </div>    
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container borderless">
+                                    <div class="row text-center align-items-center">
+                                      <div class="col">
+                                          <div class="row">
+                                              <div class="col">
+                                                <h8 class="text-muted">hot</h8>
+                                              </div>
+                                            <div class="col">
+                                                <h6 class="text-muted" id="ct_standard_cost"></h6> 
+                                            </div>
+                                          </div>
+                                      </div>
+                                      <div class="col">
+                                        <h3 class="text-muted">+</h3>
+                                      </div>
+                                      <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h8 class="text-muted">cool</h8>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="text-muted" id="ct_cool_cost"></h6>
+                                            </div>
+                                        </div>
+                                      </div> 
+                                      <div class="col">
+                                        <h3 class="text-muted">+</h3>
+                                      </div>
+                                      <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h8 class="text-muted">network</h8>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="text-muted" id="ct_network_month1"></h6>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="bg-light border">
+                                <h5 class="text-center">steady state storage cost with cool access</h5>
+                                <div class="container borderless">
+                                    <div class="row text-center align-items-center">
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                            <h5 id="ct_total_cost_month2"></h5>
+                                        </div>    
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container borderless">
+                                    <div class="row text-center align-items-center">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h8 class="text-muted">hot</h8>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="text-muted" id="ct_standard_cost_month2"></h6> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h3 class="text-muted">+</h3>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h8 class="text-muted">cool</h8>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="text-muted" id="ct_cool_cost_month2"></h6>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col">
+                                        <h3 class="text-muted">+</h3>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h8 class="text-muted">network</h8>
+                                            </div>
+                                            <div class="col">
+                                                <h6 class="text-muted" id="ct_network_month2"></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="bg-light border">
+                                <h5>steady state monthly savings</h5>
+                                <h3 class="text-success" id="total_savings"></h3>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>   
+                </div> 
+            </div>
+            <div class="card-footer">
+                <div class="float-left">
+                    <small class="text-muted">source: <a href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a></small>
+                    <br>
+                    <small class="text-muted">Azure NetApp Files storage with cool access is subject to <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction#supported-regions" target="_blank">regional availability</a></small><br>
+                    <small class="text-muted">results are for estimation purposes only and your actual savings may vary</small><br>
+                    <small class="text-muted">monthly costs are based on a 730 hour billing month</small><br>
+                </div>
+            </div>
+        </div>
+        <div class="float-right">
+            <small class="text-muted">Created by <a href="https://github.com/seanluce" target="_blank">Sean Luce</a></small>  
+        </div>
+    </div>
+    
+</body>
+<script>
+var coolslider = $("#ms1").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+    var coolnessslider = $("#ms3").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+var retrieveslider = $("#ms2").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+var dailyretentionslider = $("#ms4").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+var dailychangeslider = $("#ms5").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+var customdiscountslider = $("#ms6").slider()
+    .on('slide', getResults)
+    .on('change', getResults);
+</script>
+</html>
