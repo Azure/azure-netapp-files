@@ -1,5 +1,5 @@
 body {
-    background-color: lightgrey;
+    background-color: lightgrey !important;
 }
 
 th {font-weight: normal;}
