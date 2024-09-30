@@ -104,58 +104,41 @@
                 "West US": 0.000202,
                 "West US 2": 0.000202,
                 "West US 3": 0.000202,
-
                 "UK South": 0.000202,
                 "UK West": 0.000222,
-
                 "UAE Central": 0.000316,
                 "UAE North": 0.000288,
-
                 "Switzerland North": 0.000222,
                 "Switzerland West": 0.000289,
-
                 "Sweden Central": 0.000202,
                 "Sweden South": 0.000263,
                 "Qatar Central": 0.000289,
                 "Norway East": 0.000222,
                 "Norway West": 0.000222,
-
                 "Korea Central": 0.000272,
                 "Korea South": 0.000252,
-
                 "Japan East": 0.000242,
                 "Japan West": 0.000314,
-
                 "Italy North": 0.000202,
-
                 "Israel Central": 0.000289,
-
                 "Central India": 0.000223,
                 "South India": 0.000285,
-
                 "Germany North": 0.000324,
                 "Germany West Central": 0.000243,
-
                 "France Central": 0.000252,
-
                 "North Europe": 0.000202,
                 "West Europe": 0.000202,
-
                 "Canada Central": 0.000223,
-                "Canada East": 0.000243,
-              
+                "Canada East": 0.000243,        
                 "Brazil South": 0.000403,
                 "Brazil Southeast": 0.000464,
-
                 "US Gov Arizona": 0.000243,
                 "US Gov Texas": 0.000252,
                 "US Gov Virginia": 0.000252,
-
                 "Australia Central": 0.000292,
                 "Australia Central 2": 0.000242,
                 "Australia East": 0.000223,
                 "Australia Southeast": 0.000263,
-
                 "East Asia": 0.000312,
                 "Southeast Asia": 0.000202,
                 "South Africa North": 0.000295
@@ -169,60 +152,41 @@
                 "West US": 0.000403,
                 "West US 2": 0.000403,
                 "West US 3": 0.000403,
-
                 "UK South": 0.000403,
                 "UK West": 0.000443,
-
                 "UAE Central": 0.000629,
                 "UAE North": 0.000577,
-
                 "Switzerland North": 0.000443,
                 "Switzerland West": 0.000576,
-
                 "Sweden Central": 0.000403,
                 "Sweden South": 0.000524,
-
                 "Qatar Central": 0.000576,
-
                 "Norway East": 0.000443,
                 "Norway West": 0.000443,
-
                 "Korea Central": 0.000544,
                 "Korea South": 0.000504,
-
                 "Japan East": 0.000483,
                 "Japan West": 0.000625,
-
                 "Italy North": 0.000403,
-
                 "Israel Central": 0.000576,
-
                 "Central India": 0.000444,
                 "South India": 0.000569,
-
                 "Germany North": 0.000645,
                 "Germany West Central": 0.000484,
-
                 "France Central": 0.000504,
-
                 "North Europe": 0.000403,
                 "West Europe": 0.000403,
-
                 "Canada Central": 0.000444,
                 "Canada East": 0.000484,
-              
                 "Brazil South": 0.000806,
                 "Brazil Southeast": 0.000927,
-
                 "US Gov Arizona": 0.000484,
                 "US Gov Virginia": 0.000504,
                 "US Gov Texas": 0.000504,
-
                 "Australia Central": 0.000585,
                 "Australia Central 2": 0.000484,
                 "Australia East": 0.000444,
                 "Australia Southeast": 0.000524,
-
                 "East Asia": 0.000625,
                 "Southeast Asia": 0.000403,
                 "South Africa North": 0.000588
@@ -236,60 +200,41 @@
                 "West US": 0.000538,
                 "West US 2": 0.000538,
                 "West US 3": 0.000538,
-
                 "UK South": 0.000538,
                 "UK West": 0.000591,
-
                 "UAE Central": 0.000840,
                 "UAE North": 0.000769,
-
                 "Switzerland North": 0.000592,
                 "Switzerland West": 0.000770,
-
                 "Sweden Central": 0.000538,
                 "Sweden South": 0.000699,
-
                 "Qatar Central": 0.000769,
-
                 "Norway East": 0.000592,
                 "Norway West": 0.000592,
-
                 "Korea Central": 0.000726,
                 "Korea South": 0.000673,
-
                 "Japan East": 0.000645,
                 "Japan West": 0.000834,
-
                 "Italy North": 0.000538,
-
                 "Israel Central": 0.000769,
-
                 "Central India": 0.000592,
                 "South India": 0.000759,
-
                 "Germany North": 0.000861,
                 "Germany West Central": 0.000646,
-
                 "France Central": 0.000673,
-
                 "North Europe": 0.000538,
                 "West Europe": 0.000538,
-
                 "Canada Central": 0.000592,
                 "Canada East": 0.000646,
-              
                 "Brazil South": 0.001080,
                 "Brazil Southeast": 0.001240,
-
                 "US Gov Arizona": 0.000646,
                 "US Gov Virginia": 0.000672,
                 "US Gov Texas": 0.000673,
-            
                 "Australia Central": 0.000780,
                 "Australia Central 2": 0.000646,
                 "Australia East": 0.000591,
                 "Australia Southeast": 0.000700,
-
                 "East Asia": 0.000834,
                 "Southeast Asia": 0.000538,
                 "South Africa North": 0.000785
@@ -390,7 +335,7 @@
                 "Southeast Asia": 0.021600,
                 "South Africa North": 0.035040
             }
-
+           
             var coolpercent = coolslider.slider('getValue');
         
             var coolnessperiod = coolnessslider.slider('getValue');
@@ -402,6 +347,14 @@
             if (document.getElementById("standard").checked) {
                 before_rate = standard_region_rates[active_region] * discount_percent;
                 cool_rate = standardcool_region_rates[active_region] * discount_percent;
+                
+                // Calculate the result of before_rate * month_hours
+                var before_rate_month_hours_result = before_rate * month_hours;
+
+                // Set the value to the element with ID 'before_rate_month_hours'
+                document.getElementById("before_rate_month_hours").innerText = before_rate_month_hours_result;
+                
+            
                 //document.getElementById("tier_label").innerText = "standard";
                 //document.getElementById("tier_warning").classList.remove('text-danger')
                 //document.getElementById("tier_warning").classList.add('text-muted')
@@ -410,6 +363,13 @@
             if (document.getElementById("premium").checked) {
                 before_rate = premium_region_rates[active_region] * discount_percent;
                 cool_rate = standardcool_region_rates[active_region] * discount_percent;
+                                
+                // Calculate the result of before_rate * month_hours
+                var before_rate_month_hours_result = before_rate * month_hours;
+
+                // Set the value to the element with ID 'before_rate_month_hours'
+                document.getElementById("before_rate_month_hours").innerText = before_rate_month_hours_result;
+
                 //document.getElementById("tier_label").innerText = "premium";
                 //document.getElementById("tier_warning").classList.remove('text-muted')
                 //document.getElementById("tier_warning").classList.add('text-danger')
@@ -418,6 +378,13 @@
             if (document.getElementById("ultra").checked) {
                 before_rate = ultra_region_rates[active_region] * discount_percent;
                 cool_rate = standardcool_region_rates[active_region] * discount_percent;
+                                
+                // Calculate the result of before_rate * month_hours
+                var before_rate_month_hours_result = before_rate * month_hours;
+
+                // Set the value to the element with ID 'before_rate_month_hours'
+                document.getElementById("before_rate_month_hours").innerText = before_rate_month_hours_result;
+
                 //document.getElementById("tier_label").innerText = "ultra";
                 //document.getElementById("tier_warning").classList.remove('text-muted')
                 //document.getElementById("tier_warning").classList.add('text-danger')
@@ -523,8 +490,7 @@
 
                 egresscost =  month12_storedon_cool * standardcool_network_rates[active_region];
         
-
-
+                
                 
 
                 retrievecost = (volume_in_gb * (coolpercent/100) * (retrieve_percent/100)) * standardcool_network_rates[active_region];
@@ -585,6 +551,7 @@
                 document.getElementById("total_savings_3year").innerText = '$' + totalsavings_3year.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + '  (' + percent_savings + '%)';
                 document.getElementById("total_savings").innerText = '$' + totalsavings.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + '  (' + percent_savings + '%)';
 
+                document.getElementById("logical_list_price").innerText = '$' + standardstandardcost.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
                 standardwithout = month0_standard_cost.toFixed(2);
                 coolwithout = 0;
@@ -819,21 +786,21 @@
                         </div>                </div>                
                 <br><br>
                 <div class="bg-light text-center border">
-                    <h3>Estimated Annual Savings</h3>
+                    <h3>Price per GiB Breakdown</h3>
                     <div class="row">
                         <div class="col">
-                            <h5>1 year</h5>
+                            <h5>Logical List Price</h5>
                         </div>
                         <div class="col">
-                            <h5>2 years</h5>
+                            <h5>Effective Price</h5>
                         </div>
                         <div class="col">
-                            <h5>3 years</h5>
+                            <h5>Effective Capacity Price</h5>
                         </div>
                     </div>
                         <div class="row">
                             <div class="col">
-                                <h3 class="text-success" id="total_savings_1year"></h3>
+                                <h3 class="text-success" id="before_rate_month_hours"></h3>
                             </div>
                             <div class="col">
                                 <h3 class="text-success" id="total_savings_2year"></h3>
@@ -841,8 +808,7 @@
                             <div class="col">
                                 <h3 class="text-success" id="total_savings_3year"></h3>
                             </div>
-                    </div>
-                   
+                        </div>                                 
                 </div>
                 <br>
                
