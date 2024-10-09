@@ -36,7 +36,7 @@
          //   $('#staticBackdrop').modal('show');
         });
     </script>  
-    <div class="container">
+    <div class="body">
        
   
   <!-- Modal -->
@@ -47,7 +47,7 @@
           <h3 class="modal-title fs-5" id="staticBackdropLabel">Welcome!</h3>
         </div>
         <div class="modal-body">
-            <div class="container" >
+            <div class="body" >
                 <p><strong>IMPORTANT: </strong>This tool is designed to estimate the potential savings when enabling <a href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction" target="_blank">Azure NetApp Files storage with cool access</a>. Your actual savings will vary depending on several factors. These factors may include, but are not limited to:</p>
                 <ul>
                     <li>
@@ -159,7 +159,7 @@
                             <option value="West US 3">West US 3</option>
                         </select>
                     </div>   
-<!-- serviceLevel  -->       
+<!-- ReserveCapacity  -->       
                     <div class="col-md-auto" class="input-group mb-4">    
                         <select input oninput="getResults()" class="custom-select float-right" id="reservedCapacity">
                             <option value="0">No Reserved Capacity</option>
@@ -170,101 +170,109 @@
 
                 </div>          
             </div>
-            
-            <div class="card-body">
-<!-- dataSizeInTiBs  -->
-    <small id="volumewarning" class="form-text text-muted">How much data (TiBs) are you storing today and in which tier? (1-500TiB)
-        </small>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span id="volumeSizeLabel" class="my-1 input-group-text">Volume Size</span>
-        </div>
-        <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="10" aria-label="Volume Size" aria-describedby="Volume Size" id="datasize"></input>
-        <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-primary my-1">
-                <input onchange="getResults()" name="tier" type="radio" value="standard" id="standard" checked>Standard</input>
-            </label>
-            <label class="btn btn-outline-primary my-1">
-                <input onchange="getResults()" name="tier" type="radio" value="premium" id="premium">Premium</input>
-            </label>
-            <label class="btn btn-outline-primary my-1">
-                <input onchange="getResults()" name="tier" type="radio" value="ultra" id="ultra">Ultra</input>
-            </label>
-        </div>
-    </div>
-
-<!-- coolDataPercent -->
-                <small id="coolPercentWarning" class="form-text text-muted">What percentage of this data is considered cool or infrequently accessed? (0-100%)
-                </small>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span id="coolpercentLabel" class="my-1 input-group-text">Cool Data %</span>
-                    </div>
-                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="80" aria-label="Cool Data Percent" aria-describedby="Cool Data Percent" id="coolPercent"></input>
-                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-outline-primary my-1">
-                            <input onclick="getResults()" name="tputfadsunits" type="radio" value="%" id="seasadfasdfn" checked>%</input>
-                        </label>
+            <div class="container">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <div class="card-body">
+                        <!-- dataSizeInTiBs -->
+                        <small id="volumewarning" class="form-text text-muted">How much data (TiBs) are you storing today and in which tier? (1-500TiB)</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="volumeSizeLabel" class="my-1 input-group-text">Volume Size</span>
+                            </div>
+                            <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="10" aria-label="Volume Size" aria-describedby="Volume Size" id="datasize"></input>
+                            <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onchange="getResults()" name="tier" type="radio" value="standard" id="standard" checked>Standard</input>
+                                </label>
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onchange="getResults()" name="tier" type="radio" value="premium" id="premium">Premium</input>
+                                </label>
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onchange="getResults()" name="tier" type="radio" value="ultra" id="ultra">Ultra</input>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <!-- coolDataPercent -->
+                        <small id="coolPercentWarning" class="form-text text-muted">What percentage of this data is considered cool or infrequently accessed? (0-100%)</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="coolpercentLabel" class="my-1 input-group-text">Cool Data %</span>
+                            </div>
+                            <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="80" aria-label="Cool Data Percent" aria-describedby="Cool Data Percent" id="coolPercent"></input>
+                            <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onclick="getResults()" name="tputfadsunits" type="radio" value="%" id="seasadfasdfn" checked>%</input>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <!-- coolRetrievalPercent -->
+                        <small id="coolretreivalWarning" class="form-text text-muted">Per month, what percentage of this cool data are you likely to retrieve? (0-100%)</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="coolretreivalLabel" class="my-1 input-group-text">Data Retreival %</span>
+                            </div>
+                            <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="10" aria-label="Data Retreival Percent" aria-describedby="Data Retreival Percent" id="coolretreivalInput"></input>
+                            <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onclick="getResults()" name="tpuasdggtunits" type="radio" value="%" id="sadfasdfasdf" checked>%</input>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <!-- dailyChangeRate -->
+                        <small id="dailyChangeRatewarning" class="form-text text-muted">Specify percent daily change rate to calculate replication and/or backup costs. (0-100%)</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="changeRateLabel" class="my-1 input-group-text">Change Rate</span>
+                            </div>
+                            <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="1" aria-label="Change Rate" aria-describedby="Change Rate" id="changerate"></input>
+                            <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onclick="getResults()" name="ratefrgsadeq" type="radio" value="daily" id="dsfa" checked>% Daily</input>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <!-- snapNumberDaily -->
+                        <small id="snapNumberDailywarning" class="form-text text-muted">Specify the number of daily snapshots retained. (0-255 Snaps)</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="snapNumberDailyLabel" class="my-1 input-group-text">Retained Snaps</span>
+                            </div>
+                            <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="30" aria-label="snapNumberDaily" aria-describedby="snapNumberDaily" id="snapNumberDaily"></input>
+                            <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onclick="getResults()" name="ratefreq" type="radio" value="daily" id="dsafasd" checked>Daily Snapshots</input>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <!-- customDiscountPercent -->
+                        <small id="customdiscountwarning" class="form-text text-muted">Specify any custom discount rate to override RI pricing. (0-100%)</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="customDiscountPercent" class="my-1 input-group-text">Custom Discount</span>
+                            </div>
+                            <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="customDiscountPercent" aria-describedby="customDiscountPercent" id="customDiscountPercent"></input>
+                            <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-primary my-1">
+                                    <input onclick="getResults()" name="ratefreq" type="radio" value="daily" id="" checked>%</input>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-<!-- coolRetrievalPercent -->
-                <small id="coolretreivalWarning" class="form-text text-muted">Per month, what percentage of this cool data are you likely to retrieve? (0-100%)
-                </small>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span id="coolretreivalLabel" class="my-1 input-group-text">Data Retreival %</span>
+        
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Chart -->
+                    <div class="col">
+                        <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
-                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="10" aria-label="Data Retreival Percent" aria-describedby="Data Retreival Percent" id="coolretreivalInput"></input>
-                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-outline-primary my-1">
-                            <input onclick="getResults()" name="tpuasdggtunits" type="radio" value="%" id="sadfasdfasdf" checked>%</input>
-                        </label>
-                    </div>
-                </div>
-<!-- dailyChangeRate -->
-                <small id="dailyChangeRatewarning" class="form-text text-muted">Specify percent daily change rate to calculate replication and/or backup costs. (0-100%)</small>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span id="changeRateLabel" class="my-1 input-group-text">Change Rate</span>
-                    </div>
-                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="1" aria-label="Change Rate" aria-describedby="Change Rate" id="changerate"></input>
-                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-outline-primary my-1">
-                            <input onclick="getResults()" name="ratefrgsadeq" type="radio" value="daily" id="dsfa" checked>% Daily</input>
-                        </label>
-                    
-                    </div>
-                </div>
-<!-- snapNumberDaily -->
-             <small id="snapNumberDailywarning" class="form-text text-muted">Specify the number of daily snapshots retained. (0-255 Snaps)</small>
-             <div class="input-group mb-3">
-                 <div class="input-group-prepend">
-                     <span id="snapNumberDailyLabel" class="my-1 input-group-text">Retained Snaps</span>
-                 </div>
-                 <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="30" aria-label="snapNumberDaily" aria-describedby="snapNumberDaily" id="snapNumberDaily"></input>
-                 <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
-                     <label class="btn btn-outline-primary my-1">
-                         <input onclick="getResults()" name="ratefreq" type="radio" value="daily" id="dsafasd" checked>Daily Snapshots</input>
-                     </label>
-                 
-                 </div>
-             </div>   
-<!-- customDiscountPercent -->
-                <small id="customdiscountwarning" class="form-text text-muted">Specify any custom discount rate to override RI pricing. (0-100%)</small>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span id="customDiscountPercent" class="my-1 input-group-text">Custom Discount</span>
-                    </div>
-                    <input oninput="getResults()" type="text" class="my-1 mr-sm-1 form-control" placeholder="" value="0" aria-label="customDiscountPercent" aria-describedby="customDiscountPercent" id="customDiscountPercent"></input>
-                    <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-outline-primary my-1">
-                            <input onclick="getResults()" name="ratefreq" type="radio" value="daily" id="" checked>%</input>
-                        </label>
-                    
-                    </div>
-                </div>
-
+</div></div>
                 <br><br>
                 <div class="bg-light text-center border">
                     <h3>Price per GiB Breakdown</h3>
@@ -296,143 +304,112 @@
                
                 <br>
                 
-                <div class="text-center borderless">
-                    <h3>Monthly Breakdown</h3>
-                    <div class="row">
-                        <div class="col">
-                            <br>
-                            <div class="bg-light border">
-                                <h5 class="text-center"><span id="without_text">storage cost without cool access</span></h5>
-                                <div class="container borderless">  
-                                    <h5 id="standard_total_cost"></h5>        
-                                </div>
-                            </div>
-                            <br>
-                            <div class="bg-light border">
-                                <h5 class="text-center"><span id="initial_term"></span> storage cost with cool access</h5>
-                                <div class="container borderless">
-                                    <div class="row text-center align-items-center">
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                            <h5 id="ct_total_cost"></h5>
-                                        </div>    
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container borderless">
-                                    <div class="row text-center align-items-center">
-                                      <div class="col">
-                                          <div class="row">
-                                              <div class="col">
-                                                <h8 class="text-muted">hot</h8>
-                                              </div>
-                                            <div class="col">
-                                                <h6 class="text-muted" id="ct_standard_cost"></h6> 
-                                            </div>
-                                          </div>
-                                      </div>
-                                      <div class="col">
-                                        <h3 class="text-muted">+</h3>
-                                      </div>
-                                      <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h8 class="text-muted">cool</h8>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="text-muted" id="ct_cool_cost"></h6>
-                                            </div>
-                                        </div>
-                                      </div> 
-                                      <div class="col">
-                                        <h3 class="text-muted">+</h3>
-                                      </div>
-                                      <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h8 class="text-muted">network</h8>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="text-muted" id="ct_network_month1"></h6>
-                                            </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="bg-light border">
-                                <h5 class="text-center">steady state storage cost with cool access</h5>
-                                <div class="container borderless">
-                                    <div class="row text-center align-items-center">
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                            <h5 id="ct_total_cost_month2"></h5>
-                                        </div>    
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container borderless">
-                                    <div class="row text-center align-items-center">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h8 class="text-muted">hot</h8>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="text-muted" id="ct_standard_cost_month2"></h6> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <h3 class="text-muted">+</h3>
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h8 class="text-muted">cool</h8>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="text-muted" id="ct_cool_cost_month2"></h6>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="col">
-                                        <h3 class="text-muted">+</h3>
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h8 class="text-muted">network</h8>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="text-muted" id="ct_network_month2"></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="bg-light border">
-                                <h5>steady state monthly savings</h5>
-                                <h3 class="text-success" id="total_savings"></h3>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="col">
+                <div class="container">
+                    <table class="table">
+                        <!-- Row 1: Full Width - "Detailed Output" -->
+                        <tr>
+                            <td colspan="3" class="text-center borderless">
+                                <h3>Detailed Output</h3>
+                            </td>
+                        </tr>
+                        <!-- Row 2: Full Width - Logical List Price -->
+                        <tr>
+                            <td colspan="3" class="text-center borderless">
+                                <h5>Logical List Price:</h5>
+                            </td>
+                        </tr>
+                        <!-- Row 3-7: 3 columns with placeholder text in each -->
+                        <tr>
+                            <td>logical data size (TiB)</td>
+                            <td>Placeholder 2</td>
+                            <td>Placeholder 3</td>
+                        </tr>
+                        <tr>
+                            <td>effective data size (TiB)</td>
+                            <td>Placeholder 5</td>
+                            <td>Placeholder 6</td>
+                        </tr>
+                        <tr>
+                            <td>data in hot tier (TiB)</td>
+                            <td>Placeholder 8</td>
+                            <td>Placeholder 9</td>
+                        </tr>
+                        <tr>
+                            <td>List price total per month</td>
+                            <td>Placeholder 11</td>
+                            <td>Placeholder 12</td>
+                        </tr>
+                        <tr>
+                            <td>List price per GiB per month</td>
+                            <td>Placeholder 14</td>
+                            <td>Placeholder 15</td>
+                        </tr>
+                        <!-- Row 8: Full Width - "Effective Discount Price" -->
+                        <tr>
+                            <td colspan="3" class="text-center borderless">
+                                <h5>Effective Discount Price</h5>
+                            </td>
+                        </tr>
+                        <!-- Row 9-13: 3 columns with placeholder text in each -->
+                        <tr>
+                            <td>logical data size (TiB)</td>
+                            <td>Placeholder 17</td>
+                            <td>Placeholder 18</td>
+                        </tr>
+                        <tr>
+                            <td>effective data size (TiB)</td>
+                            <td>Placeholder 20</td>
+                            <td>Placeholder 21</td>
+                        </tr>
+                        <tr>
+                            <td>data in hot tier (TiB)</td>
+                            <td>Placeholder 23</td>
+                            <td>Placeholder 24</td>
+                        </tr>
+                        <tr>
+                            <td>Effective price total per month</td>
+                            <td>Placeholder 26</td>
+                            <td>Placeholder 27</td>
+                        </tr>
+                        <tr>
+                            <td>Effective price per GiB per month</td>
+                            <td>Placeholder 29</td>
+                            <td>Placeholder 30</td>
+                        </tr>
+                        <!-- Row 14: Full Width - "Effective Price" -->
+                        <tr>
+                            <td colspan="3" class="text-center borderless">
+                                <h5>Effective Price</h5>
+                            </td>
+                        </tr>
+                        <!-- Row 15-19: 3 columns with placeholder text in each -->
+                        <tr>
+                            <td>logical data size (TiB)</td>
+                            <td>Placeholder 32</td>
+                            <td>Placeholder 33</td>
+                        </tr>
+                        <tr>
+                            <td>effective data size (TiB)</td>
+                            <td>Placeholder 35</td>
+                            <td>Placeholder 36</td>
+                        </tr>
+                        <tr>
+                            <td>data in hot tier (TiB)</td>
+                            <td>Placeholder 38</td>
+                            <td>Placeholder 39</td>
+                        </tr>
+                        <tr>
+                            <td>Effective price total per month</td>
+                            <td>Placeholder 41</td>
+                            <td>Placeholder 42</td>
+                        </tr>
+                        <tr>
+                            <td>Effective price per GiB per month</td>
+                            <td>Placeholder 44</td>
+                            <td>Placeholder 45</td>
+                        </tr>
+                    </table>
+                </div>                        <div class="col">
                             <canvas id="myChart" width="400" height="400"></canvas>
                         </div>
                     </div>   
