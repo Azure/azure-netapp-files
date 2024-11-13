@@ -1,0 +1,19 @@
+.bg-light-blue {
+    background-color: #89c4f4 !important; /* Light blue */
+}
+
+.bg-darker-blue {
+    background-color: #038aff !important; /* A bit darker blue */
+}
+
+.bg-light-green {
+    background-color: #c8f7c5 !important;
+}
+
+.bg-darker-green {
+    background-color: #87d37c !important;
+}
+
+.bg-teal-green {
+    background-color: #165668 !important;
+}
