@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Azure NetApp Files effective price estimator"
+        />
+        <meta name="keywords" content="ANF, Estimator" />
+        <meta name="author" content="Pradeep Kumar, Mohamed Niyaz" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+            integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        <script
+            type="text/javascript"
+            src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"
+        ></script>
+        <script async src="./index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip({
+                    container: "body",
+                    html: true,
+                });
+            });
+        </script>
+        <link
+            rel="shortcut icon"
+            href="https://cloud.netapp.com/hubfs/favicon.jpg"
+        />
+        <title>
+            Azure NetApp Files effective price estimator
+        </title>
+        <style>
+            .float-end {
+                float: right;
+            }
+        </style>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body onload="handleSubmit();">
+        <div
+            class="shadow px-4 border-bottom border-2"
+            style="background-color: #0247b0"
+        >
+            <div class="d-flex">
+                <div class="mt-2 mb-2" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <img src="./anf.png" alt="ANF Logo" class="img-fluid" height="50px" width="50px" />
+                </div>
+                <div class="float-left">
+                    <p class="h4 text-light fs-4 mt-3 mb-2 ms-3">
+                        Azure NetApp Files effective price estimator
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="shadow rounded m-4 p-3">
+            <div class="row mb-3 m-1 border-bottom border-2">
+                <span class="col-9 fs-5 text-dark mb-3"> Input </span>
+                <div class="col text-end">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="region_select"
+                            >Region</label
+                        >
+                        <select
+                            class="form-select"
+                            id="region_select"
+                            oninput="handleSubmit();"
+                        >
+                            <option value="Australia Central">
+                                Australia Central
+                            </option>
+                            <option value="Australia Central 2">
+                                Australia Central 2
+                            </option>
+                            <option value="Australia East">
+                                Australia East
+                            </option>
+                            <option value="Australia Southeast">
+                                Australia Southeast
+                            </option>
+                            <option value="Brazil South">Brazil South</option>
+                            <option value="Brazil Southeast">
+                                Brazil Southeast
+                            </option>
+                            <option value="Canada Central">
+                                Canada Central
+                            </option>
+                            <option value="Canada East">Canada East</option>
+                            <option value="Central India">Central India</option>
+                            <option value="Central US">Central US</option>
+                            <option value="East Asia">East Asia</option>
+                            <option value="East US" selected>East US</option>
+                            <option value="East US 2">East US 2</option>
+                            <option value="France Central">
+                                France Central
+                            </option>
+                            <option value="Germany North">Germany North</option>
+                            <option value="Germany West Central">
+                                Germany West Central
+                            </option>
+                            <option value="Israel Central">
+                                Israel Central
+                            </option>
+                            <option value="Italy North">Italy North</option>
+                            <option value="Japan East">Japan East</option>
+                            <option value="Japan West">Japan West</option>
+                            <option value="Korea Central">Korea Central</option>
+                            <option value="Korea South">Korea South</option>
+                            <option value="North Central US">
+                                North Central US
+                            </option>
+                            <option value="North Europe">North Europe</option>
+                            <option value="Norway East">Norway East</option>
+                            <option value="Norway West">Norway West</option>
+                            <option value="Qatar Central">Qatar Central</option>
+                            <option value="South Africa North">
+                                South Africa North
+                            </option>
+                            <option value="South Central US">
+                                South Central US
+                            </option>
+                            <option value="South India">South India</option>
+                            <option value="Southeast Asia">
+                                Southeast Asia
+                            </option>
+                            <option value="Spain Central">Spain Central</option>
+                            <option value="Sweden Central">
+                                Sweden Central
+                            </option>
+                            <option value="Switzerland North">
+                                Switzerland North
+                            </option>
+                            <option value="Switzerland West">
+                                Switzerland West
+                            </option>
+                            <option value="UAE Central">UAE Central</option>
+                            <option value="UAE North">UAE North</option>
+                            <option value="UK South">UK South</option>
+                            <option value="UK West">UK West</option>
+                            <option value="US Gov Arizona">
+                                US Gov Arizona
+                            </option>
+                            <option value="US Gov Texas">US Gov Texas</option>
+                            <option value="US Gov Virginia">
+                                US Gov Virginia
+                            </option>
+                            <option value="West Europe">West Europe</option>
+                            <option value="West US">West US</option>
+                            <option value="West US 2">West US 2</option>
+                            <option value="West US 3">West US 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3 m-1">
+                <div class="col-3">
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="./anf.png" alt="ANF Logo" class="img-fluid" height="125px" width="125px" />
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div>
+                                <table
+                                    id="total_monthly_cost_table"
+                                    class="table table-hover table-sm mt-3 mb-3"
+                                    style="table-layout: fixed; font-size: 16px"
+                                >
+                                    <thead
+                                        class="table-dark"
+                                        style="text-align: center"
+                                    >
+                                        <tr>
+                                            <th
+                                                class="bg-light-blue text-dark"
+                                                style="border-bottom: none"
+                                            >
+                                                Total Monthly Cost
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-light">
+                                        <tr>
+                                            <td
+                                                colspan="1"
+                                                class="text-center fs-2 text-secondary"
+                                            >
+                                                No data
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Active Data Size</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="200"
+                            value="200"
+                            min="1"
+                            aria-label="active_data_size_input"
+                            aria-describedby="active_data_size_input"
+                            id="active_data_size_input"
+                            oninput="handleSubmit();"
+                        />
+                        <button class="btn btn-primary" type="button">
+                            TiB
+                        </button>
+                    </div>
+                    <div class="input-group mb-4">
+                        <label
+                            class="input-group-text"
+                            for="service_level_select"
+                            >Service Level</label
+                        >
+                        <select
+                            class="form-select"
+                            id="service_level_select"
+                            oninput="handleSubmit();"
+                        >
+                            <option value="standard" selected>Standard</option>
+                            <option value="premium">Premium</option>
+                            <option value="ultra">Ultra</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <span class="fs-5 text-primary"> Cool access </span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Cool data</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="80"
+                            value="80"
+                            min="1"
+                            aria-label="cool_data_input"
+                            aria-describedby="cool_data_input"
+                            id="cool_data_input"
+                            oninput="handleSubmit();"
+                        />
+                        <button class="btn btn-primary" type="button">%</button>
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text"
+                            >Cool data retrieval</span
+                        >
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="10"
+                            value="10"
+                            min="1"
+                            aria-label="cool_data_retrieval_input"
+                            aria-describedby="cool_data_retrieval_input"
+                            id="cool_data_retrieval_input"
+                            oninput="handleSubmit();"
+                        />
+                        <button class="btn btn-primary" type="button">%</button>
+                    </div>
+                    <div class="mb-2">
+                        <span class="fs-5 text-primary"> Snapshots </span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Daily snapshots</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="1"
+                            value="1"
+                            min="1"
+                            aria-label="daily_snapshots_input"
+                            aria-describedby="daily_snapshots_input"
+                            id="daily_snapshots_input"
+                            oninput="handleSubmit();"
+                        />
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Daily change rate</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="10"
+                            value="10"
+                            min="1"
+                            aria-label="daily_change_rate_input"
+                            aria-describedby="daily_change_rate_input"
+                            id="daily_change_rate_input"
+                            oninput="handleSubmit();"
+                        />
+                        <button class="btn btn-primary" type="button">%</button>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="fs-5 text-primary">
+                            Reserved capacity
+                        </span>
+                    </div>
+                    <div class="input-group mb-4">
+                        <label
+                            class="input-group-text"
+                            for="reserved_capacity_term_select"
+                            >Reserved capacity term</label
+                        >
+                        <select
+                            class="form-select"
+                            id="reserved_capacity_term_select"
+                            oninput="handleSubmit();"
+                        >
+                            <option value="1">1</option>
+                            <option value="3" selected>3</option>
+                            <option value="none">None</option>
+                        </select>
+                        <button class="btn btn-primary" type="button">
+                            years
+                        </button>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="fs-5 text-primary"> Custom discount </span>
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">Discount</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="0"
+                            value="0"
+                            min="0"
+                            aria-label="discount_input"
+                            aria-describedby="discount_input"
+                            id="discount_input"
+                            oninput="handleSubmit();"
+                        />
+                        <button class="btn btn-primary" type="button">%</button>
+                    </div>
+                    <span class="text-danger">Note : </span
+                    ><span class="text-secondary"
+                        >Non-zero custom discount rate will override reserved capacity discount.</span
+                    >
+                </div>
+                <div class="col-5">
+                    <div class="row mb-3">
+                        <div>
+                            <table
+                                id="pricing_table"
+                                class="table table-hover table-sm mt-3 mb-3"
+                                style="table-layout: fixed; font-size: 16px"
+                            >
+                                <thead
+                                    class="table-dark"
+                                    style="text-align: center"
+                                >
+                                    <tr>
+                                        <th
+                                            class="bg-light-blue text-dark"
+                                            style="border-bottom: none"
+                                        >
+                                            Logical list price / GiB
+                                        </th>
+                                        <th
+                                            class="bg-light-green text-dark"
+                                            style="border-bottom: none"
+                                        >
+                                            Discounted price / GiB
+                                        </th>
+                                        <th
+                                            class="bg-light-green text-dark"
+                                            style="border-bottom: none"
+                                        >
+                                            Effective price / GiB
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-light">
+                                    <tr>
+                                        <td
+                                            colspan="3"
+                                            class="text-center fs-2 text-secondary"
+                                        >
+                                            No data
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <center>
+                            <span class="text-primary fw-bold fs-5 mb-2"
+                                >Azure NetApp Files price per GiB</span
+                            >
+                        </center>
+                        <canvas
+                            id="anf_price_per_gib_chart"
+                            class="chart-canvas"
+                            style="height: 625px; max-height: 625px"
+                        ></canvas>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row mb-3">
+                        <div>
+                            <table
+                                id="capacity_table"
+                                class="table table-hover table-sm mt-3 mb-3"
+                                style="table-layout: fixed; font-size: 16px"
+                            >
+                                <thead
+                                    class="table-dark"
+                                    style="text-align: center"
+                                >
+                                    <tr>
+                                        <th
+                                            class="bg-light-blue text-dark"
+                                            style="border-bottom: none"
+                                        >
+                                            Provisioned capacity
+                                        </th>
+                                        <th
+                                            class="bg-light-green text-dark"
+                                            style="border-bottom: none"
+                                        >
+                                            Effective capacity
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-light">
+                                    <tr>
+                                        <td
+                                            colspan="2"
+                                            class="text-center fs-2 text-secondary"
+                                        >
+                                            No data
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <center>
+                            <span class="text-primary fw-bold fs-5 mb-2"
+                                >Effective capacity breakdown (TiB)</span
+                            >
+                        </center>
+                        <canvas
+                            id="effective_capacity_breakdown_chart"
+                            class="chart-canvas"
+                            style="height: 625px; max-height: 625px"
+                        ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="accordion px-4" id="summaryAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button
+                            class="accordion-button fw-bold fs-5 text-dark"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne"
+                        >
+                            Advanced Summary
+                        </button>
+                    </h2>
+                    <div
+                        id="collapseOne"
+                        class="accordion-collapse collapse show"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#summaryAccordion"
+                    >
+                        <div class="accordion-body">
+                            <center>
+                                <span class="text-primary fw-bold fs-5 mb-2"
+                                    >Logical list pricing</span
+                                >
+                            </center>
+                            <table
+                                id="logical_list_price_table"
+                                class="table table-bordered table-hover w-100 mt-3 mb-4"
+                                style="table-layout: fixed; font-size: 16px"
+                            >
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="bg-teal-green text-light">
+                                            Logical data size [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective data size [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Data in hot tier [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            List price total per month
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            List price per GiB per month
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-light">
+                                    <tr>
+                                        <td
+                                            colspan="5"
+                                            class="text-center fs-2 text-secondary"
+                                        >
+                                            No Data
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <center>
+                                <span class="text-primary fw-bold fs-5 mb-2"
+                                    >Effective discounted price</span
+                                >
+                            </center>
+                            <table
+                                id="effective_discounted_price_table"
+                                class="table table-bordered table-hover w-100 mt-3 mb-4"
+                                style="table-layout: fixed; font-size: 16px"
+                            >
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="bg-teal-green text-light">
+                                            Logical data size [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective data size [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Data in hot tier [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective price total per month
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective price per GiB per month
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-light">
+                                    <tr>
+                                        <td
+                                            colspan="5"
+                                            class="text-center fs-2 text-secondary"
+                                        >
+                                            No data
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <center>
+                                <span class="text-primary fw-bold fs-5 mb-2"
+                                    >Effective capacity price</span
+                                >
+                            </center>
+                            <table
+                                id="effective_capacity_price_table"
+                                class="table table-bordered table-hover w-100 mt-3 mb-3"
+                                style="table-layout: fixed; font-size: 16px"
+                            >
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="bg-teal-green text-light">
+                                            Logical data size [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective data size [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Data in hot tier [TiB]
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective price total per month
+                                        </th>
+                                        <th class="bg-teal-green text-light">
+                                            Effective price per GiB per month
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-light">
+                                    <tr>
+                                        <td
+                                            colspan="5"
+                                            class="text-center fs-2 text-secondary"
+                                        >
+                                            No data
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mx-4 p-3"
+                style="background-color: rgba(33, 37, 41, 0.03)"
+            >
+                <small class="text-muted"
+                    ><b>Notes</b>:
+                    <ul>
+                        <li>Estimator is for estimation purposes only and your actual results may vary</li>
+                        <li>
+                            Monthly costs are based on a 730 hour billing month
+                        </li>
+                        <li>Release: v1.0</li>
+                    </ul>
+                </small>
+                <div class="row mt-2 mb-2">
+                    <div class="col text-left">
+                        <small class="text-muted"
+                            >NetApp Solutions Engineering Team -
+                            <a
+                                href="mailto:45bf333e.netapp.onmicrosoft.com@amer.teams.ms"
+                                >Send feedback</a
+                            ></small
+                        >
+                    </div>
+                    <div class="col-auto text-right">
+                        <small class="text-muted"
+                            >©Copyright 2024,
+                            <a href="">NetApp Inc.(c)</a></small
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" tabindex="-1" id="startModal">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row m-0 pe-4 w-100">
+                            <div class="m-0 p-0">
+                                <h5 class="modal-title">
+                                    Azure NetApp Files effective price estimator
+                                </h5>
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div
+                        class="modal-body"
+                        style="max-height: 70vh; overflow-y: auto"
+                    >
+                        <p class="docs-p"><b>Important:</b> This tool is designed to estimate the potential savings when enabling <a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">Azure NetApp Files storage with cool access</a>, <a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a> and <a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a>.</p>
+                        <p class="docs-p">
+                            Azure NetApp Files delivers automatic storage cost savings by leveraging automated data tiering, space-efficient snapshots and reserved capacity pricing based on committed usage.
+                        </p>
+                        <p class="docs-p">
+                            These features can work together or independently to significantly reduce the effective price of Azure NetApp Files.  Effective pricing reflects the actual cost you pay for storage after applying built-in efficiencies and discounts.  These savings directly reduce the $/GiB/month, enabling you to manage your storage expenses more effectively. 
+                        </p>
+                        <br>
+                        <h5>Instructions/Help</h5>
+                        <h6>Begin by entering</h6>
+                        <ul>
+                            <li><b>Active data size:</b> Enter in the amount of data you plan to store on Azure NetApp Files.
+                            </li>
+                            <li>
+                                <b>Service level:</b> Choose between Standard (16MiB/s per 1TiB), Premium (64MiB/s per 1TiB), and Ultra (128MiB/s per 1TiB).
+                            </li>
+                        </ul>
+
+                        <h6>Under Cool access adjust the following parameters:</h6>
+                        <ul>
+                            <li><b>Cool data:</b> How much data do you expect to move to the cool tier? The higher the value, the more you will save.</li>
+                            <li>Cool data retrieval:</b> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</li>
+                        </ul>
+
+                        <h6>Under Snapshots adjust the following parameters:</h6>
+                        <ul>
+                            <li>
+                                <b>Daily snapshots:</b> How many snapshots do you want to take per day?
+                            </li>
+                            <li>
+                                <b>Daily change rate:</b> How much does the data change daily?
+                            </li>
+                        </ul>
+
+                        <h6>Under Reserved capacity adjust the following parameter:</h6>
+                        <ul>
+                            <li>
+                                <b>Reserved capacity term:</b> How long of a commitment for storage capacity do you want to have?
+                            </li>
+                        </ul>
+ 
+                        <p class="docs-p"><b>Note:</b> Your actual savings will vary depending on several factors.</p>
+                        
+                        <p class="docs-p mb-1">For Azure NetApp Files storage with cool access these factors may include, but are not limited to:</p>
+                        <ul>
+                            <li>actual size of data marked as "cold"</li>
+                            <li>duration of data movement to the cool tier</li>
+                            <li>actual size of data read back from the cool tier</li>
+                        </ul>
+                        
+
+                        <p class="docs-p mb-1">For Azure NetApp Files reserved capacity these factors may include, but are not limited to:</p>
+                        <ul>
+                            <li>service level used</li>
+                            <li>capacity increment chosen</li>
+                            <li>term length</li>
+                        </ul>
+
+                        <p class="docs-p mb-1">For Azure NetApp Files snapshots these factors may include, but are not limited to:</p>
+                        <ul>
+                            <li>number of snapshots taken</li>
+                            <li>daily data change rate </li>
+                        </ul>
+
+                        <p class="docs-p mb-1">For more information on how Azure NetApp Files helps you optimize and lower your storage costs check out the following information:</p>
+
+                        <p><a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-cool-access?tabs=standard">Azure NetApp Files storage with cool access</a></p>
+                        <p><a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a></p>
+                        <p><a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a></p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        const popoverTriggerList = document.querySelectorAll(
+            '[data-bs-toggle="popover"]'
+        );
+        const popoverList = [...popoverTriggerList].map(
+            (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+        );
+    </script>
+    <script type="text/javascript">
+        $(window).on('load', function() {
+           $('#startModal').modal('show');
+        });
+        $('#modalButton').on('click', function() {
+           $('#startModal').modal('show');
+        });
+    </script>
+</html>
