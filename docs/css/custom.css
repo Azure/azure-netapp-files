@@ -1,3 +1,6 @@
+body {
+  background-color: lightgrey !important;
+}
 th {font-weight: normal;}
 
 a {text-decoration: none;}
