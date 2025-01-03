@@ -37,6 +37,7 @@ var regionlocation = {
     swedencentral: [17.14127, 60.67488],
     switzerlandnorth: [8.564572,47.451542],
     switzerlandwest: [6.143158,46.204391],
+    taiwannorth: [long, lat],
     uaecentral: [54.366669, 24.466667],
     uaenorth: [55.316666, 25.266666],
     uksouth: [-0.799, 50.941],
@@ -645,6 +646,23 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
+        "azplacement": false
+    },
+    {
+        "shortname": "taiwannorth",
+        "longname": "Taiwa North",
+        "location": regionlocation.taiwannorth,
+        "crrregions": [], 
+        "czr": false,
+        "snf": true, 
+        "snfedit": true, 
+        "avsdatastore": false, 
+        "backup": true, 
+        "largevolumes": false, 
+        "cmk": true, 
+        "cmkhsm": false, 
+        "doubleencryption": true,
+        "standardcool": true, 
         "azplacement": false
     },
     {

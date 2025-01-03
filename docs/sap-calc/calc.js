@@ -9,6 +9,7 @@ cfg: { // Application Insights Configuration
     /* ...Other Configuration Options... */
 }});
 
+
 let standard_region_rates = {
     "centralus": 0.14746,
     "eastus": 0.14746,

@@ -1400,6 +1400,19 @@
     "subscriptionId": null
   },
   {
+    "displayName": "Taiwan North",
+    "id": "/subscritpions/c560a042-4311-40cf-beb5-edc67991179e/locations/taiwannorth",
+    "metadata": {
+      "geographyGroup": "Asia Pacific",
+      "latitutde": "",
+      "longitude": "",
+      "pairedRegion": null,
+      "physicalLocation": "Taipei",
+      "regionalCategory": "Other",
+      "regionType": "Physical"
+    }
+  }
+  {
     "displayName": "UK West",
     "id": "/subscriptions/c560a042-4311-40cf-beb5-edc67991179e/locations/ukwest",
     "metadata": {
