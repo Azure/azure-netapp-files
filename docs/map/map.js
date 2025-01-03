@@ -37,6 +37,7 @@ var regionlocation = {
     swedencentral: [17.14127, 60.67488],
     switzerlandnorth: [8.564572,47.451542],
     switzerlandwest: [6.143158,46.204391],
+    taiwannorth: [long, lat],
     uaecentral: [54.366669, 24.466667],
     uaenorth: [55.316666, 25.266666],
     uksouth: [-0.799, 50.941],
@@ -648,6 +649,23 @@ var regionlist = [
         "azplacement": false
     },
     {
+        "shortname": "taiwannorth",
+        "longname": "Taiwan North",
+        "location": regionlocation.taiwannorth,
+        "crrregions": [], 
+        "czr": false,
+        "snf": true, 
+        "snfedit": true, 
+        "avsdatastore": false, 
+        "backup": true, 
+        "largevolumes": false, 
+        "cmk": true, 
+        "cmkhsm": false, 
+        "doubleencryption": true,
+        "standardcool": true, 
+        "azplacement": false
+    },
+    {
         "shortname": "uaecentral",
         "longname": "UAE Central",
         "location": regionlocation.uaecentral,
@@ -1030,7 +1048,7 @@ function initMap() {
                 position: item.location,
                 htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
                 popup: new atlas.Popup({
-                    content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                    content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>double encryption: ' + item.doubleencryption +  '<br>storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                     pixelOffset: [0, -50],
                     fillColor: 'rgba(0,0,0,0.6)'
                 })
@@ -1184,7 +1202,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
@@ -1250,7 +1268,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon_gray.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit standard networking: ' + item.snfedit + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
