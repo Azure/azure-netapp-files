@@ -650,7 +650,7 @@ var regionlist = [
     },
     {
         "shortname": "taiwannorth",
-        "longname": "Taiwa North",
+        "longname": "Taiwan North",
         "location": regionlocation.taiwannorth,
         "crrregions": [], 
         "czr": false,
