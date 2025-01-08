@@ -14,6 +14,22 @@
     background-color: #87d37c !important;
 }
 
+.bg-light-brown {
+    background-color: #e9ceaf !important;
+}
+
+.bg-darker-brown {
+    background-color: #b5937d !important;
+}
+
+.bg-light-purple {
+    background-color: #e8d5e7 !important;
+}
+
+.bg-darker-purple {
+    background-color: #8a6b9d !important;
+}
+
 .bg-teal-green {
     background-color: #165668 !important;
 }
