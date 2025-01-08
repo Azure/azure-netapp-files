@@ -4,14 +4,11 @@
         <meta charset="UTF-8" />
         <meta
             name="description"
-            content="Azure NetApp Files effective price estimator"
+            content="Azure NetApp Files Effective Price Estimator"
         />
         <meta name="keywords" content="ANF, Estimator" />
         <meta name="author" content="Pradeep Kumar, Mohamed Niyaz" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -58,12 +55,9 @@
                 });
             });
         </script>
-        <link
-            rel="shortcut icon"
-            href="https://cloud.netapp.com/hubfs/favicon.jpg"
-        />
+        <link rel="shortcut icon" href="favicon.ico">
         <title>
-            Azure NetApp Files effective price estimator
+            Azure NetApp Files Effective Price Estimator
         </title>
         <style>
             .float-end {
@@ -83,7 +77,7 @@
                 </div>
                 <div class="float-left">
                     <p class="h4 text-light fs-4 mt-3 mb-2 ms-3">
-                        Azure NetApp Files effective price estimator
+                        Azure NetApp Files Effective Price Estimator
                     </p>
                 </div>
             </div>
@@ -100,85 +94,48 @@
                             class="form-select"
                             id="region_select"
                             oninput="handleSubmit();"
+                            tabindex="1"
                         >
-                            <option value="Australia Central">
-                                Australia Central
-                            </option>
-                            <option value="Australia Central 2">
-                                Australia Central 2
-                            </option>
-                            <option value="Australia East">
-                                Australia East
-                            </option>
-                            <option value="Australia Southeast">
-                                Australia Southeast
-                            </option>
+                            <option value="Australia Central">Australia Central</option>
+                            <option value="Australia Central 2">Australia Central 2</option>
+                            <option value="Australia East">Australia East</option>
+                            <option value="Australia Southeast">Australia Southeast</option>
                             <option value="Brazil South">Brazil South</option>
-                            <option value="Brazil Southeast">
-                                Brazil Southeast
-                            </option>
-                            <option value="Canada Central">
-                                Canada Central
-                            </option>
+                            <option value="Brazil Southeast">Brazil Southeast</option>
+                            <option value="Canada Central">Canada Central</option>
                             <option value="Canada East">Canada East</option>
                             <option value="Central India">Central India</option>
                             <option value="Central US">Central US</option>
                             <option value="East Asia">East Asia</option>
                             <option value="East US" selected>East US</option>
                             <option value="East US 2">East US 2</option>
-                            <option value="France Central">
-                                France Central
-                            </option>
+                            <option value="France Central">France Central</option>
                             <option value="Germany North">Germany North</option>
-                            <option value="Germany West Central">
-                                Germany West Central
-                            </option>
-                            <option value="Israel Central">
-                                Israel Central
-                            </option>
+                            <option value="Germany West Central">Germany West Central</option>
+                            <option value="Israel Central">Israel Central</option>
                             <option value="Italy North">Italy North</option>
                             <option value="Japan East">Japan East</option>
                             <option value="Japan West">Japan West</option>
                             <option value="Korea Central">Korea Central</option>
                             <option value="Korea South">Korea South</option>
-                            <option value="North Central US">
-                                North Central US
-                            </option>
+                            <option value="North Central US">North Central US</option>
                             <option value="North Europe">North Europe</option>
                             <option value="Norway East">Norway East</option>
                             <option value="Norway West">Norway West</option>
                             <option value="Qatar Central">Qatar Central</option>
-                            <option value="South Africa North">
-                                South Africa North
-                            </option>
-                            <option value="South Central US">
-                                South Central US
-                            </option>
+                            <option value="South Central US">South Central US</option>
                             <option value="South India">South India</option>
-                            <option value="Southeast Asia">
-                                Southeast Asia
-                            </option>
                             <option value="Spain Central">Spain Central</option>
-                            <option value="Sweden Central">
-                                Sweden Central
-                            </option>
-                            <option value="Switzerland North">
-                                Switzerland North
-                            </option>
-                            <option value="Switzerland West">
-                                Switzerland West
-                            </option>
+                            <option value="Sweden Central">Sweden Central</option>
+                            <option value="Switzerland North">Switzerland North</option>
+                            <option value="Switzerland West">Switzerland West</option>
                             <option value="UAE Central">UAE Central</option>
                             <option value="UAE North">UAE North</option>
                             <option value="UK South">UK South</option>
                             <option value="UK West">UK West</option>
-                            <option value="US Gov Arizona">
-                                US Gov Arizona
-                            </option>
+                            <option value="US Gov Arizona">US Gov Arizona</option>
                             <option value="US Gov Texas">US Gov Texas</option>
-                            <option value="US Gov Virginia">
-                                US Gov Virginia
-                            </option>
+                            <option value="US Gov Virginia">US Gov Virginia</option>
                             <option value="West Europe">West Europe</option>
                             <option value="West US">West US</option>
                             <option value="West US 2">West US 2</option>
@@ -192,7 +149,7 @@
                     <div class="row mb-3">
                         <div class="col-3">
                             <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                                <img src="./anf.png" alt="ANF Logo" class="img-fluid" height="125px" width="125px" />
+                                <img src="./anf.png" alt="ANF Logo" class="img-fluid" />
                             </div>
                         </div>
                         <div class="col-9">
@@ -218,10 +175,10 @@
                                     <tbody class="table-light">
                                         <tr>
                                             <td
-                                                colspan="1"
+                                                colspan="2"
                                                 class="text-center fs-2 text-secondary"
                                             >
-                                                No data
+                                                No Data
                                             </td>
                                         </tr>
                                     </tbody>
@@ -234,13 +191,14 @@
                         <input
                             type="number"
                             class="form-control"
-                            placeholder="200"
-                            value="200"
+                            placeholder="1"
+                            value="1"
                             min="1"
                             aria-label="active_data_size_input"
                             aria-describedby="active_data_size_input"
                             id="active_data_size_input"
-                            oninput="handleSubmit();"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="2"
                         />
                         <button class="btn btn-primary" type="button">
                             TiB
@@ -256,6 +214,7 @@
                             class="form-select"
                             id="service_level_select"
                             oninput="handleSubmit();"
+                            tabindex="3"
                         >
                             <option value="standard" selected>Standard</option>
                             <option value="premium">Premium</option>
@@ -263,37 +222,41 @@
                         </select>
                     </div>
                     <div class="mb-2">
-                        <span class="fs-5 text-primary"> Cool access </span>
+                        <span class="fs-5 text-primary"> Cool Access </span>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Cool data</span>
+                        <span class="input-group-text">Cool Data</span>
                         <input
                             type="number"
                             class="form-control"
-                            placeholder="80"
-                            value="80"
-                            min="1"
+                            placeholder="0"
+                            value="0"
+                            min="0"
+                            max="100"
                             aria-label="cool_data_input"
                             aria-describedby="cool_data_input"
                             id="cool_data_input"
-                            oninput="handleSubmit();"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="4"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
                     <div class="input-group mb-4">
                         <span class="input-group-text"
-                            >Cool data retrieval</span
+                            >Cool Data Retrieval</span
                         >
                         <input
                             type="number"
                             class="form-control"
-                            placeholder="10"
-                            value="10"
-                            min="1"
+                            placeholder="0"
+                            value="0"
+                            min="0"
+                            max="100"
                             aria-label="cool_data_retrieval_input"
                             aria-describedby="cool_data_retrieval_input"
                             id="cool_data_retrieval_input"
-                            oninput="handleSubmit();"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="5"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
@@ -301,54 +264,58 @@
                         <span class="fs-5 text-primary"> Snapshots </span>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Daily snapshots</span>
+                        <span class="input-group-text">Daily Snapshot Retention</span>
                         <input
                             type="number"
                             class="form-control"
-                            placeholder="1"
-                            value="1"
-                            min="1"
+                            placeholder="0"
+                            value="0"
+                            min="0"
                             aria-label="daily_snapshots_input"
                             aria-describedby="daily_snapshots_input"
                             id="daily_snapshots_input"
-                            oninput="handleSubmit();"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="6"
                         />
                     </div>
                     <div class="input-group mb-4">
-                        <span class="input-group-text">Daily change rate</span>
+                        <span class="input-group-text">Daily Change Rate</span>
                         <input
                             type="number"
                             class="form-control"
-                            placeholder="10"
-                            value="10"
-                            min="1"
+                            placeholder="0"
+                            value="0"
+                            min="0"
+                            max="100"
                             aria-label="daily_change_rate_input"
                             aria-describedby="daily_change_rate_input"
                             id="daily_change_rate_input"
-                            oninput="handleSubmit();"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="7"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
 
                     <div class="mb-2">
                         <span class="fs-5 text-primary">
-                            Reserved capacity
+                            Reserved Capacity
                         </span>
                     </div>
                     <div class="input-group mb-4">
                         <label
                             class="input-group-text"
                             for="reserved_capacity_term_select"
-                            >Reserved capacity term</label
+                            >Reserved Capacity Term</label
                         >
                         <select
                             class="form-select"
                             id="reserved_capacity_term_select"
                             oninput="handleSubmit();"
+                            tabindex="8"
                         >
                             <option value="1">1</option>
-                            <option value="3" selected>3</option>
-                            <option value="none">None</option>
+                            <option value="3">3</option>
+                            <option value="none" selected>None</option>
                         </select>
                         <button class="btn btn-primary" type="button">
                             years
@@ -356,7 +323,7 @@
                     </div>
 
                     <div class="mb-2">
-                        <span class="fs-5 text-primary"> Custom discount </span>
+                        <span class="fs-5 text-primary"> Custom Discount </span>
                     </div>
                     <div class="input-group mb-2">
                         <span class="input-group-text">Discount</span>
@@ -366,10 +333,12 @@
                             placeholder="0"
                             value="0"
                             min="0"
+                            max="100"
                             aria-label="discount_input"
                             aria-describedby="discount_input"
                             id="discount_input"
-                            oninput="handleSubmit();"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="9"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
@@ -398,7 +367,7 @@
                                             Logical list price / GiB
                                         </th>
                                         <th
-                                            class="bg-light-green text-dark"
+                                            class="bg-light-brown text-dark"
                                             style="border-bottom: none"
                                         >
                                             Discounted price / GiB
@@ -417,7 +386,7 @@
                                             colspan="3"
                                             class="text-center fs-2 text-secondary"
                                         >
-                                            No data
+                                            No Data
                                         </td>
                                     </tr>
                                 </tbody>
@@ -431,7 +400,7 @@
                         <canvas
                             id="anf_price_per_gib_chart"
                             class="chart-canvas"
-                            style="height: 625px; max-height: 625px"
+                            style="height: 625px; max-height: 625px;"
                         ></canvas>
                     </div>
                 </div>
@@ -452,13 +421,13 @@
                                             class="bg-light-blue text-dark"
                                             style="border-bottom: none"
                                         >
-                                            Provisioned capacity
+                                            Provisioned Capacity
                                         </th>
                                         <th
                                             class="bg-light-green text-dark"
                                             style="border-bottom: none"
                                         >
-                                            Effective capacity
+                                            Effective Capacity
                                         </th>
                                     </tr>
                                 </thead>
@@ -468,7 +437,7 @@
                                             colspan="2"
                                             class="text-center fs-2 text-secondary"
                                         >
-                                            No data
+                                            No Data
                                         </td>
                                     </tr>
                                 </tbody>
@@ -476,7 +445,7 @@
                         </div>
                         <center>
                             <span class="text-primary fw-bold fs-5 mb-2"
-                                >Effective capacity breakdown (TiB)</span
+                                >Effective Capacity breakdown (TiB)</span
                             >
                         </center>
                         <canvas
@@ -512,7 +481,7 @@
                         <div class="accordion-body">
                             <center>
                                 <span class="text-primary fw-bold fs-5 mb-2"
-                                    >Logical list pricing</span
+                                    >Logical List Pricing</span
                                 >
                             </center>
                             <table
@@ -523,19 +492,19 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="bg-teal-green text-light">
-                                            Logical data size [TiB]
+                                            Logical Data Size [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective data size [TiB]
+                                            Effective Data Size [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Data in hot tier [TiB]
+                                            Data in Hot Tier [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            List price total per month
+                                            List Price Total Per Month
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            List price per GiB per month
+                                            List Price per GiB per Month
                                         </th>
                                     </tr>
                                 </thead>
@@ -553,7 +522,7 @@
 
                             <center>
                                 <span class="text-primary fw-bold fs-5 mb-2"
-                                    >Effective discounted price</span
+                                    >Effective Discounted Price</span
                                 >
                             </center>
                             <table
@@ -564,19 +533,19 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="bg-teal-green text-light">
-                                            Logical data size [TiB]
+                                            Logical Data Size [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective data size [TiB]
+                                            Effective Data Size [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Data in hot tier [TiB]
+                                            Data in Hot Tier [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective price total per month
+                                            Effective Price Total Per Month
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective price per GiB per month
+                                            Effective Price per GiB per Month
                                         </th>
                                     </tr>
                                 </thead>
@@ -586,7 +555,7 @@
                                             colspan="5"
                                             class="text-center fs-2 text-secondary"
                                         >
-                                            No data
+                                            No Data
                                         </td>
                                     </tr>
                                 </tbody>
@@ -594,7 +563,7 @@
 
                             <center>
                                 <span class="text-primary fw-bold fs-5 mb-2"
-                                    >Effective capacity price</span
+                                    >Effective Capacity Price</span
                                 >
                             </center>
                             <table
@@ -605,19 +574,19 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="bg-teal-green text-light">
-                                            Logical data size [TiB]
+                                            Logical Data Size [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective data size [TiB]
+                                            Effective Data Size [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Data in hot tier [TiB]
+                                            Data in Hot Tier [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective price total per month
+                                            Effective Price Total Per Month
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective price per GiB per month
+                                            Effective Price per GiB per Month
                                         </th>
                                     </tr>
                                 </thead>
@@ -627,7 +596,7 @@
                                             colspan="5"
                                             class="text-center fs-2 text-secondary"
                                         >
-                                            No data
+                                            No Data
                                         </td>
                                     </tr>
                                 </tbody>
@@ -643,11 +612,15 @@
                 <small class="text-muted"
                     ><b>Notes</b>:
                     <ul>
-                        <li>Estimator is for estimation purposes only and your actual results may vary</li>
+                        <li>Estimator is for estimation purposes only</li>
                         <li>
                             Monthly costs are based on a 730 hour billing month
                         </li>
-                        <li>Release: v1.0</li>
+                        <li>
+                            Results are for estimation purposes and your actual
+                            savings may vary
+                        </li>
+                        <li>Release: v1.1</li>
                     </ul>
                 </small>
                 <div class="row mt-2 mb-2">
@@ -676,7 +649,7 @@
                         <div class="row m-0 pe-4 w-100">
                             <div class="m-0 p-0">
                                 <h5 class="modal-title">
-                                    Azure NetApp Files effective price estimator
+                                    Azure NetApp Files Effective Price Estimator
                                 </h5>
                             </div>
                         </div>
@@ -692,44 +665,44 @@
                         class="modal-body"
                         style="max-height: 70vh; overflow-y: auto"
                     >
-                        <p class="docs-p"><b>Important:</b> This tool is designed to estimate the potential savings when enabling <a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">Azure NetApp Files storage with cool access</a>, <a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a> and <a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a>.</p>
+                        <p class="docs-p"><b>Important:</b> This tool is designed to estimate your effective price after enabling cost savings features such as <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/cool-access-introduction">Azure NetApp Files storage with cool access</a>, <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a> and <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a>.</p>
                         <p class="docs-p">
-                            Azure NetApp Files delivers automatic storage cost savings by leveraging automated data tiering, space-efficient snapshots and reserved capacity pricing based on committed usage.
+                            Azure NetApp Files delivers advanced storage cost savings by leveraging automated data tiering, space-efficient snapshots, and reserved capacity pricing based on Azure reservations.
                         </p>
                         <p class="docs-p">
-                            These features can work together or independently to significantly reduce the effective price of Azure NetApp Files.  Effective pricing reflects the actual cost you pay for storage after applying built-in efficiencies and discounts.  These savings directly reduce the $/GiB/month, enabling you to manage your storage expenses more effectively. 
+                            These features can work together or independently to significantly improve the effective price of Azure NetApp Files. Effective pricing reflects the cost you actually incur for storage after applying built-in efficiencies and discounts. These effective capacity and pricing capabilities directly reduce the $/GiB/month, enabling you to manage your storage expenses more effectively. 
                         </p>
                         <br>
                         <h5>Instructions/Help</h5>
                         <h6>Begin by entering</h6>
                         <ul>
-                            <li><b>Active data size:</b> Enter in the amount of data you plan to store on Azure NetApp Files.
+                            <li><b>Active data size:</b> EEnter in the amount of logical data you plan to store on Azure NetApp Files.
                             </li>
                             <li>
-                                <b>Service level:</b> Choose between Standard (16MiB/s per 1TiB), Premium (64MiB/s per 1TiB), and Ultra (128MiB/s per 1TiB).
+                                <b>Service level:</b> Choose between the available service levels based on your application workload profile. Use sizing tools available at <a href="https://aka.ms/anftools">https://aka.ms/anftools</a> to determine your optimal choice.
                             </li>
                         </ul>
 
-                        <h6>Under Cool access adjust the following parameters:</h6>
+                        <h6>Under cool access adjust the following parameters:</h6>
                         <ul>
-                            <li><b>Cool data:</b> How much data do you expect to move to the cool tier? The higher the value, the more you will save.</li>
+                            <li><b>Cool data:</b> How much data do you expect to move to the cool tier?</li>
                             <li>Cool data retrieval:</b> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</li>
                         </ul>
 
                         <h6>Under Snapshots adjust the following parameters:</h6>
                         <ul>
                             <li>
-                                <b>Daily snapshots:</b> How many snapshots do you want to take per day?
+                                <b>Daily snapshot retention:</b> How many daily snapshots do you want to keep? (assuming one daily snapshot at e.g. midnight)
                             </li>
                             <li>
-                                <b>Daily change rate:</b> How much does the data change daily?
+                                <b>Daily change rate:</b> How much does the data change daily? (This means block-level change rates)
                             </li>
                         </ul>
 
-                        <h6>Under Reserved capacity adjust the following parameter:</h6>
+                        <h6>Under reserved capacity adjust the following parameter:</h6>
                         <ul>
                             <li>
-                                <b>Reserved capacity term:</b> How long of a commitment for storage capacity do you want to have?
+                                <b>Reserved capacity rerm?</b> How long of a commitment for storage capacity do you want to have? (Savings are tied to the term and the service level)
                             </li>
                         </ul>
  
@@ -741,28 +714,78 @@
                             <li>duration of data movement to the cool tier</li>
                             <li>actual size of data read back from the cool tier</li>
                         </ul>
-                        
 
-                        <p class="docs-p mb-1">For Azure NetApp Files reserved capacity these factors may include, but are not limited to:</p>
+
+                        <h3>For Azure NetApp Files reserved capacity these factors may include, but are not limited to:</h3>
                         <ul>
-                            <li>service level used</li>
-                            <li>capacity increment chosen</li>
-                            <li>term length</li>
+                            <li>Service level used</li>
+                            <li>Capacity increment chosen</li>
+                            <li>Term length</li>
                         </ul>
-
-                        <p class="docs-p mb-1">For Azure NetApp Files snapshots these factors may include, but are not limited to:</p>
+                
+                        <h3>For Azure NetApp Files snapshots these factors may include, but are not limited to:</h3>
                         <ul>
-                            <li>number of snapshots taken</li>
-                            <li>daily data change rate </li>
+                            <li>Number of snapshots taken</li>
+                            <li>Daily data change rate</li>
                         </ul>
-
-                        <p class="docs-p mb-1">For more information on how Azure NetApp Files helps you optimize and lower your storage costs check out the following information:</p>
-
-                        <p><a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-cool-access?tabs=standard">Azure NetApp Files storage with cool access</a></p>
-                        <p><a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a></p>
-                        <p><a class="a" href="https://learn.microsoft.com/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a></p>
-
                     </div>
+
+                <div class="pricing-breakdown">
+                    <h2>Below is a breakdown of what the pricing means</h2>
+                    
+                    <h3>Logical list pricing:</h3>
+                    <p>Pricing without cool access, reserved capacity or custom discount, and snapshots</p>
+            
+                    <ul>
+                        <li><strong>Logical data size [TiB]</strong> = Effective data size [TiB] = Data in hot tier [TiB] = Active Data Size</li>
+                        <li><strong>List price per GiB per month:</strong> “Logical list price / GiB”</li>
+                        <li><strong>List price per total month:</strong> Logical data size [TiB] x List price per GiB per month</li>
+                    </ul>
+            
+                    <h3>Effective discounted price:</h3>
+                    <p>Pricing with cool access, reserved capacity or custom discount, but without snapshots</p>
+            
+                    <ul>
+                        <li><strong>Logical data size [TiB]</strong> = Effective data size [TiB] = Active Data Size</li>
+                        <li><strong>Data in hot tier [TiB]</strong> = Active Data Size x (1 – “Cold data %”)</li>
+                        <li><strong>Effective price total per month:</strong></li>
+                        <ul>
+                            <li>No custom data is applied: Effective price total per month = Data in hot tier [TiB] x (1 – Reserved capacity discount)</li>
+                            <li>Custom discount applied: Effective price total per month = Data in hot tier [TiB] x (1 – Custom discount)</li>
+                        </ul>
+                        <li><strong>Effective price per GiB per month:</strong> Effective price total per month / Effective data size [TiB]</li>
+                    </ul>
+            
+                    <h3>Effective capacity price:</h3>
+                    <p>Pricing with cool access, reserved capacity or custom discount, and snapshots</p>
+            
+                    <ul>
+                        <li><strong>Logical data size [TiB]</strong> = Active Data Size + snap delta</li>
+                        <li><strong>Snap delta</strong> depends on the daily change rate and the number of daily snapshots. For the first snapshot, the change rate applies to Active Data Size. For the subsequent snapshots, the change rate applies to the total of Active Data Size and the size of the previous daily snapshots.</li>
+                        <li><strong>Effective data size [TiB]</strong> = Active Data Size (Logical active file system) + virtual snapshot capacity</li>
+                        <li><strong>Effective price total per month:</strong> Provisioned capacity x “Logical list price / GiB”</li>
+                        <li><strong>Effective price per GiB per month:</strong> Effective price total per month / Effective data size [TiB]</li>
+                    </ul>
+            
+                    <h3>To understand the difference between “snap delta vs. virtual snapshot capacity", here are some explanations on how Azure NetApp Files snapshots work:</h3>
+                    <p>An Azure NetApp Files snapshot is a copy of just the pointers from the active file system at a particular point in time. No data is read, written or copied to disk, so it is created almost instantaneously without performance impact and without consuming additional disk space.</p>
+                    <p>An Azure NetApp Files snapshot simply manipulates block pointers. Actual data blocks are not copied. Just the pointers from the active file system at a particular point in time without performance impact, which results in a very small disk space consumption in comparison with a copy of the active data.</p>
+                    <p>As such, snapshots are efficient in the time needed to create them: they are near-instantaneous, regardless of volume size. Snapshots are also efficient in storage space: only delta blocks between snapshots and the active volume are kept. They are also efficient in the time needed to restore them: only a redirection of the pointers to the blocks at the time when the snapshot was taken.</p>
+            
+                    <p>For more details about Azure NetApp Files snapshots, please refer to this article and to the video in this blog post.</p>
+            
+                    <p>The snapshots physical capacity is small and depends on the change rate and the number of snapshots. This is what is called snap delta in Azure NetApp Files effective price estimator.</p>
+            
+                    <p>The amount of data accessible by the snapshots is beyond what is being physically stored. It is called virtual snapshot capacity in Azure NetApp Files effective price estimator. To a user or application, a snapshot is a logical representation of the filesystem in the state it was in when the snapshot was taken. The representation is a composite of live data blocks from the snapshot.</p>
+            
+                    <ul>
+                        <li><strong>Provisioned capacity</strong> = Logical active file system + snap delta</li>
+                        <li><strong>Effective capacity</strong> = Provisioned capacity + virtual snapshot capacity</li>
+                    </ul>
+            
+                    <p>The pricing is based on the provisioned capacity, which results in a lower effective cost per GiB.</p>
+                </div>
+
                     <div class="modal-footer">
                         <button
                             type="button"
@@ -784,12 +807,12 @@
             (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
         );
     </script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         $(window).on('load', function() {
            $('#startModal').modal('show');
         });
         $('#modalButton').on('click', function() {
            $('#startModal').modal('show');
         });
-    </script>
+    </script>-->
 </html>
