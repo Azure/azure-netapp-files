@@ -676,7 +676,7 @@
                         <h5>Instructions/Help</h5>
                         <h6>Begin by entering</h6>
                         <ul>
-                            <li><b>Active data size:</b> EEnter in the amount of logical data you plan to store on Azure NetApp Files.
+                            <li><b>Active data size:</b> Enter in the amount of logical data you plan to store on Azure NetApp Files.
                             </li>
                             <li>
                                 <b>Service level:</b> Choose between the available service levels based on your application workload profile. Use sizing tools available at <a href="https://aka.ms/anftools">https://aka.ms/anftools</a> to determine your optimal choice.
@@ -686,7 +686,7 @@
                         <h6>Under cool access adjust the following parameters:</h6>
                         <ul>
                             <li><b>Cool data:</b> How much data do you expect to move to the cool tier?</li>
-                            <li>Cool data retrieval:</b> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</li>
+                            <li><b>Cool data retrieval:</b> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</li>
                         </ul>
 
                         <h6>Under Snapshots adjust the following parameters:</h6>
@@ -702,7 +702,7 @@
                         <h6>Under reserved capacity adjust the following parameter:</h6>
                         <ul>
                             <li>
-                                <b>Reserved capacity rerm?</b> How long of a commitment for storage capacity do you want to have? (Savings are tied to the term and the service level)
+                                <b>Reserved capacity term?</b> How long of a commitment for storage capacity do you want to have? (Savings are tied to the term and the service level)
                             </li>
                         </ul>
  
@@ -714,26 +714,23 @@
                             <li>duration of data movement to the cool tier</li>
                             <li>actual size of data read back from the cool tier</li>
                         </ul>
+                        
 
-
-                        <h3>For Azure NetApp Files reserved capacity these factors may include, but are not limited to:</h3>
+                        <p class="docs-p mb-1">For Azure NetApp Files reserved capacity these factors may include, but are not limited to:</p>
                         <ul>
-                            <li>Service level used</li>
-                            <li>Capacity increment chosen</li>
-                            <li>Term length</li>
+                            <li>service level used</li>
+                            <li>capacity increment chosen</li>
+                            <li>term length</li>
                         </ul>
-                
-                        <h3>For Azure NetApp Files snapshots these factors may include, but are not limited to:</h3>
-                        <ul>
-                            <li>Number of snapshots taken</li>
-                            <li>Daily data change rate</li>
-                        </ul>
-                    </div>
 
-                <div class="pricing-breakdown">
-                    <h2>Below is a breakdown of what the pricing means</h2>
-                    
-                    <h3>Logical list pricing:</h3>
+                        <p class="docs-p mb-1">For Azure NetApp Files snapshots these factors may include, but are not limited to:</p>
+                        <ul>
+                            <li>number of snapshots taken</li>
+                            <li>daily data change rate </li>
+                        </ul>
+
+                    <h6>Below is a breakdown of what the pricing means</h6>
+                    <h6>Logical list pricing:</h6>
                     <p>Pricing without cool access, reserved capacity or custom discount, and snapshots</p>
             
                     <ul>
@@ -742,7 +739,7 @@
                         <li><strong>List price per total month:</strong> Logical data size [TiB] x List price per GiB per month</li>
                     </ul>
             
-                    <h3>Effective discounted price:</h3>
+                    <h6>Effective discounted price:</h6>
                     <p>Pricing with cool access, reserved capacity or custom discount, but without snapshots</p>
             
                     <ul>
@@ -756,7 +753,7 @@
                         <li><strong>Effective price per GiB per month:</strong> Effective price total per month / Effective data size [TiB]</li>
                     </ul>
             
-                    <h3>Effective capacity price:</h3>
+                    <h6>Effective capacity price:</h6>
                     <p>Pricing with cool access, reserved capacity or custom discount, and snapshots</p>
             
                     <ul>
@@ -767,7 +764,7 @@
                         <li><strong>Effective price per GiB per month:</strong> Effective price total per month / Effective data size [TiB]</li>
                     </ul>
             
-                    <h3>To understand the difference between “snap delta vs. virtual snapshot capacity", here are some explanations on how Azure NetApp Files snapshots work:</h3>
+                    <h6>To understand the difference between “snap delta vs. virtual snapshot capacity", here are some explanations on how Azure NetApp Files snapshots work:</h6>
                     <p>An Azure NetApp Files snapshot is a copy of just the pointers from the active file system at a particular point in time. No data is read, written or copied to disk, so it is created almost instantaneously without performance impact and without consuming additional disk space.</p>
                     <p>An Azure NetApp Files snapshot simply manipulates block pointers. Actual data blocks are not copied. Just the pointers from the active file system at a particular point in time without performance impact, which results in a very small disk space consumption in comparison with a copy of the active data.</p>
                     <p>As such, snapshots are efficient in the time needed to create them: they are near-instantaneous, regardless of volume size. Snapshots are also efficient in storage space: only delta blocks between snapshots and the active volume are kept. They are also efficient in the time needed to restore them: only a redirection of the pointers to the blocks at the time when the snapshot was taken.</p>
@@ -807,12 +804,12 @@
             (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
         );
     </script>
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
         $(window).on('load', function() {
            $('#startModal').modal('show');
         });
         $('#modalButton').on('click', function() {
            $('#startModal').modal('show');
         });
-    </script>-->
+    </script>
 </html>
