@@ -67,7 +67,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": true
     },
     {
         "shortname": "australiacentral2",
@@ -84,7 +85,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false,
     },
     {
         "shortname": "australiaeast",
@@ -101,7 +103,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "australiasoutheast",
@@ -118,7 +121,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "brazilsouth",
@@ -135,7 +139,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "brazilsoutheast",
@@ -152,7 +157,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "canadacentral",
@@ -169,7 +175,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "canadaeast",
@@ -186,7 +193,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": true
     },
     {
         "shortname": "centralindia",
@@ -203,7 +211,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "centralus",
@@ -220,7 +229,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "eastasia",
@@ -237,7 +247,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "eastus",
@@ -254,7 +265,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "eastus2",
@@ -271,7 +283,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "francecentral",
@@ -288,7 +301,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "germanywestcentral",
@@ -305,7 +319,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "germanynorth",
@@ -322,7 +337,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "israelcentral",
@@ -339,7 +355,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "italynorth",
@@ -356,7 +373,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "japaneast",
@@ -373,7 +391,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "japanwest",
@@ -390,7 +409,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": true
     },
     {
         "shortname": "koreacentral",
@@ -407,7 +427,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "koreasouth",
@@ -424,7 +445,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "northcentralus",
@@ -441,7 +463,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": true
     },
     {
         "shortname": "northeurope",
@@ -458,7 +481,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "norwayeast",
@@ -475,7 +499,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "norwaywest",
@@ -492,7 +517,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "qatarcentral",
@@ -509,7 +535,8 @@ var regionlist = [
         "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "southafricanorth",
@@ -526,7 +553,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "southcentralus",
@@ -543,7 +571,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "southindia",
@@ -560,7 +589,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "southeastasia",
@@ -577,7 +607,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "spaincentral",
@@ -594,7 +625,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true    
+        "azplacement": true,
+        "flexible": false    
     },
     {
         "shortname": "swedencentral",
@@ -611,7 +643,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true, 
+        "flexible": false
     },
     {
         "shortname": "switzerlandnorth",
@@ -628,7 +661,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "switzerlandwest",
@@ -645,7 +679,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "uaecentral",
@@ -662,7 +697,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": false,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "uaenorth",
@@ -679,7 +715,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "uksouth",
@@ -696,7 +733,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "ukwest",
@@ -713,7 +751,8 @@ var regionlist = [
         "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "usgovarizona",
@@ -730,7 +769,8 @@ var regionlist = [
         "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": true
     },
     {
         "shortname": "usgovvirginia",
@@ -747,7 +787,8 @@ var regionlist = [
         "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "usgovtexas",
@@ -764,7 +805,8 @@ var regionlist = [
         "cmkhsm": false,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": true
     },
     {
         "shortname": "westeurope",
@@ -781,7 +823,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     },
     {
         "shortname": "westus",
@@ -798,7 +841,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": false
+        "azplacement": false,
+        "flexible": false
     },
     {
         "shortname": "westus2",
@@ -815,7 +859,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": true
     },
     {
         "shortname": "westus3",
@@ -832,7 +877,8 @@ var regionlist = [
         "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
-        "azplacement": true
+        "azplacement": true,
+        "flexible": false
     }
 ];
 
@@ -954,6 +1000,15 @@ function filterStandardcoolregions(item, index) {
     }
 };
 
+var Flexibleregions = [];
+regionlist.forEach(filterFlexibleregions);
+//this function build an array based on which regions have 'flexible' set to true
+function filterFlexibleregions(item, index) {
+    if (item.flexible == true) {
+        Flexibleregions.push(item)
+    }
+};
+
 var USGovregions = [];
 regionlist.forEach(filterUSGovregions);
 //this function build an array based on which regions have 'US Gov' set to true
@@ -1011,7 +1066,8 @@ function initMap() {
     document.getElementById("cmkhsmRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions">' + CMKHSMregions.length + '</a>'
     document.getElementById("doubleencryptionRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest">' + DoubleEncryptionregions.length + '</a>'
     document.getElementById("standardcoolRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">' + Standardcoolregions.length + '</a>'
-
+    document.getElementById("flexibleRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool">' + Flexibleregions.length + '</a>'
+    
     document.getElementById("USGovRegionCount").innerHTML = '<a target="_blank" href="https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&rar=true">' + USGovregions.length + '</a>'
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
@@ -1161,6 +1217,11 @@ function updateMap() {
         displayedList.forEach(filterUSGovregions);
         displayedList = USGovregions;
     }
+    if (document.getElementById("flexible").checked) {
+        Flexibleregions = [];
+        displayedList.forEach(filterFlexibleregions);
+        displayedList = Flexibleregions;
+    }
 
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
@@ -1184,7 +1245,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>flexible service level: ' + item.flexible + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
