@@ -140,7 +140,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": true
     },
     {
         "shortname": "brazilsoutheast",
@@ -554,7 +554,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": true
     },
     {
         "shortname": "southcentralus",
@@ -878,7 +878,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": true
     }
 ];
 
