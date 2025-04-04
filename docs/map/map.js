@@ -68,7 +68,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": true
     },
     {
         "shortname": "australiacentral2",
@@ -87,6 +88,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": false,
+        "fileaccesslogs": false
     },
     {
         "shortname": "australiaeast",
@@ -104,7 +106,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": true
     },
     {
         "shortname": "australiasoutheast",
@@ -122,7 +125,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": true
     },
     {
         "shortname": "brazilsouth",
@@ -140,7 +144,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": true
     },
     {
         "shortname": "brazilsoutheast",
@@ -158,7 +163,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": false
     },
     {
         "shortname": "canadacentral",
@@ -176,7 +182,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": true
     },
     {
         "shortname": "canadaeast",
@@ -194,7 +201,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": true
     },
     {
         "shortname": "centralindia",
@@ -212,7 +220,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": true
     },
     {
         "shortname": "centralus",
@@ -230,7 +239,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": true
     },
     {
         "shortname": "eastasia",
@@ -248,7 +258,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": false
     },
     {
         "shortname": "eastus",
@@ -266,7 +277,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": true
     },
     {
         "shortname": "eastus2",
@@ -284,7 +296,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": true
     },
     {
         "shortname": "francecentral",
@@ -302,7 +315,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": false
     },
     {
         "shortname": "germanywestcentral",
@@ -320,7 +334,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": false
     },
     {
         "shortname": "germanynorth",
@@ -338,7 +353,8 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": false
     },
     {
         "shortname": "israelcentral",
@@ -356,7 +372,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": false
     },
     {
         "shortname": "italynorth",
@@ -374,7 +391,8 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": false
     },
     {
         "shortname": "japaneast",
@@ -392,7 +410,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false,
+        "fileaccesslogs": false
     },
     {
         "shortname": "japanwest",
@@ -410,7 +429,8 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": true
+        "flexible": true,
+        "fileaccesslogs": true
     },
     {
         "shortname": "koreacentral",
@@ -428,7 +448,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "koreasouth",
@@ -446,7 +467,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "northcentralus",
@@ -464,7 +486,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "northeurope",
@@ -482,7 +505,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "norwayeast",
@@ -500,7 +524,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "norwaywest",
@@ -518,7 +543,8 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "qatarcentral",
@@ -536,7 +562,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "southafricanorth",
@@ -554,7 +581,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "southcentralus",
@@ -572,7 +600,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "southindia",
@@ -590,7 +619,8 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "southeastasia",
@@ -608,7 +638,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "spaincentral",
@@ -626,7 +657,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false    
+        "flexible": false, 
+        "fileaccesslogs": false    
     },
     {
         "shortname": "swedencentral",
@@ -644,7 +676,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true, 
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "switzerlandnorth",
@@ -662,7 +695,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "switzerlandwest",
@@ -680,7 +714,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "uaecentral",
@@ -698,7 +733,8 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "uaenorth",
@@ -716,7 +752,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "uksouth",
@@ -734,7 +771,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "ukwest",
@@ -752,7 +790,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "usgovarizona",
@@ -770,7 +809,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "usgovvirginia",
@@ -788,7 +828,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "usgovtexas",
@@ -806,7 +847,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "westeurope",
@@ -824,7 +866,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "westus",
@@ -842,7 +885,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false
+        "flexible": false, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "westus2",
@@ -860,7 +904,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": true
     },
     {
         "shortname": "westus3",
@@ -878,7 +923,8 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": true
+        "flexible": true, 
+        "fileaccesslogs": false
     }
 ];
 
@@ -1009,6 +1055,15 @@ function filterFlexibleregions(item, index) {
     }
 };
 
+var fileAccessRegions = [];
+regionlist.forEach(filterFileAccessRegions);
+//this function build an array based on which regions have 'fileaccesslogs' set to true
+function filterFileAccessRegions(item, index) {
+    if (item.flexible == true) {
+        fileAccessRegions.push(item)
+    }
+};
+
 var USGovregions = [];
 regionlist.forEach(filterUSGovregions);
 //this function build an array based on which regions have 'US Gov' set to true
@@ -1066,8 +1121,10 @@ function initMap() {
     document.getElementById("cmkhsmRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions">' + CMKHSMregions.length + '</a>'
     document.getElementById("doubleencryptionRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest">' + DoubleEncryptionregions.length + '</a>'
     document.getElementById("standardcoolRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">' + Standardcoolregions.length + '</a>'
+    document.getElementById("fileAccessLogsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs">' + fileAccessRegions.length + '</a>'
     document.getElementById("flexibleRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool">' + Flexibleregions.length + '</a>'
     
+
     document.getElementById("USGovRegionCount").innerHTML = '<a target="_blank" href="https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&rar=true">' + USGovregions.length + '</a>'
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
@@ -1222,6 +1279,11 @@ function updateMap() {
         displayedList.forEach(filterFlexibleregions);
         displayedList = Flexibleregions;
     }
+    if (document.getElementById("fileAccessLogs").checked) {
+        fileAccessRegions = [];
+        displayedList.forEach(filterFileAccessRegions);
+        displayedList = fileAccessRegions;
+    }
 
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
@@ -1245,7 +1307,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>flexible service level: ' + item.flexible + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>file access logs: ' + item.fileaccesslogs + '<br>flexible service level: ' + item.flexible + '<br>large volumes: ' + item.largevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
