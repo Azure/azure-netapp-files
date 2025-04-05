@@ -411,7 +411,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": false,
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "japanwest",
@@ -829,7 +829,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "usgovtexas",
