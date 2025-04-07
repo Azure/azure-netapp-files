@@ -1059,7 +1059,7 @@ var fileAccessRegions = [];
 regionlist.forEach(filterFileAccessRegions);
 //this function build an array based on which regions have 'fileaccesslogs' set to true
 function filterFileAccessRegions(item, index) {
-    if (item.flexible == true) {
+    if (item.fileaccesslogs == true) {
         fileAccessRegions.push(item)
     }
 };
@@ -1121,7 +1121,7 @@ function initMap() {
     document.getElementById("cmkhsmRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions">' + CMKHSMregions.length + '</a>'
     document.getElementById("doubleencryptionRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest">' + DoubleEncryptionregions.length + '</a>'
     document.getElementById("standardcoolRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">' + Standardcoolregions.length + '</a>'
-    document.getElementById("fileAccessLogsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs">' + fileAccessRegions.length + '</a>'
+    document.getElementById("fileaccesslogsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs">' + fileAccessRegions.length + '</a>'
     document.getElementById("flexibleRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool">' + Flexibleregions.length + '</a>'
     
 
@@ -1279,7 +1279,7 @@ function updateMap() {
         displayedList.forEach(filterFlexibleregions);
         displayedList = Flexibleregions;
     }
-    if (document.getElementById("fileAccessLogs").checked) {
+    if (document.getElementById("fileaccesslogs").checked) {
         fileAccessRegions = [];
         displayedList.forEach(filterFileAccessRegions);
         displayedList = fileAccessRegions;
