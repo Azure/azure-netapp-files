@@ -92,7 +92,7 @@
             </div>
             <div class="card-body">
                 
-                <small id="volumewarning" class="form-text text-muted">Minimum volume size is 100 GiB. Maximum volume size is 500 TiB.</small>
+                <small id="volumewarning" class="form-text text-muted">Minimum volume size is 50 GiB. Maximum volume size is 500 TiB.</small>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span id="volumeSizeLabel" class="my-1 input-group-text">Volume Size</span>
@@ -138,6 +138,7 @@
                         <thead class='thead-light'>
                             <tr>
                                 <th id="sourceVolumeLabel" class="align-top">Source Volume</th>
+                                <th>Flexible<br><small id="flex_result_mib_per_sec" class="text-muted">(0MiB/s per TiB)</small></th>
                                 <th>Standard<br><small class="text-muted">(16MiB/s per TiB)</small></th>
                                 <th>Premium<br><small class="text-muted">(64MiB/s per TiB)</small></th>
                                 <th>Ultra<br><small class="text-muted">(128MiB/s per TiB)</small></th>
@@ -145,30 +146,35 @@
                         </thead>
                         <tr>
                             <td class="throughputCellLabel">Throughput <small>(MiB/s)</small></td>
+                            <td id="tput_flexible_cell"></td>
                             <td id="tput_standard_cell"></td>
                             <td id="tput_premium_cell"></td>
                             <td id="tput_ultra_cell"></td>
                         </tr>
                         <tr style="background-color: #e9ecef;">
                             <td class="volumeSizeCellLabel">Volume Size <small class="table_unit">(GiB)</small></td>
+                            <td id="size_flexible_cell"></td>
                             <td id="size_standard_cell"></td>
                             <td id="size_premium_cell"></td>
                             <td id="size_ultra_cell"></td>
                         </tr>
                         <tr>
                             <td class="volumeShowBackCellLabel">Volume Show Back <small>(USD/month)</small></td>
+                            <td id="cost_flexible_cell"></td>
                             <td id="cost_standard_cell"></td>
                             <td id="cost_premium_cell"></td>
                             <td id="cost_ultra_cell"></td>
                         </tr>
                         <tr style="background-color: #e9ecef;">
                             <td class="capacityPoolSizeCellLabel">Capacity Pool Size <small class="table_unit">(TiB)</small></td>
+                            <td id="poolsize_flexible_cell"></td>
                             <td id="poolsize_standard_cell"></td>
                             <td id="poolsize_premium_cell"></td>
                             <td id="poolsize_ultra_cell"></td>
                         </tr>
                         <tr style="border-style: solid; border-color: #007bff;">
                             <td class="capacityPoolCostCellLabel">Capacity Pool Cost <small>(USD/month)</small></td>
+                            <td id="poolcost_flexible_cell"></td>
                             <td id="poolcost_standard_cell"></td>
                             <td id="poolcost_premium_cell"></td>
                             <td id="poolcost_ultra_cell"></td>
@@ -178,6 +184,7 @@
                         <thead class='thead-light'>
                             <tr>
                                 <th id="destinationVolumeLabel" class="align-top">Destination Volume</th>
+                                <th>Flexible<br><small class="text-muted">&nbsp;</small></th>
                                 <th>Standard<br><small class="text-muted">(16MiB/s per TiB)</small></th>
                                 <th>Premium<br><small class="text-muted">(64MiB/s per TiB)</small></th>
                                 <th>Ultra<br><small class="text-muted">(128MiB/s per TiB)</small></th>
@@ -185,30 +192,35 @@
                         </thead>
                         <tr>
                             <td class="throughputCellLabel">Throughput <small>(MiB/s)</small></td>
+                            <td id="dest_tput_flexible_cell"></td>
                             <td id="dest_tput_standard_cell"></td>
                             <td id="dest_tput_premium_cell"></td>
                             <td id="dest_tput_ultra_cell"></td>
                         </tr>
                         <tr style="background-color: #e9ecef;">
                             <td class="volumeSizeCellLabel">Volume Size <small class="table_unit">(GiB)</small></td>
+                            <td id="dest_size_flexible_cell"></td>
                             <td id="dest_size_standard_cell"></td>
                             <td id="dest_size_premium_cell"></td>
                             <td id="dest_size_ultra_cell"></td>
                         </tr>
                         <tr>
                             <td class="volumeShowBackCellLabel">Volume Show Back <small>(USD/month)</small></td>
+                            <td id="dest_cost_flexible_cell"></td>
                             <td id="dest_cost_standard_cell"></td>
                             <td id="dest_cost_premium_cell"></td>
                             <td id="dest_cost_ultra_cell"></td>
                         </tr>
                         <tr style="background-color: #e9ecef;">
                             <td class="capacityPoolSizeCellLabel">Capacity Pool Size <small>(TiB)</small></td>
+                            <td id="dest_poolsize_flexible_cell"></td>
                             <td id="dest_poolsize_standard_cell"></td>
                             <td id="dest_poolsize_premium_cell"></td>
                             <td id="dest_poolsize_ultra_cell"></td>
                         </tr>
                         <tr style="border-style: solid; border-color: #007bff;">
                             <td class="capacityPoolCostCellLabel">Capacity Pool Cost <small>(USD/month)</small></td>
+                            <td id="dest_poolcost_flexible_cell"></td>
                             <td id="dest_poolcost_standard_cell"></td>
                             <td id="dest_poolcost_premium_cell"></td>
                             <td id="dest_poolcost_ultra_cell"></td>
@@ -291,13 +303,21 @@
                         
                     
                     </div>
-                    <small id="blueTextExplain" class="text-primary">Blue text indicates volume is sized for throughput.</small></br>
+                    
+                </div>
+            <div class="row align-items-center">
+                    <div class="col float-left">
+                    <small id="blueTextExplain" class="text-primary">Blue text indicates volume is over-provisioned for throughput.</small></br>
                     <small id="largeVolumeNote" class="text-success">Volumes with a throughput greater than 4500 MiB/s or a size greater than 100 TiB require <a href="https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations">large volumes</a>.</small></br>
                     <small id="costWarningNote">The 'Capacity Pool Cost' is the amount you will be charged. The 'Volume Show Back' amount is for show back purposes only.</small></br>
                     <small id="replicateWarningNote">You can replicate between volumes of different service levels.</small></br>
                     <small id="replicationCostsWarningNote">Replication transfer costs are based on a 35% storage efficiency rating.</small></br>
                     <small id="billingMonthWarningNote">Monthly costs are based on a 730 hour billing month.</small></br>
-                </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <a href="https://youtu.be/QoVsyF4hNUE" target="_blank"><img src="./anfcalcthumb.png" height="150" /></a>
+                    </div>
+                    </div>
             </div>
             <div class="card-footer">
                 <small id="sourceLabel" class="text-muted">source: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a>
@@ -306,7 +326,7 @@
             </div>
         </div>
         <div class="text-right">
-            <small class="text-muted">&copy;Copyright 2023, <a href="https://netapp.com">NetApp</a></small>
+            <small class="text-muted">&copy;Copyright 2025, <a href="https://netapp.com">NetApp</a></small>
         </div>
     </div>
 
