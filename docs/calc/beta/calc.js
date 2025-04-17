@@ -934,7 +934,7 @@ function getResults(convert) {
                             element.innerHTML = '(TiB)';
                         }
                     );
-                    document.getElementById("size_flexible_cell").innerText = (flexible_volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                    document.getElementById("size_flexible_cell").innerText = formatVolume(flexible_volume_in_gb, "TiB");
                     document.getElementById("size_standard_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_premium_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_ultra_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
