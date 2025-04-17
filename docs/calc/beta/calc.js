@@ -990,7 +990,7 @@ function getResults(convert) {
                     document.getElementById("cost_ultra_cell").innerText = ultra_cost;
 
                     document.getElementById("dest_poolsize_flexible_cell").innerText = Math.ceil(flexible_pool_size);
-                    document.getElementById("dest_poolcost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate)+((0)*flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+// Removed duplicate assignment to dest_poolcost_flexible_cell to avoid unintended overrides.
                   
                     document.getElementById("dest_poolsize_standard_cell").innerText = Math.ceil(volume_in_gb / 1024);
                     document.getElementById("dest_poolcost_standard_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
