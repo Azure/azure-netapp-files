@@ -259,7 +259,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true,
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "eastus",
@@ -449,7 +449,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "koreasouth",
@@ -468,7 +468,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": false, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "northcentralus",
@@ -620,7 +620,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": false, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "southeastasia",
@@ -639,7 +639,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": false, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "spaincentral",
@@ -924,7 +924,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     }
 ];
 
