@@ -123,8 +123,10 @@
                             <option value="Norway East">Norway East</option>
                             <option value="Norway West">Norway West</option>
                             <option value="Qatar Central">Qatar Central</option>
+                            <option value="South Africa North">South Africa North</option>
                             <option value="South Central US">South Central US</option>
                             <option value="South India">South India</option>
+                            <option value="South East Asia">South East Asia</option>
                             <option value="Spain Central">Spain Central</option>
                             <option value="Sweden Central">Sweden Central</option>
                             <option value="Switzerland North">Switzerland North</option>
@@ -204,7 +206,7 @@
                             TiB
                         </button>
                     </div>
-                    <div class="input-group mb-4">
+                    <div class="input-group mb-3">
                         <label
                             class="input-group-text"
                             for="service_level_select"
@@ -216,10 +218,30 @@
                             oninput="handleSubmit();"
                             tabindex="3"
                         >
-                            <option value="standard" selected>Standard</option>
+                            <option value="standard">Standard</option>
                             <option value="premium">Premium</option>
                             <option value="ultra">Ultra</option>
+                            <option value="flexible" selected>Flexible</option>
                         </select>
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Throughput</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="128"
+                            value="128"
+                            min="1"
+                            aria-label="throughput_input"
+                            aria-describedby="throughput_input"
+                            id="throughput_input"
+                            oninput="validateInput(this); handleSubmit();"
+                            tabindex="4"
+                            disabled="true"
+                        />
+                        <button class="btn btn-primary" type="button">
+                            MiBps
+                        </button>
                     </div>
                     <div class="mb-2">
                         <span class="fs-5 text-primary"> Cool Access </span>
@@ -237,7 +259,7 @@
                             aria-describedby="cool_data_input"
                             id="cool_data_input"
                             oninput="validateInput(this); handleSubmit();"
-                            tabindex="4"
+                            tabindex="5"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
@@ -256,7 +278,7 @@
                             aria-describedby="cool_data_retrieval_input"
                             id="cool_data_retrieval_input"
                             oninput="validateInput(this); handleSubmit();"
-                            tabindex="5"
+                            tabindex="6"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
@@ -275,7 +297,7 @@
                             aria-describedby="daily_snapshots_input"
                             id="daily_snapshots_input"
                             oninput="validateInput(this); handleSubmit();"
-                            tabindex="6"
+                            tabindex="7"
                         />
                     </div>
                     <div class="input-group mb-4">
@@ -291,7 +313,7 @@
                             aria-describedby="daily_change_rate_input"
                             id="daily_change_rate_input"
                             oninput="validateInput(this); handleSubmit();"
-                            tabindex="7"
+                            tabindex="8"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
@@ -311,7 +333,7 @@
                             class="form-select"
                             id="reserved_capacity_term_select"
                             oninput="handleSubmit();"
-                            tabindex="8"
+                            tabindex="9"
                         >
                             <option value="1">1</option>
                             <option value="3">3</option>
@@ -338,7 +360,7 @@
                             aria-describedby="discount_input"
                             id="discount_input"
                             oninput="validateInput(this); handleSubmit();"
-                            tabindex="9"
+                            tabindex="10"
                         />
                         <button class="btn btn-primary" type="button">%</button>
                     </div>
@@ -501,10 +523,10 @@
                                             Data in Hot Tier [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            List Price Total Per Month
+                                            Effective Price per GiB per Month
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            List Price per GiB per Month
+                                            Effective Price Total per Month
                                         </th>
                                     </tr>
                                 </thead>
@@ -520,87 +542,137 @@
                                 </tbody>
                             </table>
 
-                            <center>
-                                <span class="text-primary fw-bold fs-5 mb-2"
-                                    >Effective Discounted Price</span
+                            <div id="effective_discounted_price_table_div">
+                                <center>
+                                    <span class="text-primary fw-bold fs-5 mb-2"
+                                        >Effective Discounted Price</span
+                                    >
+                                </center>
+                                <table
+                                    id="effective_discounted_price_table"
+                                    class="table table-bordered table-hover w-100 mt-3 mb-4"
+                                    style="table-layout: fixed; font-size: 16px"
                                 >
-                            </center>
-                            <table
-                                id="effective_discounted_price_table"
-                                class="table table-bordered table-hover w-100 mt-3 mb-4"
-                                style="table-layout: fixed; font-size: 16px"
-                            >
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="bg-teal-green text-light">
-                                            Logical Data Size [TiB]
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Effective Data Size [TiB]
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Data in Hot Tier [TiB]
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Effective Price Total Per Month
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Effective Price per GiB per Month
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-light">
-                                    <tr>
-                                        <td
-                                            colspan="5"
-                                            class="text-center fs-2 text-secondary"
-                                        >
-                                            No Data
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="bg-teal-green text-light">
+                                                Logical Data Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Data Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Data in Hot Tier [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price per GiB per Month
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price Total per Month
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-light">
+                                        <tr>
+                                            <td
+                                                colspan="5"
+                                                class="text-center fs-2 text-secondary"
+                                            >
+                                                No Data
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                            <center>
-                                <span class="text-primary fw-bold fs-5 mb-2"
-                                    >Effective Capacity Price</span
+                            <div id="effective_capacity_price_table_div">
+                                <center>
+                                    <span class="text-primary fw-bold fs-5 mb-2"
+                                        >Effective Capacity Price</span
+                                    >
+                                </center>
+                                <table
+                                    id="effective_capacity_price_table"
+                                    class="table table-bordered table-hover w-100 mt-3 mb-3"
+                                    style="table-layout: fixed; font-size: 16px"
                                 >
-                            </center>
-                            <table
-                                id="effective_capacity_price_table"
-                                class="table table-bordered table-hover w-100 mt-3 mb-3"
-                                style="table-layout: fixed; font-size: 16px"
-                            >
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="bg-teal-green text-light">
-                                            Logical Data Size [TiB]
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Effective Data Size [TiB]
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Data in Hot Tier [TiB]
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Effective Price Total Per Month
-                                        </th>
-                                        <th class="bg-teal-green text-light">
-                                            Effective Price per GiB per Month
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-light">
-                                    <tr>
-                                        <td
-                                            colspan="5"
-                                            class="text-center fs-2 text-secondary"
-                                        >
-                                            No Data
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="bg-teal-green text-light">
+                                                Logical Data Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Data Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Data in Hot Tier [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price per GiB per Month
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price Total per Month
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-light">
+                                        <tr>
+                                            <td
+                                                colspan="5"
+                                                class="text-center fs-2 text-secondary"
+                                            >
+                                                No Data
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div id="effective_flexible_price_table_div">
+                                <center>
+                                    <span class="text-primary fw-bold fs-5 mb-2"
+                                        >Effective price for Flexible service level</span
+                                    >
+                                </center>
+                                <table
+                                    id="effective_flexible_price_table"
+                                    class="table table-bordered table-hover w-100 mt-3 mb-3"
+                                    style="table-layout: fixed; font-size: 16px"
+                                >
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="bg-teal-green text-light">
+                                                Logical Data Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Data Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Pool Size to Support Throughput [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Provisioned Pool Size [TiB]
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price Total per Month
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price per GiB per Month
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-light">
+                                        <tr>
+                                            <td
+                                                colspan="6"
+                                                class="text-center fs-2 text-secondary"
+                                            >
+                                                No Data
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -620,7 +692,7 @@
                             Results are for estimation purposes and your actual
                             savings may vary
                         </li>
-                        <li>Release: v1.1</li>
+                        <li>Release: v1.2</li>
                     </ul>
                 </small>
                 <div class="row mt-2 mb-2">
@@ -665,48 +737,56 @@
                         class="modal-body"
                         style="max-height: 70vh; overflow-y: auto"
                     >
-                        <p class="docs-p"><b>Important:</b> This tool is designed to estimate your effective price after enabling cost savings features such as <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/cool-access-introduction">Azure NetApp Files storage with cool access</a>, <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a> and <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a>.</p>
+                        <p class="docs-p"><b>Important:</b> This tool is designed to estimate the potential savings when enabling <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/cool-access-introduction">Azure NetApp Files storage with cool access</a>, <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a> and <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a>.</p>
                         <p class="docs-p">
-                            Azure NetApp Files delivers advanced storage cost savings by leveraging automated data tiering, space-efficient snapshots, and reserved capacity pricing based on Azure reservations.
+                            Azure NetApp Files delivers advanced storage cost savings by leveraging automated data tiering, space-efficient snapshots and reserved capacity pricing based on Azure reservations.
                         </p>
                         <p class="docs-p">
-                            These features can work together or independently to significantly improve the effective price of Azure NetApp Files. Effective pricing reflects the cost you actually incur for storage after applying built-in efficiencies and discounts. These effective capacity and pricing capabilities directly reduce the $/GiB/month, enabling you to manage your storage expenses more effectively. 
+                            These features can work together or independently to significantly improve the effective price of Azure NetApp Files.  Effective pricing reflects the cost you actually incur for storage after applying built-in efficiencies and discounts.  These effective capacity and pricing capabilities directly reduce the $/GiB/month, enabling you to manage your storage expenses more effectively. 
+                        </p>
+                        <p>
+                            The <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-service-levels">Flexible service</a> level represents a transformative shift in cloud storage consumption by decoupling storage capacity (measured in TiB) and throughput (measured in MiB/sec). This approach offers significant advantages not only for high-performance workload scenarios but also for capacity-heavy workloads with lower performance demands, where organizations can achieve substantial capacity cost savings.
                         </p>
                         <br>
                         <h5>Instructions/Help</h5>
                         <h6>Begin by entering</h6>
                         <ul>
-                            <li><b>Active data size:</b> Enter in the amount of logical data you plan to store on Azure NetApp Files.
+                            <li><b>Active data size:</b> Enter in the amount of data you plan to store on Azure NetApp Files.
                             </li>
                             <li>
-                                <b>Service level:</b> Choose between the available service levels based on your application workload profile. Use sizing tools available at <a href="https://aka.ms/anftools">https://aka.ms/anftools</a> to determine your optimal choice.
+                                <b>Service level:</b> Choose between the available service levels based on your application workload profile.  Use sizing tools available at <a class="a" href="https://aka.ms/anftools">https://aka.ms/anftools</a> to determine your optimal choice.
+                                <br/>
+                                <b>Throughput</b>: When choosing the Flexible service level throughput will become available.  The first 128 MiB/s of throughput, known as the baseline, is included in the Flexible service level.  You can increase in increments of 1MiB/s with the maximum throughput being 5 x 128 x the size of the capacity pool in TiB. For more information see <a class="a" href="https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels#flexible-examples">Flexible service level throughput examples</a>
                             </li>
                         </ul>
 
                         <h6>Under cool access adjust the following parameters:</h6>
                         <ul>
-                            <li><b>Cool data:</b> How much data do you expect to move to the cool tier?</li>
+                            <li><b>Cool data:</b> How much data do you expect to move to the cool tier? </li>
                             <li><b>Cool data retrieval:</b> How much data are you likely to retrieve back from the cool tier to the hot tier? The higher the value, the higher the potential network transfer fees.</li>
+                            <li>Currently not available for use with the Flexible Service level</li>
                         </ul>
 
-                        <h6>Under Snapshots adjust the following parameters:</h6>
+                        <h6>Under snapshots adjust the following parameters:</h6>
                         <ul>
                             <li>
                                 <b>Daily snapshot retention:</b> How many daily snapshots do you want to keep? (assuming one daily snapshot at e.g. midnight)
                             </li>
                             <li>
-                                <b>Daily change rate:</b> How much does the data change daily? (This means block-level change rates)
+                                <b>Daily change rate:</b> How much does the data change daily?  (This means block-level change rates)
                             </li>
                         </ul>
 
-                        <h6>Under reserved capacity adjust the following parameter:</h6>
+                        <h6>Under Reserved Capacity adjust the following parameter:</h6>
                         <ul>
                             <li>
-                                <b>Reserved capacity term?</b> How long of a commitment for storage capacity do you want to have? (Savings are tied to the term and the service level)
+                                <b>Reserved capacity term?</b> How long of a commitment for storage capacity do you want to have?  (Savings are tied to the term and the service level)
+                                <li>Currently not available for use with the Flexible service level</li>
                             </li>
                         </ul>
+                        <hr>
  
-                        <p class="docs-p"><b>Note:</b> Your actual savings will vary depending on several factors.</p>
+                        <p class="docs-p"><b>Note:</b> Your actual effective pricing will vary depending on several factors.</p>
                         
                         <p class="docs-p mb-1">For Azure NetApp Files storage with cool access these factors may include, but are not limited to:</p>
                         <ul>
@@ -729,60 +809,61 @@
                             <li>daily data change rate </li>
                         </ul>
 
-                    <h6>Below is a breakdown of what the pricing means</h6>
-                    <h6>Logical list pricing:</h6>
-                    <p>Pricing without cool access, reserved capacity or custom discount, and snapshots</p>
-            
-                    <ul>
-                        <li><strong>Logical data size [TiB]</strong> = Effective data size [TiB] = Data in hot tier [TiB] = Active Data Size</li>
-                        <li><strong>List price per GiB per month:</strong> “Logical list price / GiB”</li>
-                        <li><strong>List price per total month:</strong> Logical data size [TiB] x List price per GiB per month</li>
-                    </ul>
-            
-                    <h6>Effective discounted price:</h6>
-                    <p>Pricing with cool access, reserved capacity or custom discount, but without snapshots</p>
-            
-                    <ul>
-                        <li><strong>Logical data size [TiB]</strong> = Effective data size [TiB] = Active Data Size</li>
-                        <li><strong>Data in hot tier [TiB]</strong> = Active Data Size x (1 – “Cold data %”)</li>
-                        <li><strong>Effective price total per month:</strong></li>
-                        <ul>
-                            <li>No custom data is applied: Effective price total per month = Data in hot tier [TiB] x (1 – Reserved capacity discount)</li>
-                            <li>Custom discount applied: Effective price total per month = Data in hot tier [TiB] x (1 – Custom discount)</li>
-                        </ul>
-                        <li><strong>Effective price per GiB per month:</strong> Effective price total per month / Effective data size [TiB]</li>
-                    </ul>
-            
-                    <h6>Effective capacity price:</h6>
-                    <p>Pricing with cool access, reserved capacity or custom discount, and snapshots</p>
-            
-                    <ul>
-                        <li><strong>Logical data size [TiB]</strong> = Active Data Size + snap delta</li>
-                        <li><strong>Snap delta</strong> depends on the daily change rate and the number of daily snapshots. For the first snapshot, the change rate applies to Active Data Size. For the subsequent snapshots, the change rate applies to the total of Active Data Size and the size of the previous daily snapshots.</li>
-                        <li><strong>Effective data size [TiB]</strong> = Active Data Size (Logical active file system) + virtual snapshot capacity</li>
-                        <li><strong>Effective price total per month:</strong> Provisioned capacity x “Logical list price / GiB”</li>
-                        <li><strong>Effective price per GiB per month:</strong> Effective price total per month / Effective data size [TiB]</li>
-                    </ul>
-            
-                    <h6>To understand the difference between “snap delta vs. virtual snapshot capacity", here are some explanations on how Azure NetApp Files snapshots work:</h6>
-                    <p>An Azure NetApp Files snapshot is a copy of just the pointers from the active file system at a particular point in time. No data is read, written or copied to disk, so it is created almost instantaneously without performance impact and without consuming additional disk space.</p>
-                    <p>An Azure NetApp Files snapshot simply manipulates block pointers. Actual data blocks are not copied. Just the pointers from the active file system at a particular point in time without performance impact, which results in a very small disk space consumption in comparison with a copy of the active data.</p>
-                    <p>As such, snapshots are efficient in the time needed to create them: they are near-instantaneous, regardless of volume size. Snapshots are also efficient in storage space: only delta blocks between snapshots and the active volume are kept. They are also efficient in the time needed to restore them: only a redirection of the pointers to the blocks at the time when the snapshot was taken.</p>
-            
-                    <p>For more details about Azure NetApp Files snapshots, please refer to this article and to the video in this blog post.</p>
-            
-                    <p>The snapshots physical capacity is small and depends on the change rate and the number of snapshots. This is what is called snap delta in Azure NetApp Files effective price estimator.</p>
-            
-                    <p>The amount of data accessible by the snapshots is beyond what is being physically stored. It is called virtual snapshot capacity in Azure NetApp Files effective price estimator. To a user or application, a snapshot is a logical representation of the filesystem in the state it was in when the snapshot was taken. The representation is a composite of live data blocks from the snapshot.</p>
-            
-                    <ul>
-                        <li><strong>Provisioned capacity</strong> = Logical active file system + snap delta</li>
-                        <li><strong>Effective capacity</strong> = Provisioned capacity + virtual snapshot capacity</li>
-                    </ul>
-            
-                    <p>The pricing is based on the provisioned capacity, which results in a lower effective cost per GiB.</p>
-                </div>
+                        <p class="docs-p mb-1">For the Flexible service level, we are only estimating the cost of the flexible service level (Active Data Size and Throughput).  Cool Access and Reserved Capacity are not available at this time</p>
+                        <hr>
 
+                        <h5>Below is a breakdown of what the pricing means</h5>
+                        <h6>Logical list pricing:</h6>
+                        <p class="docs-p mb-1">Pricing without cool access, reserved capacity or custom discount, and snapshots</p>
+                        <li>Logical data size [TiB] = Effective data size [TiB] = Data in hot tier [TiB] = Active Data Size</li>
+                        <li>List price per GiB per month = “Logical list price / GiB” </li>
+                        <li>List price per total month = Logical data size [TiB] x List price per GiB per month</li>
+                        <br>
+
+                        <h6>Effective discounted price: </h6>
+                        <p class="docs-p mb-1">Pricing with cool access, reserved capacity or custom discount, but without snapshots</p>
+                        <li>Logical data size [TiB] = Effective data size [TiB] = Active Data Size</li>
+                        <li>Data in hot tier [TiB] = Active Data Size x (1 – “Cold data %”)</li>
+                        <li>Effective price total per month:
+                            <ul><li>No custom data is applied: Effective price total per month = Data in hot tier [TiB] x (1 – Reserved capacity discount) </li>
+                            <li>Custom discount applied: Effective price total per month = Data in hot tier [TiB] x (1 – Custom discount) </li></ul>
+                        </li>
+                        <li>Effective price per GiB per month = Effective price total per month / Effective data size [TiB]</li>
+                        <br>
+
+                        <h6>Effective capacity price: </h6>
+                        <p class="docs-p mb-1">Pricing with cool access, reserved capacity or custom discount, and snapshots</p>
+                        <li>Logical data size [TiB] = Active Data Size + snap delta
+                            <ul>
+                                <li>snap delta depends on the daily change rate and the number of daily snapshots.</li>
+                                <li>For the first snapshot, the change rate applies to Active Data Size.</li>
+                                <li>For the subsequent snapshots, the change rate applies to the total of Active Data Size and the size of the previous daily snapshots.</li>
+                            </ul>
+                        </li>
+                        <li>Effective data size [TiB] = Active Data Size (Logical active file system) + virtual snapshot capacity</li>
+                        <li>Effective price total per month = Provisioned capacity x “Logical list price / GiB”</li>
+                        <li>Effective price per GiB per month = Effective price total per month / Effective data size [TiB]</li>
+                        <br>
+                        <hr>
+                        <p>To understand the difference between “snap delta vs. virtual snapshot capacity", here are some explanations on how Azure NetApp Files snapshots work:</p>
+                        <p>An Azure NetApp Files snapshot is a copy of just the pointers from the active file system at a particular point in time. No data is read, written or coped to disk, so it is created almost instantaneously without performance impact and without consuming additional disk space</p>
+                        <p>An Azure NetApp Files snapshot simply manipulates block pointers. Actual data blocks aren’t copied.  Just the pointers from the active file system at a particular point in time without performance impact, which results in a very small disk space consumption in comparison with a copy of the active data. </p>
+                        <p>As such, snapshots are efficient in the time needed to create them: they are near-instantaneous, regardless of volume size. Snapshots are also efficient in storage space: only delta blocks between snapshots and the active volume are kept. They are also efficient in the time needed to restore them: only a redirection of the pointers to the blocks at the time when the snapshot was taken.</p>
+                        <p>For more details about Azure NetApp Files snapshots, please refer to this <a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/snapshots-introduction">article</a> and to the video in this <a class="a" href="https://anfcommunity.com/2021/01/31/azure-netapp-files-snapshot-overview/">blog post</a>.</p>
+                        <p>The snapshots’ physical capacity is small and depends on the change rate and the number of snapshots. This is what is called snap delta in Azure NetApp Files effective price estimator.</p>
+                        <p>The amount of data accessible by the snapshots is beyond what is being physically stored. It is called virtual snapshot capacity in Azure NetApp Files effective price estimator.  To a user or application, a snapshot is a logical representation of the filesystem in the state it was in when the snapshot was taken.  The representation is a composite of live data blocks from the snapshot.</p>
+                        <p>Provisioned capacity = Logical active file system + snap delta</p>
+                        <p>Effective capacity = Provisioned capacity + virtual snapshot capacity</p>
+                        <p>The pricing is based on the provisioned capacity, which results in a lower effective cost per GiB.</p>
+
+                        <hr>
+                        <p class="docs-p mb-1">For more information on how Azure NetApp Files helps you optimize and lower your storage costs check out the following information:</p>
+
+                        <p><a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/manage-cool-access?tabs=standard">Azure NetApp Files storage with cool access</a></p>
+                        <p><a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/reservations">Azure NetApp Files reserved capacity</a></p>
+                        <p><a class="a" href="https://learn.microsoft.com/en-gb/azure/azure-netapp-files/snapshots-introduction">Azure NetApp Files snapshots</a></p>
+
+                    </div>
                     <div class="modal-footer">
                         <button
                             type="button"
