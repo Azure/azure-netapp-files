@@ -87,7 +87,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": false
     },
     {
@@ -106,7 +106,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": true
     },
     {
@@ -125,7 +125,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": true
     },
     {
@@ -163,7 +163,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": false
     },
     {
@@ -182,7 +182,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": true
     },
     {
@@ -220,7 +220,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": true
     },
     {
@@ -239,7 +239,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": true
     },
     {
@@ -334,7 +334,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": false
     },
     {
@@ -353,7 +353,7 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": false
     },
     {
@@ -391,7 +391,7 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": false
     },
     {
@@ -410,7 +410,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false,
+        "flexible": true,
         "fileaccesslogs": true
     },
     {
@@ -468,6 +468,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -505,7 +506,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -524,7 +525,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": false
     },
     {
@@ -543,7 +544,7 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": false
     },
     {
@@ -600,7 +601,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -619,7 +620,7 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -638,7 +639,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -657,7 +658,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": false    
     },
     {
@@ -676,7 +677,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true, 
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": false
     },
     {
@@ -695,7 +696,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -714,7 +715,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -733,7 +734,7 @@ var regionlist = [
         "doubleencryption": false,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": false
     },
     {
@@ -771,7 +772,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -790,7 +791,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": false
     },
     {
@@ -866,7 +867,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
@@ -885,7 +886,7 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
+        "flexible": true, 
         "fileaccesslogs": true
     },
     {
