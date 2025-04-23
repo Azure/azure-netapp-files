@@ -467,7 +467,6 @@ var regionlist = [
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
-        "flexible": false, 
         "flexible": true, 
         "fileaccesslogs": true
     },
