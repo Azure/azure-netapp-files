@@ -43,7 +43,7 @@ function getBrowserLocales(options = {}) {
         ? trimmedLocale.split(/-|_/)[0]
         : trimmedLocale;
     });
-}
+  }
 
 function getResults(convert) {
     if (convert == 1) {
@@ -73,7 +73,104 @@ function getResults(convert) {
     max_standard_tput = 1600 * 1;
     max_premium_tput = 6400 * 1;
     max_ultra_tput = 10240 * 1;
-    
+    min_flexible_tput = 128;
+
+    var flexible_region_capacity_rates = {
+        "Central US": 0.11023,
+        "East US": 0.11023,
+        "East US 2": 0.11023,
+        "North Central US": 0.13213,
+        "South Central US": 0.11023,
+        "West US": 0.11023,
+        "West US 2": 0.11023,
+        "West US 3": 0.11023,
+        "US Gov Arizona": 0.13213,
+        "US Gov Virginia": 0.13724,
+        "US Gov Texas": 0.13724,
+        "UK South": 0.11023,
+        "UK West": 0.12118,
+        "UAE Central": 0.14089,
+        "UAE North": 0.15695,
+        "Switzerland North": 0.12118,
+        "Switzerland West": 0.15768,
+        "Sweden Central": 0.11023,
+        "Spain Central": 0.11023,
+        "Qatar Central": 0.15695,
+        "Norway East": 0.10877,
+        "Norway West": 0.10877,
+        "Korea Central": 0.14819,
+        "Korea South": 0.12337,
+        "Japan East": 0.13213,
+        "Japan West": 0.17082,
+        "Italy North": 0.11023,
+        "Israel Central": 0.15695,
+        "Central India": 0.12118,
+        "South India": 0.15549,
+        "Germany North": 0.17666,
+        "Germany West Central": 0.11023,
+        "France Central": 0.13724,
+        "North Europe": 0.11023,
+        "West Europe": 0.11023,
+        "Canada Central": 0.12118,
+        "Canada East": 0.13213,
+        "Brazil South": 0.21973, 
+        "Brazil Southeast": 0.1971,
+        "Australia Central": 0.15914,
+        "Australia Central 2": 0.13213,
+        "Australia East": 0.12118,
+        "Australia Southeast": 0.14308,
+        "East Asia": 0.17009,
+        "Southeast Asia": 0.11023,
+        "South Africa North": 0.1606
+    };
+    var flexible_region_tput_rates = {
+        "Central US": 2.24986,
+        "East US": 2.24986,
+        "East US 2": 2.24986,
+        "North Central US": 2.70027,
+        "South Central US": 2.24986,
+        "West US": 2.24986,
+        "West US 2": 2.24986,
+        "West US 3": 2.24986,
+        "US Gov Arizona": 2.69954,
+        "US Gov Virginia": 2.81269,
+        "US Gov Texas": 2.81269,
+        "UK South": 2.24986,
+        "UK West": 2.4747,
+        "UAE Central": 2.87985,
+        "UAE North": 3.21784,
+        "Switzerland North": 2.4747,
+        "Switzerland West": 3.21711,
+        "Sweden Central": 2.24986,
+        "Spain Central": 2.24986,
+        "Qatar Central": 3.21784,
+        "Norway East": 2.22723,
+        "Norway West": 2.22723,
+        "Korea Central": 3.03753,
+        "Korea South": 2.51996,
+        "Japan East": 2.69954,
+        "Japan West": 3.48721,
+        "Italy North": 2.24986,
+        "Israel Central": 3.21784,
+        "Central India": 2.4747,
+        "South India": 3.17258,
+        "Germany North": 3.59963,
+        "Germany West Central": 2.24986,
+        "France Central": 2.81269,
+        "North Europe": 2.24986,
+        "West Europe": 2.24986,
+        "Canada Central": 2.4747,
+        "Canada East": 2.70027,
+        "Brazil South": 4.49972,
+        "Brazil Southeast": 4.02741,
+        "Australia Central": 3.26237,
+        "Australia Central 2": 2.69954,
+        "Australia East": 2.4747,
+        "Australia Southeast": 2.92511,
+        "East Asia": 3.46458,
+        "Southeast Asia": 2.24986,
+        "South Africa North": 3.285
+    };
     var standard_region_rates = {
         "Central US": 0.14746,
         "East US": 0.14746,
@@ -83,40 +180,59 @@ function getResults(convert) {
         "West US": 0.14746,
         "West US 2": 0.14746,
         "West US 3": 0.14746,
+
         "US Gov Arizona": 0.17739,
         "US Gov Virginia": 0.18396,
         "US Gov Texas": 0.18396,
+    
         "UK South": 0.16206,
         "UK West": 0.16206,
+
         "UAE Central": 0.23068,
         "UAE North": 0.21024,
+
         "Switzerland North": 0.16206,
         "Switzerland West": 0.21097,
+
         "Sweden Central": 0.14746,
-        "Sweden South": 0.19199,
+        "Spain Central": 0.14746,
+
         "Qatar Central": 0.21097,
+
         "Norway East": 0.16206,
         "Norway West": 0.16206,
+
         "Korea Central": 0.19856,
         "Korea South": 0.18396,
+
         "Japan East": 0.17666,
         "Japan West": 0.22922,
+
         "Central India": 0.16279,
         "South India": 0.20805,
+
         "Germany North": 0.23652,
         "Germany West Central": 0.17739,
+
         "France Central": 0.18396,
+
         "North Europe": 0.14746,
         "West Europe": 0.14746,
+
         "Canada Central": 0.16279,
         "Canada East": 0.17739,
-        "Brazil South": 0.29419, 
+      
+        "Brazil South": 0.29419,
+        "Brazil Southeast": 0/26426,
+        
         "Australia Central": 0.21316,
         "Australia Central 2": 0.17666,
         "Australia East": 0.16279,
         "Australia Southeast": 0.19199,
+
         "East Asia": 0.22776,
         "Southeast Asia": 0.14746,
+
         "South Africa North": 0.21535
     };
     var premium_region_rates = {
@@ -128,40 +244,59 @@ function getResults(convert) {
         "West US": 0.29419,
         "West US 2": 0.29419,
         "West US 3": 0.29419,
+
         "US Gov Arizona": 0.35332,
         "US Gov Virginia": 0.36792,
         "US Gov Texas": 0.36792,
+    
         "UK South": 0.32339,
         "UK West": 0.32339,
+
         "UAE Central": 0.45917,
         "UAE North": 0.42121,
+
         "Switzerland North": 0.32339,
         "Switzerland West": 0.42048,
+
         "Sweden Central": 0.29419,
-        "Sweden South": 0.38252,
+        "Spain Central": 0.29419,
+
         "Qatar Central": 0.42048,
+
         "Norway East": 0.32339,
         "Norway West": 0.32339,
+
         "Korea Central": 0.39712,
         "Korea South": 0.36792,
+
         "Japan East": 0.35259,
         "Japan West": 0.45625,
+
         "Central India": 0.32412,
         "South India": 0.41537,
+
         "Germany North": 0.47085,
         "Germany West Central": 0.35332,
+
         "France Central": 0.36792,
+
         "North Europe": 0.29419,
         "West Europe": 0.29419,
+
         "Canada Central": 0.32412,
         "Canada East": 0.35332,
+
         "Brazil South": 0.58838,
+        "Brazil Southeast": 0.52779,
+        
         "Australia Central": 0.42705,
         "Australia Central 2": 0.35332,
         "Australia East": 0.32412,
         "Australia Southeast": 0.38252,
+
         "East Asia": 0.45625,
         "Southeast Asia": 0.29419,
+
         "South Africa North": 0.42924
     };
     var ultra_region_rates = {
@@ -173,40 +308,59 @@ function getResults(convert) {
         "West US": 0.39274,
         "West US 2": 0.39274,
         "West US 3": 0.39274,
+
         "US Gov Arizona": 0.47158,
         "US Gov Virginia": 0.49056,
         "US Gov Texas": 0.49129,
+    
         "UK South": 0.43143,
         "UK West": 0.43143,
+
         "UAE Central": 0.6132,
         "UAE North": 0.56137,
+
         "Switzerland North": 0.43216,
         "Switzerland West": 0.5621,
+
         "Sweden Central": 0.39274,
-        "Sweden South": 0.51027,
+        "Spain Central": 0.39274,
+
         "Qatar Central": 0.56137,
+
         "Norway East": 0.43216,
         "Norway West": 0.43216,
+
         "Korea Central": 0.52998,
         "Korea South": 0.49129,
+
         "Japan East": 0.47085,
         "Japan West": 0.60882,
+
         "Central India": 0.43216,
         "South India": 0.55407,
+
         "Germany North": 0.62853,
         "Germany West Central": 0.47158,
+
         "France Central": 0.49129,
+
         "North Europe": 0.39274,
         "West Europe": 0.39274,
+
         "Canada Central": 0.43216,
         "Canada East": 0.47158,
+      
         "Brazil South": 0.7884,
+        "Brazil Southeast": 0.70591,
+        
         "Australia Central": 0.5694,
         "Australia Central 2": 0.47158,
         "Australia East": 0.43143,
         "Australia Southeast": 0.511,
+
         "East Asia": 0.60882,
         "Southeast Asia": 0.39274,
+
         "South Africa North": 0.57305
     };
     var tenmin_region_rates = {
@@ -224,7 +378,7 @@ function getResults(convert) {
         "UAE North": 0.14,
         "Switzerland West": 0.28392,
         "Sweden Central": 0.14,
-        "Sweden South": 0.14,
+        "Spain Central": 0.0, //data not available
         "Norway East": 0.2,
         "Norway West": 0.26,
         "Korea South": 0.175,
@@ -239,6 +393,7 @@ function getResults(convert) {
         "Canada Central": 0.168,
         "Canada East": 0.168,
         "Brazil South": 0.28,
+        "Brazil Southeast": 0.00, //data not available
         "US Gov Arizona": 0.14,
         "US Gov Texas": 0.175,
         "US Gov Virginia": 0.14,
@@ -263,7 +418,7 @@ function getResults(convert) {
         "UAE North": 0.12,
         "Switzerland West": 0.24336,
         "Sweden Central": 0.12,
-        "Sweden South": 0.12,
+        "Spain Central": 0.00, //data not available
         "Norway East": 0.172,
         "Norway West": 0.223,
         "Korea South": 0.15,
@@ -278,6 +433,7 @@ function getResults(convert) {
         "Canada Central": 0.144,
         "Canada East": 0.144,
         "Brazil South": 0.24,
+        "Brazil Southeast": 0.00,//data not available
         "US Gov Arizona": 0.12,
         "US Gov Texas": 0.15,
         "US Gov Virginia": 0.12,
@@ -302,7 +458,7 @@ function getResults(convert) {
         "UAE North": 0.11,
         "Switzerland West": 0.22308,
         "Sweden Central": 0.11,
-        "Sweden South": 0.11,
+        "Spain Central": 0.00,//data not available
         "Norway East": 0.157,
         "Norway West": 0.205,
         "Korea South": 0.138,
@@ -317,6 +473,7 @@ function getResults(convert) {
         "Canada Central": 0.132,
         "Canada East": 0.132,
         "Brazil South": 0.22,
+        "Brazil Southeast": 0.00,//data not available
         "US Gov Arizona": 0.11,
         "US Gov Texas": 0.138,
         "US Gov Virginia": 0.11,
@@ -415,21 +572,58 @@ function getResults(convert) {
     }
 
     cap_target = document.getElementById("capinput").value;
+    flexible_cap_target = document.getElementById("capinput").value;
     tput_target = document.getElementById("tputinput").value;
     change_rate = document.getElementById("changerate").value;
     active_region = document.getElementById("regionselector").value
     discount_percent = (100 - document.getElementById("discountinput").value) / 100;
     
+    flexible_capacity_rate = flexible_region_capacity_rates[active_region] * discount_percent;
+    flexible_tput_rate = flexible_region_tput_rates[active_region] * discount_percent;
     standard_rate = standard_region_rates[active_region] * discount_percent;
     premium_rate = premium_region_rates[active_region] * discount_percent;
     ultra_rate = ultra_region_rates[active_region] * discount_percent;
-
-    if (tput_target > 4500 && document.getElementById('TiB').checked && cap_target < 102400 / 1024) {
-        cap_target = 102401 / 1024
+    
+    if (tput_target > 4500 && document.getElementById('TiB').checked) {
+        flexible_cap_target = 50 * 1;
     }
 
-    if (tput_target > 4500 && document.getElementById('GiB').checked && cap_target < 102400) {
-        cap_target = 102401
+    if (tput_target > 4500 && document.getElementById('GiB').checked) {
+        flexible_cap_target = 50 * 1024;
+    }
+
+    if (document.getElementById('TiB').checked) {
+        flexible_volume_in_gb = flexible_cap_target * 1024; 
+    }
+
+    if (document.getElementById('GiB').checked) {
+        flexible_volume_in_gb = flexible_cap_target * 1;
+    }
+
+    if (tput_target < 128) {
+        flexible_tput_target = 128 * 1;
+    } else {
+        flexible_tput_target = tput_target * 1;
+    }
+
+    minimum_flexible_pool_size = Math.ceil(tput_target / (128 * 5))
+    
+    if (minimum_flexible_pool_size < 1) {
+        minimum_flexible_pool_size = 1 * 1;
+    }
+
+    flexible_pool_size = Math.ceil(flexible_volume_in_gb / 1024);
+
+    if (flexible_pool_size < minimum_flexible_pool_size) {
+        flexible_pool_size = minimum_flexible_pool_size;
+    }
+    
+    if (tput_target > 4500 && document.getElementById('TiB').checked) {
+        cap_target = 102401 / 1024;
+    }
+
+    if (tput_target > 4500 && document.getElementById('GiB').checked) {
+        cap_target = 102401 * 1;
     }
 
     if (document.getElementById('TiB').checked) {
@@ -445,17 +639,15 @@ function getResults(convert) {
         max_ultra_tput = 4500 * 1;
     }
 
+  
+
     if (tput_target > 4500 || volume_in_gb > 102400) {
-        document.getElementById("size_standard_cell").classList.add('text-success');
-        document.getElementById("dest_size_standard_cell").classList.add('text-success');
         document.getElementById("size_premium_cell").classList.add('text-success');
         document.getElementById("dest_size_premium_cell").classList.add('text-success');
         document.getElementById("capinput").classList.add('text-success');
         document.getElementById("size_ultra_cell").classList.add('text-success');
         document.getElementById("dest_size_ultra_cell").classList.add('text-success');
     } else {
-        document.getElementById("size_standard_cell").classList.remove('text-success');
-        document.getElementById("dest_size_standard_cell").classList.remove('text-success');
         document.getElementById("size_premium_cell").classList.remove('text-success');
         document.getElementById("dest_size_premium_cell").classList.remove('text-success');
         document.getElementById("capinput").classList.remove('text-success');
@@ -506,6 +698,7 @@ function getResults(convert) {
         document.getElementById("billingMonthWarningNote").innerHTML = '「容量プール コスト」で表示されている月額料金は、730時間に基づいて計算されています。';
         document.getElementById("sourceLabel").innerHTML = 'ソース: <a target="_blank" href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a target="_blank" href="https://azure.microsoft.com/pricing/details/netapp/">Pricing</a>, <a target="_blank" href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a>';
         document.getElementById("estimateOnlyWarningNote").innerHTML = 'ご注意事項: 本ツールは概算目的のみであり、性能、課金の詳細情報は公式ドキュメントを参照ください。';
+        document.getElementsByClassName("throughputCellLabel").innerHTML = 'スループット <small>(MiB/s)</small>';
         Array.from(document.getElementsByClassName("throughputCellLabel")).forEach(
             function(element, index, array) {
                 element.innerHTML = 'スループット <small>(MiB/s)</small>';
@@ -544,7 +737,7 @@ function getResults(convert) {
         document.getElementById("sourceVolumeLabel").innerHTML = 'Source Volume';
         document.getElementById("destinationVolumeLabel").innerHTML = 'Destination Volume';
         document.getElementById("discountLabel").innerHTML = 'Discount';
-        document.getElementById("blueTextExplain").innerHTML = 'Blue text indicates volume is sized for throughput.';
+        document.getElementById("blueTextExplain").innerHTML = 'Blue text indicates volume is over-provisioned for throughput.';
         document.getElementById("largeVolumeNote").innerHTML = 'Volumes with a throughput greater than 4500 MiB/s or a size greater than 100 TiB require <a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations">large volumes</a>.';
         document.getElementById("costWarningNote").innerHTML = "The 'Capacity Pool Cost' is the amount you will be charged. The 'Volume Show Back' amount is for show back purposes only.";
         document.getElementById("replicateWarningNote").innerHTML = 'You can replicate between volumes of different service levels.';
@@ -552,6 +745,7 @@ function getResults(convert) {
         document.getElementById("billingMonthWarningNote").innerHTML = 'Monthly costs are based on a 730 hour billing month.';
         document.getElementById("sourceLabel").innerHTML = 'source: <a target="_blank" href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels">Service Levels</a>, <a target="_blank" href="https://azure.microsoft.com/pricing/details/netapp/">Pricing</a>, <a target="_blank" href="https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits">Resource Limits</a>';
         document.getElementById("estimateOnlyWarningNote").innerHTML = 'notes: calculator is for estimation purposes only';
+        document.getElementsByClassName("throughputCellLabel").innerHTML = 'スループット <small>(MiB/s)</small>';
         Array.from(document.getElementsByClassName("throughputCellLabel")).forEach(
             function(element, index, array) {
                 element.innerHTML = 'Throughput <small>(MiB/s)</small>';
@@ -725,7 +919,7 @@ function getResults(convert) {
                     }
                     ultra_tput = (volume_in_gb / 1024) * 128;
                     if (ultra_tput > max_ultra_tput) {
-                        ultra_tput = max_ultra_tput;
+                      ultra_tput = max_ultra_tput;
                     }
                     standard_cost = (volume_in_gb * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     premium_cost = (volume_in_gb * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
@@ -737,10 +931,12 @@ function getResults(convert) {
                             element.innerHTML = '(GiB)';
                         }
                     );
+                    document.getElementById("size_flexible_cell").innerText = flexible_volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_standard_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_premium_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_ultra_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
+                    document.getElementById("dest_size_flexible_cell").innerText = flexible_volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_size_standard_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_size_premium_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_size_ultra_cell").innerText = volume_in_gb.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
@@ -750,15 +946,19 @@ function getResults(convert) {
                             element.innerHTML = '(TiB)';
                         }
                     );
+                    document.getElementById("size_flexible_cell").innerText = (flexible_volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_standard_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_premium_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("size_ultra_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
+                    document.getElementById("dest_size_flexible_cell").innerText = (flexible_volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_size_standard_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_size_premium_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_size_ultra_cell").innerText = (volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                 }
                 if (Math.ceil(volume_in_gb / 1024) < min_pool_capacity) {
+                    document.getElementById("poolsize_flexible_cell").innerText = flexible_pool_size;
+                    document.getElementById("poolcost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((flexible_tput_target-128) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("poolsize_standard_cell").innerText = min_pool_capacity;
                     document.getElementById("poolcost_standard_cell").innerText = (min_pool_capacity * 1024 * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("poolsize_premium_cell").innerText = min_pool_capacity;
@@ -766,6 +966,10 @@ function getResults(convert) {
                     document.getElementById("poolsize_ultra_cell").innerText = min_pool_capacity;
                     document.getElementById("poolcost_ultra_cell").innerText = (min_pool_capacity * 1024 * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
+                    document.getElementById("flex_result_mib_per_sec").innerText = "(" + (flexible_tput_target / (volume_in_gb / 1024)).toFixed(2) + "MiB/s per TiB)"
+                    document.getElementById("dest_size_flexible_cell").innerText = (flexible_volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                    document.getElementById("dest_poolsize_flexible_cell").innerText = flexible_pool_size;
+                    document.getElementById("dest_poolcost_flexible_cell").innerText = ((min_pool_capacity * 1024 * flexible_capacity_rate)+((0)*flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_poolsize_standard_cell").innerText = min_pool_capacity;
                     document.getElementById("dest_poolcost_standard_cell").innerText = (min_pool_capacity * 1024 * standard_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_poolsize_premium_cell").innerText = min_pool_capacity;
@@ -773,6 +977,12 @@ function getResults(convert) {
                     document.getElementById("dest_poolsize_ultra_cell").innerText = min_pool_capacity;
                     document.getElementById("dest_poolcost_ultra_cell").innerText = (min_pool_capacity * 1024 * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                 } else {
+                    document.getElementById("poolsize_flexible_cell").innerText = flexible_pool_size;
+                    document.getElementById("poolcost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((flexible_tput_target-128) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                    document.getElementById("flex_result_mib_per_sec").innerText = "(" + (flexible_tput_target / (volume_in_gb / 1024)).toFixed(2) + "MiB/s per TiB)"
+                    
+                    document.getElementById("cost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((flexible_tput_target-128) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
                     document.getElementById("poolsize_standard_cell").innerText = Math.ceil(volume_in_gb / 1024);
                     document.getElementById("poolcost_standard_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     
@@ -781,7 +991,8 @@ function getResults(convert) {
                     
                     document.getElementById("poolsize_ultra_cell").innerText = Math.ceil(volume_in_gb / 1024);
                     document.getElementById("poolcost_ultra_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-                    
+                   
+                    document.getElementById("tput_flexible_cell").innerText = flexible_tput_target.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("tput_standard_cell").innerText = standard_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("tput_premium_cell").innerText = premium_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("tput_ultra_cell").innerText = ultra_tput.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
@@ -789,6 +1000,13 @@ function getResults(convert) {
                     document.getElementById("cost_standard_cell").innerText = standard_cost;
                     document.getElementById("cost_premium_cell").innerText = premium_cost;
                     document.getElementById("cost_ultra_cell").innerText = ultra_cost;
+
+                    document.getElementById("dest_tput_flexible_cell").innerText = flexible_tput_target.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+                    document.getElementById("dest_poolsize_flexible_cell").innerText = Math.ceil(flexible_pool_size);
+                    document.getElementById("dest_poolcost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((0) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+                    document.getElementById("dest_cost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((0) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
                     document.getElementById("dest_poolsize_standard_cell").innerText = Math.ceil(volume_in_gb / 1024);
                     document.getElementById("dest_poolcost_standard_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
