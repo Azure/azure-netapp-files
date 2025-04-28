@@ -195,7 +195,7 @@ function getResults(convert) {
         "Switzerland West": 0.21097,
 
         "Sweden Central": 0.14746,
-        "Sweden South": 0.19199,
+        "Spain Central": 0.14746,
 
         "Qatar Central": 0.21097,
 
@@ -223,6 +223,7 @@ function getResults(convert) {
         "Canada East": 0.17739,
       
         "Brazil South": 0.29419,
+        "Brazil Southeast": 0/26426,
         
         "Australia Central": 0.21316,
         "Australia Central 2": 0.17666,
@@ -258,7 +259,7 @@ function getResults(convert) {
         "Switzerland West": 0.42048,
 
         "Sweden Central": 0.29419,
-        "Sweden South": 0.38252,
+        "Spain Central": 0.29419,
 
         "Qatar Central": 0.42048,
 
@@ -286,6 +287,7 @@ function getResults(convert) {
         "Canada East": 0.35332,
 
         "Brazil South": 0.58838,
+        "Brazil Southeast": 0.52779,
         
         "Australia Central": 0.42705,
         "Australia Central 2": 0.35332,
@@ -321,7 +323,7 @@ function getResults(convert) {
         "Switzerland West": 0.5621,
 
         "Sweden Central": 0.39274,
-        "Sweden South": 0.51027,
+        "Spain Central": 0.39274,
 
         "Qatar Central": 0.56137,
 
@@ -349,6 +351,7 @@ function getResults(convert) {
         "Canada East": 0.47158,
       
         "Brazil South": 0.7884,
+        "Brazil Southeast": 0.70591,
         
         "Australia Central": 0.5694,
         "Australia Central 2": 0.47158,
@@ -375,7 +378,7 @@ function getResults(convert) {
         "UAE North": 0.14,
         "Switzerland West": 0.28392,
         "Sweden Central": 0.14,
-        "Sweden South": 0.14,
+        "Spain Central": 0.0, //data not available
         "Norway East": 0.2,
         "Norway West": 0.26,
         "Korea South": 0.175,
@@ -390,6 +393,7 @@ function getResults(convert) {
         "Canada Central": 0.168,
         "Canada East": 0.168,
         "Brazil South": 0.28,
+        "Brazil Southeast": 0.00, //data not available
         "US Gov Arizona": 0.14,
         "US Gov Texas": 0.175,
         "US Gov Virginia": 0.14,
@@ -414,7 +418,7 @@ function getResults(convert) {
         "UAE North": 0.12,
         "Switzerland West": 0.24336,
         "Sweden Central": 0.12,
-        "Sweden South": 0.12,
+        "Spain Central": 0.00, //data not available
         "Norway East": 0.172,
         "Norway West": 0.223,
         "Korea South": 0.15,
@@ -429,6 +433,7 @@ function getResults(convert) {
         "Canada Central": 0.144,
         "Canada East": 0.144,
         "Brazil South": 0.24,
+        "Brazil Southeast": 0.00,//data not available
         "US Gov Arizona": 0.12,
         "US Gov Texas": 0.15,
         "US Gov Virginia": 0.12,
@@ -453,7 +458,7 @@ function getResults(convert) {
         "UAE North": 0.11,
         "Switzerland West": 0.22308,
         "Sweden Central": 0.11,
-        "Sweden South": 0.11,
+        "Spain Central": 0.00,//data not available
         "Norway East": 0.157,
         "Norway West": 0.205,
         "Korea South": 0.138,
@@ -468,6 +473,7 @@ function getResults(convert) {
         "Canada Central": 0.132,
         "Canada East": 0.132,
         "Brazil South": 0.22,
+        "Brazil Southeast": 0.00,//data not available
         "US Gov Arizona": 0.11,
         "US Gov Texas": 0.138,
         "US Gov Virginia": 0.11,
@@ -961,7 +967,7 @@ function getResults(convert) {
                     document.getElementById("poolcost_ultra_cell").innerText = (min_pool_capacity * 1024 * ultra_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
                     document.getElementById("flex_result_mib_per_sec").innerText = "(" + (flexible_tput_target / (volume_in_gb / 1024)).toFixed(2) + "MiB/s per TiB)"
-
+                    document.getElementById("dest_size_flexible_cell").innerText = (flexible_volume_in_gb / 1024).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_poolsize_flexible_cell").innerText = flexible_pool_size;
                     document.getElementById("dest_poolcost_flexible_cell").innerText = ((min_pool_capacity * 1024 * flexible_capacity_rate)+((0)*flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     document.getElementById("dest_poolsize_standard_cell").innerText = min_pool_capacity;
@@ -995,9 +1001,13 @@ function getResults(convert) {
                     document.getElementById("cost_premium_cell").innerText = premium_cost;
                     document.getElementById("cost_ultra_cell").innerText = ultra_cost;
 
+                    document.getElementById("dest_tput_flexible_cell").innerText = flexible_tput_target.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
                     document.getElementById("dest_poolsize_flexible_cell").innerText = Math.ceil(flexible_pool_size);
-// Removed duplicate assignment to dest_poolcost_flexible_cell to avoid unintended overrides.
-                  
+                    document.getElementById("dest_poolcost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((0) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+                    document.getElementById("dest_cost_flexible_cell").innerText = (((flexible_pool_size * 1024) * flexible_capacity_rate) + ((0) * flexible_tput_rate)).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
                     document.getElementById("dest_poolsize_standard_cell").innerText = Math.ceil(volume_in_gb / 1024);
                     document.getElementById("dest_poolcost_standard_cell").innerText = (Math.ceil(volume_in_gb / 1024) * 1024 * premium_rate).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
                     
