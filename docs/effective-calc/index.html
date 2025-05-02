@@ -224,24 +224,26 @@
                             <option value="flexible" selected>Flexible</option>
                         </select>
                     </div>
-                    <div class="input-group mb-4">
-                        <span class="input-group-text">Throughput</span>
-                        <input
-                            type="number"
-                            class="form-control"
-                            placeholder="128"
-                            value="128"
-                            min="1"
-                            aria-label="throughput_input"
-                            aria-describedby="throughput_input"
-                            id="throughput_input"
-                            oninput="validateInput(this); handleSubmit();"
-                            tabindex="4"
-                            disabled="true"
-                        />
-                        <button class="btn btn-primary" type="button">
-                            MiBps
-                        </button>
+                    <div id="throughput_input_div">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">Throughput</span>
+                            <input
+                                type="number"
+                                class="form-control"
+                                placeholder="128"
+                                value="128"
+                                min="1"
+                                aria-label="throughput_input"
+                                aria-describedby="throughput_input"
+                                id="throughput_input"
+                                oninput="validateInput(this); handleSubmit();"
+                                tabindex="4"
+                                disabled="true"
+                            />
+                            <button class="btn btn-primary" type="button">
+                                MiBps
+                            </button>
+                        </div>
                     </div>
                     <div class="mb-2">
                         <span class="fs-5 text-primary"> Cool Access </span>
@@ -422,7 +424,7 @@
                         <canvas
                             id="anf_price_per_gib_chart"
                             class="chart-canvas"
-                            style="height: 625px; max-height: 625px;"
+                            style="height: 650px; max-height: 650px;"
                         ></canvas>
                     </div>
                 </div>
@@ -473,7 +475,7 @@
                         <canvas
                             id="effective_capacity_breakdown_chart"
                             class="chart-canvas"
-                            style="height: 625px; max-height: 625px"
+                            style="height: 650px; max-height: 650px"
                         ></canvas>
                     </div>
                 </div>
@@ -523,10 +525,10 @@
                                             Data in Hot Tier [TiB]
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective Price per GiB per Month
+                                            Effective Price Total per Month
                                         </th>
                                         <th class="bg-teal-green text-light">
-                                            Effective Price Total per Month
+                                            Effective Price per GiB per Month
                                         </th>
                                     </tr>
                                 </thead>
@@ -565,17 +567,20 @@
                                                 Data in Hot Tier [TiB]
                                             </th>
                                             <th class="bg-teal-green text-light">
+                                                Effective Price Total per Month
+                                            </th>
+                                            <th class="bg-teal-green text-light">
                                                 Effective Price per GiB per Month
                                             </th>
                                             <th class="bg-teal-green text-light">
-                                                Effective Price Total per Month
+                                                Discounted Price per GiB
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-light">
                                         <tr>
                                             <td
-                                                colspan="5"
+                                                colspan="6"
                                                 class="text-center fs-2 text-secondary"
                                             >
                                                 No Data
@@ -608,17 +613,20 @@
                                                 Data in Hot Tier [TiB]
                                             </th>
                                             <th class="bg-teal-green text-light">
+                                                Effective Price Total per Month
+                                            </th>
+                                            <th class="bg-teal-green text-light">
                                                 Effective Price per GiB per Month
                                             </th>
                                             <th class="bg-teal-green text-light">
-                                                Effective Price Total per Month
+                                                Effective Price per GiB
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-light">
                                         <tr>
                                             <td
-                                                colspan="5"
+                                                colspan="6"
                                                 class="text-center fs-2 text-secondary"
                                             >
                                                 No Data
@@ -654,7 +662,16 @@
                                                 Provisioned Pool Size [TiB]
                                             </th>
                                             <th class="bg-teal-green text-light">
-                                                Effective Price Total per Month
+                                                Total List Price per Month
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                List Price per GiB
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price (Discounted)
+                                            </th>
+                                            <th class="bg-teal-green text-light">
+                                                Effective Price Total per Month (with Snapshots)
                                             </th>
                                             <th class="bg-teal-green text-light">
                                                 Effective Price per GiB per Month
@@ -664,7 +681,7 @@
                                     <tbody class="table-light">
                                         <tr>
                                             <td
-                                                colspan="6"
+                                                colspan="9"
                                                 class="text-center fs-2 text-secondary"
                                             >
                                                 No Data
@@ -692,7 +709,7 @@
                             Results are for estimation purposes and your actual
                             savings may vary
                         </li>
-                        <li>Release: v1.2</li>
+                        <li>Release: v1.3</li>
                     </ul>
                 </small>
                 <div class="row mt-2 mb-2">
