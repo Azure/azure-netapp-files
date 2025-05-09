@@ -786,7 +786,7 @@ var regionlist = [
         "backup": true,
         "largevolumes": true,
         "cmk": true,
-        "cmkhsm": false,
+        "cmkhsm": true,
         "doubleencryption": true,
         "standardcool": true,
         "azplacement": false,
