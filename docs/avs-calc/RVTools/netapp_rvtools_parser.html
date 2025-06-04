@@ -163,7 +163,7 @@
             <center><small id="rvtools_message" class="text-danger mt-3 mb-3"></small></center>
             <div class="card-footer">
                <small class="text-muted ml-4">*These calculations are for estimation purposes only</small><br/>
-               <small class="text-muted ml-4">Go to <a href="https://bluexp.netapp.com/anf-avs/tcoestimator">NetApp ANF+AVS TCO Estimator</a></small>
+               <small class="text-muted ml-4">Use the estimator based on the deployment model: <a href="https://bluexp.netapp.com/anf-avs/tcoestimator">NetApp ANF+AVS TCO Estimator</a>, <a href="https://bluexp.netapp.com/vmc-aws-fsx-ontap/roi">VMC+FSx for NetApp ONTAP TCO Estimator</a>, <a href="https://bluexp.netapp.com/gcve-gcnv/roi">GCVE+GCNV TCO Estimator</a>, <a href="https://mhcsolengg.com/vmwntaptco/">VMware ONTAP TCO Estimator</a></small>
             </div>
             <div class="row mb-3">
                 <!-- <div class="col text-left ml-5">
@@ -297,6 +297,7 @@
                 if(document.getElementById("provisioned").checked){
                     provisioned_mib_avg /= selected_rows.length;
                 }
+                
 
                 // console.log("vm_count" + vm_count + " cpu_avg" + cpu_avg + " memory_avg" + memory_avg);
 

@@ -760,7 +760,7 @@
                         </tr>
                      </thead>
                      <tr id="anf1_ultra">
-                        <td id="anf1_profile" class="bg-light">ANF Ultra Tier</td>
+                        <td id="anf1_profile" class="bg-light">Ultra service level</td>
                         <td id="anf1_avshosts"></td>
                         <td id="anf1_anfstorage"></td>
                         <td id="anf1_avscost"></td>
@@ -768,7 +768,7 @@
                         <td id="anf1_tcosavings"></td>
                      </tr>
                      <tr id="anf1_premium">
-                        <td id="anf2_profile" class="bg-light">ANF Premium Tier</td>
+                        <td id="anf2_profile" class="bg-light">Premium service level</td>
                         <td id="anf2_avshosts"></td>
                         <td id="anf2_anfstorage"></td>
                         <td id="anf2_avscost"></td>
@@ -776,12 +776,20 @@
                         <td id="anf2_tcosavings"></td>
                      </tr>
                      <tr id="anf1_standard">
-                        <td id="anf2_profile" class="bg-light">ANF Standard Tier</td>
+                        <td id="anf3_profile" class="bg-light">Standard service level</td>
                         <td id="anf3_avshosts"></td>
                         <td id="anf3_anfstorage"></td>
                         <td id="anf3_avscost"></td>
                         <td id="anf3_anfcost"></td>
                         <td id="anf3_tcosavings"></td>
+                     </tr>
+                     <tr id="anf1_flexible">
+                        <td id="anf_flexible_profile" class="bg-light">Flexible service level</td>
+                        <td id="anf_flexible_avshosts"></td>
+                        <td id="anf_flexible_anfstorage"></td>
+                        <td id="anf_flexible_avscost"></td>
+                        <td id="anf_flexible_anfcost"></td>
+                        <td id="anf_flexible_tcosavings"></td>
                      </tr>
 
                   </table>
@@ -867,9 +875,27 @@
                 </div>
              </div>
                </div>
+               <div class="row mb-2 m-0 p-0 mt-3">
+                  <div class="col-4 pl-0" id="throughput_div">
+                  <!-- <small id="tputwarning" class="form-text text-muted">Storage</small> -->
+                  <div class="input-group">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" style="color:#000">Flexible SL Throughput<button type="button" class="m-0 ml-1 btn p-0 bg-transparent" style="line-height:normal" data-toggle="tooltip" data-html="true" title="Only applicable for ANF Flexible service level"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg></button></span>
+                     </div>
+                     <input oninput="getResults()" type="number" class="form-control" placeholder="" value="1024" id="flexible_throughput" min="0" required></input>
+                     <div class="input-group-append btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-primary">MiBps</label>
+                     </div>
+                  </div>
+               </div>
+               </div>
                <div>
                 <small class="text-secondary text-small">
-                  <b>Note: </b>Reservations, Azure consumption discounts (ACD) and project specific pricing impact savings on Azure NetApp Files. Please work with your Azure Sales Specialist to ensure you are taking advantage of best available pricing to optimize your TCO.
+                  <b>Note: </b>
+                  <ul>
+                     <li>Flexible service level enables to adjust throughput and size limits independently. Provide the necessary throughput for the VM workload for optimal projections.</li>
+                     <li>Reservations, Azure consumption discounts (ACD) and project specific pricing impact savings on Azure NetApp Files. Please work with your Azure Sales Specialist to ensure you are taking advantage of best available pricing to optimize your TCO.</li>
+                  </ul>
                </small>
                </div>
                <hr/>
@@ -940,15 +966,19 @@
                            <center>
                               <div class="form-check form-check-inline">
                                  <input class="form-check-input" type="checkbox" id="standardRadio" value="standard" onclick="radioCheck('standardRadio','anf_standard','table-row')" checked>
-                                 <label class="form-check-label" for="standardRadio">ANF standard</label>
+                                 <label class="form-check-label" for="standardRadio">Standard service level</label>
                               </div>
                               <div class="form-check form-check-inline">
                                  <input class="form-check-input" type="checkbox" id="premiumRadio" value="premium" onclick="radioCheck('premiumRadio','anf_premium','table-row')" checked>
-                                 <label class="form-check-label" for="premiumRadio">ANF premium</label>
+                                 <label class="form-check-label" for="premiumRadio">Premium service level</label>
                               </div>
                               <div class="form-check form-check-inline">
                                  <input class="form-check-input" type="checkbox" id="ultraRadio" value="ultra" onclick="radioCheck('ultraRadio','anf_ultra','table-row')" checked>
-                                 <label class="form-check-label" for="ultraRadio">ANF ultra</label>
+                                 <label class="form-check-label" for="ultraRadio">Ultra service level</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                 <input class="form-check-input" type="checkbox" id="flexibleRadio" value="ultra" onclick="radioCheck('flexibleRadio','anf_flexible','table-row')" checked>
+                                 <label class="form-check-label" for="ultraRadio">Flexible service level</label>
                               </div>
                               <div class="form-check form-check-inline d-none">
                                  <input class="form-check-input" type="checkbox" id="prestdRadio" value="ultra" onclick="radioCheck('prestdRadio','anf_pre_std','table-row')">
@@ -1026,6 +1056,19 @@
                         <td id="avs7_tcototal"></td>
                         <!-- <td id="avs7_tcoopt">N/A</td> -->
                      </tr>
+                     <tr id="anf_flexible" class="">
+                        <td id="avs_flexible_profile"></td>
+                        <td id="avs_flexible_totcapreq"></td>
+                        <td id="avs_flexible_hostcount"></td>
+                        <td id="avs_flexible_totcapvsan"></td>
+                        <td id="avs_flexible_spacevmvsan"></td>
+                        <td id="avs_flexible_spacevmanf">N/A</td>
+                        <!-- <td id="avs7_spacefree"></td> -->
+                        <td id="avs_flexible_tcoavs"></td>
+                        <td id="avs_flexible_tcoanf">N/A</td>
+                        <td id="avs_flexible_tcototal"></td>
+                        <!-- <td id="avs7_tcoopt">N/A</td> -->
+                     </tr>
                      <tr>
                         <td class="bg-info text-white" colspan="9">
                            <center>
@@ -1065,6 +1108,7 @@
                   <center><small id="output_message_std" class="text-danger"></small></center>
                   <center><small id="output_message_std_zero" class="text-danger"></small></center>
                   <center><small id="output_message_ultra_only" class="text-danger"></small></center>
+                  <center><small id="output_message_flexible_only" class="text-danger"></small></center>
 
                   <div id="iops_output_parent" class="d-none">
                      <div class="mb-3">
@@ -1146,7 +1190,7 @@
             <div class="card-footer">
                <small class="text-muted"><b>Source</b>: <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels" target="_blank">Service Levels</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/" target="_blank">Pricing</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits" target="_blank">Resource Limits</a>
                </small><br>
-               <small class="text-muted"><b>Notes</b>: <ul><li>This calculator is based on storage capacity only. </li><li>Estimator is for estimation purposes only. Contact <b>Azure CSA's</b> to learn more about optimizing the deployment.</li><li>Ensure to right size the virtual machines based on the current usage patterns and re-import the RVTools if required.</li><li>Version: v6.0</li><li>How to? <a href="https://www.youtube.com/watch?v=gQMMQjgsSJ4&ab_channel=AzureNetAppFiles" target="_blank">Click here</a></li></small>
+               <small class="text-muted"><b>Notes</b>: <ul><li>This calculator is based on storage capacity only. </li><li>Estimator is for estimation purposes only. Contact <b>Azure CSA's</b> to learn more about optimizing the deployment.</li><li>Ensure to right size the virtual machines based on the current usage patterns and re-import the RVTools if required.</li><li>Version: v6.1</li><li>How to? <a href="https://www.youtube.com/watch?v=gQMMQjgsSJ4&ab_channel=AzureNetAppFiles" target="_blank">Click here</a></li></small>
             </div>
          </div>
          <div class="row mb-3">
