@@ -388,7 +388,7 @@ var regionlist = [
         "largevolumes": true,
         "cmk": true,
         "cmkhsm": true,
-        "doubleencryption": false,
+        "doubleencryption": true,
         "standardcool": true,
         "azplacement": true,
         "flexible": true,
