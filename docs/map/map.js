@@ -670,7 +670,7 @@ var regionlist = [
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
-        "largevolumes": true,
+        "largevolumes": false,
         "cmk": true,
         "cmkhsm": true,
         "doubleencryption": true,
