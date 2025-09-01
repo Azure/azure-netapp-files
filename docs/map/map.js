@@ -829,7 +829,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "usgovtexas",
