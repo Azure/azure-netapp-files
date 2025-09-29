@@ -734,7 +734,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "uaenorth",
