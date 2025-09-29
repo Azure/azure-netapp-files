@@ -164,7 +164,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true,
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "canadacentral",
@@ -316,7 +316,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true,
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "germanywestcentral",
@@ -354,7 +354,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true,
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "israelcentral",
@@ -525,7 +525,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "norwaywest",
@@ -544,7 +544,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "qatarcentral",
@@ -582,7 +582,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "southcentralus",
@@ -677,7 +677,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true, 
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "switzerlandnorth",
@@ -753,7 +753,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "uksouth",
@@ -791,7 +791,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "usgovarizona",
@@ -810,7 +810,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "usgovvirginia",
@@ -829,7 +829,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": false
+        "fileaccesslogs": true
     },
     {
         "shortname": "usgovtexas",
