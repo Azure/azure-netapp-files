@@ -122,54 +122,53 @@
             <h4>Total number of regions: <span id="totalRegionCount"></span></h4>
             <br>
             <h4>Apply filter(s)...</h4>
-            <input onclick="updateMap()" type="checkbox" id="azplacement" name="azplacement" value="azplacement">
-            <label for="azplacement">availability zone placement </label>(<span id="azplacementRegionCount"></span>)<br>
-
             <input onclick="updateMap()" type="checkbox" id="cachevolumes" name="cachevolumes" value="cachevolumes">
             <label for="cachevolumes">cache volumes </label>(<span id="cacheVolumeRegionCount"></span>)<br>
 
+            <input onclick="updateMap()" type="checkbox" id="snf" name="snf" value="snf">
+            <label for="snf">standard network features </label>(<span id="snfRegionCount"></span>)<br>
+
+            <input onclick="updateMap()" type="checkbox" id="snfedit" name="snfedit" value="snfedit">
+            <label for="snfedit">edit network features without downtime </label>(<span id="snfEditRegionCount"></span>)<br>
+            
             <input onclick="updateMap()" type="checkbox" id="crr" name="crr" value="crr">
             <label for="crr">cross-region replication </label>(<span id="crrRegionCount"></span>)<br>
 
+            <input onclick="updateMap()" type="checkbox" id="azplacement" name="azplacement" value="azplacement">
+            <label for="azplacement">availability zone placement </label>(<span id="azplacementRegionCount"></span>)<br>
+
             <input onclick="updateMap()" type="checkbox" id="czr" name="czr" value="czr">
             <label for="czr">cross-zone replication </label>(<span id="czrRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="avs" name="avs" value="avs">
+            <label for="avs">datastore for Azure VMware Solution </label>(<span id="avsRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="backup" name="backup" value="backup">
+            <label for="backup">backup </label>(<span id="backupRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="largevolumes" name="largevolumes" value="largevolumes">
+            <label for="largevolumes">large volumes </label>(<span id="largevolumesRegionCount"></span>)<br>
+            
+            <input onclick="updateMap()" type="checkbox" id="cmk" name="cmk" value="cmk">
+            <label for="cmk">customer-managed keys </label>(<span id="cmkRegionCount"></span>)<br>
 
             <input onclick="updateMap()" type="checkbox" id="cmkhsm" name="cmkhsm" value="cmkhsm">
             <label for="cmkhsm">customer-managed keys w/ managed HSM </label>(<span id="cmkhsmRegionCount"></span>)<br>
         
-            <input onclick="updateMap()" type="checkbox" id="avs" name="avs" value="avs">
-            <label for="avs">datastore for Azure VMware Solution </label>(<span id="avsRegionCount"></span>)<br>
-            
             <input onclick="updateMap()" type="checkbox" id="doubleencryption" name="doubleencryption" value="doubleencryption">
             <label for="doubleencryption">double encryption at rest </label>(<span id="doubleencryptionRegionCount"></span>)<br>
 
             <input onclick="updateMap()" type="checkbox" id="fileaccesslogs" name="fileaccesslogs" value="fileaccesslogs">
             <label for="fileaccesslogs">file access logs </label>(<span id="fileaccesslogsRegionCount"></span>)<br>
 
-            <input onclick="updateMap()" type="checkbox" id="largevolumes" name="largevolumes" value="largevolumes">
-            <label for="largevolumes">large volumes </label>(<span id="largevolumesRegionCount"></span>)<br>
-            
+            <input onclick="updateMap()" type="checkbox" id="flexible" name="flexible" value="flexible">
+            <label for="flexible">flexible service level </label>(<span id="flexibleRegionCount"></span>)<br>
+
+            <input onclick="updateMap()" type="checkbox" id="standardcool" name="standardcool" value="standardcool">
+            <label for="standardcool">standard storage w/ cool access </label>(<span id="standardcoolRegionCount"></span>)<br>
+
             <input onclick="updateMap()" type="checkbox" id="usgov" name="usgov" value="usgov">
             <label for="usgov">US Gov </label>(<span id="USGovRegionCount"></span>)<br>
-            
-            <!-- <input onclick="updateMap()" type="checkbox" id="snf" name="snf" value="snf"> -->
-            <!-- <label for="snf">standard network features </label>(<span id="snfRegionCount"></span>)<br> -->
-
-            <!-- <input onclick="updateMap()" type="checkbox" id="snfedit" name="snfedit" value="snfedit"> -->
-            <!-- <label for="snfedit">edit network features without downtime </label>(<span id="snfEditRegionCount"></span>)<br> -->
-        
-            <!-- <input onclick="updateMap()" type="checkbox" id="backup" name="backup" value="backup"> -->
-            <!-- <label for="backup">backup </label>(<span id="backupRegionCount"></span>)<br> -->
-            
-            <!-- <input onclick="updateMap()" type="checkbox" id="cmk" name="cmk" value="cmk"> -->
-            <!-- <label for="cmk">customer-managed keys </label>(<span id="cmkRegionCount"></span>)<br> -->
-
-            <!-- <input onclick="updateMap()" type="checkbox" id="flexible" name="flexible" value="flexible"> -->
-            <!-- <label for="flexible">flexible service level </label>(<span id="flexibleRegionCount"></span>)<br> -->
-
-            <!-- <input onclick="updateMap()" type="checkbox" id="standardcool" name="standardcool" value="standardcool"> -->
-            <!-- <label for="standardcool">standard storage w/ cool access </label>(<span id="standardcoolRegionCount"></span>)<br> -->
-
             <br>
             <h4>Total filtered regions: <span id="totalFilteredCount"></span></h4><br>
             <button onclick="window.location.href=window.location.href">Reset</button>

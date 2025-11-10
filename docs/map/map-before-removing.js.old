@@ -59,7 +59,7 @@ var regionlist = [
         "crrregions": ["australiacentral2"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -79,7 +79,7 @@ var regionlist = [
         "crrregions": ["australiacentral"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -90,7 +90,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true,
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "australiaeast",
@@ -99,7 +99,7 @@ var regionlist = [
         "crrregions": ["australiasoutheast","southeastasia"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -119,7 +119,7 @@ var regionlist = [
         "crrregions": ["australiaeast"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -139,7 +139,7 @@ var regionlist = [
         "crrregions": ["southcentralus", "brazilsoutheast"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -159,7 +159,7 @@ var regionlist = [
         "crrregions": ["brazilsouth"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false, 
         "backup": true,
@@ -170,7 +170,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true,
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "canadacentral",
@@ -179,7 +179,7 @@ var regionlist = [
         "crrregions": ["canadaeast"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -199,7 +199,7 @@ var regionlist = [
         "crrregions": ["canadacentral"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -219,7 +219,7 @@ var regionlist = [
         "crrregions": ["southindia"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -236,10 +236,10 @@ var regionlist = [
         "shortname": "centralus",
         "longname": "Central US",
         "location": regionlocation.centralus,
-        "crrregions": ["southcentralus","eastus2", "westus3", "eastus"],
+        "crrregions": ["southcentralus","eastus2", "westus3"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -259,7 +259,7 @@ var regionlist = [
         "crrregions": ["southeastasia"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -276,10 +276,10 @@ var regionlist = [
         "shortname": "eastus",
         "longname": "East US",
         "location": regionlocation.eastus,
-        "crrregions": ["westus","westus2","southcentralus","eastus2", "northcentralus", "westus3", "centralus"],
+        "crrregions": ["westus","westus2","southcentralus","eastus2", "northcentralus", "westus3"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -299,7 +299,7 @@ var regionlist = [
         "crrregions": ["southcentralus","centralus","eastus","northcentralus","westus2","westus3"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -316,10 +316,10 @@ var regionlist = [
         "shortname": "francecentral",
         "longname": "France Central",
         "location": regionlocation.francecentral,
-        "crrregions": ["germanywestcentral","westeurope","northeurope"],
+        "crrregions": ["germanywestcentral","westeurope"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -330,7 +330,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true,
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "germanywestcentral",
@@ -339,7 +339,7 @@ var regionlist = [
         "crrregions": ["uksouth","germanynorth","westeurope","francecentral", "swedencentral"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -370,7 +370,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true,
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "israelcentral",
@@ -379,7 +379,7 @@ var regionlist = [
         "crrregions": ["swedencentral"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -399,14 +399,14 @@ var regionlist = [
         "crrregions": ["swedencentral"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
         "largevolumes": true,
         "cmk": true,
         "cmkhsm": true,
-        "doubleencryption": true,
+        "doubleencryption": false,
         "standardcool": true,
         "azplacement": true,
         "flexible": true,
@@ -419,7 +419,7 @@ var regionlist = [
         "crrregions": ["japanwest"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -459,7 +459,7 @@ var regionlist = [
         "crrregions": ["koreasouth"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -479,7 +479,7 @@ var regionlist = [
         "crrregions": ["koreacentral"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -499,7 +499,7 @@ var regionlist = [
         "crrregions": ["eastus", "eastus2","southcentralus"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -516,10 +516,10 @@ var regionlist = [
         "shortname": "northeurope",
         "longname": "North Europe",
         "location": regionlocation.northeurope,
-        "crrregions": ["westeurope","swedencentral","uksouth","francecentral"],
+        "crrregions": ["westeurope", "swedencentral", "uksouth"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -539,7 +539,7 @@ var regionlist = [
         "crrregions": ["norwaywest"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -550,7 +550,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "norwaywest",
@@ -570,7 +570,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "qatarcentral",
@@ -579,7 +579,7 @@ var regionlist = [
         "crrregions": ["westeurope"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -599,7 +599,7 @@ var regionlist = [
         "crrregions": [],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -610,7 +610,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "southcentralus",
@@ -619,7 +619,7 @@ var regionlist = [
         "crrregions": ["centralus","eastus","eastus2","northcentralus","brazilsouth"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -659,7 +659,7 @@ var regionlist = [
         "crrregions": ["australiaeast","eastasia"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -679,9 +679,9 @@ var regionlist = [
         "crrregions": ["swedencentral"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
-        "avsdatastore": true,
+        "avsdatastore": false,
         "backup": true,
         "largevolumes": false,
         "cmk": true,
@@ -699,7 +699,7 @@ var regionlist = [
         "crrregions": ["germanywestcentral", "israelcentral", "italynorth", "northeurope", "spaincentral", "westeurope"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -710,7 +710,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true, 
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "switzerlandnorth",
@@ -719,7 +719,7 @@ var regionlist = [
         "crrregions": ["switzerlandwest"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -739,7 +739,7 @@ var regionlist = [
         "crrregions": ["switzerlandnorth"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -770,7 +770,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "uaenorth",
@@ -779,7 +779,7 @@ var regionlist = [
         "crrregions": ["uaecentral"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -790,7 +790,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "uksouth",
@@ -799,7 +799,7 @@ var regionlist = [
         "crrregions": ["ukwest","germanywestcentral", "northeurope"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -819,27 +819,7 @@ var regionlist = [
         "crrregions": ["uksouth",],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
-        "snfeditwithoutdowntime": true,
-        "avsdatastore": true,
-        "backup": true,
-        "largevolumes": true,
-        "cmk": true,
-        "cmkhsm": true,
-        "doubleencryption": true,
-        "standardcool": true,
-        "azplacement": false,
-        "flexible": true, 
-        "fileaccesslogs": true
-    },
-    {
-        "shortname": "usgovarizona",
-        "longname": "US Gov Arizona",
-        "location": regionlocation.usgovarizona,
-        "crrregions": ["usgovtexas","usgovvirginia"],
-        "czr": false,
-        "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -850,7 +830,27 @@ var regionlist = [
         "standardcool": true,
         "azplacement": false,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
+    },
+    {
+        "shortname": "usgovarizona",
+        "longname": "US Gov Arizona",
+        "location": regionlocation.usgovarizona,
+        "crrregions": ["usgovtexas","usgovvirginia"],
+        "czr": false,
+        "snf": true,
+        "cachevolumes": false,
+        "snfeditwithoutdowntime": true,
+        "avsdatastore": true,
+        "backup": true,
+        "largevolumes": true,
+        "cmk": true,
+        "cmkhsm": false,
+        "doubleencryption": true,
+        "standardcool": true,
+        "azplacement": false,
+        "flexible": true, 
+        "fileaccesslogs": false
     },
     {
         "shortname": "usgovvirginia",
@@ -859,7 +859,7 @@ var regionlist = [
         "crrregions": ["usgovtexas","usgovarizona"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -870,7 +870,7 @@ var regionlist = [
         "standardcool": true,
         "azplacement": true,
         "flexible": true, 
-        "fileaccesslogs": true
+        "fileaccesslogs": false
     },
     {
         "shortname": "usgovtexas",
@@ -879,7 +879,7 @@ var regionlist = [
         "crrregions": ["usgovvirginia","usgovarizona"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": false,
         "backup": true,
@@ -899,7 +899,7 @@ var regionlist = [
         "crrregions": ["northeurope","germanywestcentral","francecentral","qatarcentral", "swedencentral"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -919,7 +919,7 @@ var regionlist = [
         "crrregions": ["eastus"],
         "czr": false,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -939,7 +939,7 @@ var regionlist = [
         "crrregions": ["eastus","eastus2", "westus3"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -959,7 +959,7 @@ var regionlist = [
         "crrregions": ["centralus", "eastus", "eastus2", "westus2"],
         "czr": true,
         "snf": true,
-        "cachevolumes": true,
+        "cachevolumes": false,
         "snfeditwithoutdowntime": true,
         "avsdatastore": true,
         "backup": true,
@@ -995,7 +995,7 @@ function filterSNFregions(item, index) {
 
 var cacheVolumeregions = [];
 regionlist.forEach(filtercacheVolumeregions);
-//this function build an array based on which regions have 'cachevolumes' set to true
+//this function build an array based on which regions have 'snf' set to true
 function filtercacheVolumeregions(item, index) {
     if (item.cachevolumes == true) {
         cacheVolumeregions.push(item)
@@ -1058,7 +1058,7 @@ function filterLargevolumesregions(item, index) {
 
 var CMKregions = [];
 regionlist.forEach(filterCMKregions);
-//this function build an array based on which regions have 'cmk' set to true
+//this function build an array based on which regions have 'US Gov' set to true
 function filterCMKregions(item, index) {
     if (item.cmk == true) {
         CMKregions.push(item)
@@ -1158,35 +1158,35 @@ function initMap() {
     map.controls.add(controls, {
         position: "top-right"
     });
-    
+        
     displayedList = regionlist;
 
     document.getElementById("totalRegionCount").innerHTML = '<a target="_blank" href="https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=netapp&regions=all&rar=true">' + regionlist.length + '</a>'
-    //document.getElementById("snfRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies#supported-regions">' + SNFregions.length + '</a>'
+    document.getElementById("snfRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies#supported-regions">' + SNFregions.length + '</a>'
     document.getElementById("cacheVolumeRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies#supported-regions">' + cacheVolumeregions.length + '</a>'
 
-    //document.getElementById("snfEditRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-network-features#no-downtime">' + SNFEditregions.length + '</a>'
+    document.getElementById("snfEditRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-network-features#no-downtime">' + SNFEditregions.length + '</a>'
 
     document.getElementById("crrRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction#supported-region-pairs">' + CRRregions.length + '</a>'
     document.getElementById("czrRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cross-zone-replication-introduction#supported-regions">' + CZRregions.length + '</a>'
     document.getElementById("azplacementRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/reliability/availability-zones-service-support">' + AZPlacementregions.length + '</a>'
 
     document.getElementById("avsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-vmware/attach-azure-netapp-files-to-azure-vmware-solution-hosts?tabs=azure-portal#supported-regions">' + AVSregions.length + '</a>'
-    //document.getElementById("backupRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/backup-introduction#supported-regions">' + Backupregions.length + '</a>'
+    document.getElementById("backupRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/backup-introduction#supported-regions">' + Backupregions.length + '</a>'
     document.getElementById("largevolumesRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations#supported-regions">' + Largevolumesregions.length + '</a>'
-    //document.getElementById("cmkRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys#supported-regions">' + CMKregions.length + '</a>'
+    document.getElementById("cmkRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys#supported-regions">' + CMKregions.length + '</a>'
     document.getElementById("cmkhsmRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions">' + CMKHSMregions.length + '</a>'
     document.getElementById("doubleencryptionRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest">' + DoubleEncryptionregions.length + '</a>'
-    //document.getElementById("standardcoolRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">' + Standardcoolregions.length + '</a>'
+    document.getElementById("standardcoolRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/cool-access-introduction">' + Standardcoolregions.length + '</a>'
     document.getElementById("fileaccesslogsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs">' + fileAccessRegions.length + '</a>'
-    //document.getElementById("flexibleRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool">' + Flexibleregions.length + '</a>'
+    document.getElementById("flexibleRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool">' + Flexibleregions.length + '</a>'
+    
 
     document.getElementById("USGovRegionCount").innerHTML = '<a target="_blank" href="https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&rar=true">' + USGovregions.length + '</a>'
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
     //Wait until the map resources are ready.
-    //map.events.add('ready', function () {
-    map.events.add('load', function () {
+    map.events.add('ready', function () {
         //anfregions = new atlas.source.DataSource();
         //map.sources.add(anfregions);
         
@@ -1200,7 +1200,7 @@ function initMap() {
                 position: item.location,
                 htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
                 popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
+                    content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>cache volumes: ' + item.cachevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                     pixelOffset: [0, -50],
                     fillColor: 'rgba(0,0,0,0.6)'
                 })
@@ -1266,8 +1266,8 @@ function updateMap() {
         map.markers.remove(window[element.shortname])
     });
     displayedList = [];
-    if (document.getElementById("usgov").checked) {
-        displayedList = USGovregions;
+    if (document.getElementById("snf").checked) {
+        displayedList = SNFregions;
     } else {
         displayedList = regionlist;
     }
@@ -1281,15 +1281,30 @@ function updateMap() {
         displayedList.forEach(filterCZRregions);
         displayedList = CZRregions;
     }
+    if (document.getElementById("snfedit").checked) {
+        SNFEditregions = [];
+        displayedList.forEach(filterSNFEditregions);
+        displayedList = SNFEditregions;
+    }
     if (document.getElementById("avs").checked) {
         AVSregions = [];
         displayedList.forEach(filterAVSregions);
         displayedList = AVSregions;
     }
+    if (document.getElementById("backup").checked) {
+        Backupregions = [];
+        displayedList.forEach(filterBackupregions);
+        displayedList = Backupregions;
+    }
     if (document.getElementById("largevolumes").checked) {
         Largevolumesregions = [];
         displayedList.forEach(filterLargevolumesregions);
         displayedList = Largevolumesregions;
+    }
+    if (document.getElementById("cmk").checked) {
+        CMKregions = [];
+        displayedList.forEach(filterCMKregions);
+        displayedList = CMKregions;
     }
     if (document.getElementById("cmkhsm").checked) {
         CMKHSMregions = [];
@@ -1301,20 +1316,30 @@ function updateMap() {
         displayedList.forEach(filterDoubleEncryptionregions);
         displayedList = DoubleEncryptionregions;
     }
+    if (document.getElementById("standardcool").checked) {
+        Standardcoolregions = [];
+        displayedList.forEach(filterStandardcoolregions);
+        displayedList = Standardcoolregions;
+    }
     if (document.getElementById("azplacement").checked) {
         AZPlacementregions = [];
         displayedList.forEach(filterAZPlacementregions);
         displayedList = AZPlacementregions;
     }
+    if (document.getElementById("usgov").checked) {
+        USGovregions = [];
+        displayedList.forEach(filterUSGovregions);
+        displayedList = USGovregions;
+    }
+    if (document.getElementById("flexible").checked) {
+        Flexibleregions = [];
+        displayedList.forEach(filterFlexibleregions);
+        displayedList = Flexibleregions;
+    }
     if (document.getElementById("fileaccesslogs").checked) {
         fileAccessRegions = [];
         displayedList.forEach(filterFileAccessRegions);
         displayedList = fileAccessRegions;
-    }
-    if (document.getElementById("cachevolumes").checked) {
-        cacheVolumeregions = [];
-        displayedList.forEach(filtercacheVolumeregions);
-        displayedList = cacheVolumeregions;
     }
 
     document.getElementById("totalFilteredCount").innerText = displayedList.length
@@ -1337,9 +1362,9 @@ function updateMap() {
             color: 'DodgerBlue',
             text: '10',
             position: item.location,
-                htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
+            htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>file access logs: ' + item.fileaccesslogs + '<br>flexible service level: ' + item.flexible + '<br>large volumes: ' + item.largevolumes + '<br>cache volumes: ' + item.cachevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
@@ -1405,7 +1430,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon_gray.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')<br>CRR Targets: ' + targetregions + '<br>cross-zone replication: ' + item.czr + '<br>standard networking: ' + item.snf + '<br>edit networking without downtime: ' + item.snfeditwithoutdowntime + '<br>backup: ' + item.backup + '<br>datastore for AVS: ' + item.avsdatastore + '<br>large volumes: ' + item.largevolumes + '<br>cache volumes: ' + item.cachevolumes + '<br>customer-managed keys: ' + item.cmk + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm +  '<br>double encryption: ' + item.doubleencryption +  '<br>standard storage w/ cool access: ' + item.standardcool + '<br>az placement: ' + item.azplacement + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
