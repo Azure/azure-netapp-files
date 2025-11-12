@@ -97,7 +97,7 @@ var regionlist = [
         "shortname": "australiaeast",
         "longname": "Australia East",
         "location": regionlocation.australiaeast,
-        "crrregions": ["australiasoutheast","southeastasia", "newzealandnorth"],
+        "crrregions": ["australiasoutheast","southeastasia","newzealandnorth"],
         "czr": true,
         "snf": true,
         "cachevolumes": true,
@@ -512,7 +512,7 @@ var regionlist = [
         "azplacement": true,
         "flexible": false, 
         "fileaccesslogs": true
-    }
+    },
     {
         "shortname": "northcentralus",
         "longname": "North Central US",
