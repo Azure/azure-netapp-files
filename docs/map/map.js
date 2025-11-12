@@ -99,7 +99,7 @@ var regionlist = [
         "shortname": "australiaeast",
         "longname": "Australia East",
         "location": regionlocation.australiaeast,
-        "crrregions": ["australiasoutheast","southeastasia", "newzealandnorth"],
+        "crrregions": ["australiasoutheast","southeastasia","newzealandnorth"],
         "czr": true,
         "snf": true,
         "cachevolumes": true,
