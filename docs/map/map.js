@@ -24,6 +24,7 @@ var regionlocation = {
     japanwest: [135.5022, 34.6939],
     koreacentral: [126.9780, 37.5665],
     koreasouth: [129.0756, 35.1796],
+    newzealandnorth: [174.7635, -36.8485],
     northcentralus: [-87.6278, 41.8819],
     northeurope: [-6.2597, 53.3478],
     norwayeast: [10.752245, 59.913868],
@@ -96,7 +97,7 @@ var regionlist = [
         "shortname": "australiaeast",
         "longname": "Australia East",
         "location": regionlocation.australiaeast,
-        "crrregions": ["australiasoutheast","southeastasia"],
+        "crrregions": ["australiasoutheast","southeastasia", "newzealandnorth"],
         "czr": true,
         "snf": true,
         "cachevolumes": true,
@@ -492,6 +493,26 @@ var regionlist = [
         "flexible": true, 
         "fileaccesslogs": true
     },
+    {
+        "shortname": "newzealandnorth",
+        "longname": "New Zealand North",
+        "location": regionlocation.newzealandnorth,
+        "crrregions": ["australiaeast"],
+        "czr": true,
+        "snf": true,
+        "cachevolumes": false,
+        "snfeditwithoutdowntime": true,
+        "avsdatastore": false,
+        "backup": true,
+        "largevolumes": false,
+        "cmk": true,
+        "cmkhsm": true,
+        "doubleencryption": true,
+        "standardcool": true,
+        "azplacement": true,
+        "flexible": false, 
+        "fileaccesslogs": true
+    }
     {
         "shortname": "northcentralus",
         "longname": "North Central US",
