@@ -1187,6 +1187,15 @@ function filterFileAccessRegions(item, index) {
     }
 };
 
+var elasticZRSRegions = [];
+regionlist.forEach(filterElasticZRSRegions);
+//this function build an array based on which regions have 'elasticzrs' set to true
+function filterElasticZRSRegions(item, index) {
+    if (item.elasticzrs == true) {
+        elasticZRSRegions.push(item)
+    }
+};
+
 var USGovregions = [];
 regionlist.forEach(filterUSGovregions);
 //this function build an array based on which regions have 'US Gov' set to true
@@ -1249,6 +1258,8 @@ function initMap() {
     document.getElementById("fileaccesslogsRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs">' + fileAccessRegions.length + '</a>'
     //document.getElementById("flexibleRegionCount").innerHTML = '<a target="_blank" href="https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool">' + Flexibleregions.length + '</a>'
 
+    document.getElementById("elasticZRS").innerHTML = '< a target="_blank' href="https://learn.microsoft.com/azure/azure-netapp-files/elastic-zone-redundant-concept"> + elasticZRSRegions.length
+
     document.getElementById("USGovRegionCount").innerHTML = '<a target="_blank" href="https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&rar=true">' + USGovregions.length + '</a>'
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
@@ -1268,7 +1279,7 @@ function initMap() {
                 position: item.location,
                 htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
                 popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>AZ placement: ' + item.azplacement + '<br>Cache volumes: ' + item.cachevolumes + '<br>Cross-zone replication: ' + item.czr + '<br>Customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>Datastore for AVS: ' + '</br>item.avsdatastore + '<br>Double encryption: ' + item.doubleencryption' + '</br>Elastic zone-redundant storage: ' + item.elasticzrs +'<br>File access logs: ' + item.fileaccesslogs + '<br>Large volumes: ' + item.largevolumes + '</div>',
                     pixelOffset: [0, -50],
                     fillColor: 'rgba(0,0,0,0.6)'
                 })
@@ -1384,6 +1395,11 @@ function updateMap() {
         displayedList.forEach(filtercacheVolumeregions);
         displayedList = cacheVolumeregions;
     }
+    if (document.getElementById("elasticZRS").checked) {
+        elasticZRSRegions = [];
+        displayedList.forEach(filterElasticZRSRegions);
+        displayedList = elasticZRSRegions
+    }
 
     document.getElementById("totalFilteredCount").innerText = displayedList.length
 
@@ -1407,7 +1423,7 @@ function updateMap() {
             position: item.location,
                 htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>elastic zone-redundant storage: ' + item.elasticzrs + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
@@ -1473,7 +1489,7 @@ function updateMap() {
             position: item.location,
             htmlContent: "<div style='width:3em;'><img style='width:3em;' src='https://azure.github.io/azure-netapp-files/map/anficon_gray.png'></div>",
             popup: new atlas.Popup({
-                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
+                content: '<div style="padding:10px;color:white"><strong>ANF Region: ' + item.longname + '</strong> (' + item.shortname + ')' + '<br>Latitude: ' + item.location[1] + '<br>Longitude: ' + item.location[0] + '<br><br>CRR Targets: ' + targetregions + '<br>az placement: ' + item.azplacement + '<br>cache volumes: ' + item.cachevolumes + '<br>cross-zone replication: ' + item.czr + '<br>customer-managed keys w/ managed HSM: ' + item.cmkhsm + '<br>datastore for AVS: ' + item.avsdatastore + '<br>double encryption: ' + item.doubleencryption + '<br>elastic zone-redundant storage: ' + item.elasticzrs + '<br>file access logs: ' + item.fileaccesslogs + '<br>large volumes: ' + item.largevolumes + '</div>',
                 pixelOffset: [0, -50],
                 fillColor: 'rgba(0,0,0,0.6)'
             })
