@@ -1,187 +1,411 @@
 <!DOCTYPE html>
- <html>
- <head>
-     <title>Azure NetApp Files - Region Map</title>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+<head>
+    <title>Azure NetApp Files - Region Map</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
-     <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+    <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
-     <script src="map.js"></script>
+    <!-- ANF Map modules -->
+    <script src="js/config.js"></script>
+    <script src="js/regions.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/markers.js"></script>
+    <script src="map.js"></script>
 
-     <style>
-        html,
-        body {
-             width: 100%;
-             height: 100%;
-             padding: 0;
-             margin: 0;
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
         }
 
         #myMap {
-             width: 100%;
-             height: 100%;
+            width: 100%;
+            height: 100%;
         }
 
         #eventPanel {
             position: absolute;
-            bottom: 0px;
-            left: 0px;
-            margin: 0px;
-            background-color: white;
-            border-style: solid;
-            border-width: 1px 1px 0 0;
-            border-color: black;
-            border-radius: 0 0 0 0;
-            -webkit-column-count: 1;
-            -moz-column-count: 1;
-            column-count: 1;
-            font-size: 1.0rem;
-            font-family: SegoeUI, Arial, Helvetica, sans-serif;
-            background-image: url(https://azure.github.io/azure-netapp-files/map/anficon.png);
-            background-size: 10%;
-            background-repeat: no-repeat;
-            background-position-y: 100%;
-            background-position-x: 100%;
+            bottom: 10px;
+            left: 10px;
+            background: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            font-size: 13px;
+            max-width: 300px;
+            overflow: hidden;
         }
-        #eventPanel ul {
-            padding-left: 20px;
-            padding-top: 0;
-            list-style: circle;
-            margin-top: 0;
-            font-size: 1em;
-        }
-        #eventPanel h4,h3 {
-            padding: 0;
-            margin-bottom: 2px;
-            margin-top: 5px;
-        }
-        #miniImg {
-            float: left;
-            width: 20px;
-            padding-top: 5px;
-            padding-left: 5px;
-            padding-bottom: 5px;
-            margin: 0;
-        }
-        #miniPanel {
-            padding: 0;
-            margin: 0;
-        }
+
         #mainPanel {
-            padding: 15px;
-            padding-bottom: 10px;
+            padding: 10px;
         }
-        #mainPanel a {
-            color: rgb(33, 82, 138);
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .panel-header img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .panel-header h1 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0078d4;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .panel-header h2 {
+            font-size: 12px;
+            font-weight: 400;
+            color: #666;
+            margin: 2px 0 0 0;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 6px 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .instructions p {
+            margin: 0 0 2px 0;
+        }
+
+        .instructions p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #0078d4;
+        }
+
+        .stat-value a {
+            color: #0078d4;
             text-decoration: none;
         }
-        #mainPanel a:visited {
-            color: rgb(33, 82, 138);
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 8px 0 5px 0;
+        }
+
+        .filter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            padding: 4px 6px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .filter-item:hover {
+            background: #e8f4fd;
+        }
+
+        .filter-item input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ccc;
+            border-radius: 3px;
+            margin-right: 6px;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+        }
+
+        .filter-item input[type="checkbox"]:checked {
+            background: #0078d4;
+            border-color: #0078d4;
+        }
+
+        .filter-item input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 1px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .filter-item label {
+            flex: 1;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            padding-right: 12px;
+        }
+
+        .filter-item .count {
+            font-size: 12px;
+            color: #0078d4;
+            font-weight: 600;
+        }
+
+        .filter-item .count a {
+            color: #0078d4;
             text-decoration: none;
         }
+
+        .results-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .results-count {
+            font-size: 13px;
+            color: #333;
+        }
+
+        .results-count strong {
+            color: #0078d4;
+            font-weight: 600;
+        }
+
+        .reset-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .reset-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .panel-footer {
+            background: #f8f9fa;
+            padding: 6px 10px;
+            font-size: 11px;
+            color: #888;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .panel-footer a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+
+        #miniPanel {
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        #miniPanel:hover {
+            background: #f8f9fa;
+        }
+
+        #miniImg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.6;
+        }
+
         .hidden {
-            visibility: false;
+            display: none !important;
         }
+
         #minimizedPanel {
             position: absolute;
-            bottom: 0px;
-            left: 0px;
-            background-color: white;
-            padding: 5px;
+            bottom: 10px;
+            left: 10px;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
         }
+
+        #minimizedPanel:hover {
+            background: #f8f9fa;
+        }
+
         #minimizedPanel img {
-            float: right;
             width: 20px;
-            margin: 0;
+            height: 20px;
+            display: block;
         }
-        small {
-            color: gray;
-        }
-        label {
-            font-size: 1em;
-        }
-     </style>
- </head>
- <body onload="initMap()">
+    </style>
+</head>
+<body onload="initMap()">
     <div id="myMap"></div>
     <div id="eventPanel">
-        
         <div id="mainPanel">
-            <h3>Azure NetApp Files</h3>
-            <h4>Region and Feature Map</h4>
-            <ul>
-            <li>Hover to see details about a region.</li>
-            <li>Click to see cross-region replication region pairs.</li>
-            </ul>
-            <h4>Total number of regions: <span id="totalRegionCount"></span></h4>
-            <br>
-            <h4>Apply filter(s)...</h4>
-            <input onclick="updateMap()" type="checkbox" id="azplacement" name="azplacement" value="azplacement">
-            <label for="azplacement">availability zone placement </label>(<span id="azplacementRegionCount"></span>)<br>
+            <div class="panel-header">
+                <img src="https://azure.github.io/azure-netapp-files/map/anficon.png" alt="ANF">
+                <div>
+                    <h1>Azure NetApp Files</h1>
+                    <h2>Region & Feature Map</h2>
+                </div>
+            </div>
 
-            <input onclick="updateMap()" type="checkbox" id="cachevolumes" name="cachevolumes" value="cachevolumes">
-            <label for="cachevolumes">cache volumes </label>(<span id="cacheVolumeRegionCount"></span>)<br>
+            <div class="instructions">
+                <p><strong>Hover</strong> over a region to see details.</p>
+                <p><strong>Click</strong> a region to show CRR pairs.</p>
+            </div>
 
-            <input onclick="updateMap()" type="checkbox" id="crr" name="crr" value="crr">
-            <label for="crr">cross-region replication </label>(<span id="crrRegionCount"></span>)<br>
+            <div class="stat-row">
+                <span class="stat-label">Total Regions</span>
+                <span class="stat-value" id="totalRegionCount"></span>
+            </div>
 
-            <input onclick="updateMap()" type="checkbox" id="czr" name="czr" value="czr">
-            <label for="czr">cross-zone replication </label>(<span id="czrRegionCount"></span>)<br>
+            <div class="section-title">Filter by Feature</div>
 
-            <input onclick="updateMap()" type="checkbox" id="cmkhsm" name="cmkhsm" value="cmkhsm">
-            <label for="cmkhsm">customer-managed keys w/ managed HSM </label>(<span id="cmkhsmRegionCount"></span>)<br>
-        
-            <input onclick="updateMap()" type="checkbox" id="avs" name="avs" value="avs">
-            <label for="avs">datastore for Azure VMware Solution </label>(<span id="avsRegionCount"></span>)<br>
-            
-            <input onclick="updateMap()" type="checkbox" id="doubleencryption" name="doubleencryption" value="doubleencryption">
-            <label for="doubleencryption">double encryption at rest </label>(<span id="doubleencryptionRegionCount"></span>)<br>
+            <div class="filter-list">
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="arp" name="arp" value="arp">
+                    <label for="arp">Advanced ransomware protection</label>
+                    <span class="count" id="arpRegionCount"></span>
+                </div>
 
-            <input onclick="updateMap()" type="checkbox" id="fileaccesslogs" name="fileaccesslogs" value="fileaccesslogs">
-            <label for="fileaccesslogs">file access logs </label>(<span id="fileaccesslogsRegionCount"></span>)<br>
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="azplacement" name="azplacement" value="azplacement">
+                    <label for="azplacement">Availability zone placement</label>
+                    <span class="count" id="azplacementRegionCount"></span>
+                </div>
 
-            <input onclick="updateMap()" type="checkbox" id="largevolumes" name="largevolumes" value="largevolumes">
-            <label for="largevolumes">large volumes </label>(<span id="largevolumesRegionCount"></span>)<br>
-            
-            <input onclick="updateMap()" type="checkbox" id="usgov" name="usgov" value="usgov">
-            <label for="usgov">US Gov </label>(<span id="USGovRegionCount"></span>)<br>
-            
-            <!-- <input onclick="updateMap()" type="checkbox" id="snf" name="snf" value="snf"> -->
-            <!-- <label for="snf">standard network features </label>(<span id="snfRegionCount"></span>)<br> -->
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="cachevolumes" name="cachevolumes" value="cachevolumes">
+                    <label for="cachevolumes">Cache volumes</label>
+                    <span class="count" id="cacheVolumeRegionCount"></span>
+                </div>
 
-            <!-- <input onclick="updateMap()" type="checkbox" id="snfedit" name="snfedit" value="snfedit"> -->
-            <!-- <label for="snfedit">edit network features without downtime </label>(<span id="snfEditRegionCount"></span>)<br> -->
-        
-            <!-- <input onclick="updateMap()" type="checkbox" id="backup" name="backup" value="backup"> -->
-            <!-- <label for="backup">backup </label>(<span id="backupRegionCount"></span>)<br> -->
-            
-            <!-- <input onclick="updateMap()" type="checkbox" id="cmk" name="cmk" value="cmk"> -->
-            <!-- <label for="cmk">customer-managed keys </label>(<span id="cmkRegionCount"></span>)<br> -->
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="crr" name="crr" value="crr">
+                    <label for="crr">Cross-region replication</label>
+                    <span class="count" id="crrRegionCount"></span>
+                </div>
 
-            <!-- <input onclick="updateMap()" type="checkbox" id="flexible" name="flexible" value="flexible"> -->
-            <!-- <label for="flexible">flexible service level </label>(<span id="flexibleRegionCount"></span>)<br> -->
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="czr" name="czr" value="czr">
+                    <label for="czr">Cross-zone replication</label>
+                    <span class="count" id="czrRegionCount"></span>
+                </div>
 
-            <!-- <input onclick="updateMap()" type="checkbox" id="standardcool" name="standardcool" value="standardcool"> -->
-            <!-- <label for="standardcool">standard storage w/ cool access </label>(<span id="standardcoolRegionCount"></span>)<br> -->
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="cmkhsm" name="cmkhsm" value="cmkhsm">
+                    <label for="cmkhsm">CMK w/ managed HSM</label>
+                    <span class="count" id="cmkhsmRegionCount"></span>
+                </div>
 
-            <br>
-            <h4>Total filtered regions: <span id="totalFilteredCount"></span></h4><br>
-            <button onclick="window.location.href=window.location.href">Reset</button>
-            <br><br>
-            <small>Created by <a target="_blank" href="https://github.com/seanluce">@seanluce</a> | <a target="_blank" href="https://netapp.com">NetApp</a></small>
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="avs" name="avs" value="avs">
+                    <label for="avs">Datastore for AVS</label>
+                    <span class="count" id="avsRegionCount"></span>
+                </div>
+
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="doubleencryption" name="doubleencryption" value="doubleencryption">
+                    <label for="doubleencryption">Double encryption at rest</label>
+                    <span class="count" id="doubleencryptionRegionCount"></span>
+                </div>
+
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="fileaccesslogs" name="fileaccesslogs" value="fileaccesslogs">
+                    <label for="fileaccesslogs">File access logs</label>
+                    <span class="count" id="fileaccesslogsRegionCount"></span>
+                </div>
+
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="largevolumes" name="largevolumes" value="largevolumes">
+                    <label for="largevolumes">Large volumes</label>
+                    <span class="count" id="largevolumesRegionCount"></span>
+                </div>
+
+                <div class="filter-item">
+                    <input onclick="updateMap()" type="checkbox" id="usgov" name="usgov" value="usgov">
+                    <label for="usgov">US Gov</label>
+                    <span class="count" id="USGovRegionCount"></span>
+                </div>
+            </div>
+
+            <div class="results-bar">
+                <span class="results-count">Showing <strong id="totalFilteredCount"></strong> regions</span>
+                <button class="reset-btn" onclick="window.location.href=window.location.href">Reset</button>
+            </div>
         </div>
-        <div id="miniPanel">
-            <img id="miniImg" src="./minimize.png" onclick=minimizePanel()>
+
+        <div class="panel-footer">
+            Created by <a target="_blank" href="https://github.com/seanluce">@seanluce</a> | <a target="_blank" href="https://netapp.com">NetApp</a>
+        </div>
+
+        <div id="miniPanel" onclick="minimizePanel()">
+            <img id="miniImg" src="./minimize.png" alt="Minimize">
         </div>
     </div>
-    <div class="hidden" id="minimizedPanel">
-        <img src="./restore.png" onclick="restorePanel()">
+
+    <div class="hidden" id="minimizedPanel" onclick="restorePanel()">
+        <img src="./restore.png" alt="Restore">
     </div>
- </body>
- </html>
+</body>
+</html>
