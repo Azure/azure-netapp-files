@@ -455,7 +455,7 @@ var RegionData = (function() {
             "azplacement": false,
             "flexible": true,
             "fileaccesslogs": true,
-            "arp": false
+            "arp": true
         },
         {
             "shortname": "koreacentral",
@@ -515,7 +515,7 @@ var RegionData = (function() {
             "azplacement": true,
             "flexible": false,
             "fileaccesslogs": true,
-            "arp": true
+            "arp": false
         },
         {
             "shortname": "northcentralus",
@@ -595,7 +595,7 @@ var RegionData = (function() {
             "azplacement": false,
             "flexible": true,
             "fileaccesslogs": true,
-            "arp": false
+            "arp": true
         },
         {
             "shortname": "qatarcentral",
@@ -675,7 +675,7 @@ var RegionData = (function() {
             "azplacement": false,
             "flexible": true,
             "fileaccesslogs": true,
-            "arp": false
+            "arp": true
         },
         {
             "shortname": "southeastasia",
