@@ -321,73 +321,8 @@
 
             <div class="section-title">Filter by Feature</div>
 
-            <div class="filter-list">
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="arp" name="arp" value="arp">
-                    <label for="arp">Advanced ransomware protection</label>
-                    <span class="count" id="arpRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="azplacement" name="azplacement" value="azplacement">
-                    <label for="azplacement">Availability zone placement</label>
-                    <span class="count" id="azplacementRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="cachevolumes" name="cachevolumes" value="cachevolumes">
-                    <label for="cachevolumes">Cache volumes</label>
-                    <span class="count" id="cacheVolumeRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="crr" name="crr" value="crr">
-                    <label for="crr">Cross-region replication</label>
-                    <span class="count" id="crrRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="czr" name="czr" value="czr">
-                    <label for="czr">Cross-zone replication</label>
-                    <span class="count" id="czrRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="cmkhsm" name="cmkhsm" value="cmkhsm">
-                    <label for="cmkhsm">CMK w/ managed HSM</label>
-                    <span class="count" id="cmkhsmRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="avs" name="avs" value="avs">
-                    <label for="avs">Datastore for AVS</label>
-                    <span class="count" id="avsRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="doubleencryption" name="doubleencryption" value="doubleencryption">
-                    <label for="doubleencryption">Double encryption at rest</label>
-                    <span class="count" id="doubleencryptionRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="fileaccesslogs" name="fileaccesslogs" value="fileaccesslogs">
-                    <label for="fileaccesslogs">File access logs</label>
-                    <span class="count" id="fileaccesslogsRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="largevolumes" name="largevolumes" value="largevolumes">
-                    <label for="largevolumes">Large volumes</label>
-                    <span class="count" id="largevolumesRegionCount"></span>
-                </div>
-
-                <div class="filter-item">
-                    <input onclick="updateMap()" type="checkbox" id="usgov" name="usgov" value="usgov">
-                    <label for="usgov">US Gov</label>
-                    <span class="count" id="USGovRegionCount"></span>
-                </div>
-            </div>
+            <!-- Filter list generated dynamically from config.js -->
+            <div class="filter-list" id="filterList"></div>
 
             <div class="results-bar">
                 <span class="results-count">Showing <strong id="totalFilteredCount"></strong> regions</span>

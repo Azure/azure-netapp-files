@@ -66,7 +66,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "australiacentral2",
@@ -85,7 +86,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "australiaeast",
@@ -104,7 +106,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "australiasoutheast",
@@ -123,7 +126,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "brazilsouth",
@@ -142,7 +146,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "brazilsoutheast",
@@ -161,7 +166,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "canadacentral",
@@ -180,7 +186,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "canadaeast",
@@ -199,7 +206,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "centralindia",
@@ -218,7 +226,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "centralus",
@@ -237,7 +246,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "eastasia",
@@ -256,7 +266,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "eastus",
@@ -275,7 +286,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "eastus2",
@@ -294,7 +306,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "francecentral",
@@ -313,7 +326,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "germanywestcentral",
@@ -332,7 +346,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": false
+      "fileaccesslogs": false,
+      "arp": true
     },
     {
       "shortname": "germanynorth",
@@ -351,7 +366,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "israelcentral",
@@ -370,7 +386,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": false
+      "fileaccesslogs": false,
+      "arp": true
     },
     {
       "shortname": "italynorth",
@@ -389,7 +406,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "japaneast",
@@ -408,7 +426,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "japanwest",
@@ -427,7 +446,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "koreacentral",
@@ -446,7 +466,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "koreasouth",
@@ -465,7 +486,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "newzealandnorth",
@@ -484,7 +506,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": false,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": false
     },
     {
       "shortname": "northcentralus",
@@ -503,7 +526,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": false
+      "fileaccesslogs": false,
+      "arp": true
     },
     {
       "shortname": "northeurope",
@@ -522,7 +546,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "norwayeast",
@@ -541,7 +566,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "norwaywest",
@@ -560,7 +586,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "qatarcentral",
@@ -579,7 +606,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": false
+      "fileaccesslogs": false,
+      "arp": true
     },
     {
       "shortname": "southafricanorth",
@@ -598,7 +626,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "southcentralus",
@@ -617,7 +646,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "southindia",
@@ -636,7 +666,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "southeastasia",
@@ -655,7 +686,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "spaincentral",
@@ -674,7 +706,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "swedencentral",
@@ -693,7 +726,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "switzerlandnorth",
@@ -712,7 +746,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "switzerlandwest",
@@ -731,7 +766,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "uaecentral",
@@ -750,7 +786,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "uaenorth",
@@ -769,7 +806,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "uksouth",
@@ -788,7 +826,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "ukwest",
@@ -807,7 +846,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "usgovarizona",
@@ -826,7 +866,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": false
     },
     {
       "shortname": "usgovvirginia",
@@ -845,7 +886,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": false
     },
     {
       "shortname": "usgovtexas",
@@ -864,7 +906,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": false
+      "fileaccesslogs": false,
+      "arp": false
     },
     {
       "shortname": "westeurope",
@@ -883,7 +926,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "westus",
@@ -902,7 +946,8 @@
       "standardcool": true,
       "azplacement": false,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "westus2",
@@ -921,7 +966,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     },
     {
       "shortname": "westus3",
@@ -940,7 +986,8 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true
+      "fileaccesslogs": true,
+      "arp": true
     }
   ]
 }

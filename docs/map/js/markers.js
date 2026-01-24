@@ -23,21 +23,12 @@ var MarkerManager = (function() {
 
         function icon(val) { return val ? check : cross; }
 
-        var features = [
-            ['Ransomware protection', region.arp],
-            ['AZ placement', region.azplacement],
-            ['Cache volumes', region.cachevolumes],
-            ['Cross-zone replication', region.czr],
-            ['CMK w/ managed HSM', region.cmkhsm],
-            ['Datastore for AVS', region.avsdatastore],
-            ['Double encryption', region.doubleencryption],
-            ['File access logs', region.fileaccesslogs],
-            ['Large volumes', region.largevolumes]
-        ];
-
-        var featureRows = features.map(function(f) {
-            var rowBg = f[1] ? '#e8f4fd' : '#f8f9fa';
-            return '<tr style="background:' + rowBg + '"><td style="padding:2px 5px;color:#333;border-radius:3px 0 0 3px">' + f[0] + '</td><td style="text-align:center;padding:2px 5px;border-radius:0 3px 3px 0">' + icon(f[1]) + '</td></tr>';
+        // Build features from config
+        var popupFeatures = MapConfig.getPopupFeatures();
+        var featureRows = popupFeatures.map(function(feature) {
+            var value = region[feature.property];
+            var rowBg = value ? '#e8f4fd' : '#f8f9fa';
+            return '<tr style="background:' + rowBg + '"><td style="padding:2px 5px;color:#333;border-radius:3px 0 0 3px">' + feature.shortLabel + '</td><td style="text-align:center;padding:2px 5px;border-radius:0 3px 3px 0">' + icon(value) + '</td></tr>';
         }).join('');
 
         var crrRows = targetregions.length > 0
