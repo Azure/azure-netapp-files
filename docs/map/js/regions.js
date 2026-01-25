@@ -515,7 +515,7 @@ var RegionData = (function() {
             "azplacement": true,
             "flexible": false,
             "fileaccesslogs": true,
-            "arp": false
+            "arp": true
         },
         {
             "shortname": "northcentralus",
