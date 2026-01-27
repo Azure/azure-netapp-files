@@ -8,83 +8,116 @@ var MapConfig = (function() {
 
     // Feature configuration - defines all filterable features
     var FEATURES = {
-        crr: {
-            property: 'crrregions',
-            checkboxId: 'crr',
-            countId: 'crrRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction#supported-region-pairs',
-            filterType: 'array' // filters by array length > 0
-        },
-        czr: {
-            property: 'czr',
-            checkboxId: 'czr',
-            countId: 'czrRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/cross-zone-replication-introduction#supported-regions',
-            filterType: 'boolean'
-        },
         arp: {
             property: 'arp',
+            label: 'Advanced ransomware protection',
+            shortLabel: 'Ransomware protection',
             checkboxId: 'arp',
             countId: 'arpRegionCount',
             docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/ransomware-configure#supported-regions',
-            filterType: 'boolean'
-        },
-        avs: {
-            property: 'avsdatastore',
-            checkboxId: 'avs',
-            countId: 'avsRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-vmware/attach-azure-netapp-files-to-azure-vmware-solution-hosts?tabs=azure-portal#supported-regions',
-            filterType: 'boolean'
-        },
-        largevolumes: {
-            property: 'largevolumes',
-            checkboxId: 'largevolumes',
-            countId: 'largevolumesRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations#supported-regions',
-            filterType: 'boolean'
-        },
-        cmkhsm: {
-            property: 'cmkhsm',
-            checkboxId: 'cmkhsm',
-            countId: 'cmkhsmRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions',
-            filterType: 'boolean'
-        },
-        doubleencryption: {
-            property: 'doubleencryption',
-            checkboxId: 'doubleencryption',
-            countId: 'doubleencryptionRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest',
-            filterType: 'boolean'
+            filterType: 'boolean',
+            showInPopup: true
         },
         azplacement: {
             property: 'azplacement',
+            label: 'Availability zone placement',
+            shortLabel: 'AZ placement',
             checkboxId: 'azplacement',
             countId: 'azplacementRegionCount',
             docUrl: 'https://learn.microsoft.com/azure/reliability/availability-zones-service-support',
-            filterType: 'boolean'
-        },
-        fileaccesslogs: {
-            property: 'fileaccesslogs',
-            checkboxId: 'fileaccesslogs',
-            countId: 'fileaccesslogsRegionCount',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs',
-            filterType: 'boolean'
+            filterType: 'boolean',
+            showInPopup: true
         },
         cachevolumes: {
             property: 'cachevolumes',
+            label: 'Cache volumes',
+            shortLabel: 'Cache volumes',
             checkboxId: 'cachevolumes',
             countId: 'cacheVolumeRegionCount',
             docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies#supported-regions',
-            filterType: 'boolean'
+            filterType: 'boolean',
+            showInPopup: true
+        },
+        crr: {
+            property: 'crrregions',
+            label: 'Cross-region replication',
+            shortLabel: 'Cross-region replication',
+            checkboxId: 'crr',
+            countId: 'crrRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction#supported-region-pairs',
+            filterType: 'array',
+            showInPopup: false // CRR shown separately in popup
+        },
+        czr: {
+            property: 'czr',
+            label: 'Cross-zone replication',
+            shortLabel: 'Cross-zone replication',
+            checkboxId: 'czr',
+            countId: 'czrRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/cross-zone-replication-introduction#supported-regions',
+            filterType: 'boolean',
+            showInPopup: true
+        },
+        cmkhsm: {
+            property: 'cmkhsm',
+            label: 'CMK w/ managed HSM',
+            shortLabel: 'CMK w/ managed HSM',
+            checkboxId: 'cmkhsm',
+            countId: 'cmkhsmRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/configure-customer-managed-keys-hardware#supported-regions',
+            filterType: 'boolean',
+            showInPopup: true
+        },
+        avs: {
+            property: 'avsdatastore',
+            label: 'Datastore for AVS',
+            shortLabel: 'Datastore for AVS',
+            checkboxId: 'avs',
+            countId: 'avsRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-vmware/attach-azure-netapp-files-to-azure-vmware-solution-hosts?tabs=azure-portal#supported-regions',
+            filterType: 'boolean',
+            showInPopup: true
+        },
+        doubleencryption: {
+            property: 'doubleencryption',
+            label: 'Double encryption at rest',
+            shortLabel: 'Double encryption',
+            checkboxId: 'doubleencryption',
+            countId: 'doubleencryptionRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest',
+            filterType: 'boolean',
+            showInPopup: true
+        },
+        fileaccesslogs: {
+            property: 'fileaccesslogs',
+            label: 'File access logs',
+            shortLabel: 'File access logs',
+            checkboxId: 'fileaccesslogs',
+            countId: 'fileaccesslogsRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/manage-file-access-logs',
+            filterType: 'boolean',
+            showInPopup: true
+        },
+        largevolumes: {
+            property: 'largevolumes',
+            label: 'Large volumes',
+            shortLabel: 'Large volumes',
+            checkboxId: 'largevolumes',
+            countId: 'largevolumesRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/large-volumes-requirements-considerations#supported-regions',
+            filterType: 'boolean',
+            showInPopup: true
         },
         usgov: {
             property: null, // Special case: filters by longname containing 'US Gov'
+            label: 'US Gov',
+            shortLabel: 'US Gov',
             checkboxId: 'usgov',
             countId: 'USGovRegionCount',
             docUrl: 'https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&rar=true',
             filterType: 'substring',
-            substring: 'US Gov'
+            substring: 'US Gov',
+            showInPopup: false
         }
     };
 
@@ -141,9 +174,22 @@ var MapConfig = (function() {
         CRR_LINE_STYLE: CRR_LINE_STYLE,
         POPUP_STYLE: POPUP_STYLE,
 
-        // Helper to get feature keys in checkbox order
+        // Helper to get feature keys in display order (matches HTML)
         getFilterOrder: function() {
-            return ['arp', 'crr', 'czr', 'avs', 'largevolumes', 'cmkhsm', 'doubleencryption', 'azplacement', 'fileaccesslogs', 'cachevolumes'];
+            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'doubleencryption', 'fileaccesslogs', 'largevolumes', 'usgov'];
+        },
+
+        // Helper to get features that should appear in popup
+        getPopupFeatures: function() {
+            var result = [];
+            var order = this.getFilterOrder();
+            for (var i = 0; i < order.length; i++) {
+                var key = order[i];
+                if (FEATURES[key] && FEATURES[key].showInPopup) {
+                    result.push(FEATURES[key]);
+                }
+            }
+            return result;
         }
     };
 })();

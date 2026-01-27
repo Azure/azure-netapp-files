@@ -15,10 +15,38 @@ var ANFMap = (function() {
 
     /**
      * Load region data from RegionData module
+     * @returns {Promise}
      */
     function loadRegionData() {
-        regionLocations = RegionData.getRegionLocations();
-        regionList = RegionData.getRegions();
+        return RegionData.load().then(function() {
+            regionLocations = RegionData.getRegionLocations();
+            regionList = RegionData.getRegions();
+        });
+    }
+
+    /**
+     * Generate filter checkboxes from config
+     */
+    function generateFilterList() {
+        var container = document.getElementById('filterList');
+        if (!container) return;
+
+        var features = MapConfig.FEATURES;
+        var order = MapConfig.getFilterOrder();
+        var html = '';
+
+        order.forEach(function(key) {
+            var feature = features[key];
+            if (!feature) return;
+
+            html += '<div class="filter-item">' +
+                '<input onclick="updateMap()" type="checkbox" id="' + feature.checkboxId + '" name="' + feature.checkboxId + '" value="' + feature.checkboxId + '">' +
+                '<label for="' + feature.checkboxId + '">' + feature.label + '</label>' +
+                '<span class="count" id="' + feature.countId + '"></span>' +
+                '</div>';
+        });
+
+        container.innerHTML = html;
     }
 
     /**
@@ -124,20 +152,23 @@ var ANFMap = (function() {
      * Initialize the map application
      */
     function init() {
-        // Load region data synchronously from module
-        loadRegionData();
+        // Load region data from JSON file
+        loadRegionData().then(function() {
+            // Initialize displayed list to all regions
+            displayedList = regionList.slice();
 
-        // Initialize displayed list to all regions
-        displayedList = regionList.slice();
+            // Generate filter checkboxes from config
+            generateFilterList();
 
-        // Initialize the map
-        initializeMap();
-        updateRegionCounts();
-        updateFilteredCount();
+            // Initialize the map
+            initializeMap();
+            updateRegionCounts();
+            updateFilteredCount();
 
-        // Wait for map to be ready before adding markers
-        map.events.add('load', function() {
-            createInitialMarkers();
+            // Wait for map to be ready before adding markers
+            map.events.add('load', function() {
+                createInitialMarkers();
+            });
         });
     }
 
