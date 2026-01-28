@@ -88,6 +88,15 @@ var MapConfig = (function() {
             filterType: 'boolean',
             showInPopup: true
         },
+        elasticzrs: {
+            property: 'elasticzrs',
+            label: 'Elastic zone-redundant storage',
+            shortLabel: 'Elastic ZRS',
+            checkboxId: 'elasticzrs',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest',
+            filterType: 'boolean',
+            showInPopup: true
+        },
         fileaccesslogs: {
             property: 'fileaccesslogs',
             label: 'File access logs',

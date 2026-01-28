@@ -67,7 +67,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "australiacentral2",
@@ -87,7 +88,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "australiaeast",
@@ -107,7 +109,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": true
     },
     {
       "shortname": "australiasoutheast",
@@ -127,7 +130,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "brazilsouth",
@@ -147,7 +151,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "brazilsoutheast",
@@ -167,7 +172,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "canadacentral",
@@ -187,7 +193,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": true
     },
     {
       "shortname": "canadaeast",
@@ -207,7 +214,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "centralindia",
@@ -227,7 +235,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "centralus",
@@ -247,7 +256,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": true
     },
     {
       "shortname": "eastasia",
@@ -267,7 +277,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "eastus",
@@ -287,7 +298,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "eastus2",
@@ -307,7 +319,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "francecentral",
@@ -327,7 +340,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "germanywestcentral",
@@ -347,7 +361,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": false,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "germanynorth",
@@ -367,7 +382,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "israelcentral",
@@ -387,7 +403,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": false,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "italynorth",
@@ -407,7 +424,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "japaneast",
@@ -427,7 +445,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "japanwest",
@@ -447,7 +466,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "koreacentral",
@@ -467,7 +487,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "koreasouth",
@@ -487,7 +508,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "newzealandnorth",
@@ -507,7 +529,8 @@
       "azplacement": true,
       "flexible": false,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "northcentralus",
@@ -527,7 +550,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": false,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "northeurope",
@@ -547,7 +571,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "norwayeast",
@@ -567,7 +592,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "norwaywest",
@@ -587,7 +613,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "qatarcentral",
@@ -607,7 +634,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": false,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "southafricanorth",
@@ -627,7 +655,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "southcentralus",
@@ -647,7 +676,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": true
     },
     {
       "shortname": "southindia",
@@ -667,7 +697,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "southeastasia",
@@ -687,7 +718,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "spaincentral",
@@ -707,7 +739,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "swedencentral",
@@ -727,7 +760,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "switzerlandnorth",
@@ -747,7 +781,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "switzerlandwest",
@@ -767,7 +802,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "uaecentral",
@@ -787,7 +823,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "uaenorth",
@@ -807,7 +844,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "uksouth",
@@ -827,7 +865,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": true
     },
     {
       "shortname": "ukwest",
@@ -847,7 +886,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "usgovarizona",
@@ -867,7 +907,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": false
+      "arp": false,
+      "elasticzrs": false
     },
     {
       "shortname": "usgovvirginia",
@@ -887,7 +928,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": false
+      "arp": false,
+      "elasticzrs": false
     },
     {
       "shortname": "usgovtexas",
@@ -907,7 +949,8 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": false,
-      "arp": false
+      "arp": false,
+      "elasticzrs": false
     },
     {
       "shortname": "westeurope",
@@ -927,7 +970,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": true
     },
     {
       "shortname": "westus",
@@ -947,7 +991,9 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false,
+      "elasticzrs": false
     },
     {
       "shortname": "westus2",
@@ -967,7 +1013,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     },
     {
       "shortname": "westus3",
@@ -987,7 +1034,8 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": true
+      "arp": true,
+      "elasticzrs": false
     }
   ]
 }
