@@ -11,6 +11,148 @@ cfg: { // Application Insights Configuration
 }});
 
 overrideLanguage = '';
+pricingLoaded = false;
+
+// Fetched pricing rates from Azure API (will be populated on load)
+var fetched_flexible_capacity_rates = {};
+var fetched_flexible_tput_rates = {};
+var fetched_standard_rates = {};
+var fetched_premium_rates = {};
+var fetched_ultra_rates = {};
+
+// Map Azure API armRegionName to display region names
+var regionNameMap = {
+    "centralus": "Central US",
+    "eastus": "East US",
+    "eastus2": "East US 2",
+    "northcentralus": "North Central US",
+    "southcentralus": "South Central US",
+    "westus": "West US",
+    "westus2": "West US 2",
+    "westus3": "West US 3",
+    "usgovarizona": "US Gov Arizona",
+    "usgovvirginia": "US Gov Virginia",
+    "usgovtexas": "US Gov Texas",
+    "uksouth": "UK South",
+    "ukwest": "UK West",
+    "uaecentral": "UAE Central",
+    "uaenorth": "UAE North",
+    "switzerlandnorth": "Switzerland North",
+    "switzerlandwest": "Switzerland West",
+    "swedencentral": "Sweden Central",
+    "spaincentral": "Spain Central",
+    "qatarcentral": "Qatar Central",
+    "norwayeast": "Norway East",
+    "norwaywest": "Norway West",
+    "koreacentral": "Korea Central",
+    "koreasouth": "Korea South",
+    "japaneast": "Japan East",
+    "japanwest": "Japan West",
+    "centralindia": "Central India",
+    "southindia": "South India",
+    "germanynorth": "Germany North",
+    "germanywestcentral": "Germany West Central",
+    "francecentral": "France Central",
+    "northeurope": "North Europe",
+    "westeurope": "West Europe",
+    "canadacentral": "Canada Central",
+    "canadaeast": "Canada East",
+    "brazilsouth": "Brazil South",
+    "brazilsoutheast": "Brazil Southeast",
+    "australiacentral": "Australia Central",
+    "australiacentral2": "Australia Central 2",
+    "australiaeast": "Australia East",
+    "australiasoutheast": "Australia Southeast",
+    "eastasia": "East Asia",
+    "southeastasia": "Southeast Asia",
+    "southafricanorth": "South Africa North"
+};
+
+// Fetch pricing from Azure Retail Prices API
+async function fetchPricing() {
+    // Use local proxy to avoid CORS issues, or direct API if running on a server with CORS support
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    let nextPageUrl = isLocalhost ? '/api/pricing' : 'https://prices.azure.com/api/retail/prices?$filter=' + encodeURIComponent("serviceName eq 'Azure NetApp Files' and type eq 'Consumption'");
+    
+    try {
+        while (nextPageUrl) {
+            const response = await fetch(nextPageUrl);
+            if (!response.ok) {
+                console.error('Failed to fetch Azure pricing:', response.status);
+                return false;
+            }
+            
+            const data = await response.json();
+            
+            for (const item of data.Items) {
+                const regionName = regionNameMap[item.armRegionName];
+                if (!regionName) continue;
+                
+                // Convert from per GiB/Hour to per GiB/Month (730 hours)
+                const monthlyRate = item.retailPrice * 730;
+                
+                const meterName = item.meterName;
+                
+                if (meterName === 'Standard Capacity') {
+                    fetched_standard_rates[regionName] = monthlyRate;
+                } else if (meterName === 'Premium Capacity') {
+                    fetched_premium_rates[regionName] = monthlyRate;
+                } else if (meterName === 'Ultra Capacity') {
+                    fetched_ultra_rates[regionName] = monthlyRate;
+                } else if (meterName === 'Flexible Service Level Capacity') {
+                    fetched_flexible_capacity_rates[regionName] = monthlyRate;
+                } else if (meterName === 'Flexible Service Level Throughput MiBps') {
+                    fetched_flexible_tput_rates[regionName] = monthlyRate;
+                }
+            }
+            
+            // Handle pagination
+            if (data.NextPageLink) {
+                nextPageUrl = isLocalhost ? '/api/pricing?nextPage=' + encodeURIComponent(data.NextPageLink) : data.NextPageLink;
+            } else {
+                nextPageUrl = null;
+            }
+        }
+        
+        pricingLoaded = true;
+        console.log('Azure pricing loaded successfully');
+        return true;
+    } catch (error) {
+        console.error('Error fetching Azure pricing:', error);
+        return false;
+    }
+}
+
+// Show error message and disable calculator
+function showPricingError() {
+    const errorDiv = document.createElement('div');
+    errorDiv.id = 'pricing-error';
+    errorDiv.className = 'alert alert-danger';
+    errorDiv.setAttribute('role', 'alert');
+    errorDiv.innerHTML = '<strong>Error:</strong> Unable to load pricing data from Azure. Please refresh the page to try again.';
+    
+    const cardBody = document.querySelector('.card-body');
+    if (cardBody) {
+        cardBody.insertBefore(errorDiv, cardBody.firstChild);
+    }
+    
+    // Disable inputs
+    document.getElementById('capinput').disabled = true;
+    document.getElementById('tputinput').disabled = true;
+    document.getElementById('changerate').disabled = true;
+    document.getElementById('regionselector').disabled = true;
+    document.getElementById('discountinput').disabled = true;
+}
+
+// Initialize pricing on page load
+async function initializePricing() {
+    const success = await fetchPricing();
+    if (success) {
+        getResults();
+    } else {
+        showPricingError();
+    }
+}
 
 function english() {
     overrideLanguage = 'en';
@@ -57,9 +199,6 @@ function getResults(convert) {
     }
     
     month_hours = 730;
-    standard_rate = 0.14746;
-    premium_rate = 0.29419;
-    ultra_rate = 0.39274;
     standard_tputpertib = 16;
     premium_tputpertib = 64;
     ultra_tputpertib = 128;
@@ -75,294 +214,6 @@ function getResults(convert) {
     max_ultra_tput = 10240 * 1;
     min_flexible_tput = 128;
 
-    var flexible_region_capacity_rates = {
-        "Central US": 0.11023,
-        "East US": 0.11023,
-        "East US 2": 0.11023,
-        "North Central US": 0.13213,
-        "South Central US": 0.11023,
-        "West US": 0.11023,
-        "West US 2": 0.11023,
-        "West US 3": 0.11023,
-        "US Gov Arizona": 0.13213,
-        "US Gov Virginia": 0.13724,
-        "US Gov Texas": 0.13724,
-        "UK South": 0.11023,
-        "UK West": 0.12118,
-        "UAE Central": 0.14089,
-        "UAE North": 0.15695,
-        "Switzerland North": 0.12118,
-        "Switzerland West": 0.15768,
-        "Sweden Central": 0.11023,
-        "Spain Central": 0.11023,
-        "Qatar Central": 0.15695,
-        "Norway East": 0.10877,
-        "Norway West": 0.10877,
-        "Korea Central": 0.14819,
-        "Korea South": 0.12337,
-        "Japan East": 0.13213,
-        "Japan West": 0.17082,
-        "Italy North": 0.11023,
-        "Israel Central": 0.15695,
-        "Central India": 0.12118,
-        "South India": 0.15549,
-        "Germany North": 0.17666,
-        "Germany West Central": 0.11023,
-        "France Central": 0.13724,
-        "North Europe": 0.11023,
-        "West Europe": 0.11023,
-        "Canada Central": 0.12118,
-        "Canada East": 0.13213,
-        "Brazil South": 0.21973, 
-        "Brazil Southeast": 0.1971,
-        "Australia Central": 0.15914,
-        "Australia Central 2": 0.13213,
-        "Australia East": 0.12118,
-        "Australia Southeast": 0.14308,
-        "East Asia": 0.17009,
-        "Southeast Asia": 0.11023,
-        "South Africa North": 0.1606
-    };
-    var flexible_region_tput_rates = {
-        "Central US": 2.24986,
-        "East US": 2.24986,
-        "East US 2": 2.24986,
-        "North Central US": 2.70027,
-        "South Central US": 2.24986,
-        "West US": 2.24986,
-        "West US 2": 2.24986,
-        "West US 3": 2.24986,
-        "US Gov Arizona": 2.69954,
-        "US Gov Virginia": 2.81269,
-        "US Gov Texas": 2.81269,
-        "UK South": 2.24986,
-        "UK West": 2.4747,
-        "UAE Central": 2.87985,
-        "UAE North": 3.21784,
-        "Switzerland North": 2.4747,
-        "Switzerland West": 3.21711,
-        "Sweden Central": 2.24986,
-        "Spain Central": 2.24986,
-        "Qatar Central": 3.21784,
-        "Norway East": 2.22723,
-        "Norway West": 2.22723,
-        "Korea Central": 3.03753,
-        "Korea South": 2.51996,
-        "Japan East": 2.69954,
-        "Japan West": 3.48721,
-        "Italy North": 2.24986,
-        "Israel Central": 3.21784,
-        "Central India": 2.4747,
-        "South India": 3.17258,
-        "Germany North": 3.59963,
-        "Germany West Central": 2.24986,
-        "France Central": 2.81269,
-        "North Europe": 2.24986,
-        "West Europe": 2.24986,
-        "Canada Central": 2.4747,
-        "Canada East": 2.70027,
-        "Brazil South": 4.49972,
-        "Brazil Southeast": 4.02741,
-        "Australia Central": 3.26237,
-        "Australia Central 2": 2.69954,
-        "Australia East": 2.4747,
-        "Australia Southeast": 2.92511,
-        "East Asia": 3.46458,
-        "Southeast Asia": 2.24986,
-        "South Africa North": 3.285
-    };
-    var standard_region_rates = {
-        "Central US": 0.14746,
-        "East US": 0.14746,
-        "East US 2": 0.14746,
-        "North Central US": 0.17666,
-        "South Central US": 0.14746,
-        "West US": 0.14746,
-        "West US 2": 0.14746,
-        "West US 3": 0.14746,
-
-        "US Gov Arizona": 0.17739,
-        "US Gov Virginia": 0.18396,
-        "US Gov Texas": 0.18396,
-    
-        "UK South": 0.16206,
-        "UK West": 0.16206,
-
-        "UAE Central": 0.23068,
-        "UAE North": 0.21024,
-
-        "Switzerland North": 0.16206,
-        "Switzerland West": 0.21097,
-
-        "Sweden Central": 0.14746,
-        "Spain Central": 0.14746,
-
-        "Qatar Central": 0.21097,
-
-        "Norway East": 0.16206,
-        "Norway West": 0.16206,
-
-        "Korea Central": 0.19856,
-        "Korea South": 0.18396,
-
-        "Japan East": 0.17666,
-        "Japan West": 0.22922,
-
-        "Central India": 0.16279,
-        "South India": 0.20805,
-
-        "Germany North": 0.23652,
-        "Germany West Central": 0.17739,
-
-        "France Central": 0.18396,
-
-        "North Europe": 0.14746,
-        "West Europe": 0.14746,
-
-        "Canada Central": 0.16279,
-        "Canada East": 0.17739,
-      
-        "Brazil South": 0.29419,
-        "Brazil Southeast": 0/26426,
-        
-        "Australia Central": 0.21316,
-        "Australia Central 2": 0.17666,
-        "Australia East": 0.16279,
-        "Australia Southeast": 0.19199,
-
-        "East Asia": 0.22776,
-        "Southeast Asia": 0.14746,
-
-        "South Africa North": 0.21535
-    };
-    var premium_region_rates = {
-        "Central US": 0.29419,
-        "East US": 0.29419,
-        "East US 2": 0.29419,
-        "North Central US": 0.35332,
-        "South Central US": 0.29419,
-        "West US": 0.29419,
-        "West US 2": 0.29419,
-        "West US 3": 0.29419,
-
-        "US Gov Arizona": 0.35332,
-        "US Gov Virginia": 0.36792,
-        "US Gov Texas": 0.36792,
-    
-        "UK South": 0.32339,
-        "UK West": 0.32339,
-
-        "UAE Central": 0.45917,
-        "UAE North": 0.42121,
-
-        "Switzerland North": 0.32339,
-        "Switzerland West": 0.42048,
-
-        "Sweden Central": 0.29419,
-        "Spain Central": 0.29419,
-
-        "Qatar Central": 0.42048,
-
-        "Norway East": 0.32339,
-        "Norway West": 0.32339,
-
-        "Korea Central": 0.39712,
-        "Korea South": 0.36792,
-
-        "Japan East": 0.35259,
-        "Japan West": 0.45625,
-
-        "Central India": 0.32412,
-        "South India": 0.41537,
-
-        "Germany North": 0.47085,
-        "Germany West Central": 0.35332,
-
-        "France Central": 0.36792,
-
-        "North Europe": 0.29419,
-        "West Europe": 0.29419,
-
-        "Canada Central": 0.32412,
-        "Canada East": 0.35332,
-
-        "Brazil South": 0.58838,
-        "Brazil Southeast": 0.52779,
-        
-        "Australia Central": 0.42705,
-        "Australia Central 2": 0.35332,
-        "Australia East": 0.32412,
-        "Australia Southeast": 0.38252,
-
-        "East Asia": 0.45625,
-        "Southeast Asia": 0.29419,
-
-        "South Africa North": 0.42924
-    };
-    var ultra_region_rates = {
-        "Central US": 0.39274,
-        "East US": 0.39274,
-        "East US 2": 0.39274,
-        "North Central US": 0.47158,
-        "South Central US": 0.39274,
-        "West US": 0.39274,
-        "West US 2": 0.39274,
-        "West US 3": 0.39274,
-
-        "US Gov Arizona": 0.47158,
-        "US Gov Virginia": 0.49056,
-        "US Gov Texas": 0.49129,
-    
-        "UK South": 0.43143,
-        "UK West": 0.43143,
-
-        "UAE Central": 0.6132,
-        "UAE North": 0.56137,
-
-        "Switzerland North": 0.43216,
-        "Switzerland West": 0.5621,
-
-        "Sweden Central": 0.39274,
-        "Spain Central": 0.39274,
-
-        "Qatar Central": 0.56137,
-
-        "Norway East": 0.43216,
-        "Norway West": 0.43216,
-
-        "Korea Central": 0.52998,
-        "Korea South": 0.49129,
-
-        "Japan East": 0.47085,
-        "Japan West": 0.60882,
-
-        "Central India": 0.43216,
-        "South India": 0.55407,
-
-        "Germany North": 0.62853,
-        "Germany West Central": 0.47158,
-
-        "France Central": 0.49129,
-
-        "North Europe": 0.39274,
-        "West Europe": 0.39274,
-
-        "Canada Central": 0.43216,
-        "Canada East": 0.47158,
-      
-        "Brazil South": 0.7884,
-        "Brazil Southeast": 0.70591,
-        
-        "Australia Central": 0.5694,
-        "Australia Central 2": 0.47158,
-        "Australia East": 0.43143,
-        "Australia Southeast": 0.511,
-
-        "East Asia": 0.60882,
-        "Southeast Asia": 0.39274,
-
-        "South Africa North": 0.57305
-    };
     var tenmin_region_rates = {
         "Central US": 0.172,
         "East US": 0.14,
@@ -578,11 +429,12 @@ function getResults(convert) {
     active_region = document.getElementById("regionselector").value
     discount_percent = (100 - document.getElementById("discountinput").value) / 100;
     
-    flexible_capacity_rate = flexible_region_capacity_rates[active_region] * discount_percent;
-    flexible_tput_rate = flexible_region_tput_rates[active_region] * discount_percent;
-    standard_rate = standard_region_rates[active_region] * discount_percent;
-    premium_rate = premium_region_rates[active_region] * discount_percent;
-    ultra_rate = ultra_region_rates[active_region] * discount_percent;
+    // Use fetched rates from Azure API
+    flexible_capacity_rate = (fetched_flexible_capacity_rates[active_region] || 0) * discount_percent;
+    flexible_tput_rate = (fetched_flexible_tput_rates[active_region] || 0) * discount_percent;
+    standard_rate = (fetched_standard_rates[active_region] || 0) * discount_percent;
+    premium_rate = (fetched_premium_rates[active_region] || 0) * discount_percent;
+    ultra_rate = (fetched_ultra_rates[active_region] || 0) * discount_percent;
     
     if (tput_target > 4500 && document.getElementById('TiB').checked) {
         flexible_cap_target = 50 * 1;
