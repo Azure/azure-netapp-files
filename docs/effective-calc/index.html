@@ -193,7 +193,7 @@
                         <input
                             type="number"
                             class="form-control"
-                            placeholder="20"
+                            placeholder="1"
                             value="1"
                             min="1"
                             aria-label="active_data_size_input"
@@ -222,6 +222,7 @@
                             <option value="premium">Premium</option>
                             <option value="ultra">Ultra</option>
                             <option value="flexible" selected>Flexible</option>
+                            <option value="elasticZoneRedundant">Elastic Zone-redundant</option>
                         </select>
                     </div>
                     <div id="throughput_input_div">
@@ -236,7 +237,7 @@
                                 aria-label="throughput_input"
                                 aria-describedby="throughput_input"
                                 id="throughput_input"
-                                oninput="validateInput(this); handleSubmit();"
+                                oninput="validateThroughputInput(this);"
                                 tabindex="4"
                                 disabled="true"
                             />
@@ -244,6 +245,7 @@
                                 MiBps
                             </button>
                         </div>
+                        <div id="throughput_error" style="display: none; color: red; font-size: 14px; margin-top: -15px; margin-bottom: 15px;"></div>
                     </div>
                     <div class="mb-2">
                         <span class="fs-5 text-primary"> Cool Access </span>
@@ -709,7 +711,7 @@
                             Results are for estimation purposes and your actual
                             savings may vary
                         </li>
-                        <li>Release: v1.5</li>
+                        <li>Release: v1.6</li>
                     </ul>
                 </small>
                 <div class="row mt-2 mb-2">
