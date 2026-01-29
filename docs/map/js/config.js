@@ -93,6 +93,7 @@ var MapConfig = (function() {
             label: 'Elastic zone-redundant storage',
             shortLabel: 'Elastic ZRS',
             checkboxId: 'elasticzrs',
+            countId: 'elasticzrsRegionCount',
             docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/elastic-zone-redundant-concept',
             filterType: 'boolean',
             showInPopup: true
@@ -185,7 +186,7 @@ var MapConfig = (function() {
 
         // Helper to get feature keys in display order (matches HTML)
         getFilterOrder: function() {
-            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'doubleencryption', 'fileaccesslogs', 'largevolumes', 'usgov'];
+            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'doubleencryption', 'elasticzrs', 'fileaccesslogs', 'largevolumes', 'usgov'];
         },
 
         // Helper to get features that should appear in popup
