@@ -93,7 +93,7 @@ var MapConfig = (function() {
             label: 'Elastic zone-redundant storage',
             shortLabel: 'Elastic ZRS',
             checkboxId: 'elasticzrs',
-            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/double-encryption-at-rest',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/elastic-zone-redundant-concept',
             filterType: 'boolean',
             showInPopup: true
         },
