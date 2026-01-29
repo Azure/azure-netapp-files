@@ -186,7 +186,7 @@ var MapConfig = (function() {
 
         // Helper to get feature keys in display order (matches HTML)
         getFilterOrder: function() {
-            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'elasticzrs', 'doubleencryption', 'fileaccesslogs', 'largevolumes', 'usgov'];
+            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'doubleencryption', 'elasticzrs', 'fileaccesslogs', 'largevolumes', 'usgov'];
         },
 
         // Helper to get features that should appear in popup
