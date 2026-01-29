@@ -68,49 +68,33 @@ var regionNameMap = {
     "southafricanorth": "South Africa North"
 };
 
-// Fetch pricing from Azure Retail Prices API
-async function fetchPricing() {
-    // Use local proxy to avoid CORS issues, or direct API if running on a server with CORS support
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    let nextPageUrl = isLocalhost ? '/api/pricing' : 'https://prices.azure.com/api/retail/prices?$filter=' + encodeURIComponent("serviceName eq 'Azure NetApp Files' and type eq 'Consumption'");
-    
+// Load pricing from embedded pricingData (loaded via pricing-data.js)
+function loadPricing() {
     try {
-        while (nextPageUrl) {
-            const response = await fetch(nextPageUrl);
-            if (!response.ok) {
-                console.error('Failed to fetch Azure pricing:', response.status);
-                return false;
-            }
+        if (typeof pricingData === 'undefined' || !pricingData.Items) {
+            console.error('Pricing data not found');
+            return false;
+        }
+        
+        for (const item of pricingData.Items) {
+            const regionName = regionNameMap[item.armRegionName];
+            if (!regionName) continue;
             
-            const data = await response.json();
+            // Convert from per GiB/Hour to per GiB/Month (730 hours)
+            const monthlyRate = item.retailPrice * 730;
             
-            for (const item of data.Items) {
-                const regionName = regionNameMap[item.armRegionName];
-                if (!regionName) continue;
-                
-                // Convert from per GiB/Hour to per GiB/Month (730 hours)
-                const monthlyRate = item.retailPrice * 730;
-                
-                const meterName = item.meterName;
-                
-                if (meterName === 'Standard Capacity') {
-                    fetched_standard_rates[regionName] = monthlyRate;
-                } else if (meterName === 'Premium Capacity') {
-                    fetched_premium_rates[regionName] = monthlyRate;
-                } else if (meterName === 'Ultra Capacity') {
-                    fetched_ultra_rates[regionName] = monthlyRate;
-                } else if (meterName === 'Flexible Service Level Capacity') {
-                    fetched_flexible_capacity_rates[regionName] = monthlyRate;
-                } else if (meterName === 'Flexible Service Level Throughput MiBps') {
-                    fetched_flexible_tput_rates[regionName] = monthlyRate;
-                }
-            }
+            const meterName = item.meterName;
             
-            // Handle pagination
-            if (data.NextPageLink) {
-                nextPageUrl = isLocalhost ? '/api/pricing?nextPage=' + encodeURIComponent(data.NextPageLink) : data.NextPageLink;
-            } else {
-                nextPageUrl = null;
+            if (meterName === 'Standard Capacity') {
+                fetched_standard_rates[regionName] = monthlyRate;
+            } else if (meterName === 'Premium Capacity') {
+                fetched_premium_rates[regionName] = monthlyRate;
+            } else if (meterName === 'Ultra Capacity') {
+                fetched_ultra_rates[regionName] = monthlyRate;
+            } else if (meterName === 'Flexible Service Level Capacity') {
+                fetched_flexible_capacity_rates[regionName] = monthlyRate;
+            } else if (meterName === 'Flexible Service Level Throughput MiBps') {
+                fetched_flexible_tput_rates[regionName] = monthlyRate;
             }
         }
         
@@ -118,7 +102,7 @@ async function fetchPricing() {
         console.log('Azure pricing loaded successfully');
         return true;
     } catch (error) {
-        console.error('Error fetching Azure pricing:', error);
+        console.error('Error loading pricing data:', error);
         return false;
     }
 }
@@ -145,8 +129,8 @@ function showPricingError() {
 }
 
 // Initialize pricing on page load
-async function initializePricing() {
-    const success = await fetchPricing();
+function initializePricing() {
+    const success = loadPricing();
     if (success) {
         getResults();
     } else {
