@@ -866,7 +866,7 @@
       "flexible": true,
       "fileaccesslogs": true,
       "arp": true,
-      "elasticzrs": true
+      "elasticzrs": false
     },
     {
       "shortname": "ukwest",
@@ -1034,7 +1034,7 @@
       "flexible": true,
       "fileaccesslogs": true,
       "arp": true,
-      "elasticzrs": false
+      "elasticzrs": true
     }
   ]
 }
