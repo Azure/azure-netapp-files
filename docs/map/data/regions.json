@@ -731,7 +731,7 @@
       "snfeditwithoutdowntime": true,
       "avsdatastore": true,
       "backup": true,
-      "largevolumes": false,
+      "largevolumes": true,
       "cmk": true,
       "cmkhsm": true,
       "doubleencryption": true,
