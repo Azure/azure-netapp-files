@@ -402,7 +402,7 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": false,
+      "fileaccesslogs": true,
       "arp": true,
       "elasticzrs": false
     },
