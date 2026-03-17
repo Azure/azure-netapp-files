@@ -907,7 +907,7 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": false,
+      "arp": true,
       "elasticzrs": false
     },
     {
@@ -928,7 +928,7 @@
       "azplacement": true,
       "flexible": true,
       "fileaccesslogs": true,
-      "arp": false,
+      "arp": true,
       "elasticzrs": false
     },
     {
@@ -949,7 +949,7 @@
       "azplacement": false,
       "flexible": true,
       "fileaccesslogs": false,
-      "arp": false,
+      "arp": true,
       "elasticzrs": false
     },
     {
