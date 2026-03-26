@@ -745,7 +745,7 @@
     {
       "shortname": "swedencentral",
       "longname": "Sweden Central",
-      "crrregions": ["germanywestcentral", "israelcentral", "italynorth", "northeurope", "spaincentral", "westeurope"],
+      "crrregions": ["germanywestcentral", "israelcentral", "italynorth", "northeurope", "spaincentral", "westeurope", "uaenorth"],
       "czr": true,
       "snf": true,
       "cachevolumes": true,
@@ -829,7 +829,7 @@
     {
       "shortname": "uaenorth",
       "longname": "UAE North",
-      "crrregions": ["uaecentral"],
+      "crrregions": ["uaecentral", "swedencentral"],
       "czr": true,
       "snf": true,
       "cachevolumes": true,
