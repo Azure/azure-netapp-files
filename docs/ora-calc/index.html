@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure NetApp Files Oracle Volumes TCO Estimator</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="index.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row m-0 mt-3 p-0">
+            <div class="col m-0 p-0">
+                <div class="container">
+                    <div class="card border-rounded m-3 shadow">
+                        <!-- Header -->
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-8 float-start mt-1">
+                                    <div class="h5 d-flex align-items-center">
+                                        <!-- Official Microsoft Azure NetApp Files service icon (from Azure Architecture Icons V19) -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 18 18" class="me-2" style="background: rgba(255,255,255,0.92); border-radius: 10px; padding: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); flex-shrink: 0;">
+                                            <defs>
+                                                <linearGradient id="anf-grad" x1="9" y1="15.83" x2="9" y2="5.79" gradientUnits="userSpaceOnUse">
+                                                    <stop offset="0" stop-color="#32bedd"/>
+                                                    <stop offset="0.18" stop-color="#32caea"/>
+                                                    <stop offset="0.41" stop-color="#32d2f2"/>
+                                                    <stop offset="0.78" stop-color="#32d4f5"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M.5,5.79h17a0,0,0,0,1,0,0v9.48a.57.57,0,0,1-.57.57H1.07a.57.57,0,0,1-.57-.57V5.79A0,0,0,0,1,.5,5.79Z" fill="url(#anf-grad)"/>
+                                            <path d="M1.07,2.17H16.93a.57.57,0,0,1,.57.57V5.79a0,0,0,0,1,0,0H.5a0,0,0,0,1,0,0V2.73A.57.57,0,0,1,1.07,2.17Z" fill="#198ab3"/>
+                                            <path d="M2.81,6.89H15.17a.27.27,0,0,1,.27.27v1.4a.27.27,0,0,1-.27.27H2.81a.27.27,0,0,1-.26-.27V7.16A.27.27,0,0,1,2.81,6.89Z" fill="#fff"/>
+                                            <path d="M2.82,9.68H15.18a.27.27,0,0,1,.27.27v1.41a.27.27,0,0,1-.27.27H2.82a.26.26,0,0,1-.26-.27V10A.26.26,0,0,1,2.82,9.68Z" fill="#9cebff"/>
+                                            <path d="M2.82,12.5H15.18a.27.27,0,0,1,.27.27v1.41a.27.27,0,0,1-.27.27H2.82a.26.26,0,0,1-.26-.27V12.77A.26.26,0,0,1,2.82,12.5Z" fill="#9cebff"/>
+                                            <path d="M5.11,7.86v5.59a.28.28,0,0,0,.28.28H7.74A.28.28,0,0,0,8,13.45V10.13a.27.27,0,0,1,.28-.28H9.69a.27.27,0,0,1,.28.28v3.32a.28.28,0,0,0,.29.28h2.35a.28.28,0,0,0,.28-.28V7.86a.28.28,0,0,0-.28-.28H5.39A.28.28,0,0,0,5.11,7.86Z" fill="#0078d4"/>
+                                        </svg>
+                                        <span class="h5 mb-0">Azure NetApp Files Oracle Volumes TCO Estimator</span>
+                                    </div>
+                                </div>
+                                <div class="col d-flex align-items-center justify-content-end gap-2">
+                                    <div class="input-group" style="max-width: 280px;">
+                                        <span class="input-group-text bg-white text-primary fw-bold" style="border-color: white;">
+                                            <i class="bi bi-geo-alt-fill"></i>
+                                        </span>
+                                        <select class="form-select form-select-sm" id="regionSelect" title="Azure Region for pricing">
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-sm" type="button" id="fixedParamsBtn">
+                                        Fixed Parameters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="card-body">
+                            <!-- File Upload Section -->
+                            <div class="file-input p-3 shadow mb-3">
+                                <div class="border-bottom mb-3 pb-2">
+                                    <h5 class="mb-0">Import Files</h5>
+                                </div>
+                                
+                                <!-- Side-by-side File Inputs -->
+                                <div class="row">
+                                    <!-- AWR Report Input -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="awrFile" class="form-label fw-bold">
+                                            <i class="bi bi-file-earmark-text me-2"></i>AWR Report Files
+                                        </label>
+                                        <input class="form-control" type="file" id="awrFile" accept=".json,.html,.xml,text/json,text/html,text/xml" multiple>
+                                    </div>
+                                    
+                                    <!-- DB Size Input -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="dbSizeFile" class="form-label fw-bold">
+                                            <i class="bi bi-database me-2"></i>DB Size File
+                                        </label>
+                                        <input class="form-control" type="file" id="dbSizeFile" accept=".out,.txt,text/plain">
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info mb-0" style="font-size: 14px; padding: 10px;">
+                                    <i class="bi bi-info-circle-fill me-2"></i>
+                                    <strong>Note:</strong> You can upload multiple AWR reports at once (up to 50 files). Progress will be shown during processing.
+                                </div>
+                                
+                                <!-- Progress indicator for bulk upload -->
+                                <div id="bulkUploadProgress" class="mt-3" style="display: none;">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-primary fw-bold" id="progressText">Processing files...</span>
+                                        <span class="text-muted" id="progressCount">0 / 0</span>
+                                    </div>
+                                    <div class="progress" style="height: 25px;">
+                                        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                                             role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Advanced Inputs -->
+                                <p class="d-inline-flex gap-1">
+                                    <a class="btn btn-light m-0 p-0 text-primary" style="border: none; background: none;" 
+                                       data-bs-toggle="collapse" href="#advancedInputs" role="button" 
+                                       aria-expanded="false" aria-controls="advancedInputs">
+                                        Advanced Inputs <i class="bi bi-caret-down-fill"></i>
+                                    </a>
+                                </p>
+                                <div class="collapse" id="advancedInputs">
+                                    <div class="card card-body">
+                                        <div class="row">
+                                            <div class="col input-group">
+                                                <small class="form-text text-muted">Additional Performance</small>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text required-field">Throughput</span>
+                                                    <input type="number" id="additionalThroughput" class="form-control" value="0">
+                                                    <span class="input-group-text btn btn-primary">MiB/s</span>
+                                                </div>
+                                            </div>
+                                            <div class="col input-group">
+                                                <small class="form-text text-muted">I/O</small>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text required-field">Block Size</span>
+                                                    <select id="blockSize" class="form-control">
+                                                        <option value="8" selected>8</option>
+                                                        <option value="16">16</option>
+                                                        <option value="64">64</option>
+                                                    </select>
+                                                    <span class="input-group-text btn btn-primary">KB</span>
+                                                </div>
+                                            </div>
+                                            <div class="col input-group">
+                                                <small class="form-text text-muted">Snapshot</small>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text required-field">Free Space Reserve</span>
+                                                    <input type="number" id="reservation" class="form-control" value="20">
+                                                    <span class="input-group-text btn btn-primary">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Manual Input Form -->
+                            <form id="manualInputForm" novalidate>
+                                <div class="text-inputs mb-3 p-3 shadow">
+                                    <div class="border-bottom mb-3 pb-2">
+                                        <h5 class="mb-0">Manual User Inputs</h5>
+                                    </div>
+                                    
+                                    <!-- Database Inputs -->
+                                    <div class="mb-3">
+                                        <h6 class="fw-bold text-muted mb-3">Database</h6>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col input-group">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">DB Size</span>
+                                                <input type="number" min="0" id="dbSize" class="form-control" required>
+                                                <span class="input-group-text btn btn-primary">TiB</span>
+                                            </div>
+                                        </div>
+                                        <div class="col input-group">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">IO Pattern</span>
+                                                <select class="form-select" id="dbIOPattern" required>
+                                                    <option value="random">Random</option>
+                                                    <option value="mixed">Mixed</option>
+                                                    <option value="sequential" selected>Sequential</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                                <!-- Section Divider -->
+                                <hr class="my-4">
+                                
+                                <div class="mb-3">
+                                    <h6 class="fw-bold text-muted mb-3">Throughput Requirements</h6>
+                                </div>
+                                
+                                <!-- Throughput Inputs -->
+                                <div class="row">
+                                        <div class="col input-group">
+                                            <small class="form-text text-muted">Data Volume</small>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">Required Read Throughput</span>
+                                                <input type="number" min="0" step="any" id="readThroughput" class="form-control" required>
+                                                <span class="input-group-text btn btn-primary">MiB/s</span>
+                                            </div>
+                                        </div>
+                                        <div class="col input-group">
+                                            <small class="form-text text-muted">Data Volume</small>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">Required Write Throughput</span>
+                                                <input type="number" min="0" step="any" id="writeThroughput" class="form-control" required>
+                                                <span class="input-group-text btn btn-primary">MiB/s</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Log Inputs -->
+                                    <div class="row">
+                                        <div class="col input-group">
+                                            <small class="form-text text-muted">Log</small>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">Write Throughput</span>
+                                                <input type="number" min="0" step="0.1" id="logWriteTP" class="form-control" required>
+                                                <span class="input-group-text btn btn-primary">MiB/s</span>
+                                            </div>
+                                        </div>
+                                        <div class="col input-group">
+                                            <small class="form-text text-muted">Log</small>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">Rate</span>
+                                                <input type="number" min="0" step="0.01" id="logCapacity" class="form-control" required>
+                                                <span class="input-group-text btn btn-primary">TiB/day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mirror Log and Archive Log -->
+                                    <div class="row">
+                                        <div class="col input-group">
+                                            <small class="form-text text-muted">Log</small>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">Mirror Log</span>
+                                                <select class="form-select" id="mirrorLog">
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no" selected>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col input-group">
+                                            <small class="form-text text-muted">Archive Log</small>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text required-field">Retention</span>
+                                                <input type="number" min="0" id="archiveLogRetention" class="form-control" value="7">
+                                                <span class="input-group-text btn btn-primary">Days</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary w-25" id="submitBtn">
+                                    Add System
+                                </button>
+                            </div>
+                        </form>
+
+                            <!-- Cost Calculation Note -->
+                            <div id="costNote" class="alert alert-info mt-3" style="display: none;">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                <strong>Note:</strong> Cost calculation projects monthly estimate.
+                            </div>
+
+                            <!-- Results Section -->
+                            <div id="resultsSection" class="output mt-3 p-3" style="display: none;">
+                                <!-- Results will be dynamically generated here -->
+                            </div>
+
+                            <!-- Download Button -->
+                            <div class="text-center" id="downloadSection" style="display: none;">
+                                <button type="button" id="downloadBtn" class="btn btn-success w-25">
+                                    Download Results
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <small class="text-muted">
+                                        <strong>Source:</strong>
+                                        <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels" target="_blank">Service Levels</a>,
+                                        <a href="https://azure.microsoft.com/en-us/pricing/details/netapp/" target="_blank">Pricing</a>,
+                                        <a href="https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits" target="_blank">Resource Limits</a>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <small class="text-muted">
+                                        <strong>Notes:</strong>
+                                    </small>
+                                    <ul class="footer-notes">
+                                        <li><small class="text-muted">This estimator is based on AWR reports.</small></li>
+                                        <li><small class="text-muted">Estimator is for estimation purposes only. Contact <strong>Azure CSA's</strong> to learn more about optimizing the deployment.</small></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <small class="text-muted">
+                                        <strong>Powered by:</strong> NetApp Solutions Engineering Team
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="index.min.js"></script>
+</body>
+</html>
