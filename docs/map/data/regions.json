@@ -655,7 +655,7 @@
       "standardcool": true,
       "azplacement": true,
       "flexible": true,
-      "fileaccesslogs": true,
+      "fileaccesslogs": false,
       "arp": true,
       "elasticzrs": false
     },
