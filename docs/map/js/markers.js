@@ -26,7 +26,7 @@ var MarkerManager = (function() {
         // Build features from config
         var popupFeatures = MapConfig.getPopupFeatures();
         var featureRows = popupFeatures.map(function(feature) {
-            var value = region[feature.property];
+            var value = RegionFilters.regionMatchesFeature(region, feature);
             var rowBg = value ? '#e8f4fd' : '#f8f9fa';
             return '<tr style="background:' + rowBg + '"><td style="padding:2px 5px;color:#333;border-radius:3px 0 0 3px">' + feature.shortLabel + '</td><td style="text-align:center;padding:2px 5px;border-radius:0 3px 3px 0">' + icon(value) + '</td></tr>';
         }).join('');

@@ -43,22 +43,36 @@ var RegionFilters = (function() {
     }
 
     /**
+     * Check whether a region supports a feature
+     * @param {Object} region - Region object
+     * @param {Object} featureConfig - Feature configuration from MapConfig.FEATURES
+     * @returns {boolean} Whether the region matches the feature
+     */
+    function regionMatchesFeature(region, featureConfig) {
+        switch (featureConfig.filterType) {
+            case 'boolean':
+                return region[featureConfig.property] === true;
+            case 'array':
+                return Boolean(region[featureConfig.property] && region[featureConfig.property].length > 0);
+            case 'substring':
+                return region.longname.indexOf(featureConfig.substring) >= 0;
+            case 'excludeSubstring':
+                return region.longname.indexOf(featureConfig.substring) === -1;
+            default:
+                return true;
+        }
+    }
+
+    /**
      * Apply a filter based on feature configuration
      * @param {Array} regions - Array of region objects
      * @param {Object} featureConfig - Feature configuration from MapConfig.FEATURES
      * @returns {Array} Filtered regions
      */
     function applyFeatureFilter(regions, featureConfig) {
-        switch (featureConfig.filterType) {
-            case 'boolean':
-                return filterByProperty(regions, featureConfig.property);
-            case 'array':
-                return filterByArrayLength(regions, featureConfig.property);
-            case 'substring':
-                return filterByName(regions, featureConfig.substring);
-            default:
-                return regions;
-        }
+        return regions.filter(function(region) {
+            return regionMatchesFeature(region, featureConfig);
+        });
     }
 
     /**
@@ -120,6 +134,7 @@ var RegionFilters = (function() {
         filterByProperty: filterByProperty,
         filterByArrayLength: filterByArrayLength,
         filterByName: filterByName,
+        regionMatchesFeature: regionMatchesFeature,
         applyFeatureFilter: applyFeatureFilter,
         applyAllFilters: applyAllFilters,
         getFeatureCount: getFeatureCount,

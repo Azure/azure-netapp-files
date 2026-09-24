@@ -98,6 +98,17 @@ var MapConfig = (function() {
             filterType: 'boolean',
             showInPopup: true
         },
+        entraKerberos: {
+            property: null,
+            label: 'Entra Kerberos auth',
+            shortLabel: 'Entra Kerberos auth',
+            checkboxId: 'entraKerberos',
+            countId: 'entraKerberosRegionCount',
+            docUrl: 'https://learn.microsoft.com/azure/azure-netapp-files/understand-entra-id',
+            filterType: 'excludeSubstring',
+            substring: 'US Gov',
+            showInPopup: true
+        },
         fileaccesslogs: {
             property: 'fileaccesslogs',
             label: 'File access logs',
@@ -186,7 +197,7 @@ var MapConfig = (function() {
 
         // Helper to get feature keys in display order (matches HTML)
         getFilterOrder: function() {
-            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'doubleencryption', 'elasticzrs', 'fileaccesslogs', 'largevolumes', 'usgov'];
+            return ['arp', 'azplacement', 'cachevolumes', 'crr', 'czr', 'cmkhsm', 'avs', 'doubleencryption', 'elasticzrs', 'entraKerberos', 'fileaccesslogs', 'largevolumes', 'usgov'];
         },
 
         // Helper to get features that should appear in popup
