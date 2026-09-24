@@ -100,7 +100,7 @@ var MapConfig = (function() {
         },
         entraKerberos: {
             property: null,
-            label: 'Entra Kerberos auth',
+            label: 'Entra Kerberos authentication',
             shortLabel: 'Entra Kerberos auth',
             checkboxId: 'entraKerberos',
             countId: 'entraKerberosRegionCount',
